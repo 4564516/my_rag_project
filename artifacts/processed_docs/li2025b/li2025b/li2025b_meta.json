@@ -1,0 +1,953 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Making AI Less \"Thirsty\": Uncovering and Addressing the\nSecret Water Footprint of AI Models",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          72.9140625,
+          67.67578125
+        ],
+        [
+          537.2884521484375,
+          67.67578125
+        ],
+        [
+          537.2884521484375,
+          102.99224853515625
+        ],
+        [
+          72.9140625,
+          102.99224853515625
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          283.88671875,
+          159.71484375
+        ],
+        [
+          324.1326904296875,
+          159.71484375
+        ],
+        [
+          324.1326904296875,
+          170.48651123046875
+        ],
+        [
+          283.88671875,
+          170.48651123046875
+        ]
+      ]
+    },
+    {
+      "title": "1 Introduction",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          71.12109375,
+          339.92578125
+        ],
+        [
+          175.67733764648438,
+          339.92578125
+        ],
+        [
+          175.67733764648438,
+          354.98504638671875
+        ],
+        [
+          71.12109375,
+          354.98504638671875
+        ]
+      ]
+    },
+    {
+      "title": "2 Background",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          70.224609375,
+          496.40087890625
+        ],
+        [
+          172.72201538085938,
+          496.40087890625
+        ],
+        [
+          172.72201538085938,
+          512.015625
+        ],
+        [
+          70.224609375,
+          512.015625
+        ]
+      ]
+    },
+    {
+      "title": "2.1 Water Withdrawal vs. Water Consumption",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          69.92578125,
+          517.04296875
+        ],
+        [
+          329.297119140625,
+          517.04296875
+        ],
+        [
+          329.297119140625,
+          530.9889221191406
+        ],
+        [
+          69.92578125,
+          530.9889221191406
+        ]
+      ]
+    },
+    {
+      "title": "2.2 How Does AI Use Water?",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          69.92578125,
+          99.38671875
+        ],
+        [
+          236.02264404296875,
+          99.38671875
+        ],
+        [
+          236.02264404296875,
+          111.95880126953125
+        ],
+        [
+          69.92578125,
+          111.95880126953125
+        ]
+      ]
+    },
+    {
+      "title": "2.2.1 Scope-1 Water Usage",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          69.626953125,
+          145.79296875
+        ],
+        [
+          195.61325073242188,
+          145.79296875
+        ],
+        [
+          195.61325073242188,
+          156.94549560546875
+        ],
+        [
+          69.626953125,
+          156.94549560546875
+        ]
+      ]
+    },
+    {
+      "title": "2.2.2 Scope-2 Water Usage",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          69.75,
+          69.22265625
+        ],
+        [
+          195.75,
+          69.22265625
+        ],
+        [
+          195.75,
+          79.5
+        ],
+        [
+          69.75,
+          79.5
+        ]
+      ]
+    },
+    {
+      "title": "2.2.3 Scope-3 Water Usage",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          69.626953125,
+          213.75
+        ],
+        [
+          195.75,
+          213.75
+        ],
+        [
+          195.75,
+          224.68359375
+        ],
+        [
+          69.626953125,
+          224.68359375
+        ]
+      ]
+    },
+    {
+      "title": "3 Estimating AI's Water Footprint",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          70.5,
+          361.5
+        ],
+        [
+          302.25,
+          361.5
+        ],
+        [
+          302.25,
+          374.73046875
+        ],
+        [
+          70.5,
+          374.73046875
+        ]
+      ]
+    },
+    {
+      "title": "3.1 Operational Water Footprint",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          69.92578125,
+          411.75
+        ],
+        [
+          254.25,
+          411.75
+        ],
+        [
+          254.25,
+          423.45703125
+        ],
+        [
+          69.92578125,
+          423.45703125
+        ]
+      ]
+    },
+    {
+      "title": "3.2 Embodied Water Footprint",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          69.328125,
+          674.25
+        ],
+        [
+          244.5,
+          674.25
+        ],
+        [
+          244.5,
+          685.265625
+        ],
+        [
+          69.328125,
+          685.265625
+        ]
+      ]
+    },
+    {
+      "title": "3.3 Case Study: Estimating GPT-3's Operational Water Consumption Footprint",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          70.5234375,
+          380.91796875
+        ],
+        [
+          507.75,
+          380.91796875
+        ],
+        [
+          507.75,
+          392.51953125
+        ],
+        [
+          70.5234375,
+          392.51953125
+        ]
+      ]
+    },
+    {
+      "title": "3.3.1 Training",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          69.75,
+          465.75
+        ],
+        [
+          141.0,
+          465.75
+        ],
+        [
+          141.0,
+          474.75
+        ],
+        [
+          69.75,
+          474.75
+        ]
+      ]
+    },
+    {
+      "title": "3.3.2 Inference",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          69.75,
+          608.30859375
+        ],
+        [
+          144.75,
+          608.30859375
+        ],
+        [
+          144.75,
+          618.0
+        ],
+        [
+          69.75,
+          618.0
+        ]
+      ]
+    },
+    {
+      "title": "4 Our Recommendations",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          69.328125,
+          546.43359375
+        ],
+        [
+          244.5,
+          546.43359375
+        ],
+        [
+          244.5,
+          557.25
+        ],
+        [
+          69.328125,
+          557.25
+        ]
+      ]
+    },
+    {
+      "title": "4.1 More Transparency and Comprehensive Reporting",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          70.5234375,
+          597.0
+        ],
+        [
+          375.75,
+          597.0
+        ],
+        [
+          375.75,
+          608.30859375
+        ],
+        [
+          70.5234375,
+          608.30859375
+        ]
+      ]
+    },
+    {
+      "title": "4.2 \"When\" and \"Where\" Matter",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          69.92578125,
+          235.125
+        ],
+        [
+          257.58984375,
+          235.125
+        ],
+        [
+          257.58984375,
+          247.41094970703125
+        ],
+        [
+          69.92578125,
+          247.41094970703125
+        ]
+      ]
+    },
+    {
+      "title": "4.3 \"Follow the Sun\" or \"Unfollow the Sun\"",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          69.92578125,
+          368.15625
+        ],
+        [
+          319.469970703125,
+          368.15625
+        ],
+        [
+          319.469970703125,
+          381.1809387207031
+        ],
+        [
+          69.92578125,
+          381.1809387207031
+        ]
+      ]
+    },
+    {
+      "title": "5 Conclusion",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          71.27999877929688,
+          505.3488464355469
+        ],
+        [
+          167.70082092285156,
+          505.3488464355469
+        ],
+        [
+          167.70082092285156,
+          519.6950378417969
+        ],
+        [
+          71.27999877929688,
+          519.6950378417969
+        ]
+      ]
+    },
+    {
+      "title": "References",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          71.12109375,
+          657.018798828125
+        ],
+        [
+          142.83984375,
+          657.018798828125
+        ],
+        [
+          142.83984375,
+          671.3650054931641
+        ],
+        [
+          71.12109375,
+          671.3650054931641
+        ]
+      ]
+    },
+    {
+      "title": "Appendix: Operational Water for Global AI in 2027",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          69.328125,
+          69.609375
+        ],
+        [
+          406.9810485839844,
+          69.609375
+        ],
+        [
+          406.9810485839844,
+          84.597900390625
+        ],
+        [
+          69.328125,
+          84.597900390625
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          151
+        ],
+        [
+          "Line",
+          54
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Footnote",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          144
+        ],
+        [
+          "Line",
+          52
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          179
+        ],
+        [
+          "Line",
+          77
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          66
+        ],
+        [
+          "Span",
+          52
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          224
+        ],
+        [
+          "Line",
+          43
+        ],
+        [
+          "Span",
+          23
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          61
+        ],
+        [
+          "Span",
+          9
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          121
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          173
+        ],
+        [
+          "Line",
+          45
+        ],
+        [
+          "ListItem",
+          18
+        ],
+        [
+          "Reference",
+          18
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          144
+        ],
+        [
+          "Line",
+          33
+        ],
+        [
+          "ListItem",
+          17
+        ],
+        [
+          "Reference",
+          17
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          143
+        ],
+        [
+          "Line",
+          53
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/li2025b"
+}

@@ -1,0 +1,1322 @@
+{
+  "table_of_contents": [
+    {
+      "title": "AI, Climate, and Regulation: From Data Centers to the AI Act",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          66.9375,
+          81.984375
+        ],
+        [
+          543.1500854492188,
+          81.984375
+        ],
+        [
+          543.1500854492188,
+          99.9844970703125
+        ],
+        [
+          66.9375,
+          99.9844970703125
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          133.27734375,
+          216.94921875
+        ],
+        [
+          383.09765625,
+          216.94921875
+        ],
+        [
+          383.09765625,
+          228.55078125
+        ],
+        [
+          133.27734375,
+          228.55078125
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          51.99609375,
+          225.0703125
+        ],
+        [
+          96.22265625,
+          225.0703125
+        ],
+        [
+          96.22265625,
+          236.3447265625
+        ],
+        [
+          51.99609375,
+          236.3447265625
+        ]
+      ]
+    },
+    {
+      "title": "ACM Reference Format:",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          53.50300216674805,
+          549.52734375
+        ],
+        [
+          140.49664306640625,
+          549.52734375
+        ],
+        [
+          140.49664306640625,
+          560.3322448730469
+        ],
+        [
+          53.50300216674805,
+          560.3322448730469
+        ]
+      ]
+    },
+    {
+      "title": "2 Related Work",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          52.892578125,
+          564.8585815429688
+        ],
+        [
+          138.3980712890625,
+          564.8585815429688
+        ],
+        [
+          138.3980712890625,
+          575.7676849365234
+        ],
+        [
+          52.892578125,
+          575.7676849365234
+        ]
+      ]
+    },
+    {
+      "title": "3 Technical Background",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          317.9549865722656,
+          219.26953125
+        ],
+        [
+          445.552734375,
+          219.26953125
+        ],
+        [
+          445.552734375,
+          230.56170654296875
+        ],
+        [
+          317.9549865722656,
+          230.56170654296875
+        ]
+      ]
+    },
+    {
+      "title": "4 Regulation of Data Centers",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          316.16015625,
+          597.7355651855469
+        ],
+        [
+          468.7732849121094,
+          597.7355651855469
+        ],
+        [
+          468.7732849121094,
+          608.6446685791016
+        ],
+        [
+          316.16015625,
+          608.6446685791016
+        ]
+      ]
+    },
+    {
+      "title": "4.1 EU Data Collection and Reporting\nObligations for Data Centers",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          51.3984375,
+          84.75
+        ],
+        [
+          248.25,
+          84.75
+        ],
+        [
+          248.25,
+          109.0546875
+        ],
+        [
+          51.3984375,
+          109.0546875
+        ]
+      ]
+    },
+    {
+      "title": "Energy Management Systems and Energy\n4.2",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          52.5,
+          538.5
+        ],
+        [
+          283.5,
+          538.5
+        ],
+        [
+          283.5,
+          561.12890625
+        ],
+        [
+          52.5,
+          561.12890625
+        ]
+      ]
+    },
+    {
+      "title": "German 2023 Energy Efficiency Act",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          316.16015625,
+          147.75
+        ],
+        [
+          517.5,
+          147.75
+        ],
+        [
+          517.5,
+          159.0
+        ],
+        [
+          316.16015625,
+          159.0
+        ]
+      ]
+    },
+    {
+      "title": "4.4 Regulation Outside the EU",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          316.16015625,
+          345.75
+        ],
+        [
+          473.25,
+          345.75
+        ],
+        [
+          473.25,
+          356.16796875
+        ],
+        [
+          316.16015625,
+          356.16796875
+        ]
+      ]
+    },
+    {
+      "title": "4.5 Discussion and Interim Conclusion on Data\nCenter Regulation",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          52.59375,
+          309.76171875
+        ],
+        [
+          294.046875,
+          309.76171875
+        ],
+        [
+          294.046875,
+          334.6716613769531
+        ],
+        [
+          52.59375,
+          334.6716613769531
+        ]
+      ]
+    },
+    {
+      "title": "5 AI Act: Gaps and Interpretation Challenges",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          315.5625,
+          168.99609375
+        ],
+        [
+          547.9188232421875,
+          168.99609375
+        ],
+        [
+          547.9188232421875,
+          180.25067138671875
+        ],
+        [
+          315.5625,
+          180.25067138671875
+        ]
+      ]
+    },
+    {
+      "title": "5.1 Terminology of the AI Act: AI, Providers,\nand Deployers",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          316.7578125,
+          277.6640625
+        ],
+        [
+          545.6170043945312,
+          277.6640625
+        ],
+        [
+          545.6170043945312,
+          301.79461669921875
+        ],
+        [
+          316.7578125,
+          301.79461669921875
+        ]
+      ]
+    },
+    {
+      "title": "5.2 Legislative History and Intent",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          53.7890625,
+          542.9405822753906
+        ],
+        [
+          227.109375,
+          542.9405822753906
+        ],
+        [
+          227.109375,
+          553.8496856689453
+        ],
+        [
+          53.7890625,
+          553.8496856689453
+        ]
+      ]
+    },
+    {
+      "title": "5.3 Transparency",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          317.056640625,
+          170.33758544921875
+        ],
+        [
+          410.7586975097656,
+          170.33758544921875
+        ],
+        [
+          410.7586975097656,
+          181.2467041015625
+        ],
+        [
+          317.056640625,
+          181.2467041015625
+        ]
+      ]
+    },
+    {
+      "title": "5.4 Environmental Risk Assessment and\nMitigation",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          53.7890625,
+          375.1171875
+        ],
+        [
+          260.39453125,
+          375.1171875
+        ],
+        [
+          260.39453125,
+          400.4246826171875
+        ],
+        [
+          53.7890625,
+          400.4246826171875
+        ]
+      ]
+    },
+    {
+      "title": "5.5 Discussion and Interim Conclusion on the\nAI Act",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          317.9549865722656,
+          351.9140625
+        ],
+        [
+          551.63671875,
+          351.9140625
+        ],
+        [
+          551.63671875,
+          376.1406555175781
+        ],
+        [
+          317.9549865722656,
+          376.1406555175781
+        ]
+      ]
+    },
+    {
+      "title": "6 Operationalizing the Requirements",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          316.7578125,
+          645.43359375
+        ],
+        [
+          510.3984375,
+          645.43359375
+        ],
+        [
+          510.3984375,
+          656.7136688232422
+        ],
+        [
+          316.7578125,
+          656.7136688232422
+        ]
+      ]
+    },
+    {
+      "title": "6.1 Model Providers and their Access to\nInfrastructure",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          316.7578125,
+          661.2890625
+        ],
+        [
+          519.9609375,
+          661.2890625
+        ],
+        [
+          519.9609375,
+          685.3566741943359
+        ],
+        [
+          316.7578125,
+          685.3566741943359
+        ]
+      ]
+    },
+    {
+      "title": "6.2 Levels for Measuring and Estimating Energy\nConsumption",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          52.59375,
+          228.55078125
+        ],
+        [
+          294.40435791015625,
+          228.55078125
+        ],
+        [
+          294.40435791015625,
+          253.3096923828125
+        ],
+        [
+          52.59375,
+          253.3096923828125
+        ]
+      ]
+    },
+    {
+      "title": "6.3 Measurement or Estimation",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          52.59375,
+          367.3828125
+        ],
+        [
+          216.57266235351562,
+          367.3828125
+        ],
+        [
+          216.57266235351562,
+          378.50762939453125
+        ],
+        [
+          52.59375,
+          378.50762939453125
+        ]
+      ]
+    },
+    {
+      "title": "6.4 Sustainability Impact Assessments",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          316.16015625,
+          225.132568359375
+        ],
+        [
+          513.5442504882812,
+          225.132568359375
+        ],
+        [
+          513.5442504882812,
+          236.04168701171875
+        ],
+        [
+          316.16015625,
+          236.04168701171875
+        ]
+      ]
+    },
+    {
+      "title": "7 Policy Proposals",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          52.59375,
+          85.4066162109375
+        ],
+        [
+          151.968994140625,
+          85.4066162109375
+        ],
+        [
+          151.968994140625,
+          96.31573486328125
+        ],
+        [
+          52.59375,
+          96.31573486328125
+        ]
+      ]
+    },
+    {
+      "title": "7.1 Energy and Environmental Reporting\nObligations",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          52.59375,
+          233.0006103515625
+        ],
+        [
+          265.359375,
+          233.0006103515625
+        ],
+        [
+          265.359375,
+          256.8607177734375
+        ],
+        [
+          52.59375,
+          256.8607177734375
+        ]
+      ]
+    },
+    {
+      "title": "7.2 Legal and Regulatory Clarifications on AI\nModels and Providers",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          52.59375,
+          606.7015686035156
+        ],
+        [
+          284.484375,
+          606.7015686035156
+        ],
+        [
+          284.484375,
+          630.5616607666016
+        ],
+        [
+          52.59375,
+          630.5616607666016
+        ]
+      ]
+    },
+    {
+      "title": "7.3 Transparency and Accountability\nMechanisms",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          317.9549865722656,
+          391.359375
+        ],
+        [
+          508.0078125,
+          391.359375
+        ],
+        [
+          508.0078125,
+          416.4026794433594
+        ],
+        [
+          317.9549865722656,
+          416.4026794433594
+        ]
+      ]
+    },
+    {
+      "title": "7.4 Beyond Transparency",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          316.458984375,
+          663.4885711669922
+        ],
+        [
+          450.7296447753906,
+          663.4885711669922
+        ],
+        [
+          450.7296447753906,
+          674.3976745605469
+        ],
+        [
+          316.458984375,
+          674.3976745605469
+        ]
+      ]
+    },
+    {
+      "title": "8 Objections and Solutions",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          53.19140625,
+          422.296875
+        ],
+        [
+          192.98719787597656,
+          422.296875
+        ],
+        [
+          192.98719787597656,
+          433.3016662597656
+        ],
+        [
+          53.19140625,
+          433.3016662597656
+        ]
+      ]
+    },
+    {
+      "title": "9 Conclusion",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          317.056640625,
+          456.71484375
+        ],
+        [
+          390.8495788574219,
+          456.71484375
+        ],
+        [
+          390.8495788574219,
+          469.1676330566406
+        ],
+        [
+          317.056640625,
+          469.1676330566406
+        ]
+      ]
+    },
+    {
+      "title": "References",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          317.056640625,
+          679.46484375
+        ],
+        [
+          372.3041076660156,
+          679.46484375
+        ],
+        [
+          372.3041076660156,
+          691.3346710205078
+        ],
+        [
+          317.056640625,
+          691.3346710205078
+        ]
+      ]
+    },
+    {
+      "title": "A Measuring Points for IT Equipment in Data\nCenters",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          50.80078125,
+          85.4066162109375
+        ],
+        [
+          287.8309326171875,
+          85.4066162109375
+        ],
+        [
+          287.8309326171875,
+          109.2667236328125
+        ],
+        [
+          50.80078125,
+          109.2667236328125
+        ]
+      ]
+    },
+    {
+      "title": "B Policy Proposals Overview",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          52.892578125,
+          85.4066162109375
+        ],
+        [
+          203.16537475585938,
+          85.4066162109375
+        ],
+        [
+          203.16537475585938,
+          96.31573486328125
+        ],
+        [
+          52.892578125,
+          96.31573486328125
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          254
+        ],
+        [
+          "Line",
+          106
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          319
+        ],
+        [
+          "Line",
+          108
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Span",
+          111
+        ],
+        [
+          "Line",
+          108
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Footnote",
+          4
+        ],
+        [
+          "Reference",
+          4
+        ],
+        [
+          "PageHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          210
+        ],
+        [
+          "Line",
+          109
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          233
+        ],
+        [
+          "Line",
+          111
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          213
+        ],
+        [
+          "Line",
+          109
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          217
+        ],
+        [
+          "Line",
+          110
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          218
+        ],
+        [
+          "Line",
+          107
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          236
+        ],
+        [
+          "Line",
+          108
+        ],
+        [
+          "ListItem",
+          9
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "ListGroup",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          219
+        ],
+        [
+          "Line",
+          111
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          600
+        ],
+        [
+          "Line",
+          157
+        ],
+        [
+          "ListItem",
+          55
+        ],
+        [
+          "Reference",
+          53
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          344
+        ],
+        [
+          "Line",
+          95
+        ],
+        [
+          "ListItem",
+          29
+        ],
+        [
+          "Reference",
+          28
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          10
+        ],
+        [
+          "Line",
+          6
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          78
+        ],
+        [
+          "Line",
+          37
+        ],
+        [
+          "TableCell",
+          26
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/ebert2024"
+}

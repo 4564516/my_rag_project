@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# RAG Data (Optional: 如果您想保留 PDF 處理結果，可以註解掉 artifacts/)
+# artifacts/
+chroma_db/

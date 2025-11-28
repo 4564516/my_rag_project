@@ -1,0 +1,1024 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Optimizing Large Language Models: Metrics,\nEnergy Efficiency, and Case Study Insights",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          81.2929916381836,
+          53.09869384765625
+        ],
+        [
+          530.7109985351562,
+          53.09869384765625
+        ],
+        [
+          530.7109985351562,
+          104.90399169921875
+        ],
+        [
+          81.2929916381836,
+          104.90399169921875
+        ]
+      ]
+    },
+    {
+      "title": "I. INTRODUCTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          134.173828125,
+          431.96484375
+        ],
+        [
+          213.371826171875,
+          431.96484375
+        ],
+        [
+          213.371826171875,
+          443.2441711425781
+        ],
+        [
+          134.173828125,
+          443.2441711425781
+        ]
+      ]
+    },
+    {
+      "title": "II. RELATED WORK",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          127.8984375,
+          238.9921875
+        ],
+        [
+          217.4442138671875,
+          238.9921875
+        ],
+        [
+          217.4442138671875,
+          249.41619873046875
+        ],
+        [
+          127.8984375,
+          249.41619873046875
+        ]
+      ]
+    },
+    {
+      "title": "A. Carbon Emission Metrics",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          310.78125,
+          95.0389404296875
+        ],
+        [
+          430.3125,
+          95.0389404296875
+        ],
+        [
+          430.3125,
+          105.00152587890625
+        ],
+        [
+          310.78125,
+          105.00152587890625
+        ]
+      ]
+    },
+    {
+      "title": "B. Quantization Techniques in LLMs",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          311.9765625,
+          477.7539978027344
+        ],
+        [
+          463.3497314453125,
+          477.7539978027344
+        ],
+        [
+          463.3497314453125,
+          487.7165832519531
+        ],
+        [
+          311.9765625,
+          487.7165832519531
+        ]
+      ]
+    },
+    {
+      "title": "C. Trade-Offs Between Accuracy and Optimization",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          47.21484375,
+          160.48828125
+        ],
+        [
+          258.0789489746094,
+          160.48828125
+        ],
+        [
+          258.0789489746094,
+          171.13665771484375
+        ],
+        [
+          47.21484375,
+          171.13665771484375
+        ]
+      ]
+    },
+    {
+      "title": "III. CASE STUDY: SUSTAINABLE DEPLOYMENT OF LARGE\nLANGUAGE MODELS",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          49.60546875,
+          395.61328125
+        ],
+        [
+          299.42578125,
+          395.61328125
+        ],
+        [
+          299.42578125,
+          419.0950927734375
+        ],
+        [
+          49.60546875,
+          419.0950927734375
+        ]
+      ]
+    },
+    {
+      "title": "A. Problem Definition",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          47.8125,
+          429.4350280761719
+        ],
+        [
+          139.7232666015625,
+          429.4350280761719
+        ],
+        [
+          139.7232666015625,
+          440.859375
+        ],
+        [
+          47.8125,
+          440.859375
+        ]
+      ]
+    },
+    {
+      "title": "B. Framework Overview",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          309.5859375,
+          51.17791748046875
+        ],
+        [
+          412.68988037109375,
+          51.17791748046875
+        ],
+        [
+          412.68988037109375,
+          61.1405029296875
+        ],
+        [
+          309.5859375,
+          61.1405029296875
+        ]
+      ]
+    },
+    {
+      "title": "C. Expected Outcomes",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          48.111328125,
+          222.75
+        ],
+        [
+          142.9212646484375,
+          222.75
+        ],
+        [
+          142.9212646484375,
+          233.32666015625
+        ],
+        [
+          48.111328125,
+          233.32666015625
+        ]
+      ]
+    },
+    {
+      "title": "IV. EXPERIMENTAL SETUP",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          114.451171875,
+          331.8046875
+        ],
+        [
+          232.3007049560547,
+          331.8046875
+        ],
+        [
+          232.3007049560547,
+          342.50408935546875
+        ],
+        [
+          114.451171875,
+          342.50408935546875
+        ]
+      ]
+    },
+    {
+      "title": "A. Hardware and Software Setting",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          47.8125,
+          349.20703125
+        ],
+        [
+          190.88121032714844,
+          349.20703125
+        ],
+        [
+          190.88121032714844,
+          359.16961669921875
+        ],
+        [
+          47.8125,
+          359.16961669921875
+        ]
+      ]
+    },
+    {
+      "title": "Baselines",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          47.513671875,
+          518.2759399414062
+        ],
+        [
+          87.150634765625,
+          518.2759399414062
+        ],
+        [
+          87.150634765625,
+          528.238525390625
+        ],
+        [
+          47.513671875,
+          528.238525390625
+        ]
+      ]
+    },
+    {
+      "title": "B. Data",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          310.78125,
+          154.6875
+        ],
+        [
+          345.4623107910156,
+          154.6875
+        ],
+        [
+          345.4623107910156,
+          164.9156494140625
+        ],
+        [
+          310.78125,
+          164.9156494140625
+        ]
+      ]
+    },
+    {
+      "title": "Sentiment Assessment Instructions",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          327.5679931640625,
+          270.0029296875
+        ],
+        [
+          455.712890625,
+          270.0029296875
+        ],
+        [
+          455.712890625,
+          278.9693603515625
+        ],
+        [
+          327.5679931640625,
+          278.9693603515625
+        ]
+      ]
+    },
+    {
+      "title": "Text: content",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          326.619140625,
+          338.37890625
+        ],
+        [
+          376.695068359375,
+          338.37890625
+        ],
+        [
+          376.695068359375,
+          347.8414001464844
+        ],
+        [
+          326.619140625,
+          347.8414001464844
+        ]
+      ]
+    },
+    {
+      "title": "Sentiment Indicators Checklist:",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          325.125,
+          347.2734375
+        ],
+        [
+          451.34912109375,
+          347.2734375
+        ],
+        [
+          451.34912109375,
+          357.7225341796875
+        ],
+        [
+          325.125,
+          357.7225341796875
+        ]
+      ]
+    },
+    {
+      "title": "Response Format:",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          326.619140625,
+          459.80859375
+        ],
+        [
+          398.43841552734375,
+          459.80859375
+        ],
+        [
+          398.43841552734375,
+          471.2966003417969
+        ],
+        [
+          326.619140625,
+          471.2966003417969
+        ]
+      ]
+    },
+    {
+      "title": "V. RESULTS",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          411.2760009765625,
+          543.33984375
+        ],
+        [
+          463.7428894042969,
+          543.33984375
+        ],
+        [
+          463.7428894042969,
+          555.4190826416016
+        ],
+        [
+          411.2760009765625,
+          555.4190826416016
+        ]
+      ]
+    },
+    {
+      "title": "A. Accuracy vs Memory Usage",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          310.18359375,
+          561.3670196533203
+        ],
+        [
+          440.47265625,
+          561.3670196533203
+        ],
+        [
+          440.47265625,
+          571.3296203613281
+        ],
+        [
+          310.18359375,
+          571.3296203613281
+        ]
+      ]
+    },
+    {
+      "title": "B. Post-Quantization Performance Evaluation",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          48.41015625,
+          427.1189880371094
+        ],
+        [
+          236.7091827392578,
+          427.1189880371094
+        ],
+        [
+          236.7091827392578,
+          437.37890625
+        ],
+        [
+          48.41015625,
+          437.37890625
+        ]
+      ]
+    },
+    {
+      "title": "VI. DISCUSSION",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          136.86328125,
+          558.0723724365234
+        ],
+        [
+          210.64073181152344,
+          558.0723724365234
+        ],
+        [
+          210.64073181152344,
+          568.0349731445312
+        ],
+        [
+          136.86328125,
+          568.0349731445312
+        ]
+      ]
+    },
+    {
+      "title": "A. Practical impact",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          48.111328125,
+          573.6699066162109
+        ],
+        [
+          133.576171875,
+          573.6699066162109
+        ],
+        [
+          133.576171875,
+          583.6325073242188
+        ],
+        [
+          48.111328125,
+          583.6325073242188
+        ]
+      ]
+    },
+    {
+      "title": "B. Limitations",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          311.9765625,
+          94.74609375
+        ],
+        [
+          371.7421875,
+          94.74609375
+        ],
+        [
+          371.7421875,
+          104.971435546875
+        ],
+        [
+          311.9765625,
+          104.971435546875
+        ]
+      ]
+    },
+    {
+      "title": "VII. CONCLUSION",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          397.142578125,
+          453.62109375
+        ],
+        [
+          477.826171875,
+          453.62109375
+        ],
+        [
+          477.826171875,
+          463.7548828125
+        ],
+        [
+          397.142578125,
+          463.7548828125
+        ]
+      ]
+    },
+    {
+      "title": "ACKNOWLEDGMENT",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          391.166015625,
+          633.05859375
+        ],
+        [
+          480.95849609375,
+          633.05859375
+        ],
+        [
+          480.95849609375,
+          643.1068420410156
+        ],
+        [
+          391.166015625,
+          643.1068420410156
+        ]
+      ]
+    },
+    {
+      "title": "Sentiment Evaluation",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          63.94921875,
+          52.98046875
+        ],
+        [
+          150.01171875,
+          52.98046875
+        ],
+        [
+          150.01171875,
+          63.0565185546875
+        ],
+        [
+          63.94921875,
+          63.0565185546875
+        ]
+      ]
+    },
+    {
+      "title": "Sentiment Evaluation",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          61.857421875,
+          160.48828125
+        ],
+        [
+          148.53329467773438,
+          160.48828125
+        ],
+        [
+          148.53329467773438,
+          169.5455322265625
+        ],
+        [
+          61.857421875,
+          169.5455322265625
+        ]
+      ]
+    },
+    {
+      "title": "Sentiment Evaluation",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          61.857421875,
+          276.50390625
+        ],
+        [
+          148.53329467773438,
+          276.50390625
+        ],
+        [
+          148.53329467773438,
+          285.593505859375
+        ],
+        [
+          61.857421875,
+          285.593505859375
+        ]
+      ]
+    },
+    {
+      "title": "Sentiment Evaluation",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          63.650390625,
+          379.7578125
+        ],
+        [
+          148.53329467773438,
+          379.7578125
+        ],
+        [
+          148.53329467773438,
+          389.84149169921875
+        ],
+        [
+          63.650390625,
+          389.84149169921875
+        ]
+      ]
+    },
+    {
+      "title": "REFERENCES",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          144.931640625,
+          546.43359375
+        ],
+        [
+          202.39846801757812,
+          546.43359375
+        ],
+        [
+          202.39846801757812,
+          556.7830657958984
+        ],
+        [
+          144.931640625,
+          556.7830657958984
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          223
+        ],
+        [
+          "Line",
+          98
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          394
+        ],
+        [
+          "Line",
+          143
+        ],
+        [
+          "TableCell",
+          92
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          322
+        ],
+        [
+          "Line",
+          87
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Equation",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          394
+        ],
+        [
+          "Line",
+          104
+        ],
+        [
+          "TableCell",
+          42
+        ],
+        [
+          "Text",
+          13
+        ],
+        [
+          "SectionHeader",
+          11
+        ],
+        [
+          "ListItem",
+          9
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          326
+        ],
+        [
+          "Line",
+          110
+        ],
+        [
+          "TableCell",
+          70
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          6
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          423
+        ],
+        [
+          "Line",
+          127
+        ],
+        [
+          "ListItem",
+          28
+        ],
+        [
+          "Reference",
+          28
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/khan2025"
+}

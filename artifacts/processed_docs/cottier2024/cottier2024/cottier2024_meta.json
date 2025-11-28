@@ -1,0 +1,1982 @@
+{
+  "table_of_contents": [
+    {
+      "title": "THE RISING COSTS OF TRAINING FRONTIER AI MODELS",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          100.40625,
+          97.7230224609375
+        ],
+        [
+          509.203125,
+          97.7230224609375
+        ],
+        [
+          509.203125,
+          114.93841552734375
+        ],
+        [
+          100.40625,
+          114.93841552734375
+        ]
+      ]
+    },
+    {
+      "title": "ABSTRACT",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          277.2960205078125,
+          241.69921875
+        ],
+        [
+          334.7089538574219,
+          241.69921875
+        ],
+        [
+          334.7089538574219,
+          254.25640869140625
+        ],
+        [
+          277.2960205078125,
+          254.25640869140625
+        ]
+      ]
+    },
+    {
+      "title": "1 Introduction",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          72.0,
+          394.83984375
+        ],
+        [
+          154.8136749267578,
+          394.83984375
+        ],
+        [
+          154.8136749267578,
+          408.12939453125
+        ],
+        [
+          72.0,
+          408.12939453125
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          117.140625,
+          75.796875
+        ],
+        [
+          475.734375,
+          75.796875
+        ],
+        [
+          475.734375,
+          86.625
+        ],
+        [
+          117.140625,
+          86.625
+        ]
+      ]
+    },
+    {
+      "title": "2 Methodology",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          71.12109375,
+          556.0671539306641
+        ],
+        [
+          157.013427734375,
+          556.0671539306641
+        ],
+        [
+          157.013427734375,
+          568.0223541259766
+        ],
+        [
+          71.12109375,
+          568.0223541259766
+        ]
+      ]
+    },
+    {
+      "title": "2.1 Datasets and frontier model selection",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          72.0,
+          580.46484375
+        ],
+        [
+          251.95445251464844,
+          580.46484375
+        ],
+        [
+          251.95445251464844,
+          590.6511077880859
+        ],
+        [
+          72.0,
+          590.6511077880859
+        ]
+      ]
+    },
+    {
+      "title": "2.2 Amortizing the cost of hardware for training",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          71.71875,
+          130.7109375
+        ],
+        [
+          284.484375,
+          130.7109375
+        ],
+        [
+          284.484375,
+          141.464111328125
+        ],
+        [
+          71.71875,
+          141.464111328125
+        ]
+      ]
+    },
+    {
+      "title": "2.3 Hardware energy consumption cost",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          69.92578125,
+          469.08984375
+        ],
+        [
+          245.34922790527344,
+          469.08984375
+        ],
+        [
+          245.34922790527344,
+          479.735107421875
+        ],
+        [
+          69.92578125,
+          479.735107421875
+        ]
+      ]
+    },
+    {
+      "title": "2.4 Cloud compute cost",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          71.419921875,
+          629.3185119628906
+        ],
+        [
+          178.54005432128906,
+          629.3185119628906
+        ],
+        [
+          178.54005432128906,
+          639.2811126708984
+        ],
+        [
+          71.419921875,
+          639.2811126708984
+        ]
+      ]
+    },
+    {
+      "title": "2.5 Total amortized model development cost",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          69.92578125,
+          221.203125
+        ],
+        [
+          265.9120178222656,
+          221.203125
+        ],
+        [
+          265.9120178222656,
+          231.82513427734375
+        ],
+        [
+          69.92578125,
+          231.82513427734375
+        ]
+      ]
+    },
+    {
+      "title": "2.5.1 R&D staff costs",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          70.822265625,
+          368.612548828125
+        ],
+        [
+          168.83645629882812,
+          368.612548828125
+        ],
+        [
+          168.83645629882812,
+          378.57513427734375
+        ],
+        [
+          70.822265625,
+          378.57513427734375
+        ]
+      ]
+    },
+    {
+      "title": "3 Results",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          72.0,
+          72.703125
+        ],
+        [
+          127.12542724609375,
+          72.703125
+        ],
+        [
+          127.12542724609375,
+          84.7423095703125
+        ],
+        [
+          72.0,
+          84.7423095703125
+        ]
+      ]
+    },
+    {
+      "title": "3.1 Amortized training costs of frontier models have grown by 2.4x per year since 2016",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          70.5234375,
+          97.2044677734375
+        ],
+        [
+          446.5838317871094,
+          97.2044677734375
+        ],
+        [
+          446.5838317871094,
+          107.16705322265625
+        ],
+        [
+          70.5234375,
+          107.16705322265625
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          117.140625,
+          381.69140625
+        ],
+        [
+          473.34375,
+          381.69140625
+        ],
+        [
+          473.34375,
+          391.74609375
+        ],
+        [
+          117.140625,
+          391.74609375
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          118.3359375,
+          75.796875
+        ],
+        [
+          390.8671875,
+          75.796875
+        ],
+        [
+          390.8671875,
+          86.625
+        ],
+        [
+          118.3359375,
+          86.625
+        ]
+      ]
+    },
+    {
+      "title": "3.2 The trend suggests that the most expensive publicly announced model will cost one billion dollars to train\nby the start of 2027",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          71.71875,
+          423.45703125
+        ],
+        [
+          540.0029296875,
+          423.45703125
+        ],
+        [
+          540.0029296875,
+          445.0430908203125
+        ],
+        [
+          71.71875,
+          445.0430908203125
+        ]
+      ]
+    },
+    {
+      "title": "3.3 Hardware acquisition costs are one to two orders of magnitude higher than amortized costs",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          70.5234375,
+          549.52734375
+        ],
+        [
+          481.7109375,
+          549.52734375
+        ],
+        [
+          481.7109375,
+          560.4101257324219
+        ],
+        [
+          70.5234375,
+          560.4101257324219
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          118.3359375,
+          117.5625
+        ],
+        [
+          491.2734375,
+          117.5625
+        ],
+        [
+          491.2734375,
+          321.75
+        ],
+        [
+          118.3359375,
+          321.75
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          120.12890625,
+          106.34765625
+        ],
+        [
+          422.54296875,
+          106.34765625
+        ],
+        [
+          422.54296875,
+          116.40234375
+        ],
+        [
+          120.12890625,
+          116.40234375
+        ]
+      ]
+    },
+    {
+      "title": "3.4 Half of amortized hardware CapEx + energy cost is for AI accelerator chips",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          70.5234375,
+          393.948486328125
+        ],
+        [
+          415.9488220214844,
+          393.948486328125
+        ],
+        [
+          415.9488220214844,
+          403.91107177734375
+        ],
+        [
+          70.5234375,
+          403.91107177734375
+        ]
+      ]
+    },
+    {
+      "title": "3.5 R&D staff are a significant fraction of costs over the whole model development process",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          71.71875,
+          524.77734375
+        ],
+        [
+          461.390625,
+          524.77734375
+        ],
+        [
+          461.390625,
+          535.6671142578125
+        ],
+        [
+          71.71875,
+          535.6671142578125
+        ]
+      ]
+    },
+    {
+      "title": "Breakdown of amortized hardware and energy costs for frontier AI models",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          105.1875,
+          73.85894775390625
+        ],
+        [
+          463.78125,
+          73.85894775390625
+        ],
+        [
+          463.78125,
+          104.02734375
+        ],
+        [
+          105.1875,
+          104.02734375
+        ]
+      ]
+    },
+    {
+      "title": "4 Discussion",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          72.31640625,
+          605.21484375
+        ],
+        [
+          144.75,
+          605.21484375
+        ],
+        [
+          144.75,
+          615.0
+        ],
+        [
+          72.31640625,
+          615.0
+        ]
+      ]
+    },
+    {
+      "title": "4.1 Implications",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          71.71875,
+          630.0
+        ],
+        [
+          147.75,
+          630.0
+        ],
+        [
+          147.75,
+          641.56640625
+        ],
+        [
+          71.71875,
+          641.56640625
+        ]
+      ]
+    },
+    {
+      "title": "4.2 How to estimate training costs",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          71.12109375,
+          153.140625
+        ],
+        [
+          222.70423889160156,
+          153.140625
+        ],
+        [
+          222.70423889160156,
+          163.28204345703125
+        ],
+        [
+          71.12109375,
+          163.28204345703125
+        ]
+      ]
+    },
+    {
+      "title": "4.3 Limitations",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          70.5234375,
+          300.8671875
+        ],
+        [
+          143.680908203125,
+          300.8671875
+        ],
+        [
+          143.680908203125,
+          311.37713623046875
+        ],
+        [
+          70.5234375,
+          311.37713623046875
+        ]
+      ]
+    },
+    {
+      "title": "5 Conclusion",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          71.419921875,
+          450.52734375
+        ],
+        [
+          147.06671142578125,
+          450.52734375
+        ],
+        [
+          147.06671142578125,
+          463.8703918457031
+        ],
+        [
+          71.419921875,
+          463.8703918457031
+        ]
+      ]
+    },
+    {
+      "title": "Acknowledgements",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          71.12109375,
+          71.9296875
+        ],
+        [
+          170.83363342285156,
+          71.9296875
+        ],
+        [
+          170.83363342285156,
+          84.7423095703125
+        ],
+        [
+          71.12109375,
+          84.7423095703125
+        ]
+      ]
+    },
+    {
+      "title": "References",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          71.12109375,
+          195.22711181640625
+        ],
+        [
+          127.54386138916016,
+          195.22711181640625
+        ],
+        [
+          127.54386138916016,
+          207.18231201171875
+        ],
+        [
+          71.12109375,
+          207.18231201171875
+        ]
+      ]
+    },
+    {
+      "title": "A Training cost estimation",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          70.224609375,
+          71.9296875
+        ],
+        [
+          215.9047393798828,
+          71.9296875
+        ],
+        [
+          215.9047393798828,
+          84.7423095703125
+        ],
+        [
+          70.224609375,
+          84.7423095703125
+        ]
+      ]
+    },
+    {
+      "title": "A.1 Hardware acquisition cost",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          70.822265625,
+          97.429443359375
+        ],
+        [
+          208.0990753173828,
+          97.429443359375
+        ],
+        [
+          208.0990753173828,
+          107.39202880859375
+        ],
+        [
+          70.822265625,
+          107.39202880859375
+        ]
+      ]
+    },
+    {
+      "title": "A.2 Cost of Google TPUs",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          71.419921875,
+          595.93359375
+        ],
+        [
+          185.4541015625,
+          595.93359375
+        ],
+        [
+          185.4541015625,
+          607.7501068115234
+        ],
+        [
+          71.419921875,
+          607.7501068115234
+        ]
+      ]
+    },
+    {
+      "title": "A.3 Amortization model",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          70.5234375,
+          73.4765625
+        ],
+        [
+          182.12657165527344,
+          73.4765625
+        ],
+        [
+          182.12657165527344,
+          84.279052734375
+        ],
+        [
+          70.5234375,
+          84.279052734375
+        ]
+      ]
+    },
+    {
+      "title": "A.4 Energy cost estimation",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          70.5234375,
+          511.5994873046875
+        ],
+        [
+          193.3743133544922,
+          511.5994873046875
+        ],
+        [
+          193.3743133544922,
+          521.5620727539062
+        ],
+        [
+          70.5234375,
+          521.5620727539062
+        ]
+      ]
+    },
+    {
+      "title": "A.5 Cloud price selection",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          70.822265625,
+          681.4695053100586
+        ],
+        [
+          185.73301696777344,
+          681.4695053100586
+        ],
+        [
+          185.73301696777344,
+          691.4321060180664
+        ],
+        [
+          70.822265625,
+          691.4321060180664
+        ]
+      ]
+    },
+    {
+      "title": "A.6 Accounting for compute used throughout model development",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          71.12109375,
+          251.55157470703125
+        ],
+        [
+          356.80078125,
+          251.55157470703125
+        ],
+        [
+          356.80078125,
+          261.51416015625
+        ],
+        [
+          71.12109375,
+          261.51416015625
+        ]
+      ]
+    },
+    {
+      "title": "A.7 Cost uncertainty analysis",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          70.822265625,
+          486.9685363769531
+        ],
+        [
+          204.0044403076172,
+          486.9685363769531
+        ],
+        [
+          204.0044403076172,
+          496.9311218261719
+        ],
+        [
+          70.822265625,
+          496.9311218261719
+        ]
+      ]
+    },
+    {
+      "title": "A.8 Ground truth cost comparison",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          71.12109375,
+          252.140625
+        ],
+        [
+          226.240966796875,
+          252.140625
+        ],
+        [
+          226.240966796875,
+          262.89813232421875
+        ],
+        [
+          71.12109375,
+          262.89813232421875
+        ]
+      ]
+    },
+    {
+      "title": "B Sensitivity analysis",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          71.71875,
+          496.18817138671875
+        ],
+        [
+          188.4675750732422,
+          496.18817138671875
+        ],
+        [
+          188.4675750732422,
+          508.14337158203125
+        ],
+        [
+          71.71875,
+          508.14337158203125
+        ]
+      ]
+    },
+    {
+      "title": "B.1 Selection of historic frontier models",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          71.71875,
+          518.58984375
+        ],
+        [
+          247.53103637695312,
+          518.58984375
+        ],
+        [
+          247.53103637695312,
+          530.7931213378906
+        ],
+        [
+          71.71875,
+          530.7931213378906
+        ]
+      ]
+    },
+    {
+      "title": "B.2 Varying N in top-N model selection",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          71.71875,
+          368.15625
+        ],
+        [
+          244.8710479736328,
+          368.15625
+        ],
+        [
+          244.8710479736328,
+          378.69110107421875
+        ],
+        [
+          71.71875,
+          378.69110107421875
+        ]
+      ]
+    },
+    {
+      "title": "B.3 Varying the depreciation of hardware value",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          71.71875,
+          434.9795227050781
+        ],
+        [
+          280.78619384765625,
+          434.9795227050781
+        ],
+        [
+          280.78619384765625,
+          444.9421081542969
+        ],
+        [
+          71.71875,
+          444.9421081542969
+        ]
+      ]
+    },
+    {
+      "title": "B.4 Varying the time between hardware acquisition and the start of training",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          70.5234375,
+          572.1655120849609
+        ],
+        [
+          401.44317626953125,
+          572.1655120849609
+        ],
+        [
+          401.44317626953125,
+          582.78515625
+        ],
+        [
+          70.5234375,
+          582.78515625
+        ]
+      ]
+    },
+    {
+      "title": "B.5 Excluding equity from R&D staff costs",
+      "heading_level": null,
+      "page_id": 18,
+      "polygon": [
+        [
+          70.5234375,
+          375.3695068359375
+        ],
+        [
+          261.1001281738281,
+          375.3695068359375
+        ],
+        [
+          261.1001281738281,
+          385.33209228515625
+        ],
+        [
+          70.5234375,
+          385.33209228515625
+        ]
+      ]
+    },
+    {
+      "title": "C Power capacity for model training",
+      "heading_level": null,
+      "page_id": 18,
+      "polygon": [
+        [
+          71.12109375,
+          444.02716064453125
+        ],
+        [
+          266.58282470703125,
+          444.02716064453125
+        ],
+        [
+          266.58282470703125,
+          455.98236083984375
+        ],
+        [
+          71.12109375,
+          455.98236083984375
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          181
+        ],
+        [
+          "Line",
+          43
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          76
+        ],
+        [
+          "Line",
+          32
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          173
+        ],
+        [
+          "Line",
+          52
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Code",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          108
+        ],
+        [
+          "Line",
+          44
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          128
+        ],
+        [
+          "Line",
+          32
+        ],
+        [
+          "TableCell",
+          24
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          124
+        ],
+        [
+          "Line",
+          32
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          73
+        ],
+        [
+          "Line",
+          31
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          129
+        ],
+        [
+          "Line",
+          50
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          59
+        ],
+        [
+          "Span",
+          7
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          93
+        ],
+        [
+          "Line",
+          47
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          175
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "ListItem",
+          19
+        ],
+        [
+          "Reference",
+          19
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          176
+        ],
+        [
+          "Line",
+          42
+        ],
+        [
+          "ListItem",
+          19
+        ],
+        [
+          "Reference",
+          19
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          182
+        ],
+        [
+          "Line",
+          46
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "TableCell",
+          8
+        ],
+        [
+          "Reference",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Footnote",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          120
+        ],
+        [
+          "TableCell",
+          78
+        ],
+        [
+          "Line",
+          42
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "TableGroup",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          249
+        ],
+        [
+          "Line",
+          55
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Equation",
+          3
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          140
+        ],
+        [
+          "Line",
+          53
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Footnote",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          102
+        ],
+        [
+          "Line",
+          44
+        ],
+        [
+          "TableCell",
+          10
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 17,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          186
+        ],
+        [
+          "Line",
+          52
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 18,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          148
+        ],
+        [
+          "Line",
+          41
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 19,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          69
+        ],
+        [
+          "Span",
+          3
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/cottier2024"
+}
