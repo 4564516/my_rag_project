@@ -1,13 +1,24 @@
 """
-步驟 6: RAG Pipeline 模組
-
+RAG 流程模組 (RAG Pipeline)
+-------------------------
 功能：
-- 整合所有模組
-- 實現完整的 RAG 流程
-- 檢索 + 生成答案
+1. 整合 VectorStore (檢索)、Reranker (重排序)、LLMClient (生成)。
+2. 實現 RAG 的標準流程：
+   - Query Rewrite (查詢重寫/擴展)
+   - Retrieval (初步檢索)
+   - Reranking (使用 Cross-Encoder 精確排序)
+   - Context Assembly (上下文組裝)
+   - Generation (LLM 回答)
+3. 支援 Few-Shot Examples (動態示例注入)。
 """
 
 from typing import List, Optional, TYPE_CHECKING
+try:
+    from sentence_transformers import CrossEncoder
+    HAS_CROSS_ENCODER = True
+except ImportError:
+    HAS_CROSS_ENCODER = False
+    print("Warning: sentence-transformers not installed, reranking disabled.")
 
 if TYPE_CHECKING:
     from .vector_store import VectorStore
@@ -24,7 +35,8 @@ class RAGPipeline:
         vector_store,
         llm,
         embedder,
-        example_retriever=None
+        example_retriever=None,
+        rerank_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
     ):
         """
         初始化 RAG Pipeline
@@ -34,11 +46,21 @@ class RAGPipeline:
             llm: LLM 客戶端實例
             embedder: Embedder 實例
             example_retriever: ExampleRetriever 實例 (可選)
+            rerank_model: Rerank 模型名稱
         """
         self.vector_store = vector_store
         self.llm = llm
         self.embedder = embedder
         self.example_retriever = example_retriever
+        
+        self.reranker = None
+        if HAS_CROSS_ENCODER:
+            try:
+                print(f"Loading Reranker model: {rerank_model}...")
+                self.reranker = CrossEncoder(rerank_model)
+                print("Reranker loaded successfully.")
+            except Exception as e:
+                print(f"Failed to load Reranker: {e}")
     
     async def rewrite_query(self, question: str) -> str:
         """
@@ -76,28 +98,20 @@ Hypothetical Answer Passage:"""
     async def answer(
         self,
         question: str,
-        top_k: int = 5,
+        top_k: int = 100, # 增加初篩數量，讓 Reranker 有更多選擇
+        llm_top_k: int = 15, # 增加最終上下文數量 (MPNet + Q&A chunk 質量很高)
         system_prompt: Optional[str] = None,
         user_template: Optional[str] = None
     ) -> dict:
         """
         回答問題的完整流程
-        
-        Args:
-            question: 問題
-            top_k: 檢索的片段數量
-            system_prompt: 系統 prompt
-            user_template: 使用者 prompt 模板（包含 {question}, {context}, {examples}）
-        
-        Returns:
-            包含答案和引用的字典
         """
         # 0. 查詢擴展 (Query Expansion)
         search_query = question
         if self.example_retriever:
              search_query = await self.rewrite_query(question)
 
-        # 1. 檢索相關片段 (使用擴展後的查詢)
+        # 1. 檢索相關片段 (使用擴展後的查詢) - 獲取大量候選
         results_original = self.vector_store.search(question, top_k=top_k)
         results_expanded = self.vector_store.search(search_query, top_k=top_k)
         
@@ -109,16 +123,40 @@ Hypothetical Answer Passage:"""
                 search_results.append(res)
                 seen_texts.add(res['text'])
         
-        search_results = search_results[:int(top_k * 1.5)]
+        # 2. Reranking (重排序)
+        if self.reranker and search_results:
+            print(f"--- DEBUG: Reranking {len(search_results)} chunks ---")
+            # 準備 (query, text) 對
+            pairs = [(question, res['text']) for res in search_results]
+            
+            try:
+                # 預測分數
+                scores = self.reranker.predict(pairs)
+                
+                # 更新分數並排序
+                for i, score in enumerate(scores):
+                    search_results[i]['rerank_score'] = float(score)
+                    
+                # 根據 rerank 分數排序
+                search_results.sort(key=lambda x: x['rerank_score'], reverse=True)
+                
+                # 只保留最相關的 llm_top_k 個
+                search_results = search_results[:llm_top_k]
+                print(f"--- DEBUG: After Reranking, top score: {search_results[0]['rerank_score']:.3f} ---")
+            except Exception as e:
+                print(f"Warning: Reranking failed, using original order. Error: {e}")
+                search_results = search_results[:llm_top_k]
+        else:
+            # 如果沒有 Reranker，直接截斷
+            search_results = search_results[:llm_top_k]
         
         # 調試輸出
-        print(f"--- DEBUG: 檢索到的上下文 (top_k={len(search_results)}) ---")
+        print(f"--- DEBUG: 最終提交給 LLM 的上下文 ({len(search_results)} chunks) ---")
         if search_results:
-            print(f"第一個片段預覽: {search_results[0]['text'][:200]}...")
-            print(f"相似度分數: {search_results[0].get('score', 0.0):.3f}")
+            print(f"Top 1 Chunk: {search_results[0]['text'][:200]}...")
         print("-" * 40)
         
-        # 2. 格式化上下文
+        # 3. 格式化上下文
         context_parts = []
         ref_ids = []
         
@@ -126,10 +164,11 @@ Hypothetical Answer Passage:"""
             doc_id = result['metadata'].get('doc_id', 'unknown')
             page_num = result['metadata'].get('page_num', 0)
             text = result['text']
-            score = result.get('score', 0.0)
+            # 優先顯示 rerank_score
+            score = result.get('rerank_score', result.get('score', 0.0))
             
             context_parts.append(
-                f"[{i+1}] Source: {doc_id}, Page: {page_num}, Similarity: {score:.3f}\n{text}"
+                f"[{i+1}] Source: {doc_id}, Page: {page_num}, Score: {score:.3f}\n{text}"
             )
             
             if doc_id and doc_id != 'unknown' and doc_id not in ref_ids:
@@ -137,7 +176,7 @@ Hypothetical Answer Passage:"""
         
         context = "\n\n".join(context_parts) if context_parts else "No relevant context found."
         
-        # 3. 獲取示例 (Dynamic or Static)
+        # 4. 獲取示例 (Dynamic or Static)
         examples_text = ""
         if self.example_retriever:
             try:
@@ -153,7 +192,7 @@ Hypothetical Answer Passage:"""
 Question: "What is the estimated CO2 emissions (in pounds) from training the BERT-base model?"
 Answer: {"answer": "1438 lbs", "answer_value": "1438", "answer_unit": "lbs", "supporting_materials": "Table 3", "explanation": "Extracted directly from Table 3", "ref_id": ["strubell2019"]}"""
 
-        # 4. 組裝 prompt
+        # 5. 組裝 prompt (加入 Chain of Thought)
         if user_template is None:
             user_template = """You are an expert research assistant. Answer questions based STRICTLY on the provided context.
 
@@ -170,16 +209,17 @@ QUESTION: {question}
 ---
 
 ### YOUR TASK:
-1. **Search**: Find the exact answer in the CONTEXT above.
-2. **Extract**: Get the precise value, unit, and verbatim quote.
-3. **Format**: Return JSON.
+1. **Analyze**: Read the context carefully and look for keywords from the question.
+2. **Reason**: Think step-by-step. Does the context contain the exact answer? Is it explicitly stated?
+3. **Extract**: Get the precise value, unit, and verbatim quote.
+4. **Format**: Return JSON.
 
 **Critical Rules**:
 - If the answer is NOT in the context, return "is_blank" for all fields.
 - For True/False: use "1" for True, "0" for False.
 - Do NOT use outside knowledge.
 - "supporting_materials" MUST be a verbatim quote or "Table X" / "Figure Y".
-- "explanation" should be your reasoning.
+- "explanation" should be your step-by-step reasoning.
 
 Respond in JSON:
 {{
@@ -198,13 +238,13 @@ Respond in JSON:
             examples=examples_text
         )
         
-        # 5. 呼叫 LLM
+        # 6. 呼叫 LLM
         raw_response = await self.llm.complete(
             user_prompt,
             system_prompt=system_prompt or "你是一個有用的助手。"
         )
         
-        # 6. 返回結果
+        # 7. 返回結果
         return {
             "question": question,
             "raw_response": raw_response,

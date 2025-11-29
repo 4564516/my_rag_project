@@ -1,6 +1,13 @@
 """
-评估脚本：比较预测答案和标准答案
+評估模組 (Evaluator)
+------------------
+功能：
+1. 比較模型預測答案與標準答案。
+2. 計算準確率 (Accuracy)。
+3. 生成詳細的錯誤報告 (Error Analysis)。
+4. 支援模糊匹配 (Fuzzy Matching) 與數值誤差容忍。
 """
+
 import csv
 from pathlib import Path
 from typing import Dict, List

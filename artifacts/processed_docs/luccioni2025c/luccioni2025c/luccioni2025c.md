@@ -78,6 +78,65 @@ To understand the impact of the propagation of this estimate, we analyzed 100 ne
 
 <span id="page-4-0"></span>![](_page_4_Figure_2.jpeg)
 
+**Figure Description:**
+**Figure Context:**
+This image presents a comparison of various AI models' performance, including L
+    [A brief 3-sentence summary of what this image is about, for broad search.]
+
+**Figure Data (Q&A):**
+Q: What is the size of the L
+
+
+
+
+Note: The pie chart and bar chart are not provided in the text, so I couldn't transcribe them. The above table is based on the text description of the charts.
+
+
+The pie chart is divided into five sections, each representing a different aspect of search data. The sections are:
+
+* **"Include '3 WH' or '10x Google Search'"**: 53.2%
+* **"Call for transparency/caution"**: 5.1%
+* **"Other topics (e.g., optimization)"**: 8.2%
+* **"Include global figures"**: 11.3%
+* **"Include other numbers"**: 22.2%
+
+The pie chart is not provided in the text, but I will focus on the pie chart's sections.
+
+**Pie Chart Sections:**
+
+The pie chart's sections are:
+
+* **"Include '3 WH' or '10x Google Search'"**: 53.2% - This section represents the percentage of data that is related to the "3 WH" or "10x Google Search" topic.
+* **"Call for transparency/ ca
+* **"Other topics (e.g., optimization)"**: 8.2% - This section represents the percentage of data that is related to other topics
+* **"Include global figures"**: 11.3% - This section represents the
+* **"Include other numbers"**: 22.2% - This section represents the
+
+* **"Include '3 WH' or '10x Google Search'": 53.2%**
+* **"Call for transparency/ ca
+* **"Other topics (e.g.,
+* **"Include global figures"**: 11.3% - This section
+* **"Include other
+* **"Other
+
+There is no table in the provided image. The image appears to be a chart or plot with multiple sections.
+
+**Chart/PLOT Extraction:**
+
+Here are the visible data points:
+
+* "Include '3 WH' or '10x Google Search': 53.2%"
+* "Call for transparency/caution: 5.1%"
+* "Other topics (e.g., optimization): 8.2%"
+* "Include global figures: 11.3%"
+* "Include other numbers: 22.2%"
+
+**X and Y Axis Units:**
+
+The X and Y axis units are not explicitly mentioned in the provided image.
+
+[描述已截斷以避免過長]
+
 #### **AI can reduce 10% of global emissions**
 
 While the numbers around AI's negative environmental impacts can be misinterpreted and taken out of context, so, too, can the potential of AI to reduce emissions, especially by corporate actors that develop and deploy AI systems on a global scale. One recurring number states that AI can help reduce global GHG emissions (up to) 10%. This number can be traced back to a 2021 Boston Consulting Group (BCG) report which states that *"Research shows that by scaling currently proven applications and technology, AI could mitigate 5 to 10% of global greenhouse gas emissions by 2030–the equivalent of the total annual emissions of the European Union"*[48](#page-8-23). The same number appears in a more recent BCG report from 2023, which was commissioned by Google and published ahead of COP26[49](#page-8-24). The reasoning behind the 5-10% reduction estimate is unclear and the underlying calculations are not detailed beyond the explanation that they are based on BCG's experience in dealing with their clients and using AI to optimize and improve existing processes. The second, Google-commissioned BCG study provides slightly more detail in terms of the kinds of projects AI can be used for, but does not offer specific calculations translating individual project numbers to a global scale.

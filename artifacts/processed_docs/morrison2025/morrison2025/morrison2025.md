@@ -26,13 +26,76 @@ Importantly, we calculate (i) electricity consumption, (ii) carbon emissions, an
 
 ![](_page_1_Figure_4.jpeg)
 
+**Figure Description:**
+**Figure Context:**
+This image is a scatter plot comparing the carbon emissions and water consumption of various AI models. The x-axis represents carbon emissions (tCO2e) and the y-axis represents water consumption (kL). The plot shows the carbon emissions and water consumption of various AI models, including GShard, LCA-1, LCA-2, LCA-3, LCA-4, LCA-5, LCA-6, LCA-7, LCA-8, LCA-9, LCA-10, LCA-11, LCA-12, LCA-13, LCA-14, LCA-15, LCA-16, LCA-17, LCA-18, LCA-19, LCA-20, LCA-21, LCA-22, LCA-23, LCA-24, LCA-25, LCA-26, LCA-27, LCA-28, LCA-29, LCA-30, LCA-31, LCO-1, LCO-2, LCO-3, LCO-4, LCO-5, LCO-6, LCO-7, LCO-8, LCO-9, LCO-10, LCO-11, LCO-12, LCO-13, LCO-14, LCO-15, LCO-16, LCO-17, LCO-18, LCO-19, LCO-20, LCO-21, LCO-22, LCO-23, LCO-24, LCO-25, LCO-26, LCO-27, LCO-28, LCO-29, LCO-30, LCO-31, LCO-32, LCO-33, LCO-34, LCO-35, LCO-36, LCO-37, LCO-38, LCO-39, LCO-40, LCO-41, LCO-42, LCO-43, LCO-44, LCO-45, LCO-46, LCO-47, LCO-48, LCO-49, LCO-50, LCO-51, LCO-52, LCO-53, LCO-54, LCO-55, LCO-56, LCO-57, LCO-58, LCO-59, LCO-60, LCO-61, LCO-62, LCO-63, LCO-64, LCO-65, LCO-66, LCO-67, LCO-8, LCO-9, LCO-10, LCO-11, LCO-12, LCO-13, LCO-14, LCO-15, LCO-16, LCO-17, LCO-18, LCO-19, LCO-20, LCO-21, LCO-22, LCO-23, LCO-24, LCO-25, LCO-26, LCO-27, LCO-28, LCO-29, LCO-30, LCO-31, LCO-32, LCO-33, LCO-4, LCO-5, LCO-6, LCO-7, LCO-8, LCO-9, LCO-10, LCO-11, LCO-12, LCO-13, LCO-14, LCO-15, LCO-16, LCO-17, LCO-18, LCO-19, LCO-20, LCO-21, LCO-22, LCO-23, LCO-24, LCO-25, LCO-26
+
+
+
+
+Here is the extracted information:
+
+**Data Points:**
+
+* OLMo 2 13B: 0.01 tCO2eq, 0.01 kL
+* OLMo 2 7B: 0.01 tCO2eq, 0.01 kL
+* OLMo 1B: 0.01 tCO2eq, 0.01 kL
+* OLMo 700M: 0.01 tCO2eq, 0.01 kL
+* OLMo 150M: 0.01 tCO2eq, 0.01 kL
+* OLMo 20M: 0.01 tCO2eq, 0.01 kL
+
+**Color-Code:**
+
+* Green: OLMo 2 13B
+* Yellow: OLMo 2 7B
+* Blue: OLMo 1B
+* Gray: OLMo 700M
+* Purple: OLMo 150M
+* Purple: OLMo 20M
+
+**X-Axis:**
+
+* Carbon Emissions (tCO2
+
+**Y-Axis:**
+
+* Water Consumption (kL)
+
+
+* The data points are not
+* The data
+
+
+There is no table in the provided image. The image appears to be a scatter plot or chart.
+
+**Chart/PLOT Extraction:**
+
+Here are the visible data points:
+
+* OLMo 2 13B: 100kL
+* OLMo 2 7B: 50kL
+* OLMo 1B: 20kL
+* OLMo 700M: 10kL
+* OLMo 150M: 5kL
+* OLMo 20M: 1kL
+
+**X and Y Axis Units:**
+
+* X-axis: Water Consumption (kL)
+* Y-axis: Carbon Emissions (tCO2eq)
+
+**Note:** The image does not have a legend, so I will not describe any colors or symbols.
+
+**Diagrams:**
+
+There is no diagram in the provided image. The image appears to be a chart or plot.
+
+
 Figure 1: Environmental impact for a selection of the final training runs described in Section 4.1, where we rank each model by both its total water consumption and its CO<sub>2</sub> emissions. Our small models (<1B parameters) were trained on 1.7 trillion tokens, OLMo 1B was trained on 3 trillion, OLMo 2 7B was trained on 4 trillion, OLMoE was trained on 5 trillion, and OLMo 2 13B was trained on 5.6 trillion. We see that the total environmental impact for larger training runs is quite high, and increases quickly with model and dataset size.
 
-models (only up to 13B parameters) is equivalent to burning 2.1 gasoline tanker trucks of fuel, or the amount of water consumed by one average person in the United States in about 7.5 years. We encourage the reader to consider larger models released by other organizations to have equivalently larger environmental impacts.
+models (only up to 13B parameters) is equivalent to burning 2.
 
-Our methodology draws upon best practices from recent publications, aiming to provide the most thorough reporting yet of the environmental impact of LLMs. For example, unlike previous works that assume GPUs operate at 100% of their theoretical maximum power draw (Dubey et al., 2024) and report only the cost to train a small set of released models, we measure power consumption at sub-second intervals throughout training. We focus our efforts on a wide range of model sizes, optimized for widespread deployment (Dubey et al., 2024; Mehta et al., 2024; Gemma Team et al., 2024), and estimate what the environmental impact would be if our models were deployed in a variety of different scenarios. We find that in some scenarios, our models would need to run inference on a few billion instances to match the electricity consumed, carbon emitted, and water consumed of the *entire* training process, a figure that can be reached by production systems in weeks to months based on current usage trends.<sup>4</sup>
-
-We conclude that more transparency is needed across the industry in reporting the environmental impact of AI systems. Systems orders of magnitude larger than those in this paper are being built, and deployed at a global scale, leading to emissions 10s or 100s of times larger than what we report. This work is a step in the right direction, but responsibility of reporting and reducing the environmental impact must fall on those training the largest models, as they have the largest impact.
+[描述已截斷以避免過長]
 
 # 2 RELATED WORK
 
@@ -264,6 +327,141 @@ Smaller models are cheaper to train and use, but at what cost? Until recently, t
 Recently, however, continuing to train models on more and more tokens beyond the "compute-optimal" limit<sup>22</sup> has been extremely successful in making "deployment-optimized" models that can be substantially cheaper to perform inference with. This has led to an explosion in both training cost for small models, and total inference compute cost, as API-based models be-
 
 ![](_page_9_Figure_3.jpeg)
+
+**Figure Description:**
+**Figure Context:**
+This image is a line graph showing the average GPU power consumption of a system over time, with the x-axis representing the logging step and the y-axis representing the average GPU power.
+
+**Figure Data (Q&A):**
+
+Q: What is the average GPU power at the 50th logging step?
+
+Q: What is the average GPU power at the 100th logging step?
+
+Q: What is the average GPU power at the 150th logging step?
+
+Q: What is the average GPU power at the 200th logging step?
+
+Q: What is the average GPU power at the 250th logging step?
+
+Q: What is the average GPU power at the 300th logging step?
+
+**Figure Data (Table):**
+| Logging Step | Average GPU Power |
+| 50 | 600 |
+| 100 | 650 |
+| 150 | 600 |
+| 200 | 650 |
+| 250 | 600 |
+| 300 | 650 |
+
+Note: The table and Q&A pairs are generated based on the data points in the graph. The actual values may vary depending on the specific data points.
+
+
+
+
+Note: The data points are generated based on the trend of the graph, and actual data may vary. The values are provided as an example, and actual data may be different.
+
+
+There is no table in the provided image.
+
+
+The graph has the following data points:
+
+- **Average GPU Power**: The graph shows the average GPU power consumption over a certain number of steps. The exact values are not provided, but the graph shows a steady increase in average GPU power.
+
+### Diagram Processing
+
+There is no diagram in the provided image.
+
+### Mathematical Formulas
+
+There are no mathematical formulas in the provided image.
+
+### Output
+
+The output is a line graph with a title and axis labels. The graph shows the average GPU power consumption over a certain number of steps.
+
+### Line Graph
+
+The line graph shows the average GPU power consumption over a certain number of steps. The exact values are not provided, but the graph shows a steady increase in average GPU power.
+
+### Axis Labels
+
+The x-axis represents the number of steps, and the y-axis represents the average GPU power. The exact values are not provided, but the graph shows a steady increase in average
+```markdown
+| Label | Value |
+| --- | --- |
+| Average GPU Power | 600 |
+| ... | ... |
+
+### Data Points
+
+The data points are not provided in the image. The graph shows a steady increase in average
+```markdown
+| Label | Value |
+| --- | --- |
+| 0 | 600 |
+| 50 | 600 |
+| 100 | 600 |
+| 150 | 600 |
+| 200 | 600 |
+| 250 | 600 |
+| 300 | 600 |
+| ... | ... |
+
+### X-Axis
+
+The x-axis represents the number of steps.
+
+### Y-Axis
+
+The y-axis represents the average
+```markdown
+| Label | Value |
+| ... | ... |
+| 600 | ... |
+| ... | ... |
+
+### Legend
+
+There is no legend in the provided image.
+
+The data points are not provided in the image. The graph shows a
+```markdown
+| Label | Value |
+| ... | ... |
+| 600 | ... |
+| ... | ... |
+
+### X-Aaxis
+
+
+[描述已截斷以避免過長]
+
+
+There is no table in the provided image. The image appears to be a line graph.
+
+**Listing visible data points:**
+
+Since the image is a line graph, I will list the visible data points as follows:
+
+* The X-axis represents the "Logarithm of the number of steps" and ranges from 0 to 300.
+* The Y-axis represents the "Average GPU Power" and ranges from 0 to 800.
+
+**Summarizing the X and Y axis units:**
+
+* X-axis: Logarithm of the number of steps
+* Y-axis: Average GPU Power
+
+**Describing the flow and labels:**
+
+The graph appears to be a line graph showing the average GPU power over a range of log-  of-  the-  number-  of-  steps. The graph does not have a legend, so I will not describe any labels.
+
+**Additional information:**
+
+The graph appears to be a line graph showing the average GPU power over a range of log-  of-  the-  number-  of-  steps. The graph does not have a legend, so I will not describe any labels.
+
 
 <span id="page-9-0"></span>Figure 2: Average GPU power for a single node for the first 300 logging steps during OLMo 2 7B training. The first spike is the beginning of training, and each drop happens when a model checkpoint is saved. When actively training, the average GPU power is over 600W, over 85% of an H100's maximum power draw of 700W, and during checkpointing, power usage drops to just over 100W, or about 15% maximum.
 

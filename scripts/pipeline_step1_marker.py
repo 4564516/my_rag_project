@@ -1,10 +1,13 @@
 """
-Pipeline Step 1: PDF to Markdown with Marker
-
+Pipeline Step 1: PDF 解析 (Marker)
+--------------------------------
 功能：
-- 遍歷 artifacts/raw_pdfs 下的所有 PDF
-- 使用 marker 將其轉換為 Markdown
-- 輸出到 artifacts/processed_docs/{doc_id}/
+1. 使用 `marker-pdf` 工具將原始 PDF 轉換為高品質 Markdown。
+2. 提取 PDF 中的所有圖片並保存到 `processed_docs`。
+3. 保存元數據 (Metadata JSON)。
+
+執行方式：
+python scripts/pipeline_step1_marker.py
 """
 
 import os

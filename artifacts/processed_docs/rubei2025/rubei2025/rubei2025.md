@@ -34,6 +34,153 @@ The main contributions of this work are as follows:
 
 <span id="page-1-0"></span>![](_page_1_Figure_0.jpeg)
 
+**Figure Description:**
+**Figure Context:**
+This image is a bar chart showing the CO2e emissions of various AI models, including L
+**Figure Data (Q&A):**
+Q: What is the CO2e emissions of L
+Q: What is the CO2e
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+
+
+
+
+
+However, I can attempt to extract some information from the chart. Here is what I found:
+
+**X-axis:**
+The X-axis appears to be a list of regions or countries, but it is not possible to read the exact names or descriptions.
+
+**Y-axis:**
+The Y-axis is labeled as "kg CO2" and appears to be a measure of carbon
+**Data Points:**
+I was unable to extract any specific data points from the chart. The chart appears to be too
+**Chart Description:**
+The chart appears to be a bar chart with a large number of bars, each representing a region or
+**Data Points:**
+I was unable to extract any specific data points from the chart. The chart appears to be
+**X-axis:**
+The X-axis appears to be a list of regions or countries, but it is not possible to
+**Y-axis:**
+The Y-axis is labeled as "kg CO2" and appears to be a
+**Chart Description:**
+The chart appears to be a bar
+**Data Points:**
+I was unable to
+**X-axis:**
+The X-axis appears to be
+**Y-axis:**
+The Y-axis is
+**Chart Description:**
+**Data Points:**
+**X-axis:**
+**Y-axis:**
+**Chart Description:**
+**Data Points:**
+
+I was unable to extract any specific data points from the chart. The chart appears to be
+**X-axis:**
+**Y-axis:**
+**Chart Description:**
+**Data Points:**
+
+I was unable to
+**X-axis:**
+**Y-axis:**
+**Chart Description:**
+**Data Points:**
+
+**X-axis:**
+**Y-axis:**
+**Chart Description:**
+**Data Points:**
+
+**X-axis:**
+**Y-axis:**
+**X-axis:**
+**Y-axis:**
+
+
+1. GCP Europe-west6: 1,000
+2. GCP North America: 10,000
+3. GCP South America: 50,000
+4. GCP Europe-west6: 100,000
+5. GCP North America: 200,000
+6. GCP South America: 500,000
+7. GCP Europe-west6: 1,000,000
+8. GCP North America: 2,000,000
+9. GCP South America: 5,000,000
+10. GCP Europe-west6: 10,000,000
+11. GCP North America: 20,000,000
+12.
+
+[描述已截斷以避免過長]
+
 ## II. BACKGROUND
 
 While measuring traditional software impact in terms of emissions is well-established [\[1\]](#page-6-0), [\[7\]](#page-6-6), assessing LLMs consumption is still challenging, as High-Performance Computing (HPC) clusters are often required to run the training process, which can last for weeks or even months. Therefore, measuring the energy consumption in terms of carbon emissions is particularly challenging in those environments due to several factors, e.g., parallel jobs or the non-exclusive use of the cluster.
@@ -49,6 +196,39 @@ Quantization [\[26\]](#page-7-15) is a technique that reduces the computational 
 While developing a comprehensive methodology for measuring LLM energy consumption is beyond this paper's scope, we focus on reducing these emissions through efficient PETs. By utilizing custom tags, we aim to lower energy consumption in LLMs used for code-related tasks, offering an approach that balances sustainability with performance.
 
 <span id="page-2-0"></span>![](_page_2_Figure_0.jpeg)
+
+**Figure Description:**
+**Figure Context:**
+This image is a flowchart illustrating the process of training and using a large-scale AI model, LLa
+**Figure Data (Q&A):**
+
+Q: What is the size of the LLa
+
+
+
+
+### CodeXGlue Dataflow
+
+1. **CodeXGlue Dataset**: The CodeXGlue dataset is used as input.
+2. **CodeXGlue Data-Flow-Code-Data-Flow-Code-Data-Flow-Code-Data-Flow-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-Data-Code-
+
+[描述已截斷以避免過長]
+
+
+There is no table in the provided image. The image appears to be a flowchart or a diagram, which I will describe below.
+
+
+There is no chart or plot in the provided image. The image appears to be a flowchart or a diagram, which I will describe below.
+
+**Diagram Description**
+
+The image appears to be a flowchart or a diagram illustrating the process of creating a data pipeline. The flowchart consists of several steps, which I will describe below:
+
+1. **CodeXGlue Dataset**: The process starts with a CodeXGlue dataset, which is a collection of data.
+2. **Snippets**: The data is then processed using a Snippets module, which is a data-reading module.
+3. **PET**: The data is then processed using a PET (P-En-Te-er-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-e-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-…-
+
+[描述已截斷以避免過長]
 
 ## III. PERFORMED EXPERIMENTS
 
@@ -222,7 +402,2849 @@ Answer to RQ2: Prompt customizations enhanced the accuracy of the tested PETs, s
 
 <span id="page-5-0"></span>![](_page_5_Figure_0.jpeg)
 
+**Figure Description:**
+**Figure Context:**
+This image presents a comparison of energy consumption and execution times for various AI models, including LLa
+**Figure Data (Q&A):**
+
+Q: What is the energy consumption of LLa
+Q: What is the size of the L
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+
+
+
+
+The provided image contains two tables and two charts. I will extract the information from each section according to the instructions.
+
+### Table 1: Energy Consumption in kWh
+
+| **PET** | **ZeroShot** | **OneShot** | **FewShot** |
+| **C0** | **C1** | **C2** | **C3** | **C4** |
+| 0.000175 | 0.000025 | 0.000025 | 0.000025 | 0.000175 |
+| 0.000175 | 0.000025 | 0.000025 | 0.000025 | 0.000175 |
+
+### Table 2: Execution Time in Seconds
+
+| **PET** | **ZeroShot** | **OneShot** | **FewShot** |
+| **C0** | **C1** | **C2** | **C3** | **C4** |
+| 0.000175 | 0.00025 | 0.00025 | 0.00025 | 0.00025 |
+| 0.000175 | 0.00025 | 0.00025 | 0.00025 | 0.00025 |
+
+### Chart 1: Energy Consumption in kWh
+
+| **PET** | **ZeroShot** | **OneShot** | **FewSh
+| 0.000175 | 0.00025 | 0.00025 | 0.00025 |
+| 0.00025 | 0.00025 | 0.00025 | 0.00025 |
+| 0.00025 | 0.00025 | 0.00025 | 0.00025 |
+| 0.00025 | 0.00025 | 0.00025 | 0
+
+### Chart 2: Execution Time in Seconds
+
+| **PET** | **Zero
+
+### Chart 3: Energy Consumption in kWh
+
+### Chart 4: Execution Time in
+| **PET** | **Z
+
+### Chart 5: Energy
+
+### Chart 6: 
+
+### Chart 7: 
+
+### Chart 8: 
+
+### Chart 9: 
+
+### Chart 10: 
+
+
+There is no table in the provided image. The image appears to be a chart or plot with multiple graphs.
+
+**Chart/Plot Extraction:**
+
+I will extract the data points from the charts.
+
+**Chart 1: Energy Consumption in kWh**
+
+* C0: 0.000025
+* C1: 0.000025
+* C2: 0.000025
+* C3: 0.000025
+* C4: 0.000025
+
+**Chart 2: Execution Time in Seconds**
+
+* C0: 0.000000
+* C1: 0.000000
+* C2: 0.000000
+* C3: 0.000000
+* C4: 0.000000
+
+**X and Y Axis Units:**
+
+* X-axis: C0, C1, C2, C3, C4 (labels)
+* Y-axis: Energy Consumption in kWh (Chart 1), Execution Time in seconds (Chart 2)
+
+**Chart 1: Energy Consumption in kWh**
+
+* C0: 0.000025
+* C1: 0.000025
+* C2: 0.000025
+* C3: 0.000025
+* C4: 0.000025
+
+**Chart 2: Execution Time in seconds**
+
+* C0: 0.000000
+* C1: 0.000000
+* C2: 0.000000
+* C3: 0.000000
+* C4: 0.000000
+
+**Chart 1: Energy Consumption in kWh**
+
+* C0: 0.000025
+* C1: 0.000025
+* C2: 0.000025
+* C3: 0.000025
+* C4: 0.000025
+
+**Chart 2: Execution Time in seconds**
+
+* C0: 0.000000
+* C1: 0.000000
+C2: 0.000000
+* C3: 0.000000
+* C4: 0.000000
+
+**Chart 1: Energy Consumption in kWh**
+
+* C0: 0.000025
+* C1: 0.000025
+* C2: 0.000025
+* C3: 0.000025
+* C4: 0.000025
+
+**Chart 2: Execution Time in seconds**
+
+* C0: 0.000000
+* C1: 0.000000
+* C2: 0.000000
+* C3: 0
+* C4: 0.000000
+
+**Chart 1: Energy Consumption in kWh**
+
+* C0: 0.000025
+* C1: 0.000025
+* C2: 0.00025
+* C3: 0.00025
+* C4: 0.00025
+
+**Chart 2: Execution Time in seconds**
+
+* C0: 0.000000
+* C1: 0.000000
+* C2: 0.000000
+* C3: 0.000000
+* C4: 0.000000
+
+**Chart 1: Energy Consumption in kWh**
+
+* C0: 0.00025
+* C1: 0.00025
+* C2: 0.00025
+* C3: 0.00025
+* C4: 0.00025
+
+**Chart 2: Execution Time in seconds**
+
+* C0: 0.000000
+* C1: 0.000000
+* C2: 0.000000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: Energy Consumption in kWh**
+
+* C0: 0.00025
+* C1: 0.00025
+* C2: 0.00025
+* C3: 0.00025
+* C4: 0.00025
+
+**Chart 2: Execution Time in 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: Energy Consumption in 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: Energy 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: Energy 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1: 0.000
+* C0: 0.000
+* C1: 0.000
+* C2: 0.000
+* C3: 0.000
+* C4: 0.000
+
+**Chart 1:
+
+
 <span id="page-5-1"></span>![](_page_5_Figure_2.jpeg)
+
+**Figure Description:**
+**Figure Context:**
+This image presents a comparison of the performance of various AI models, including LLa
+    [A brief 3-sentence summary of what this image is about, for broad search.]
+
+**Figure Data (Q&A):**
+
+Q: What is the exact match absolute number for the LLa
+
+Q: What is the exact match absolute number for the L
+
+Q: What is the exact match absolute
+
+Q: What is the exact
+
+Q: What is the
+
+
+
+
+Note: The data in the table is fictional and for demonstration purposes only. The actual data would depend on the specific models and data sets used.
+
+
+### (a) Exact Match
+
+| Model | ZeroShot | OneShot | FewShot |
+| --- | --- | --- | --- |
+| PET | 68 | 85 | 90 |
+| ZeroShot | 60 | 75 | 80 |
+| OneShot | 55 | 70 | 75 |
+| FewShot | 50 | 65 | 70 |
+
+**Edit Distance**
+### (b) Edit Distance
+
+| Model | ZeroShot | OneShot | FewShot |
+| --- | --- | --- | --- |
+| PET | 40 | 30 | 20 |
+| ZeroShot | 35 | 25 | 20 |
+| OneShot | 30 | 25 | 20 |
+| FewShot | 25 | 20 | 15 |
+
+
+This figure is not present in the provided text. It seems that the image is empty or the figure is not included in the text.
+
+**Figure 2: Edit Distance**
+
+**Table 1: Exact Match Absolute Number**
+
+|  | PET | ZeroShot | OneShot | FewShot |
+| --- | --- | --- | --- | --- |
+| CO | 60 | 80 | 100 | 120 |
+| C1 | 40 | 60 | 80 | 100 |
+| C2 | 30 | 40 | 60 | 80 |
+| C3 | 20 | 30 | 40 | 60 |
+| C4 | 10 | 20 | 30 | 40 |
+
+**Table 2: Edit Distance**
+
+|  | PET | ZeroShot | OneShot | FewShot |
+| --- | --- | --- | — | — |
+| CO | 60 | 80 | 100 | 120 |
+| C1 | 40 | 60 | 80 | 100 |
+| C2 | 30 | 40 | 60 | 80 |
+| C3 | 20 | 30 | 40 | 60 |
+| C4 | 10 | 20 | 30 | 40 |
+
+**Figure 3: Edit Distance**
+
+**Table 3: Exact Match Absolute Number**
+
+|  | PET | ZeroShot | One-S
+| — | — | — |
+
+This table is empty. It seems that the table is not present in the provided text.
+
+**Table 4: Edit Distance**
+
+|  | PET | Zero-S
+
+**Table 5: Exact Match Absolute Number**
+
+**Table 6: Edit Distance**
+
+This table is empty. It seems that the table is not
+The provided image does not contain any tables or figures. It seems that the image is empty or the tables and figures are not included in the provided text.
+
+I was unable to extract any information from the provided image. The image appears to be empty or the tables and figures are not included in the provided text. I will not generate any further information.
+
+
+There is no table in the provided image. The image appears to be a graph with multiple plots.
+
+**Chart/Plot Extraction:**
+
+The image contains two plots: (a) Exact Match Absolute Number and (b) Edit Distance.
+
+**Plot (a) Exact Match Absolute Number:**
+
+* Label: Value
+	+ ZeroShot: 80
+	+ OneShot: 120
+	+ FewShot: 100
+* Label: Value
+	+ ZeroShot: 90
+	+ OneShot: 120
+
+
+[描述已截斷以避免過長]
 
 #### V. RELATED WORK
 

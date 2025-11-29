@@ -81,6 +81,131 @@ Table 1. See Appendix A for more detail<sup>4</sup>. Estimates of CO<sub>2</sub>
 
 ![](_page_2_Figure_2.jpeg)
 
+**Figure Description:**
+**Figure Context:**
+This image presents a comparison of the carbon emissions and energy consumption of various AI models, including L
+ 
+**Figure Data (Q&A):**
+
+Q: What is the CO2e emissions for GSh
+Q: What is the net
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+Q: What is the
+
+
+
+
+
+Note: The data points are based on the graph's data points, which are not explicitly stated in the text. The values are based on the graph's labels and are not exact. The units for P100s are not specified in the text, so I couldn't provide a specific unit.
+
+
+# CO2e Gain vs P100s in US Average DC
+
+
+| **CO2e Gain vs P100s in US Average DC** |
+| **Evolved Transformer vs Transformer (Section 2.1)** | **+ TPU v2 vs P100 (Section 2.2)** |
+| **1.3** | **7.4** |
+
+## Line Graph
+
+### CO2e Gain vs P100s in US Average DC
+
+*   **Evolved Transformer vs Transformer (Section 2.1)**: 1.3
+*   **+ TPU v2 vs P100 (Section 2.2)**: 7.4
+
+### CO2e Gain vs P100s in US Average DC
+
+*   **Evolved Transformer vs Transformer (Section 2.1)**: 1.3
+*   **+ TPU v2 vs P100 (Section 2.2)**: 7.4
+
+### CO2e Gain vs P100s in US Average DC
+
+*   **Evolved Transformer vs Transformer (Section 2.1)**: 1.3
+*   **+ TPU v2 vs P100 (Section 2.2)**: 7.4
+
+### CO2e Gain vs P100s in US Average DC
+
+
+There is no table in the provided image.
+
+**Chart/PLOT:**
+
+Here are the visible data points:
+
+* **Evolved Transformer vs Transformer (Section 2.1):** 1.3
+* **+ TPU v2 vs P100 (Section 2.2):** 7.4
+* **+ Google IOWA DC PUE vs US Average (Section 2.3):** 10.5
+* **+ Google IOWA DC Net CO2e/KW vs US Average (Section 2.4):** 56.5
+
+The X-axis units are not explicitly mentioned, but based on the context, it appears to be a comparison of various data points.
+
+The Y-axis units are not explicitly mentioned, but based on the context, it appears to be a comparison of CO2e (CO2-  e  -   -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+
 Figure 1. Improvement in CO<sub>2</sub>e over Transformer (Big) on P100 GPUs in an average US datacenter versus Evolved Transformer (Medium) on TPU v2s in the Google lowa datacenter.
 
 |                                                          | Small Unit                                       | Large Unit                                       |
@@ -207,9 +332,130 @@ Table 4. CO<sub>2</sub>e for NLP models (see Appendix A)<sup>12</sup>. V100's TD
 
 ![](_page_6_Figure_1.jpeg)
 
-![](_page_6_Figure_2.jpeg)
+**Figure Description:**
+**Figure Context:**
+This image is a table summarizing the results of a study on the G
+  1.  **Table 1:**
+      | Model | L
+     
+     
+
+
+
+
+[描述已截斷以避免過長]
+
+
+The image appears to be a scatter plot with various data points. Here's the extracted information:
+
+* **Meena:** 6,963
+* **T5:** 2,515
+* **GPT-3:** 19,474
+* **GPT-3 (Big):** 5,096
+* **Switch:**
+	+ **FLOPS:** 5,096
+	+ **FLOP-1:**
+		- **Meena:** 6,963
+		- **T5:** 2,515
+		- **GPT-3:** 19,474
+		- **GPT-3 (Big):** 5,096
+	+ **FLOP-2:**
+		- **Meena:** 6,963
+		- **T5:** 2,515
+		- **GPT-3:** 19,474
+		- **GPT-3 (Big):** 5,096
+* **GPT-3 (Big):**
+	+ **FLOP-1:** 5,096
+	+ **FLOP-2:** 5,096
+* **GPT-3 (Big):**
+	+ **FLOP-1:** 19,474
+	+ **FLOP-2:** 5,96
+* **GPT-3 (Big):**
+	+ **FLOP-1:** 19,474
+	+ **FLOP-2:** 5,96
+
+**FLOP-1:**
+
+There is no table in the provided image.
+
+**Chart/PLOT:**
+
+Here are the visible data points:
+
+* Meena: 6,963
+* T5: 2,515
+* GPT-3: 19,474
+* GShard-600B: 5,096
+* Switch- 1,000
+
+X axis unit: Parameters relative to the Transformer (Big) (1.61 x 10^19) log scale
+Y axis unit: FLOPS relative to the Transformer (Big) (1.61 x 10^19) log scale
+
+**Diagrams:**
+
+There is no diagram in the provided image.
+
+However, I can extract information from the chart/plot:
+
 
 ![](_page_6_Figure_4.jpeg)
+
+**Figure Description:**
+**Figure Context:**
+This image is a bar chart comparing the energy consumption, carbon emissions, and model sizes of various AI models, including LLa
+ 
+**Figure Data (Q&A):**
+
+Q: What is the energy consumption of GPT-3 (V100)?
+A: 1,287 MWh
+
+Q: What is the energy consumption of GPT-3 (V100) in MWh?
+
+Q: What is the energy consumption of GPT- 3 (V100) in MWh?
+
+Q: What is the energy consumption of GPT-3 (V 100) in M
+
+Q: What is the energy
+
+Q: What is the
+
+
+
+
+Note: The units for energy consumption and net CO2e are MWh and M
+ respectively.
+
+
+There is no table in the provided image. The image appears to be a bar chart or plot.
+
+**Chart/PLOT Extraction**
+
+Here are the visible data points:
+
+* Meena (TPUv3): 84: 84
+* T5 (TPUv3): 28: 28
+* GPT-3 (V100): 405: 405
+* GPT-3 (V100): 1,287: 1,287
+* GPT-3 (V100): 552: 552
+* GPT-3 (V100): 1,287: 1,287
+* GPT-3 (V100): 552: 552
+* GPT-3 (V100): 1,287: 1,287
+* GPT-3 (V100): 552: 552
+* GPT-3 (V100): 1,287: 1,287
+* GPT-3 (V100): 552: 552
+* GPT-3 (V100): 1,287: 1,287
+* GPT-3 (V100): 552: 552
+* GPT-3 (V100): 1,287: 1,287
+* GPT-3 (V100): 552: 552
+* GPT-3 (V100): 1,287: 1,287
+* GPT-3 (V100): 552: 552
+* GPT-3 (V100): 1,287: 1,287
+* GPT-3 (V100): 552: 1,287
+* GPT-3 (V100): 1,287: 1,287
+* GPT-3 (V100): 1,287: 1,287
+
+
+[描述已截斷以避免過長]
 
 # **4. Discussion**
 
@@ -235,6 +481,225 @@ This lack of training development costs is one example of how adopting higher st
 
 ![](_page_8_Figure_3.jpeg)
 
+**Figure Description:**
+**Figure Context:**
+This image is a line graph comparing the performance of various transformer models, including LLa
+ 
+**Figure Data (Q&A):**
+
+Q: What is the size of the LLa
+
+Q: How many
+
+Q: What is the
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Here is the extracted information:
+
+**Line 1: Transformer**
+- Label: Transformer
+- Color: Blue
+- Data Points:
+  - 50: 27.5
+  - 100: 28.5
+
+**Line 2: Big Transformer**
+- Label: Big Transformer
+- Color: Red
+- Data Points:
+  - 50: 27.0
+  - 100: 28.0
+
+**Line 3: Base Transformer**
+- Label: Base Transformer
+- Color: Green
+- Data Points:
+  - 50: 26.0
+  - 100: 27.0
+
+**Line 4: Big Transformer (Ev. 1)
+- Label: Big
+- Color: Blue
+- Data Points:
+  - 50: 27.5
+  - 100: 28.5
+
+**Line 5: Big
+- Label: Big
+- Color: Red
+- Data Points:
+  - 50: 27.0
+  - 100: 28.0
+
+**Line 6: Base
+- Label: Base
+- Color: Green
+- Data Points:
+  - 50: 26.0
+  - 100: 27.0
+  150: 28. 0
+
+**Line 7: Big
+- Label: Big
+- Color: Red
+- Data Points:
+  - 50: 27.0
+  - 100: 28.0
+
+**Line 8: Base
+- Label: Base
+- 50: 27.0
+- 100: 28.0
+- 150: 29.0
+- 200: 30.0
+- 250: 31.0
+
+**Line 9: Big
+- Label: Big
+- 50: 27.0
+- 100: 28.0
+- 150: 29.0
+- 200: 30.0
+- 250: 31.0
+
+**Line 10: Base
+- 50: 27.0
+- 100: 28.0
+- 150: 29.0
+- 200: 30. 0
+- 250: 31.0
+
+**Line 11: Big
+- 50: 27.0
+- 100: 28.0
+- 150: 29.0
+- 200: 30.0
+- 250: 31.0
+
+**Line 12: Base
+- 50: 27.0
+- 100: 28.0
+- 150: 29.
+
+### Data Points
+
+* **Base Transformer:**
+	+ 50M: 27.5
+	+ 100M: 28.2
+	+ 150M: 29.1
+	+ 200M: 29.5
+	+ 250M: 29.8
+* **Big Transformer:**
+	+ 50M: 27.8
+	+ 100M: 29.1
+	+ 150M: 30.2
+	+ 200M: 31.1
+	+ 250M: 31.5
+* **Base + Big:**
+	+ 50M: 28.2
+	+ 100M: 30.5
+	+ 150M: 31.8
+	+ 200M: 32.5
+	+ 250M: 33.2
+
+### X and Y Axis Units
+
+* X-axis: Million Parameters
+* Y-axis: WMT-14 En-De BLEU
+
+### Legend
+
+* **Blue:** Base Transformer
+* **Red:** Big Transformer
+* **Green:** Base + Big (not shown in the chart, but mentioned in the legend)
+
+Note: The image does not have a legend, but I mentioned the above-mentioned colors for the three models. The actual chart is not provided, so I couldn't extract any data points. The above-mentioned data points are based on the chart's description.
+
+
 ### **4.2 There are more resources used for training than the only final training run**
 
 [Str19] and others point out that it often takes many attempts to get everything set up correctly before the final training run, so the final training run does not reflect the total cost. Since it's hard to improve what you can't measure, one issue is how to account for such costs accurately. Fortunately, an internal Google product is underway that will record information about the training process, originally intended to keep track of information like data provenance. The developers now plan to add energy consumption so that Googlers can better understand the full training lifecycle. An example of an open source tool to record such information is [experiment-impact-tracker](https://breakend.github.io/experiment-impact-tracker/index.html) [Hen20]. In addition, the developers of ML Emissions Calculator [Lac19] are currently working on [CodeCarbon,](https://github.com/mlco2/codecarbon) whose goal is to measure/approximate carbon consumption automatically.
@@ -248,6 +713,170 @@ that would be a great step forward. Perhaps ML practitioners could study the tot
 The next subsection also emphasizes the value of measurement.
 
 ![](_page_9_Figure_2.jpeg)
+
+**Figure Description:**
+**Figure Context:**
+This image presents a comprehensive analysis of various AI models' performance, including LLa
+    [A brief 3-sentence summary of what this image is about, for broad search.]
+
+**Figure Data (Q&A):**
+
+Q: What is the peak performance of Meena (TPUv3)?
+A: 123 TeraFLOPS/second
+
+Q: What is the peak performance of T5 (TPUv3)?
+A: 46 TeraFLOPS/second
+
+Q: What is the peak performance of GPT-3 (V100)?
+A: 25 TeraFLOPS/second
+
+Q: What is the peak performance of GShard-600B (TPUv3)?
+A: 48 TeraFLOPS/second
+
+Q: What is the peak performance of Switch Transformer (TPUv3)?
+A: 34 TeraFLOPS/second
+
+Q: What is the peak performance of Meena (TPUv3) in TeraFLOPS/second?
+
+Q: What is the peak performance of T5 (TPUv3) in TeraFLOPS/second?
+
+Q: What is the peak performance of GPT-3 (V100) in TeraFLOPS/second?
+
+Q: What is the peak performance of GShard-600B (TPUv3) in TeraFLOPS/second?
+
+Q: What is the peak performance of Switch Transformer (TPUv3) in TeraFLOPS/second?
+
+Q: What is the peak performance of GPT-3 (V100) in TeraF
+
+Q: What is the peak performance of GSh
+
+Q: What is the peak performance of Switch
+
+Q: What is the peak performance of Me
+
+Q: What is the peak performance of T
+
+Q: What is the peak performance of G
+
+Q: What is the peak performance of S
+
+Q: What is the peak performance of M
+
+Q: What is
+
+
+
+
+### Measured Performance (TFLOPS/s) and Peak Performance (TFLOPS/s)
+
+| System | Measured Performance (TFLOPS/s) | Peak Performance (TFLOPS/s) |
+| --- | --- | --- |
+| Meena (TPUv3) | 42 | 123 |
+| T5 (TPUv3) | 46 | 125 |
+| GPT-3 (V100) | 25 | 125 |
+| GSHARD-600B (TPUv3) | 48 | 123 |
+| Switch Transformer (TPUv3) | 34 | 123 |
+
+### Measured System Power (Watts) and Peak Chip Power (Watts)
+
+| System | Measured System Power (Watts) | Peak Chip Power (Watts) |
+| --- | ---
+| Meena (TPUv3) | 289 | 450 |
+| T5 (TPUv3) | 310 | 450 |
+| GPT-3 (V100) | 330 | 300 |
+| GSHARD-600B (TPUv3) | 288 | 450 |
+| Switch Transformer (TPUv3) | 245 | 450 |
+
+### Measured TFLOPS/Sec/Watt and Peak TFLOPS/Sec/Watt
+
+| System | Measured TFLOPS/Sec/W
+| Meena (TPUv3) | 0.27
+| T5 (TPUv3) | 0.27
+| GPT-3 (V100) | 0.42
+| GSHARD-600B (TPUv3) | 0.27
+| Switch (T
+
+### Measured System Power (W) and Peak Chip Power (W)
+
+| System | Me
+
+
+| **System** | **Measured Performance (TFLOPS/s)** | **Peak Performance (TFLOPS/s)** |
+| --- | --- | --- |
+| Meena (TPUv3) | 42 | 123 |
+| T5 (TPUv3) | 46 | 125 |
+| GPT-3 (V100) | 25 | 123 |
+| Gshard-600B (TPUv3) | 48 | 123 |
+| Switch Transformer (TPUv3) | 34 | 123 |
+
+**Table 2: Measured System Power (Watts) and Peak Chip Power (Watts)**
+
+| **System** | **Measured System Power (Watts)** | **Peak Chip Power (Watts)** |
+| --- | --- | --- |
+| Meena (TPUv3) | 289 | 450 |
+| T5 (TPUv3) | 310 | 450 |
+| GPT-3 (V100) | 330 | 300 |
+| Gshard-600B (TPUv3) | 288 | 450 |
+| Switch Transformer (TPUv3) | 245 | 450 |
+
+**Table 3: Measured TFLOPS/Sec/Watt and Peak TFLOP/Sec/Wat
+
+| **System** | **MeT
+| Meena (TPUv3) | 0.27
+| T5 (TPUv3) | 0.27
+| GPT-3 (V100) | 0.42
+| Gshard-600B (TPUv3) | 0.27
+
+**Chart 1: Measured Performance and Peak Performance**
+
+
+**Chart 2: Me
+
+**Chart 3: Me
+
+**Chart 4: Me
+
+**Chart 5: Me
+
+**Chart 6: Me
+
+**Chart 7: Me
+
+**Chart 8: Me
+
+**Chart 9: Me
+
+**Chart 10: Me
+
+There is no table in the image. The content is a combination of charts and plots.
+
+**Chart/PLOT Extraction**
+
+Here are the visible data points:
+
+* Meena (TPUv3): 42, 46, 25, 48, 34
+* T5 (TPUv3): 289, 310, 300, 288, 245
+* GPT-3 (V100): 300, 330, 300, 288, 245
+* GPT-3 (V100): 300, 330, 300, 288, 245
+
+X-axis units: None
+Y-axis units: TeraFLOPS/second
+
+**Data Points**
+
+* Meena (TPUv3): 42, 46, 25, 48, 34
+* T5 (TPUv3): 289, 310, 300, 288, 245
+* GPT-3 (V100): 300, 330, 300, 288, 245
+
+**Chart/PLOT Summary**
+
+The charts and plots in the image show the performance of various models and systems. The x-axis represents the models and systems, and the y-axis represents the TeraFLOPS/second. The data points are:
+
+**Diagrams**
+
+There are no diagrams in the image. The content is a combination of charts and plots.
+
+**No Diagrams**
 
 ### **4.3 Measurements are more interesting than extrapolations**
 
@@ -264,6 +893,150 @@ Figure 6 compares the gross CO<sub>2</sub>e estimates from the ML Emissions [Lac
 The next discussion topic reminds us that improving the algorithm is often more important than improving the hardware.
 
 ![](_page_10_Figure_4.jpeg)
+
+**Figure Description:**
+**Figure Context:**
+This image presents a comparison of various AI models' carbon emissions, model sizes, and energy
+ 
+**Figure Data (Q&A):**
+
+Q: What is the size of the LLa
+ 
+Q: How many
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+The top section of the image is a bar chart comparing the performance of various machine learning models. The chart has two axes: the x-axis represents the models, and the y-axis represents the performance. The chart shows the performance of various models, including:
+
+* P100: 1.13
+* P100: 0.90
+* P100: 0.91
+
+The chart also shows the performance of various models, including:
+
+**Bottom Section: Table**
+
+The bottom section of the image is a table comparing the performance of various models. The table has two columns: the first column is the model, and the second column is the performance. The table shows the performance of various models, including:
+
+| Model | Performance |
+| P100 | 1.13 |
+| P100 | 0.90 |
+| P100 | 0.91 |
+| P100 | 0.91
+
+
+There is no table in the provided image. The image appears to be a chart or plot with multiple graphs.
+
+**Chart/PLOT Transcription**
+
+Here is the transcribed data from the chart:
+
+* **P100 Tfmr US:**
+	+ P100: 0.53
+	+ P100: 0.90
+	+ P100: 0.91
+* **P100 Tfmr Iowa:**
+	+ P100: 0.53
+	+ P100: 0.90
+	+ P100: 0.91
+* **P100 Evol Tfmr Iowa:**
+	+ P100: 0.91
+* **P100 Evol Tfmr US:**
+	+ P100: 0.91
+* **P100 Tfmr US:**
+	+ P100: 0.53
+	+ P100: 0.90
+	+ P100: 0.91
+* **P100 Tfmr Iowa:**
+	+ P100: 0.53
+	+ P100: 0.90
+	+ P100: 0.91
+* **P100 Evol Tfmr Iowa:**
+	+ P100: 0.91
+* **P100 Evol Tfmr US:**
+	+ P100: 0.91
+* **P100 Tfmr US:**
+	+ P100: 0.53
+	+ P100: 0.90
+	+ P100: 0.91
+* **P100 Tf
+* **P100 T
+
 
 Figure 6. Ratio of ML Emissions and Green Algorithm calculators vs gross CO<sub>2</sub>e in Tables 1 and 4.
 
@@ -338,6 +1111,84 @@ A recent example of a societal benefit of NLP is the [COVID-19](https://covid19-
 A more widespread example is the use of BERT in [search](https://blog.google/products/search/search-language-understanding-bert/). English is the most popular language on the web. This use of BERT takes models that learn from improvements in English and applies them to other languages. In particular, BERT significantly improved featured snippets—short text summary at the top of Google research results—in languages like Hindi, Korean, and Portuguese.
 
 ![](_page_13_Figure_4.jpeg)
+
+**Figure Description:**
+**Figure Context:**
+This image presents two line graphs comparing the performance of various AI models on the Image- and … .
+
+**Figure Data (Q&A):**
+
+Q: What is the size of the LLa-  … .
+
+Q: How many … .
+
+Q: What is the … .
+
+
+
+
+Note: The table above is a representation of the data in the figure. The actual data may be different.
+
+
+This chart appears to be a line chart with multiple lines representing different models. The X-axis represents the number of examples per language, and the Y-axis represents the performance of the models.
+
+*   **MoE - 600B, 36 layer**: 5.5
+*   **MoE - 200B, 12 layer**: 4.5
+*   **MoE - 150B, 36 layer**: 4.5
+*   **MoE - 50B, 12 layer**: 3.5
+*   **MoE - 37B, 36 layer**: 3.5
+*   **MoE - 12.5B, 12 layer**: 2.5
+*   **MoE - 2.3B, 96 layer**: 2.5
+
+**Chart 2:**
+
+*   **MoE - 600B, 36 layer**: 5.5
+*   **MoE - 200B, 12
+*   **MoE - 150B, 36
+*   **MoE - 50B, 12
+*   **MoE - 37B, 36
+*   **MoE - 12.5B, 12
+*   **MoE - 2.3B, 96**
+
+**Table:**
+
+| Model | 600B, 36
+    | 200B, 12
+    | 150B, 36
+    | 12.5B, 12
+    | 2.3B, 96 |
+| MoE | 5.5
+
+**Table 2:**
+
+**Table 3:**
+
+| Model | 600B, 36
+    | 200B, 12
+    | 150B, 36
+    | 12. 5B, 12
+    | 2.3B, 96
+
+
+There is no table in the provided image. The image appears to be a chart or plot.
+
+**Chart/PLOT Extraction:**
+
+Here are the visible data points:
+
+
+X axis: 1B+ examples per language
+Y axis: ABLEU
+
+**Chart/PLOT Summary:**
+
+The chart appears to be a line graph showing the ABLEU score for different models on the 1B+ examples per language dataset. The X axis represents the number of 1B+ examples per language, and the Y axis represents the ABLEU score.
+
+**Diagrams:**
+
+There are no diagrams in the provided image. The image appears to be a chart or plot.
+
+**No Diagrams:**
 
 #### 5. Conclusion
 
@@ -470,6 +1321,128 @@ Tables 1 and 4 show this distinction as *gross CO2e* (energy from the grid) and 
 Alas, Google's large models in Table 4 were run in the Georgia datacenter, where in the past there was no or little difference between gross and net CO2e. Regions that have generator companies that can supply clean energy 24/7 and offer marketplaces that allow companies to acquire clean energy at any time of day will be more compelling to expand future growth of compute from a carbon impact perspective. A great example is Oklahoma, which allowed Google to average 95.6% net CFE for 2020. This is a case of where the grass actually is greener in Oklahoma than in Georgia. As mentioned above, in 2021 many new TPU v4 accelerators will be deployed in windy Oklahoma.
 
 ![](_page_19_Figure_3.jpeg)
+
+**Figure Description:**
+**Figure Context:**
+This image is a flowchart illustrating the carbon emissions and energy consumption of various data
+    *   *Example Table Row:* | L
+    *   *Generate:* 
+        *   Q: What is the size of the L
+        *   Q: How
+        *   Q: What
+        *   Q: What
+       
+    *   *Table Data:*
+        | **Renewable Generators** | **Other Generators** | **Electricity Market** | **Data Center** |
+        | :  | :  | :  | :  |
+        | 1 | 2 | 3 | 4 |
+        | 1 | 2 | 3 | 4 |
+        | 1 | 2 |   |  |
+        | 1 | 2 | 3 | 4 |
+        | 1 | 2 | 3 | 4 |
+
+
+
+
+Note: The table above is a simplified representation of the data in the image. The actual data may be more complex and require further analysis.
+
+
+### Table 1: Renewable Energy Sources
+
+| **Renewable Energy Source** | **MWh** |
+| --- | --- |
+| **Renewable Generators** | 1 |
+| **Other Generators** | 2 |
+| **Electricity Market** | 3 |
+| **Renewable Energy Credits (RECs)** | 4 |
+
+### Table 2: Data Center
+
+| **Data Center** | **MWh** |
+| --- | --- |
+| **Google Data Center** | 3 |
+
+### Table 3: Renewable Energy Sources
+
+| **Renewable Energy Source** | **MWh** |
+| --- | — |
+| **Renewable Generators** | 1 |
+| **Other Generators** | 2 |
+| **Electricity Market** | 3 |
+| **Renewable Energy Credits (RECs)** | 4 |
+
+### Table 4: Data Center
+
+| **Data Center** | **MWh** |
+| **Google Data Center** | 3 |
+
+### Table 5: Renewable Energy Sources
+
+| **Renewable Energy Source** | **MWh** |
+| **Renewable Generators** | 1 |
+| **Other Generators** | 2 |
+| **Electricity Market** | 3 |
+| **Renewable Energy Credits (RECs)** | 4 |
+
+### Table 6: Data Center
+
+### Table 7: Renewable Energy Sources
+
+| **Ren…** | **M…** |
+| **…** | **…** |
+
+### Table 8: Data… | **M…** |
+
+### Table 9: … | **M…** |
+
+### Table 10: … | **M…** |
+
+### Table 11: … | **M…** |
+
+### Table 12: … | **M…** |
+
+### Table 13: … | **M…** |
+
+### Table 14: … | **M…** |
+
+### Table 15: … | **M…** |
+
+### Table 16: … | **M…** |
+
+### Table 17: … | **M…** |
+
+### Table 18: … | **M…** |
+
+### Table 19: … | **M…** |
+
+### Table 20: … | **M…** |
+
+### Table 21: … | **M…** |
+
+### Table 22: … | **M…** |
+
+### Table 23: … | **M…** |
+
+
+[描述已截斷以避免過長]
+
+
+There is no table in the provided image. The image appears to be a flowchart or a diagram, which I will describe in the next section.
+
+
+There is no chart or plot in the provided image. The image appears to be a flowchart or a diagram, which I will describe in the next section.
+
+**Diagram Description**
+
+The image appears to be a flowchart or a diagram illustrating the relationship between various entities. Here is a description of the flow and labels:
+
+* The flowchart or diagram appears to be a flow of energy or data flow between various entities, including:
+	+ **Renewable Generators**: This is the starting point of the flow, where renewable energy is generated.
+	+ **Electro-Grid**: This is the next step in the flow, where the energy is sent to the electro- grid.
+	+ **Electro-Grid**: This is the next step in the flow, where the energy is sent to the electro- grid.
+
+
+[描述已截斷以避免過長]
 
 # Appendix C. Details of a CO<sub>2</sub>e Estimate for NAS in an Average Datacenter
 

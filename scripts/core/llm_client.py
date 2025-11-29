@@ -1,14 +1,21 @@
 """
-步驟 5: LLM 客戶端模組
-
+LLM 客戶端模組 (LLM Client)
+-------------------------
 功能：
-- 與 OpenAI/OpenRouter API 互動
-- 發送請求並處理回應
-- 錯誤處理和重試
+1. 統一管理對不同 LLM 服務的呼叫 (Ollama, OpenAI, OpenRouter, Groq)。
+2. 提供統一的 `complete` 介面，隱藏底層 API 差異。
+3. 處理 API 錯誤重試與例外狀況。
+
+支援服務：
+- Ollama (本地運行，推薦)
+- OpenAI (GPT-3.5/4)
+- OpenRouter (聚合免費/付費模型)
+- Groq (超快速推理)
 """
 
 import os
 import asyncio
+import json
 from typing import Optional
 # 確保您已經安裝了 openai 庫： pip install openai
 from openai import AsyncOpenAI
@@ -132,11 +139,24 @@ class LLMClient:
         # 簡單的重試邏輯
         for attempt in range(max_retries):
             try:
-                response = await self.client.chat.completions.create(
-                    model=self.model,
-                    messages=messages,
-                    temperature=temperature
-                )
+                # 準備參數
+                params = {
+                    "model": self.model,
+                    "messages": messages,
+                    "temperature": temperature
+                }
+                
+                # 如果是 Ollama，嘗試增加 context window (num_ctx)
+                if "localhost" in self.base_url and "ollama" not in self.model: # ollama lib handles it differently, but for openai compatible endpoint:
+                    # 注意：OpenAI Client 的 options 可能不直接支持 num_ctx，
+                    # 但許多 Ollama 兼容接口允許在 extra_body 中傳遞 options
+                    params["extra_body"] = {
+                        "options": {
+                            "num_ctx": 8192  # 嘗試設置為 8k context
+                        }
+                    }
+
+                response = await self.client.chat.completions.create(**params)
                 return response.choices[0].message.content or ""
             except Exception as e:
                 error_str = str(e)

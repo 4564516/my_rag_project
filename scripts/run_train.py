@@ -1,26 +1,64 @@
 """
-使用訓練數據運行並評估
+Pipeline Step 4: 訓練與評估 (Run Training & Evaluation)
+---------------------------------------------------
+功能：
+1. 讀取訓練問題集 (`data/train_QA.csv`)。
+2. 執行完整的 RAG 流程 (Query Rewrite -> Retrieval -> Rerank -> Generation)。
+3. 將生成的答案寫入 `artifacts/train_answers.csv`。
+4. 自動調用 `evaluate.py` 計算準確率。
+
+執行方式：
+python scripts/run_train.py
 """
+
 import asyncio
 import csv
+from pathlib import Path
 import sys
 import os
-from pathlib import Path
 
 # 添加項目路徑
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from scripts.evaluate import evaluate
-from scripts.embedder import Embedder
-from scripts.vector_store import VectorStore
-from scripts.llm_client import LLMClient
-from scripts.rag_pipeline import RAGPipeline
-from scripts.answer_formatter import AnswerFormatter
-from scripts.config import Config
-from scripts.example_retriever import ExampleRetriever
-from scripts.pdf_parser import PDFParser
-from scripts.text_processor import TextProcessor
+from scripts.core.evaluate import evaluate
+from scripts.core.embedder import Embedder
+from scripts.core.vector_store import VectorStore
+from scripts.core.llm_client import LLMClient
+from scripts.core.rag_pipeline import RAGPipeline
+from scripts.core.answer_formatter import AnswerFormatter
+from scripts.core.config import Config
+from scripts.core.example_retriever import ExampleRetriever
+
+def is_true_false_question(question: str) -> bool:
+    """
+    判斷是否為 True/False 題目。
+    目前根據開頭是否包含 'True or False' 來判斷。
+    """
+    q = question.strip().lower()
+    return q.startswith("true or false") or q.startswith("true/false")
+
+
+# 專用的 True/False 系統提示，強制輸出 1 / 0 / is_blank
+BOOLEAN_SYSTEM_PROMPT = """You are an expert research assistant specialized in answering True/False questions from academic documents.
+
+RULES:
+- You will receive a QUESTION and a CONTEXT.
+- The CONTEXT may contain quotes, tables, or figure descriptions.
+- Your job is to decide if the statement in the QUESTION is TRUE or FALSE based ONLY on the CONTEXT.
+
+OUTPUT RULES:
+- If the statement is clearly supported by the CONTEXT → answer_value = "1"
+- If the statement is clearly contradicted by the CONTEXT → answer_value = "0"
+- Only if the CONTEXT truly has NO information about the statement → answer_value = "is_blank"
+- Do NOT answer "is_blank" if there is any explicit sentence that implies True or False.
+- Do NOT use outside knowledge. Use ONLY the given CONTEXT.
+
+FORMAT:
+- For True/False questions, you MUST:
+  - Set "answer_value" to "1" or "0" or "is_blank"
+  - Optionally explain in natural language in "answer" and "explanation".
+"""
 
 async def run_with_train_data():
     """使用訓練數據運行"""
@@ -85,34 +123,15 @@ async def run_with_train_data():
     except:
         pass
 
-    # Fallback Mode: 只有當索引為空時才跑舊流程
-    if existing_count == 0 or recreate_index:
-        print("\n=== 解析 PDF 並建立索引 (Fallback Mode) ===")
-        print("注意：建議使用 scripts/pipeline_step*.py 獲得更好的效果")
-        parser = PDFParser()
-        processor = TextProcessor()
-        pdf_dir = project_root / config.pdf_dir
-        all_chunks = []
-        
-        if pdf_dir.exists():
-            pdf_files = list(pdf_dir.glob("*.pdf"))
-            print(f"找到 {len(pdf_files)} 個 PDF 文件")
-            
-            for pdf_file in pdf_files:
-                doc_id = pdf_file.stem
-                document = parser.parse(pdf_file, doc_id=doc_id)
-                if document:
-                    chunks = processor.process_document(document, chunk_size=400, overlap=150)
-                    all_chunks.extend(chunks)
-            
-            if all_chunks:
-                print(f"正在為 {len(all_chunks)} 個片段生成 embeddings...")
-                texts = [chunk.text for chunk in all_chunks]
-                embeddings = embedder.encode(texts)
-                vector_store.add_chunks(all_chunks, embeddings)
-                print(f"索引建立完成！")
+    if existing_count == 0:
+        print("❌ 錯誤：向量庫為空！")
+        print("請先執行以下指令建立索引：")
+        print("  1. python scripts/pipeline_step1_marker.py")
+        print("  2. python scripts/pipeline_step2_vision.py")
+        print("  3. python scripts/pipeline_step3_index.py")
+        return
     else:
-        print("\n✅ 檢測到現有索引，將直接使用 (跳過 PDF 解析)")
+        print("\n✅ 檢測到現有索引，開始執行 RAG...")
     
     # 回答問題
     print(f"\n=== 回答問題 ===")
@@ -124,10 +143,18 @@ async def run_with_train_data():
         print(f"\n[{idx}/{len(questions)}] 問題: {question[:60]}...")
         
         try:
+            # 根據題目類型選擇系統提示：
+            # True/False 題使用更嚴格的布林判斷提示，避免隨便回答 is_blank。
+            if is_true_false_question(question):
+                system_prompt = BOOLEAN_SYSTEM_PROMPT
+            else:
+                system_prompt = config.system_prompt
+
             result = await pipeline.answer(
                 question,
                 top_k=config.top_k,
-                system_prompt=config.system_prompt
+                llm_top_k=config.llm_top_k,
+                system_prompt=system_prompt
             )
             
             await asyncio.sleep(0.5)  # 小延遲

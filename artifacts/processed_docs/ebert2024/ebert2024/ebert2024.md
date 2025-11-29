@@ -372,6 +372,17 @@ AI systems, many of them containing energy-intensive generative AI components, a
 
 <span id="page-12-0"></span>![](_page_12_Figure_3.jpeg)
 
+**Figure Description:**
+**Figure Context:**
+This image is a flowchart illustrating the energy consumption and carbon
+                              
+
+
+
+
+[描述已截斷以避免過長]
+
+
 Figure 1: Measuring points for IT equipment energy consumption, from Annex II of the Delegated Regulation EU/2024/1364 of March 14, 2024
 
 #### <span id="page-13-0"></span>B Policy Proposals Overview

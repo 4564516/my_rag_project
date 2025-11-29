@@ -13,7 +13,12 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+.cursor/
 
-# RAG Data (Optional: 如果您想保留 PDF 處理結果，可以註解掉 artifacts/)
-# artifacts/
+# RAG Data
+# 我們保留 artifacts 資料夾，以便備份 PDF 和處理後的圖片
+# 但我們通常還是不想上傳向量資料庫，因為它很大且可以重建
 chroma_db/
+
+# Log files
+*.log

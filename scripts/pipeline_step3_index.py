@@ -23,20 +23,19 @@ from typing import List, Dict
 from tqdm import tqdm
 
 print("Importing project modules...", flush=True)
-from scripts.embedder import Embedder
-from scripts.vector_store import VectorStore
-from scripts.config import Config
+from scripts.core.embedder import Embedder
+from scripts.core.vector_store import VectorStore
+from scripts.core.config import Config
 
 class MarkdownSplitter:
     """簡單的 Markdown 切分器"""
     
     def split_text(self, text: str) -> List[str]:
         """
-        根據標題切分 Markdown
+        根據標題切分 Markdown，確保表格和圖表作為完整單元
         """
-        # 簡單起見，我們按 "## " 切分，保留標題
+        # 第一步：按 "## " 標題切分
         chunks = []
-        # 使用正則分割，保留分隔符
         parts = re.split(r'(^## .*$)', text, flags=re.MULTILINE)
         
         current_chunk = ""
@@ -51,23 +50,88 @@ class MarkdownSplitter:
         if current_chunk:
             chunks.append(current_chunk.strip())
             
-        # 二次處理：如果 chunk 太大 (>1200 字符)，再切
+        # 第二步：處理大 chunk，但保護表格和圖表
         final_chunks = []
         for chunk in chunks:
-            if len(chunk) > 1200:
-                # 按段落切分
-                paragraphs = chunk.split('\n\n')
-                temp_buf = ""
-                for p in paragraphs:
-                    if len(temp_buf) + len(p) < 1000:
-                        temp_buf += "\n\n" + p
-                    else:
+            # 特殊切分：強制將 **Figure Data (Q&A):** 和 **Figure Data (Table):** 分開
+            
+            # 我們使用 regex 識別這些新的標記
+            # 1. **Figure Data (Q&A):**
+            # 2. **Figure Data (Table):**
+            
+            # 先按 Q&A 分割
+            sub_parts = re.split(r'(?=\*\*Figure Data \(Q&A\):\*\*)', chunk)
+            
+            temp_parts = []
+            for sub_part in sub_parts:
+                # 再按 Table 分割
+                sub_sub_parts = re.split(r'(?=\*\*Figure Data \(Table\):\*\*)', sub_part)
+                temp_parts.extend(sub_sub_parts)
+            
+            current_figure_context = ""
+            
+            for sub_part in temp_parts:
+                if not sub_part.strip():
+                    continue
+                
+                # 嘗試提取 Context
+                if "**Figure Context:**" in sub_part:
+                    current_figure_context = sub_part.replace("**Figure Context:**", "").strip()[:500]
+                
+                # 處理 Q&A 部分：注入 Context (如果需要，但 Q&A 本身已經很完整了，其實不注入也可以，但注入更安全)
+                text_to_process = sub_part
+                
+                # 如果是 Q&A 區塊，我們特別標記它，讓它保持完整
+                if "**Figure Data (Q&A):**" in sub_part:
+                    # 注入 Context 以防萬一
+                    if current_figure_context:
+                        text_to_process = f"[Context: {current_figure_context}]\n" + sub_part
+                    
+                    final_chunks.append(text_to_process)
+                    continue # 跳過後續切分，直接作為一個完整 chunk
+                
+                # 一般內容的處理（包括 Table 和正文）
+                if len(text_to_process) > 1200:
+                    # 按段落切分，但保護表格和圖表
+                    lines = text_to_process.split('\n')
+                    temp_buf = ""
+                    in_table = False
+                    in_figure = False
+                    
+                    for i, line in enumerate(lines):
+                        # 檢測表格開始（Markdown 表格行）
+                        if line.strip().startswith('|') and '|' in line[1:]:
+                            in_table = True
+                        # 檢測表格結束（空行或非表格行）
+                        elif in_table and not line.strip().startswith('|') and line.strip():
+                            in_table = False
+                        
+                        # 檢測 Figure 相關標記
+                        if "**Figure" in line or "Table Processing" in line:
+                            in_figure = True
+                        elif in_figure and (line.strip().startswith('![') or line.strip().startswith('#')):
+                            in_figure = False
+                        
+                        # 如果當前在表格或圖表中，強制加入當前 buffer
+                        if in_table or in_figure:
+                            temp_buf += "\n" + line
+                            # 只有當 buffer 極度大（>4000）時才強制切分
+                            if len(temp_buf) > 4000 and not in_table:
+                                final_chunks.append(temp_buf.strip())
+                                temp_buf = line
+                        else:
+                            # 正常處理
+                            if len(temp_buf) + len(line) < 600: 
+                                temp_buf += "\n" + line
+                            else:
+                                if temp_buf.strip():
+                                    final_chunks.append(temp_buf.strip())
+                                temp_buf = line
+                    
+                    if temp_buf.strip():
                         final_chunks.append(temp_buf.strip())
-                        temp_buf = p
-                if temp_buf:
-                    final_chunks.append(temp_buf.strip())
-            else:
-                final_chunks.append(chunk)
+                else:
+                    final_chunks.append(text_to_process)
                 
         return [c for c in final_chunks if c.strip()]
 

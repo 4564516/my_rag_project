@@ -1,11 +1,13 @@
 """
-步驟 7: 答案格式化模組
-
+答案格式化模組 (Answer Formatter)
+-----------------------------
 功能：
-- 解析 LLM 的 JSON 回答
-- 轉換成 WattBot 格式
-- 正規化答案值
+1. 解析 LLM 的 JSON 輸出。
+2. 進行數據清洗與標準化 (單位轉換、布林值處理)。
+3. 將數據轉換為符合提交格式的 CSV 行。
+4. 處理 is_blank 或格式錯誤的邊界情況。
 """
+
 import json
 import re
 import csv
@@ -99,20 +101,51 @@ class AnswerFormatter:
             return self.BLANK_TOKEN
         
         # 處理 True/False -> 1/0
-        if str(value).lower() in ["true", "yes"]:
+        # 先檢查是否為 True/False 問題
+        is_boolean_question = question.lower().strip().startswith("true or false") or question.lower().strip().startswith("true/false")
+
+        # 1. 明確的文字映射 (無論題目類型)
+        if str(value).lower() in ["true", "yes", "1", "correct"]:
             return "1"
-        if str(value).lower() in ["false", "no"]:
+        if str(value).lower() in ["false", "no", "0", "incorrect"]:
             return "0"
             
+        # 2. 如果是 True/False 問題，進行更激進的過濾
+        if is_boolean_question:
+            # 如果值看起來不像 0 或 1，嘗試從更長的文本中提取
+            # 比如 value 是 "The statement is False because..." -> 提取 "False" -> "0"
+            if "false" in str(value).lower() or "incorrect" in str(value).lower():
+                return "0"
+            if "true" in str(value).lower() or "correct" in str(value).lower():
+                return "1"
+            
+            # 如果無法識別為 True/False，且不是明確的 is_blank，則強制轉為 is_blank
+            # 這是為了防止出現 "19474" 這種奇怪的數字
+            if value != self.BLANK_TOKEN:
+                print(f"Warning: Invalid boolean value '{value}' for True/False question. Forcing to is_blank.")
+                return self.BLANK_TOKEN
+
         if value.startswith('[') and value.endswith(']'):
             return value # Assume correct format if brackets exist
 
-        # 處理 million/billion
-        if "million" in value.lower():
+        # 處理 million/billion/trillion
+        value_lower = value.lower()
+        multiplier = 1
+        if "trillion" in value_lower:
+            multiplier = 1_000_000_000_000
+        elif "billion" in value_lower:
+            multiplier = 1_000_000_000
+        elif "million" in value_lower:
+            multiplier = 1_000_000
+            
+        if multiplier > 1:
             num_match = re.search(r'[\d,\.]+', value)
             if num_match:
-                num = float(num_match.group(0).replace(',', ''))
-                return str(int(num * 1_000_000))
+                try:
+                    num = float(num_match.group(0).replace(',', ''))
+                    return str(int(num * multiplier))
+                except ValueError:
+                    pass
                 
         # 簡單數字提取
         has_letters = bool(re.search(r'[a-zA-Z]', value))

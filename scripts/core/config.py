@@ -1,7 +1,15 @@
 """
-配置檔案
+核心配置模組 (Config)
+------------------
+功能：
+1. 集中管理所有系統參數（路徑、模型名稱、參數設置）。
+2. 支援從環境變數 (Environment Variables) 覆蓋預設值。
+3. 定義 Prompt Template（提示詞模板）。
 
-集中管理所有配置參數
+主要參數：
+- EMBEDDING_MODEL: 使用的向量模型 (如 all-mpnet-base-v2)
+- LLM_MODEL: 使用的語言模型 (如 ollama/mistral)
+- TOP_K: 檢索片段數量
 """
 
 import os
@@ -29,7 +37,8 @@ class Config:
     llm_model: str = "ollama/mistral:7b"  # 默認使用 Ollama 本地模型（更大的模型，更準確）
     
     # RAG 配置
-    top_k: int = 50  # 檢索的片段數量（增加到 50 以獲取更多上下文）
+    top_k: int = 50  # 檢索的片段數量（用於檢索階段）
+    llm_top_k: int = 10  # 提交給 LLM 的片段數量（用於生成階段，經過 Rerank 後）
     limit_pdfs: int = 0  # 0 = 處理所有 PDF，>0 = 只處理前 N 個
     
     # Prompt 配置
