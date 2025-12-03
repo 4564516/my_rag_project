@@ -22,34 +22,19 @@ We then compare this approach to the cloud-price approach that was first present
 
 <span id="page-1-1"></span>![](_page_1_Figure_1.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of various AI models' performance, energy, and carbon emissions, highlighting the need for more efficient and carbon-  
-
-**Figure Data (Q&A):**
-
-Q: What is the cost of the L-  : A: $1.3M
-Q: What is the cost of the L-  : A: $1.3M
-Q: What is the cost of the L-  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  : A: $1.  
-
-
-
-
-[描述已截斷以避免過長]
-
-
 Figure 1: Amortized hardware cost plus energy cost for the final training run of frontier models. The selected models are among the top 10 most compute-intensive for their time. Amortized hardware costs are the product of training chip-hours and a depreciated hardware cost, with 23% overhead added for cluster-level networking. Open circles indicate costs which used an estimated production cost of Google TPU hardware. These costs are generally more uncertain than the others, which used actual price data rather than estimates.
 
 yields costs that are about twice as large on average. We expect the cloud-price approach to overestimate frontier model costs, since model developers usually either own or have private rental agreements for their training hardware. Using both approaches helps validate our estimate of cost growth, while also highlighting the uncertainty of individual costs.
 
 Our third and most in-depth approach breaks down hardware, energy, and R&D staff costs over the entire development of the model (i.e. both experiments and training). We select four especially notable models for this approach—GPT-3, OPT-175B, GPT-4, and Gemini Ultra. For these models, we find that R&D staff costs including equity are between 29% and 49% of the total amortized cost. Computing hardware makes up 47–64%, while energy comprises only 2–6%. However, if we exclude equity the fraction for R&D staff drops to 19–33%, and the fractions of computing hardware costs and energy rise to 61–76% and 2–7% respectively.
 
+By taking into account hardware purchase costs, energy costs, and the more opaque costs of R&D labor, our analysis provides a clearer picture of the true costs of AI development. This sheds light on not only current costs but also the economic hurdles that lie ahead as AI continues to scale.
 
-[描述已截斷以避免過長]
+All of our results can be reproduced using the code and data available at [https://github.com/epoch-research/](https://github.com/epoch-research/training-cost-trends) [training-cost-trends](https://github.com/epoch-research/training-cost-trends).
 
 # 2 Methodology
 
-#### 2.1 Datasets and frontier model selection
+## 2.1 Datasets and frontier model selection
 
 Our investigation draws upon the Notable AI Models database, which documents 796 notable models across the history of machine learning [\[7\]](#page-10-6). Key details captured for each model include training compute, dataset size, and parameter count. To focus on the largest-scale models, we initially filtered the database to models that had training compute estimates and that were published on or after 1 October 2015 (the start of the large-scale ML era according to [\[8\]](#page-10-7)) and up to 31 December 2023. This resulted in 276 selected models. For these models, we recorded the training time, hardware type and quantity, and utilization rate sourced from each model's original publication, where possible.
 
@@ -59,7 +44,7 @@ For our main results, we examined 41 models that were historically at the fronti
 
 In addition to the data on machine learning models, we compiled a dataset of historical hardware prices, allowing us to estimate training costs. This price dataset contained cloud rental prices and hardware purchase prices for 24 different hardware models (e.g. NVIDIA A100) between 2015 and 2023. In total there were 142 entries, 52 of which were purchase prices and 90 of which were cloud rental prices.
 
-### <span id="page-2-1"></span>2.2 Amortizing the cost of hardware for training
+#### <span id="page-2-1"></span>2.2 Amortizing the cost of hardware for training
 
 To estimate the cost of hardware for a training run, we first calculated the cost to acquire the necessary accelerator chips (GPUs/TPUs), servers, and networking hardware. This involved looking up historical prices for GPUs, or estimating production costs for TPUs. Further details are provided in Appendix [A.1.](#page-12-0)
 
@@ -122,7 +107,7 @@ Actual staff compensation may vary significantly between AI labs. The chosen est
 
 # 3 Results
 
-#### 3.1 Amortized training costs of frontier models have grown by 2.4x per year since 2016
+## 3.1 Amortized training costs of frontier models have grown by 2.4x per year since 2016
 
 The amortized training costs of frontier models have increased by a factor of 2.4x per year since 2016. This is the result of the preferred amortized hardware CapEex + energy approach, shown in Figure [2.](#page-4-0) Table [1](#page-4-1) compares this to the cloud approach, which yields a similar growth rate of 2.5× per year. The growth rate is also similar if we vary hardware depreciation or training start date within reasonable limits (see Appendix [B.4\)](#page-17-1). However, the growth rate rises to 2.9x per year if we exclude TPUs, which have more uncertain costs than publicly-sold GPUs.
 
@@ -138,150 +123,25 @@ Table 1: Cost growth rates based on log-linear regression, for different cost es
 
 <span id="page-4-0"></span>![](_page_4_Figure_6.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of various AI models' performance, including L- 2, L- 3, L- 4, L- 5, L- 6, L- 7, L- 8, L- 9, L- 10, L- 11, L- 12, L- 13, L- 14, L- 15, L- 16, L- 17, L- 18, L- 19, L- 20, L- 21, L- 22, L- 23, L- 24, L- 25, L- 26, L- 27, L- 28, L- 29, L- 30, L- 31, L- 32, L- 33, L- 34, L- 35, L- 36, L- 37, L- 38, L- 39, L- 40, L- 41, L- 42, L- 43, L- 44, L- 45, L- 46, L- 47, L- 48, L- 49, L- 50, L- 51, L- 52, L- 53, L- 54, L- 55, L- 56, L- 57, L- 58, L- 59, L- 60, L- 61, L- 62, L- 63, L- 64, L- 65, L- 66, L- 67, L- 8, L- 9, L- 10, L- 11, L- 12, L- 13, L- 14, L- 15, L- 16, L- 17, L- 18, L- 19, L- 20, L- 21, L- 22, L- 23, L- 24, L- 25, L- 26, L- 27, L- 28, L- 29, L- 30, L- 31, L- 32, L- 33, L- 4, L- 5, L- 6, L- 7, L- 8, L- 9, L- 10, L- 11, L- 12, L- 13, L- 14, L- 15, L- 16, L- 17, L- 18, L- 19, L- 20, L- 21, L- 22, L- 23, L- 24, L- 25, L- 26, L- 27, L- 28, L- 9, L- 10, L- 11, L- 12, L- 13, L- 14, L- 15, L- 16, L- 17, L- 18, L- 19, L- 20, L- 21, L- 22, L- 23, L- 24, L- 25, L- 26, L- 27, L- 28, L- 9, L- 10, L- 11, L- 12, L- 13, L- 14, L- 15, L- 16, L- 17, L- 18, L- 19, L- 20, L- 21, L- 22, L- 23, L- 24, L- 25, L- 26, L- 27, L
-
-
-
-
 Figure 2: (Reproduction of Figure [1](#page-1-1) for convenience.) Amortized hardware cost plus energy cost for the final training run of frontier models. The selected models are among the top 10 most compute-intensive for their time. Amortized hardware costs are the product of training chip-hours and a depreciated hardware cost, with 23% overhead added for cluster-level networking. Open circles indicate costs which used an estimated production cost of Google TPU hardware. These costs are generally more uncertain than the others, which used actual price data rather than estimates.
 
 Estimating costs from cloud rental prices, although less representative of actual costs, has the advantage of simplicity. The cloud cost approach also helps to check the robustness of the amortized hardware CapEx + energy approach. Figure [3](#page-5-0) shows the trend of cloud compute cost to train models among the top 10 most compute-intensive as of their release. Note that some of these estimates previously appeared in the 2024 AI Index report [\[6\]](#page-10-5). We find that the cost of training models based on cloud rental prices has grown by 2.5× per year since 2016, with a 90% CI of 2.1× to 3.1×.
 
 <span id="page-5-0"></span>![](_page_5_Figure_1.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the costs of various large language models (LLs) and their environmental impact, including carbon emissions, model sizes, and energy
- 
-**Figure Data (Q&A):**
-
-Q: What is the cost of the LLM in 2023?
-A: 2.5x/year
-
-Q: What is the cost of the LLM in 2016?
-
-Q: What is the cost of the LLM in 2017?
-
-Q: What is the cost of the LLM in 2018?
-
-Q: What is the cost of the LLM in 2019?
-
-Q: What is the cost of the LLM in 2020?
-
-Q: What is the cost of the LLM in 2021?
-
-Q: What is the cost of the LLM in 2022?
-
-Q: What is the cost of the LLM in 2023?
-
-Q: What is the cost of the LLM in 2024?
-
-Q: What is the cost of the LLM in 2025?
-
-Q: What is the cost of the LLM in 2026?
-
-Q: What is the cost of the LLM in 2027?
-
-Q: What is the cost of the LLM in 2028?
-
-Q: What is the cost of the LLM in 2029?
-
-Q: What is the cost of the LLM in 2030?
-
-Q: What is the cost of the LLM in 2031?
-
-Q: What is the cost of the LLM in 2018
-
-Q: What is the cost of the LLM in 2019
-
-Q: What is the cost of the LLM in 2020
-
-Q: What is the cost of the LLM in 2021
-
-Q: What is the cost of the LLM in 2022
-
-Q: What is the cost of the LLM in 2023
-
-Q: What is the cost of the LLM in 2024
-
-Q: What is the cost of the LLM in 2025
-
-Q: What is the cost of the LLM in 2016
-
-Q: What is the cost of the LLM in 2017
-
-Q: What is the cost of the L
-
-
-
-
-Unfortunately, the image does not contain a table. I will move on to the plots.
-
-**Plots:**
-
-The image contains two plots. I will extract the data points and describe the plots.
-
-**Plot 1:**
-
-*   **Title:** Cost (2023 USD, log scale)
-*   **X-axis:** Year (2016-2024)
-*   **Y-axis:** Cost (2023 USD, log scale)
-*   **Data points:**
-    *   2016: 10k
-    *   2017: 20k
-    *   2018: 30k
-    *   2019: 40k
-    *   2020: 50k
-    *   2021: 60k
-    *   2022: 70k
-    *   2023: 80k
-    *   2024: 90k
-*   **Trend:** The cost increases over time, with a significant increase in 2023.
-
-**Plot 2:**
-
-*   **Title:** Publication
-*   **X-axis:** Year (2016-2024)
-*   **Y-axis:** Number of publications
-*   **Data points:**
-    *   2016: 10
-    *   2017: 20
-    *   2018: 30
-    *   2019: 40
-*   **Trend:** The number of publications increases over time.
-
-**Data Points:**
-
-*   **GPT-3:** 100k
-*   **GPT-4:** 100k
-*   **GPT-5:** 100k
-*   **GPT-6:** 100k
-*   **GPT-7:** 100k
-*   **GPT-8:** 100k
-*   **GPT-9: 100k**
-
-**Trend:**
-
-*   The cost and number of publications are both increasing
-*   The cost and number of
-
 Figure 3: Estimated cloud compute costs for the final training run of frontier models. The selected models are among the top 10 most compute-intensive for their time. The costs are the product of the number of training chip-hours and a historical cloud rental price.
 
 This is consistent with the amortized hardware CapEx + energy approach, as shown in Table [1.](#page-4-1) This shows that our trend estimates are robust to two different ways of estimating prices per chip-hour.
 
-Overall, these results suggest that the cloud approach is valid for estimating *growth rates* in compute costs, and has the advantage of simplicity.
+Overall, these results suggest that the cloud approach is valid for estimating *growth rates* in compute costs, and has the advantage of simplicity. However, public cloud rental prices are less reliable for *individual* model costs when the model developer owns the hardware or has a special partnership with a cloud provider.
 
-[描述已截斷以避免過長]
-
-### 3.2 The trend suggests that the most expensive publicly announced model will cost one billion dollars to train by the start of 2027
+#### 3.2 The trend suggests that the most expensive publicly announced model will cost one billion dollars to train by the start of 2027
 
 The growth rate in training cost indicates how rapidly AI investment is scaling. We can use this growth rate to extrapolate the cost of the largest training run. Currently, GPT-4 has the largest amortized hardware and energy cost, at \$40M. GPT-4 was published in March of 2023 [\[12\]](#page-10-11). This implies that, at a growth rate of 2.4× per year, the most expensive publicly announced model by the start of 2027 will cost about \$1 billion.
 
 Whether this cost is justified hinges on how profitable the resulting AI model is—but parts of the AI industry believe it is worthwhile. The CEO of the AI lab Anthropic has claimed that close to a billion dollars will already be spent on a single training run in 2024 (implying an amortized cost), which is even sooner than the historical trend suggests [\[5\]](#page-10-4).
 
-### 3.3 Hardware acquisition costs are one to two orders of magnitude higher than amortized costs
+#### 3.3 Hardware acquisition costs are one to two orders of magnitude higher than amortized costs
 
 It's important to distinguish the amortized cost of the hardware used for training, which is spread over the useful lifetime of the hardware, and the acquisition cost of purchasing that hardware outright. The choice of which cost to consider depends on the purpose of the analysis. Amortized costs are more relevant for understanding the economics of training and deploying models over an extended period, while acquisition costs give a sense of the capital barriers to entry and financial risks involved in developing such models.
 
@@ -299,7 +159,7 @@ Energy makes up the remainder of costs, averaging 9% but varying across models. 
 
 Note that this breakdown does not include all costs associated with an AI supercomputer. Other costs include the data center infrastructure besides servers and networking, as well as data center personnel and maintenance.
 
-### <span id="page-6-0"></span>3.5 R&D staff are a significant fraction of costs over the whole model development process
+#### <span id="page-6-0"></span>3.5 R&D staff are a significant fraction of costs over the whole model development process
 
 We now use our third cost estimation approach to examine how the cost of labor from researchers and engineers compares to the amortized cost of compute. Unlike the previous approaches, which only measured the cost of the final training run, this approach counts compute usage throughout model development including experiments, fine-tuning and evaluation. Figure [6](#page-8-0) shows the cost breakdown for GPT-3, OPT-175B (notable as a GPT-3 replication attempt by a team at Meta AI), the original GPT-4 model by OpenAI, and the original Gemini 1.0 Ultra model by Google DeepMind.
 
@@ -311,91 +171,19 @@ Gemini Ultra has the highest fraction of R&D staff cost at 49%, but we expect th
 
 ![](_page_7_Figure_1.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a comprehensive chart comparing various AI models, including their sizes, energy, and performance. It provides a detailed comparison of 100+ AI models, including L-1, L-2, L-3, L-4, L-5, L-6, L-7, L-8, L-9, L-10, L-11, L-12, L-13, L-14, L-15, L-16, L-17, L-18, L-19, L-20, L-21, L-22, L-23, L-24, L-25, L-26, L-27, L-28, L-29, L-30, L-31, L-32, L-33, L-34, L-35, L-36, L-37, L-38, L-39, L-40, L-41, L-42, L-43, L-44, L-45, L-46, L-47, L-48, L-49, L-50, L-51, L-52, L-53, L-54, L-55, L-56, L-57, L-58, L-59, L-60, L-61, L-62, L-63, L-64, L-65, L-66, L-67, L-68, L-69, L-70, L-71, L-72, L-73, L-74, L-75, L-76, L-77, L-78, L-79, L-80, L-81, L-82, L-83, L-84, L-85, L-86, L-87, L-88, L-89, L-90, L-91, L-92, L-93, L-94, L-95, L-96, L-97, L-98, L-99, L-10, L-11, L-12, L-13, L-14, L-15, L-16, L-17, L-18, L-19, L-20, L-21, L-22, L-23, L-24, L-25, L-26, L-27, L-28, L-29, L-30, L-31, L-32, L-33, L-4, L-5, L-6, L-7, L-8, L-9, L-10, L-11, L-12, L-13, L-14, L-15, L-16, L-17, L-18, L-19, L-20, L-21, L-22, L-23, L-24, L-25, L-26, L-27, L-28, L-29, L-30, L-31, L-32, L-33, L-4, L-5, L-6, L-7, L-8, L-9, L-10, L-11, L-12, L-13, L-14, L-15, L-16, L-17, L-18, L-19, L-20, L-21, L-22, L-23, L-24, L-25, L-26, L-27, L-28, L-29, L-30, L-31, L-32, L-33, L-4, L-5, L-6, L-7, L-8, L-9, L-10, L
-
-
-
-
-Note: The table above is a simplified version of the actual data. The actual data is a bar chart with 50 models, each with a performance score. The table above is a simplified version of the actual data, with only a few models and a few performance scores. The actual data is a bar chart with 50 models, each with a performance score. The actual data is a bar chart with 50 models, each with a performance score. The actual data is a bar chart with 50 models, each with a performance score. The actual data is a bar chart with 50 models, each with a performance score. The actual data is a bar chart with 50 models, each with a performance  | Model | AI- or Non-AI | Performance |
-| --- | --- | — |
-| ... | ... | ... |
-| Deep-S-2 (English) | Non-AI | 60.0% |
-| ... | ... | ... |
-
-
-[描述已截斷以避免過長]
-
-
-The chart is divided into multiple sections, each representing a different AI model or task. Each section is a bar chart with multiple bars, each representing a different aspect of the model's performance.
-
-**Data Points:**
-
-The chart contains numerous data points, each representing a specific aspect of the model’s performance. I will not be able to extract all data points, but I can provide a general description of the chart’s structure and content.
-
-**Chart Sections:**
-
-The chart is divided into multiple sections, each representing a different aspect of the model’s performance. The sections include:
-
-* **AI Accelerator Chips:** This section lists various AI models and their performance on different tasks.
-* **Other Server Components:** This section lists various AI models and their performance on different tasks.
-* **Cluster- Level Interconnect:** This section lists various AI models and their performance on different tasks.
-* **Energy:** This section lists various AI models and their performance on different tasks.
-
-* **AI Acceler
-* **Other Server
-* **Cluster- 
-
 Figure 5: The percentage of the amortized hardware CapEx + energy estimates made up by different hardware and energy costs. Note that the breakdown across models is approximate. Cluster-level interconnect is assumed to be a constant 19% fraction of the cluster CapEx, and the proportion of server components is based on only three comparisons between NVIDIA DGX server prices and single GPU prices (see Appendix [A.1](#page-12-0) for details). The energy costs are more specific, varying with the number of training chip-hours and the hardware (see Appendix [A.4\)](#page-14-1).
 
 <span id="page-8-0"></span>![](_page_8_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents an analysis of the costs and environmental impact of various AI models, including LLMs, GShard, and others. The data is broken down into several categories, including carbon emissions, model sizes, and energy consumption. The analysis is based on data from 2022.
+Figure 6: (a) Breakdown of total amortized model development costs for selected models. Hardware costs are amortized to the total number of chip-hours spent on experiments and training, while R&D staff costs cover the duration of development from initial experiments to publication. Error bars indicate 90% credible intervals, while the main bar values are medians. (b) Costs components as a percentage of the total, based on median estimates.
 
-**Figure Data (Q&A):**
+GPT-4 at 284 contributors. Though we assumed a very small contribution from the 428 people under the "Contributors" role—a median full-time equivalent of about 1%—the estimate may still be too high.
 
-Q: What is the total carbon emissions for GShard?
-Q: What is the size of the L-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1
-
-
-
-
-### Amortized Hardware, Energy, and R&D Staff Costs for Training and Experiments
-
-| Model | Amortized Hardware Cost (2023 USD) | Amortized Energy Cost (2023 USD) | Amortized R&D Staff Cost (2023 USD) |
-| :---: | :---: | :---: | :---: |
-| GPT-3 175B (davinci) | 1.3M | 1.3M | 1.3M |
-| GPT-4 | 10M | 10M | 10M |
-| GPT-4 (davinci) | 10M | 10M | 10M |
-| GPT-4 (davinci) | 10M | 10M | 10M |
-
-| Model | Amortized Hardware Cost (2023 USD) | Amortized Energy Cost (2023 USD) | Amortized R&D Staff Cost (2023 USD) |
-| :—: | :—: | :—: | :—: |
-| GPT-3 175B (davinci) | 1.3M | 1.3M | 1.3M |
-| GPT-4 | 10M | 10M | 10M |
-| GPT-4 | 10M | 10M | 10M |
-
-| Model | Amortized Hardware Cost (2023 USD) | Amortized Energy Cost (2023 USD) | Amortized R&D
-                              
-
-| Model | Cost (2023 USD, log scale) |
-| --- | --- |
-| GPT-3 175B (davinci) | 1.5M |
-| GPT-4 | 10M |
-**Table 2: Percentage of costs for training and experiments of ML models**
-
-| Model | R&D staff (including equity) | AI accelerator chips | Other server components | Other server components | Other server components | Other server components | Other server components | Other server components | Other server components | Other server components | Other server components | Other server components | Other server components | Other server components | Other server | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other | Other |
-
-Figure 6: (a) Breakdown of total amortized model development costs for selected models. Hardware costs are amortized to the total number of chip-hours spent on experiments and training, while R&D staff costs cover the duration of development from initial experiments to publication. Error bars indicate 90% credible intervals, while the main bar values are medians.
-
-[描述已截斷以避免過長]
+On the compute side, we find that amortized hardware cost makes up 47–64% of the full model development cost, while energy comprises only 2–6%. With equity excluded from R&D costs, the fraction of hardware cost and energy cost rise to 61–76% and 2–7% respectively. Note that while energy consumption is a small fraction of total cost, this doesn't entail that power requirements are not a challenge in frontier AI development. Regulatory and logistical hurdles to secure power supplies may cause bottlenecks in the coming years, but we leave that topic to future work.
 
 #### 4 Discussion
 
-## 4.1 Implications
+#### 4.1 Implications
 
 The rapid growth in AI training costs will have a major impact on the future of AI development. Our findings suggest that if the current trend of 2.4x per year growth continues, then the amortized cost of frontier training runs will exceed one billion dollars by 2027. Given the potential bias in our estimates' absolute values, this may happen even sooner—as suggested by cloud-price costs, and news reporting on training costs [5]. If realized, this level of investment is likely to drive rapid advances in AI capabilities, given the track record of scaling up AI models.
 
@@ -473,7 +261,7 @@ This study was supported by a grant from the AI Index based out of the Stanford 
 
 # A Training cost estimation
 
-#### <span id="page-12-0"></span>A.1 Hardware acquisition cost
+## <span id="page-12-0"></span>A.1 Hardware acquisition cost
 
 The frontier AI models in our dataset were trained on clusters of many GPU or TPU chips (or "chips" for short). We set out to estimate the total cost of the chips, servers, and networking equipment in these clusters, which we call the hardware acquisition cost. This cost is calculated as follows:
 
@@ -481,11 +269,11 @@ Hardware acquisition cost = Acquisition cost per chip × Number of chips
 
 <span id="page-12-1"></span>Where "Acquisition cost per chip" accounts for the GPU or TPU chip itself, other server costs (CPUs, memory, chip-to-chip networking, and markup), and the cost of server-to-server networking equipment. Table [2](#page-12-1) shows how we calculated this quantity depending on what was known about the training hardware.
 
-| Known information | Formula for "Acquisition cost per chip"                           |  |
-|-------------------|-------------------------------------------------------------------|--|
-| Single GPU price  | GPU chip price × Chip-to-server factor × Server-to-cluster factor |  |
-| GPU server price  | GPU server price / GPUs per server × Server-to-cluster factor     |  |
-| Chips are TPUs    | TPU chip cost × Chip-to-server factor × Server-to-cluster factor  |  |
+| Known information | Formula for "Acquisition cost per chip"                           |  |  |
+|-------------------|-------------------------------------------------------------------|--|--|
+| Single GPU price  | GPU chip price × Chip-to-server factor × Server-to-cluster factor |  |  |
+| GPU server price  | GPU server price / GPUs per server × Server-to-cluster factor     |  |  |
+| Chips are TPUs    | TPU chip cost × Chip-to-server factor × Server-to-cluster factor  |  |  |
 
 Table 2: The formula to estimate "Acquisition cost per chip", depending on what is known about the training hardware.
 
@@ -497,7 +285,7 @@ Once we had the cost per chip for a single server, we added the cost of server-t
 
 For simplicity, we assumed that 19% of the hardware acquisition cost was for server-to-server networking equipment. We therefore multiplied the cost per chip for a single server by a "server-to-cluster" factor of 100%/(100%−19%) ≈ 1.23×, resulting in the final "Acquisition cost per chip". We assumed that the overhead factor is accurate for TPU servers as well as GPU servers, though we have substantial uncertainty about this. In reality, the proportion of costs varies with the cluster architecture and size.
 
-# A.2 Cost of Google TPUs
+#### A.2 Cost of Google TPUs
 
 Tensor Processing Units are a class of proprietary AI accelerator hardware developed by Google, and used in their internal computing projects and employed in Google Cloud datacenters [\[17\]](#page-10-16). These chips are not available for sale, but some of them can be rented on the cloud. Since they have never been sold, there are no available purchase prices, which makes it more difficult to estimate the amortized capital expenses for Google Brain, DeepMind, and other Google labs.
 
@@ -507,8 +295,7 @@ Tensor Processing Units are a class of proprietary AI accelerator hardware devel
 
 To estimate the cost of TPUs used by Google labs, we aggregated two approaches. The first approach estimates TPU manufacturing costs based on a bill of materials (BOM) for the NVIDIA H100 GPU. We consider this a low-end estimate, as it does not account for R&D costs, lower production of TPUs compared to NVIDIA GPUs, and the overhead of co-designing TPUs with Broadcom [\[18\]](#page-10-17). The second approach models the equivalent purchase prices of Google TPUs had they been offered for sale, by comparing them to contemporary hardware with similar specifications. We consider this a high-end estimate, because GPU prices include a markup on the cost of developing the chips. We interpolated hardware costs based on price-performance:
 
-TPU effective cost = GPU cost 
-$$\times \frac{\text{TPU performance}}{\text{GPU performance}} \times \text{date adjustment factor}$$
+$$TPU \ effective \ cost = GPU \ cost \times \frac{TPU \ performance}{GPU \ performance} \times date \ adjustment \ factor$$
 
 where the date adjustment factor adjusts costs compared on different dates to make them comparable, based on the trend that GPU performance per unit cost improves at a rate of 0.14 orders of magnitude per year.
 
@@ -530,19 +317,20 @@ Table 3: Cost and performance comparison between Google TPUs and the NVIDIA H100
 
 <span id="page-13-1"></span>
 
-|                       | K80                  | P100 PCIe 16GB       | V100 SXM2 32GB        | A100 SXM4 40GB  |
-|-----------------------|----------------------|----------------------|-----------------------|-----------------|
-| Release date          | 2014-11-17           | 2016-06-20           | 2018-03-27            | 2020-05-14      |
-| Performance in TFLOPS | 8 (FP32)             | 19 (FP16)            | 125 (FP16)            | 312 (FP16)      |
-| Memory                | 24 GB                | 16 GB                | 32 GB                 | 40 GB           |
-| Sale price            | \$5,000 (at release) | \$5,699 (at release) | \$11,458 (2018-05-08) | \$15,000 (2020) |
-|                       | \$3,700 (2016)       |                      |                       | \$12,500 (2022) |
+| K80                  | P100 PCIe 16GB       | V100 SXM2 32GB        | A100 SXM4 40GB  |
+|----------------------|----------------------|-----------------------|-----------------|
+| 2014-11-17           | 2016-06-20           | 2018-03-27            | 2020-05-14      |
+| 8 (FP32)             | 19 (FP16)            | 125 (FP16)            | 312 (FP16)      |
+| 24 GB                | 16 GB                | 32 GB                 | 40 GB           |
+| \$5,000 (at release) | \$5,699 (at release) | \$11,458 (2018-05-08) | \$15,000 (2020) |
+| \$3,700 (2016)       |                      |                       | \$12,500 (2022) |
+|                      |                      |                       |                 |
 
 Table 4: Comparison of GPU specifications. By interpolation between GPUs, and their price-performance data, we estimate performance-equivalent prices for TPU versions.
 
 As explained above, we consider the manufacturing costs to be low estimates and the equivalent GPU prices to be high-end estimates of the full production cost. To aggregate the two approaches into a final estimate, we took the geometric mean, as shown in Table [3.](#page-13-0) Each TPU version has an estimated cost (for Google) of about \$5,000.
 
-### <span id="page-14-0"></span>A.3 Amortization model
+## <span id="page-14-0"></span>A.3 Amortization model
 
 As explained in section [2.2,](#page-2-1) we estimated the value of the training hardware at the beginning of training as:
 
@@ -554,20 +342,17 @@ For the training start date, there were a few known cases—for example, GPT-4 f
 
 The precise way to amortize the training cost through exponential depreciation is:
 
-Amortized training cost = Start value per chip × Number of chips × Depreciation during training = Start value per chip × Number of chips × 
-$$\left(1 - \exp\left[-\text{Training time} \times r \ln 10\right]\right)$$
+$$\begin{aligned} \text{Amortized training cost} &= \text{Start value per chip} \times \text{Number of chips} \times \text{Depreciation during training} \\ &= \text{Start value per chip} \times \text{Number of chips} \times \left(1 - \exp\left[-\text{Training time} \times r \ln 10\right]\right) \end{aligned}$$
 
 where training time is in years. However, we could estimate chip-hours more often and more reliably than the training time or the number of chips separately. This is because chip-hours can also be estimated from training compute in FLOP divided by the FLOP/s achieved during training. We used a linear approximation to take advantage of these chip-hour estimates:
 
-Amortized training cost = Start value per chip 
-$$\times$$
-  $\frac{\text{Training chip-hours}}{(365 \times 24) \text{ hours/year}} \times r \ln 10$ 
+$$\mbox{Amortized training cost} = \mbox{Start value per chip} \times \frac{\mbox{Training chip-hours}}{(365 \times 24) \mbox{ hours/year}} \times r \ln 10$$
 
 This approximation is valid if (Training time)×r ln 10 is small, and this is the case for the training times in our data and our choice of r = 0.14. In an extreme case, a training time of 1 year results in 1 × 0.14 ln(10) ∼= 32% deprecation compared to 1 − exp(−1 × 0.14 ln(10)) ∼= 28% depreciation. This is not a large difference relative to other sources of uncertainty.
 
 Due to NVIDIA covering defects and component failures under warranty, we concluded that hardware failures are not a significant source of depreciation relative to hardware progress. As one data point, an average of 1 to 2 failures per week occurred when training the BLOOM model on a cluster of 384 NVIDIA A100 GPUs [\[25\]](#page-11-5). Even if these were all catastrophic failures, the expected hardware lifetime would be 3.7 years. We expect that NVIDIA replaces or repairs defective GPUs on a faster timescale, which makes the cost of failure small compared to hardware price depreciation.
 
-#### <span id="page-14-1"></span>A.4 Energy cost estimation
+### <span id="page-14-1"></span>A.4 Energy cost estimation
 
 To model the cost of energy consumed by hardware during a training run, we started with the thermal design power (TDP) of the GPU or TPU used for training. We then scaled this up to estimate the TDP of one server. For TPUs, the server scale-up was based on data from Table 1 of [\[26\]](#page-11-6). For NVIDIA GPUs, we used specifications such as [\[27\]](#page-11-7).
 
@@ -595,7 +380,7 @@ Another source of evidence is reports of how compute budgets are allocated. For 
 
 For GPT-3, the true ratio is almost certainly higher than 1.14x due to failures and other experiments. We believe the Meta, BLOOM and OPT-175B cases are the more central examples as they account better for all experiments. So a factor close to 2x seems like a reasonable median estimate. On the high end, it's plausible that several large-scale experiments are necessary before training—say, 4x. We sampled from the range of plausible values using a log-normal distribution. The distribution was defined by a 90% CI of 1.2x to 4x, leading to a median of 2.2x.
 
-#### A.7 Cost uncertainty analysis
+## A.7 Cost uncertainty analysis
 
 Our cost estimation methods have many sources of uncertainty, making it important to measure overall uncertainty in the estimates. To do this, we first made a rough estimate of the relative uncertainty in each input variable, based on empirical data. For example, for the overhead of per-GPU server cost relative to single GPU cost we assigned a 90% credible interval of 1.3x to 2.1x, which is wider than the range of values in our data and from industry sources.[6](#page-15-2)
 
@@ -618,7 +403,7 @@ The relative uncertainties in cost are listed in Table [5.](#page-16-1) Hardware
 
 Table 5: Estimated relative uncertainty in individual cost estimates, for different methods. TPU estimates have larger uncertainty due to the additional uncertainty in estimating their equivalent costs.
 
-### A.8 Ground truth cost comparison
+#### A.8 Ground truth cost comparison
 
 In order to verify that our results are reasonable, we sought to compare our cost estimates with true costs reported by developers and other sources. However, there are very few models where the developers report both the computing resource usage and the total cost. Training costs and compute resources are independently known for BLOOM-176B and OPT-175B, so we compare our estimates with these.
 
@@ -628,7 +413,7 @@ OPT-175B was trained for 793.5 hours, at a cost of \$2500/hour as reported in th
 
 # B Sensitivity analysis
 
-# <span id="page-16-0"></span>B.1 Selection of historic frontier models
+## <span id="page-16-0"></span>B.1 Selection of historic frontier models
 
 In order to analyse trends in frontier ML models, we must define what counts as a frontier model at any point in time.[7](#page-16-2) Our preferred approach is to select models from the database that were in the top 10 most compute-intensive models as of their release date, although we considered others as shown in Figure [7.](#page-17-2)
 
@@ -639,40 +424,6 @@ Our preferred approach has an advantage over alternatives: the selection is more
 <span id="page-16-2"></span><sup>7</sup>Models in the database meet one or more of the following criteria: (i) advanced the state of the art on a qualifying benchmark, (ii) at least 1000 citations, (iii) at least one million monthly active users, or (iv) equivalent historical significance [\[7\]](#page-10-6). However, this means the database includes many models that were far from the frontier of compute.
 
 <span id="page-17-2"></span>![](_page_17_Figure_0.jpeg)
-
-**Figure Description:**
-**Figure Context:**
-This image is a collection of scatter plots and line graphs that visualize the performance and energy consumption of various models and datasets. The plots show the relationship between the number of models, the number of datasets, and the energy consumption of the models. The data is used to compare the performance of different models and datasets, and to identify the most efficient and
-
-**Figure Data (Q&A):**
-
-Q: What is the number of models in the top-left plot?
-
-Q: What is the number of models in the top-right plot?
-
-Q: What is the number of models in the bottom-left plot?
-
-Q: What is the number of models in the bottom-right plot?
-
-Q: What is the number of models in the bottom-left
-
-**Figure Data (Table):**
-
-| **Plot** | **X-Axis** | **Y-Ax** | **Data** |
-| **Top-N=10** | 2020 | 2024 | 10 |
-| **Top 20% of models in year before/after** | 2016 | 2024 | 20 |
-| **Top 15% of models in year before** | 2016 | 2024 | 15 |
-| **Top 20% of residuals from trend** | 2016 | 2024 | 20 |
-
-| **Plot** | **X-Ax** | **Y-Ax** | **Data** |
-| **Top-N=10** | 2020 | 2024 | 10 |
-| **Top 20%
-
-
-
-
-[描述已截斷以避免過長]
-
 
 Figure 7: Comparison of hardware capex + energy cost regression using different frontier model selection methods. Results are fairly similar across methods, although taking the top 20% of residuals leads to a flatter trend.
 
@@ -692,164 +443,6 @@ We tested different estimates of the hardware acquisition date relative to the r
 
 <span id="page-18-2"></span>![](_page_18_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a collection of line graphs and scatter plots illustrating the performance and energy consumption of various models, including LLa- 3, L- 3, L- 2, and L- 1, as well as G- 3, G- 2, and G- 1. The data is based on a 3- 1- 2- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1
-
-
-
-
-Note: The table above is a placeholder for the actual data. The actual data will be provided in the format specified below.
-
-| Year | Top 3 | Top 5 | Top 10 | Top 20 |
-| --- | --- | --- | --- | --- |
-| 2016 |  |  |  |  |
-| 2017 |  |  |  |  |
-| 2018 |  |  |  |  |
-| 2019 |  |  |  |  |
-| 2020 |  |  |  |  |
-| 2021 |  |  |  |  |
-| 2022 |  |  |  |  |
-| 2023 |  |  |  |  |
-| 2024 |  |  |  |  |
-
-Note: The actual data will be provided in the format below:
-
-| Year | Top 3 | Top 5 | Top 10 | Top 20 |
-| --- | --- | — | — | — |
-| 2016 |  |  |  |  |
-| 2017 |  |  |  |  |
-| 2018 |  |  |  |  |
-| 2019 |  |  |  |  |
-| 2020 |  |  |  |  |
-| 2021 |  |  |  |  |
-| 2022 |  |  |  |  |
-| 2023 |  |  |  |  |
-| 2024 |  |  |  |  |
-
-Please provide the actual data for the table above.
-
-
-### Top 10
-
-| Year | Cost (2023 USD) |
-| --- | --- |
-| 2013 | 8k |
-| 2014 | 10k |
-| 2015 | 12k |
-| 2016 | 15k |
-| 2017 | 18k |
-| 2018 | 20k |
-| 2019 | 22k |
-| 2020 | 25k |
-| 2021 | 28k |
-| 2022 | 30k |
-
-### Top 20
-
-| Year | Cost (2023 USD) |
-| --- | --- |
-| 2012 | 6k |
-| 2013 | 8k |
-| 2014 | 10k |
-| 2015 | 12k |
-| 2016 | 15k |
-| 2017 | 18k |
-| 2018 | 20k |
-| 2019 | 22k |
-| 2020 | 25k |
-| 2011 | 28k |
-| 2012 | 30k |
-| 2013 | 32k |
-| 2014 | 35k |
-| 2015 | 38k |
-| 2016 | 40k |
-| 2017 | 42k |
-| 2018 | 45k |
-| 2019 | 48k |
-| 2020 | 50k |
-| 2011 | 52k |
-| 2012 | 55k |
-| 2013 | 58k |
-| 2014 | 60k |
-| 2015 | 62k |
-
-| 2016 | 65k |
-| 2017 | 68k |
-| 2018 | 70k |
-| 2019 | 72k |
-| 2020 | 75k |
-| 2011 | 78k |
-| 2012 | 80k |
-| 2013 | 82k |
-| 2014 | 85k |
-| 2015 | 88k |
-| 2016 | 90k |
-| 2017 | 92k |
-| 2018 | 95k |
-| 2019 | 98k |
-| 2020 | 100k |
-| 2011 | 102k |
-| 2012 | 105k |
-
-| 2013 | 108k |
-| 2014 | 110k |
-| 2015 | 112k |
-| 2016 | 115k |
-| 2017 | 118k |
-| 2018 | 120k |
-| 2019 | 122k |
-| 2020 | 125k |
-| 2011 | 128k |
-| 2012 | 130k |
-| 2013 | 132k |
-| 2014 | 135k |
-| 2015 | 138k |
-| 2016 | 140k |
-| 2017 | 142k |
-| 2018 | 145k |
-| 2019 | 148k |
-| 2020 | 150k |
-| 2011 | 155k |
-
-
-The image contains four scatter plots and line graphs, each with its own set of data points and labels. Here's a description of each:
-
-1. **Top Left:**
-	* X-axis: "Publication date"
-	* Y-axis: "Cost (2023 USD, log scale)"
-	* Data points: Not provided
-	* Line: Not provided
-2. **Top Right:**
-	* X-axis: "Publication date"
-	* Y-axis: "Cost (2023 USD, log scale)"
-	* Data points: Not provided
-	* Line: Not provided
-3. **Bottom Left:**
-	* X-axis: "Publication date"
-	* Y-axis: "Cost (2023 USD, log scale)"
-	* Data points: Not provided
-	* Line: Not provided
-4. **Bottom Right:**
-	* X-axis: "Publication date"
-	* Y-axis: "Cost (2023 USD, log scale)"
-	* Data points: Not provided
-	* Line: Not provided
-
-**Data Points and Lines**
-
-Unfortunately, the data points and lines are not provided in the image. However, I can describe the structure of the plots and the data points.
-
-* The X-axis and Y-axis labels are not provided, but they are likely to be "Publication date" and "Cost (2023 USD, log scale)" respectively.
-* The data points are not provided, but they are likely to be a list of numbers and/or a list of data points.
-* The lines are not provided, but they are likely to be a list of data points and/or a list of data points.
-
-**Output**
-
-Unfortunately, I cannot provide a table or a list of data points. The image does not contain any tables or data points. The image is a collection of scatter plots and line graphs, but it does not contain any data points or data.
-
-[描述已截斷以避免過長]
-
 Figure 8: Comparison of amortized hardware capex + energy regression for varying top-N selection.
 
 #### <span id="page-18-1"></span>B.5 Excluding equity from R&D staff costs
@@ -866,160 +459,8 @@ where "Hardware TDP" includes all server hardware. We find a growth rate of 2.2x
 
 <span id="page-19-0"></span>![](_page_19_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents an analysis of the costs and environmental impact of various AI models, including LLMs, GShard, and others. The data is broken down into several categories, including carbon emissions, model sizes, and energy consumption.
-
-**Figure Data (Q&A):**
-
-Q: What is the total carbon emissions for GShard?
-Q: What is the size of the LLM-1 model?
-Q: What is the size of the LLa-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-1-2-
-
-
-
-
-### Amortized Hardware, Energy, and R&D Staff Costs for Training and Experiments
-
-| Model | Amortized Hardware Cost (2023 USD) | Amortized Energy Cost (2023 USD) | Amortized R&D Staff Cost (2023 USD) |
-| :--- | :--- | :--- | :--- |
-| GPT-3 175B (davinci) | 1.3M | 1.3M | 1.3M |
-| GPT-4 | 2.5M | 2.5M | 2.5M |
-| GPT-4 (davinci) | 2.5M | 2.5M | 2.5M |
-| GPT-4 (davinci) | 2.5M | 2.5M | 2.5M |
-
-| Model | Amortized Hardware Cost (2023 USD) | Amortized Energy Cost (2023 USD) | Amortized R&D Staff Cost (2023 USD) |
-| :— | :— | :— | :— |
-| GPT-3 175B (davinci) | 1.3M | 1.3M | 1.3M |
-| GPT-4 | 2.5M | 2.5M | 2.5M |
-| GPT-4 | 2.5M | 2.5M | 2.5M |
-
-| Model | Amortized Hardware Cost (2023 USD) | Amortized Energy Cost (2023 USD) | Amortized R&D
-                              
-
-The provided image does not contain a table. However, I will process the two charts and provide the extracted information in the required format.
-
-**Chart 1: Amortized Hardware, Energy, and R&D Staff Costs for Training and Experiments**
-
-| Model | Cost (2023 USD, log scale) |
-| --- | --- |
-| GPT-3 175B (davinci) | 1.5M |
-| GPT-4 | 10M |
-
-**Chart 2: Percentage of Costs for Training and Experiments of ML Models**
-
-| Model | R&D Staff (Excluding Equity) | AI Accelerator Chips | Other Server Components | Cluster-                               
-
 Figure 9: (a) Breakdown of total amortized model development costs for selected models, with equity excluded from the R&D staff cost. Hardware costs are amortized to the total number of chip-hours spent on experiments and training, while R&D staff costs cover the duration of development from initial experiments to publication. Error bars indicate 90% credible intervals, while the main bar values are medians. (b) Costs components as a percentage of the total, based on median estimates.
 
 <span id="page-19-1"></span>![](_page_19_Figure_2.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the carbon emissions and energy consumption of various AI models, including L-  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,
-
-
-
-
-[描述已截斷以避免過長]
-
-
-### Power (kW, log scale)
-
-| Year | Power (kW) |
-| --- | --- |
-| 2016 | 10 |
-| 2017 | 20 |
-| 2018 | 30 |
-| 2019 | 40 |
-| 2020 | 50 |
-| 2021 | 60 |
-| 2022 | 70 |
-| 2023 | 80 |
-| 2024 | 90 |
-
-### Cluster Power Required for Final Training Run
-
-| Model | Power (kW) |
-| --- | --- |
-| GPT-3 175B (D) | 100 |
-| GPT-4 | 120 |
-| GPT-4 (D) | 100 |
-| G- 4 (D) | 100 |
-| G- 4 (D)  | 100 |
-| G- 4 (D)  | 100
-
-
-The first plot shows the cluster power required for the final training run. The x-axis represents the publication date, and the y-axis represents the power in kilwatt (kW) on a log scale.
-
-| Label | Value |
-| --- | --- |
-| 2016 | 10 |
-| 2017 | 20 |
-| 2018 | 30 |
-| 2019 | 40 |
-| 2019 | 50 |
-| 2020 | 100 |
-| 2020 | 200 |
-| 2020 | 300 |
-| 2020 | 400 |
-| 2020 | 500 |
-| 2020 | 600 |
-| 2020 | 700 |
-| 2020 | 800 |
-| 2020 | 900 |
-| 2020 | 1000 |
-
-**Plot 2: Cluster Power Required for Final Training Run**
-
-The second plot shows the cluster power required for the final training run. The x-axis represents the publication date, and the y-axis represents the power in kilwatt (kW) on a log scale.
-
-| Label | Value |
-| --- | — |
-| 2016 | 10 |
-| 2017 | 20 |
-| 2018 | 30 |
-| 2019 | 40 |
-| 2019 | 50 |
-| 2020 | 100 |
-| 2020 | 200 |
-| 2020 | 300 |
-| 2020 | 400 |
-| 2020 | 500 |
-| 2020 | 600 |
-| 2020 | 700 |
-| 2020 | 800 |
-| 2020 | 900 |
-| 2020 | 1000 |
-
-**Plot 3: Cluster Power Required for Final Training
-
-The third plot shows the cluster power required for the final training
-
-| Label | Value |
-| 2016 | 10 |
-| 2017 | 20 |
-| 2018 | 30
-| 2019 | 40
-| 2019 | 50
-| 2020 | 100
-| 2020 | 200
-| 2020 | 300
-| 2020 | 400
-| 2020 | 500
-| 2020 | 600
-| 2020 | 700
-| 2020 | 800
-| 2020 | 900
-| 2020 | 1000
-
-The plots do not have a clear description of the x-axis and y-axis labels and units. The data points are not labeled, and there is no legend. The data points are not described in the provided text.
-
-The provided image does not contain any mathematical formulas. The plots do not have a clear description of the x-axis and y-axes. The data points are not described in the provided text.
-
-The output format will be in the following format:
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
+Figure 10: The trend in AI compute cluster power (in kilowatts) required to train frontier models over time. Power is calculated as the product of the number of servers, server TDP, and power usage effectiveness.

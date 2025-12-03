@@ -1,36 +1,32 @@
 # Energy and Policy Considerations for Deep Learning in NLP
 
-#### Emma Strubell Ananya Ganesh Andrew McCallum
+## Emma Strubell Ananya Ganesh Andrew McCallum
 
 College of Information and Computer Sciences University of Massachusetts Amherst
 
 {strubell, aganesh, mccallum }@cs.umass.edu
 
-,
-
-,
-
-## Abstract
+#### Abstract
 
 Recent progress in hardware and methodology for training neural networks has ushered in a new generation of large networks trained on abundant data. These models have obtained notable gains in accuracy across many NLP tasks. However, these accuracy improvements depend on the availability of exceptionally large computational resources that necessitate similarly substantial energy consumption. As a result these models are costly to train and develop, both financially, due to the cost of hardware and electricity or cloud compute time, and environmentally, due to the carbon footprint required to fuel modern tensor processing hardware. In this paper we bring this issue to the attention of NLP researchers by quantifying the approximate financial and environmental costs of training a variety of recently successful neural network models for NLP. Based on these findings, we propose actionable recommendations to reduce costs and improve equity in NLP research and practice.
 
-# 1 Introduction
+#### 1 Introduction
 
-Advances in techniques and hardware for training deep neural networks have recently enabled impressive accuracy improvements across many fundamental NLP tasks [\(Bahdanau et al.](#page-5-0) [2015](#page-5-0) ; [Luong et al.](#page-5-1) , [2015](#page-5-1) ; Dozat and Manning, [2017](#page-5-2); [Vaswani et al.,](#page-5-3) [2017](#page-5-3)), with the most computationally-hungry models obtaining the highest scores [\(Peters et al.](#page-5-4) , [2018](#page-5-4) ; [Devlin et al.](#page-5-5) [2019](#page-5-5) ; [Radford et al.](#page-5-6) , [2019](#page-5-6) ; [So et al.](#page-5-7) , [2019](#page-5-7)). As a result, training a state-of-the-art model now requires substantial computational resources which demand considerable energy, along with the associated financial and environmental costs. Research and development of new models multiplies these costs by thousands of times by requiring retraining to experiment with model architectures and hyperparameters. Whereas a decade ago most
+Advances in techniques and hardware for training deep neural networks have recently enabled impressive accuracy improvements across many fundamental NLP tasks [\(Bahdanau et al.](#page-5-0) , [2015](#page-5-0) ; [Luong et al.](#page-5-1) , [2015](#page-5-1) ; Dozat and Manning, [2017](#page-5-2); [Vaswani et al.,](#page-5-3) [2017](#page-5-3)), with the most computationally-hungry models obtaining the highest scores [\(Peters et al.](#page-5-4) , [2018](#page-5-4) ; [Devlin et al.](#page-5-5) , [2019](#page-5-5) ; [Radford et al.](#page-5-6) , [2019](#page-5-6) ; [So et al.](#page-5-7) , [2019](#page-5-7)). As a result, training a state-of-the-art model now requires substantial computational resources which demand considerable energy, along with the associated financial and environmental costs. Research and development of new models multiplies these costs by thousands of times by requiring retraining to experiment with model architectures and hyperparameters. Whereas a decade ago most
 
 <span id="page-0-1"></span>
 
-| Consumption                        | CO<br>2e (lbs) |
-|------------------------------------|----------------|
-| Air travel, 1 passenger, NY<br>↔SF | 1984           |
-| Human life, avg, 1 year            | 11,023         |
-| American life, avg, 1 year         | 36,156         |
-| Car, avg incl. fuel, 1 lifetime    | 126,000        |
-| Training one model (GPU)           |                |
-| NLP pipeline (parsing, SRL)        | 39             |
-| w/ tuning & experimentation        | 78,468         |
-| Transformer (big)                  | 192            |
-| w/ neural architecture search      | 626,155        |
+| Consumption                        | CO<br>2e (lbs) |  |  |  |
+|------------------------------------|----------------|--|--|--|
+| Air travel, 1 passenger, NY<br>↔SF | 1984           |  |  |  |
+| Human life, avg, 1 year            | 11,023         |  |  |  |
+| American life, avg, 1 year         | 36,156         |  |  |  |
+| Car, avg incl. fuel, 1 lifetime    | 126,000        |  |  |  |
+| Training one model (GPU)           |                |  |  |  |
+| NLP pipeline (parsing, SRL)        | 39             |  |  |  |
+| w/ tuning & experimentation        | 78,468         |  |  |  |
+| Transformer (big)                  | 192            |  |  |  |
+| w/ neural architecture search      | 626,155        |  |  |  |
 
 Table 1: Estimated CO 2 emissions from training common NLP models, compared to familiar consumption.[1](#page-0-0)
 
@@ -73,9 +69,7 @@ $$CO_2e = 0.954p_t \tag{2}$$
 
 This conversion takes into account the relative proportions of different energy sources (primarily natural gas, coal, nuclear and renewable) consumed to produce energy in the United States. Table [2](#page-1-3) lists the relative energy sources for China, Germany and the United States compared to the top
 
-<sup>2</sup>nvidia-smi: <https://bit.ly/30sGEbi>
-
-<span id="page-1-1"></span><span id="page-1-0"></span><sup>3</sup>RAPL power meter: <https://bit.ly/2LObQhV>
+<span id="page-1-1"></span><span id="page-1-0"></span><sup>2</sup>nvidia-smi: <https://bit.ly/30sGEbi> <sup>3</sup>RAPL power meter: <https://bit.ly/2LObQhV>
 
 <span id="page-1-2"></span><sup>5</sup>U.S. Dept. of Energy: <https://bit.ly/2JTbGnI> <sup>5</sup>China Electricity Council; trans. China Energy Portal: <https://bit.ly/2QHE5O3>
 
@@ -83,15 +77,15 @@ three cloud service providers. The U.S. breakdown of energy is comparable to tha
 
 #### <span id="page-2-0"></span>2.1 Models
 
-We analyze four models, the computational requirements of which we describe below. All models have code freely available online, which we used out-of-the-box. For more details on the models themselves, please refer to the original papers. Transformer[. The Transformer model \(](#page-5-3)Vaswani et al., [2017\)](#page-5-3) is an encoder-decoder architecture primarily recognized for efficient and accurate machine translation. The encoder and decoder each consist of 6 stacked layers of multi-head selfattention. [Vaswani et al.](#page-5-3) [\(2017\)](#page-5-3) report that the Transformer base model (65M parameters) was trained on 8 NVIDIA P100 GPUs for 12 hours, and the Transformer big model (213M parameters) was trained for 3.5 days (84 hours; 300k steps). This model is also the basis for recent work on neural architecture search (NAS) for machine translation and language modeling [\(So et al.,](#page-5-7) [2019\)](#page-5-7), and the NLP pipeline that we study in more detail in §[4.2](#page-3-0) [\(Strubell et al.](#page-5-8), [2018\)](#page-5-8). [So et al.](#page-5-7) [\(2019](#page-5-7)) report that their full architecture search ran for a total of 979M training steps, and that their base model requires 10 hours to train for 300k steps on one TPUv2 core. This equates to 32,623 hours of TPU or 274,120 hours on 8 P100 GPUs. ELMo. The ELMo model [\(Peters et al.,](#page-5-4) [2018](#page-5-4))
+We analyze four models, the computational requirements of which we describe below. All models have code freely available online, which we used out-of-the-box. For more details on the models themselves, please refer to the original papers. Transformer[. The Transformer model \(](#page-5-3)Vaswani et al., [2017\)](#page-5-3) is an encoder-decoder architecture primarily recognized for efficient and accurate machine translation. The encoder and decoder each consist of 6 stacked layers of multi-head selfattention. [Vaswani et al.](#page-5-3) [\(2017\)](#page-5-3) report that the Transformer base model (65M parameters) was trained on 8 NVIDIA P100 GPUs for 12 hours, and the Transformer big model (213M parameters) was trained for 3.5 days (84 hours; 300k steps). This model is also the basis for recent work on neural architecture search (NAS) for machine translation and language modeling [\(So et al.,](#page-5-7) [2019\)](#page-5-7), and the NLP pipeline that we study in more detail in §[4.2](#page-3-0) [\(Strubell et al.](#page-5-8), [2018\)](#page-5-8). [So et al.](#page-5-7) [\(2019](#page-5-7)) report that their full architecture search ran for a total of 979M training steps, and that their base model requires 10 hours to train for 300k steps on one TPUv2 core. This equates to 32,623 hours of TPU or 274,120 hours on 8 P100 GPUs.
 
-is based on stacked LSTMs and provides rich word representations in context by pre-training on a large amount of data using a language modeling objective. Replacing context-independent pretrained word embeddings with ELMo has been shown to increase performance on downstream tasks such as named entity recognition, semantic role labeling, and coreference. [Peters et al.](#page-5-4) [\(2018](#page-5-4)) report that ELMo was trained on 3 NVIDIA GTX 1080 GPUs for 2 weeks (336 hours).
+ELMo. The ELMo model [\(Peters et al.,](#page-5-4) [2018](#page-5-4)) is based on stacked LSTMs and provides rich word representations in context by pre-training on a large amount of data using a language modeling objective. Replacing context-independent pretrained word embeddings with ELMo has been shown to increase performance on downstream tasks such as named entity recognition, semantic role labeling, and coreference. [Peters et al.](#page-5-4) [\(2018](#page-5-4)) report that ELMo was trained on 3 NVIDIA GTX 1080 GPUs for 2 weeks (336 hours).
 
 BERT. The BERT model [\(Devlin et al.](#page-5-5), [2019](#page-5-5)) provides a Transformer-based architecture for building contextual representations similar to ELMo, but trained with a different language modeling objective. BERT substantially improves accuracy on tasks requiring sentence-level representations such as question answering and natural language inference. [Devlin et al.](#page-5-5) [\(2019\)](#page-5-5) report that the BERT base model (110M parameters) was trained on 16 TPU chips for 4 days (96 hours). NVIDIA reports that they can train a BERT model in 3.3 days (79.2 hours) using 4 DGX-2H servers, totaling 64 Tesla V100 GPUs [\(Forster et al.](#page-5-13), [2019](#page-5-13)).
 
 GPT-2. This model is the latest edition of OpenAI's GPT general-purpose token encoder, also based on Transformer-style self-attention and trained w[ith a language modeling objective \(](#page-5-6)Radford et al., [2019](#page-5-6)). By training a very large model on massive data, [Radford et al.](#page-5-6) [\(2019\)](#page-5-6) show high zero-shot performance on question answering and language modeling benchmarks. The large model described in [Radford et al.](#page-5-6) [\(2019](#page-5-6)) has 1542M parameters and is reported to require 1 week (168 hours) of training on 32 TPUv3 chips. [6](#page-2-1)
 
-#### 3 Related work
+## 3 Related work
 
 There is some precedent for work characterizing the computational requirements of training and inference in modern neural network architectures in the computer vision community. [Li et al.](#page-5-14) [\(2016\)](#page-5-14) present a detailed study of the energy use required for training and inference in popular convolutional models for image classification in computer vision, including fine-grained analysis comparing diffe[rent neural network layer types.](#page-5-15) Canziani et al. [\(2016\)](#page-5-15) assess image classification model accuracy as a function of model size and gigaflops required during inference. They also measure average power draw required during inference on GPUs as a function of batch size. Neither work analyzes the recurrent and self-attention models that have become commonplace in NLP, nor do they extrapolate power to estimates of carbon and dollar cost of training.
 
@@ -118,7 +112,7 @@ Table 3: Estimated cost of training a model in terms of CO<sup>2</sup> emissions
 
 # 4 Experimental results
 
-#### 4.1 Cost of training
+## 4.1 Cost of training
 
 Table [3](#page-3-1) lists CO2 emissions and estimated cost of training the models described in §[2.1.](#page-2-0) Of note is that TPUs are more cost-efficient than GPUs on workloads that make sense for that hardware (e.g. BERT). We also see that models emit substantial carbon emissions; training BERT on GPU is roug[hly equivalent to a trans-American flight.](#page-5-7) So et al. [\(2019\)](#page-5-7) report that NAS achieves a new stateof-the-art BLEU score of 29.7 for English to German machine translation, an increase of just 0.1 BLEU at the cost of at least \$150k in on-demand compute time and non-trivial carbon emissions.
 
@@ -132,18 +126,19 @@ The sum GPU time required for the project totaled 9998 days (27 years). This ave
 
 <span id="page-3-3"></span>
 
-|        |         | Estimated cost (USD) |             |  |
-|--------|---------|----------------------|-------------|--|
-| Models | Hours   | Cloud compute        | Electricity |  |
-| 1      | 120     | \$52–\$175           | \$5         |  |
-| 24     | 2880    | \$1238–\$4205        | \$118       |  |
-| 4789   | 239,942 | \$103k–\$350k        | \$9870      |  |
+|        |       | Estimated cost (USD) |             |  |
+|--------|-------|----------------------|-------------|--|
+| Models | Hours | Cloud compute        | Electricity |  |
+| 1      | 120   | \$52–\$175           | \$5         |  |
+| 24     | 2880  | \$1238–\$4205        | \$118       |  |
 
 Table 4: Estimated cost in terms of cloud compute and electricity for training: (1) a single model (2) a single tune and (3) all models trained during R&D.
 
+4789 239,942 \$103k–\$350k \$9870
+
 about 60 GPUs running constantly throughout the 6 month duration of the project. Table [4](#page-3-3) lists upper and lower bounds of the estimated cost in terms of Google Cloud compute and raw electricity required to develop and deploy this model.[9](#page-3-4) We see that while training a single model is relatively inexpensive, the cost of tuning a model for a new dataset, which we estimate here to require 24 jobs, or performing the full R&D required to develop this model, quickly becomes extremely expensive.
 
-#### 5 Conclusions
+## 5 Conclusions
 
 ## Authors should report training time and sensitivity to hyperparameters.
 
@@ -167,13 +162,13 @@ While these services provide valuable, flexible, and often relatively environmen
 
 We recommend a concerted effort by industry and academia to promote research of more computationally efficient algorithms, as well as hardware that requires less energy. An effort can also be made in terms of software. There is already a precedent for NLP software packages prioritizing efficient models. An additional avenue through which NLP and machine learning software developers could aid in reducing the energy associated with model tuning is by providing easyto-use APIs implementing more efficient alternatives to brute-force grid search for hyperparameter tuning, e.g. random or Bayesian hyperparameter search tech[niques](#page-5-17) [\(Bergstra et al.](#page-5-16)[,](#page-5-17) [2011](#page-5-16); Bergstra and Bengio, [2012;](#page-5-17) [Snoek et al.,](#page-5-18) [2012](#page-5-18)). While software packages implementing these techniques do exist,[10](#page-4-0) they are rarely employed in practice for tuning NLP models. This is likely because their interoperability with popular deep learning frameworks such as PyTorch and TensorFlow is not optimized, i.e. there are not simple examples of how to tune TensorFlow Estimators using Bayesian search. Integrating these tools into the workflows with which NLP researchers and practitioners are already familiar could have notable impact on the cost of developing and tuning in NLP.
 
-#### Acknowledgements
+### Acknowledgements
 
 We are grateful to Sherief Farouk and the anonymous reviewers for helpful feedback on earlier drafts. This work was supported in part by the Centers for Data Science and Intelligent Information Retrieval, the Chan Zuckerberg Initiative under the Scientific Knowledge Base Construction project, the IBM Cognitive Horizons Network agreement no. W1668553, and National Science Foundation grant no. IIS-1514053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the sponsor.
 
 <span id="page-4-0"></span><sup>10</sup>For example, the [Hyperopt Python library.](https://github.com/hyperopt/hyperopt)
 
-# References
+#### References
 
 - <span id="page-5-11"></span>Rhonda Ascierto. 2018. Uptime Institute Global Data Center Survey. Technical report, Uptime Institute.
 - <span id="page-5-0"></span>Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio. 2015. Neural Machine Translation by Jointly Learning to Align and Translate. In *3rd International Conference for Learning Representations (ICLR)*, San Diego, California, USA.

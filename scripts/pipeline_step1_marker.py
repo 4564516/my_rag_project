@@ -36,6 +36,12 @@ def convert_pdfs_with_marker():
         print("And you might need to install system dependencies (like tesseract).")
         return
 
+    # 設定環境變數
+    env = os.environ.copy()
+    # 移除強制 CUDA 設定，讓它自動偵測 (因為檢測到目前 PyTorch 僅支援 CPU)
+    # env["TORCH_DEVICE"] = "cuda" 
+    # env["SURYA_DEVICE"] = "cuda"
+
     for pdf_file in tqdm(pdf_files, desc="Converting PDFs"):
         doc_id = pdf_file.stem
         output_dir = output_base / doc_id
@@ -63,7 +69,7 @@ def convert_pdfs_with_marker():
                 check=True, 
                 #capture_output=True, 
                 text=True,
-                env=os.environ.copy() # 繼承環境變量
+                env=env # 使用包含 CUDA 設定的環境變量
             )
             # print(result.stdout) # 調試用
         except subprocess.CalledProcessError as e:

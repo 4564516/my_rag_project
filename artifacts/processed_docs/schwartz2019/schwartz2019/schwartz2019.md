@@ -28,67 +28,17 @@ We advocate increasing research activity in Green AI—AI research that is more 
 
 <span id="page-1-0"></span>![](_page_1_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a line graph showing the training time of various AI models from 2013 to 2019. The x-axis represents the year, and the y-axis represents the training time in days. The graph shows the training time of models like AlexNet, DNN-1, DNN-2, DNN-3, DNN-4, DNN-5, DNN-6, DNN-7, DNN-8, DNN-9, DNN-10, DNN-11, DNN-12, DNN-13, DNN-14, DNN-15, DNN-16, DNN-17, DNN-18, DNN-19, DNN-20, DNN-21, DNN-22, DNN-23, DNN-24, DNN-25, DNN-26, DNN-27, DNN-28, DNN-29, DNN-30, DNN-31, DNN-32, DNN-33, DNN-34, DNN-35, DNN-36, DNN-37, DNN-38, DNN-39, DNN-40, DNN-41, DNN-42, DNN-43, DNN-44, DNN-45, DNN-46, DNN-47, DNN-48, DNN-49, DNN-50, DNN-51, DNN-52, DNN-53, DNN-54, DNN-55, DNN-56, DNN-57, D-D-1, D-2, D-3, D-4, D-5, D-6, D-7, D-8, D-9, D-10, D-11, D-12, D-13, D-14, D-15, D-16, D-17, D-18, D-19, D-20, D-21, D-22, D-23, D-24, D-25, D-26, D-27, D-28, D-29, D-30, D-31, D-32, D-33, D-4-1, D-4-2, D-4-3, D-4-4, D-4-5, D-4-6, D-4-7, D-4-8, D-4-9, D-4-10, D-4-11, D-4-12, D-4-13, D-4-14, D-4-15, D-4-16, D-4-17, D-4-18, D-4-19, D-4-20, D-4-21, D-4-22, D-4-23, D-4-24, D-4-25, D-4-26, D-4-27, D-4-28, D-4-29, D-4-30, D-4-31, D-4-32, D-4-3-1, D-4-3-2, D-4-3-3, D-4-3-4, D-4-3-5, D-4-3-6, D-4-3-7, D-4-3-8, D-4-3-9, D-4-3-10, D-4-3-11, D-4-3-12, D-4-3-13, D-4-3-14, D-4-3-15, D-4-3-16, D-4
-
-
-
-
-/s-day (Training) vs. Model**
-
-| Model | P
- | 0.00001 |
- | 0.00003 |
- | 0.00006 |
- | 0.00012 |
- | 0.00025 |
- | 0.00050 |
- | 1.00000 |
-
- | 0.00001 |
- | 0.00003 |
- | 0.00006 |
-
-
-Here is the extracted information:
-
-**Data Points:**
-
-* AlphaGo Zero: 10,000
-* AlphaZero: 10,000
-* Neural Machine Translation: 10,000
-* Neural Architecture Search: 10,000
-* Xception: 10,000
-* T17 Doto 1v1: 10,000
-
-
-No table is present in the image.
-
-**Chart/PLOT:**
-
-Here are the visible data points:
-
-* AlphaGo Zero: 1,000
-* AlphaZero: 10,000
-* Neural Machine Translation: 100
-* Neural Architecture Search: 10
-* Xception: 1
-* T17 Doto 1v1: 0.1
-* VGG: 0.01
-* AlexNet: 0.01
-
 Figure 1: The amount of compute used to train deep learning models has increased 300,000x in 6 years. Figure taken from [\[2\]](#page-8-0).
 
 Specifically, we propose making efficiency a more common evaluation criterion for AI papers alongside accuracy and related measures.
 
 AI research can be computationally expensive in a number of ways, but each provides opportunities for efficient improvements; for example, papers could be required to plot accuracy as a function of computational cost and of training set size, providing a baseline for more data-efficient research in the future. Reporting the computational price tag of finding, training, and running models is a key Green AI practice (see Equation [1\)](#page-2-0). In addition to providing transparency, price tags are baselines that other researchers could improve on.
 
-Our empirical analysis in Figure [2](#page-2-1) suggests that the AI research community has paid relatively little attention to computational efficiency. In fact, as Figure [1](#page-1-0) illustrates, the computational cost of research is increasing exponentially, at a pace that far exceeds Moore's Law [\[28\]](#page-10-5). Red AI is on the rise despite the well-known diminishing returns of increased cost (e.g., Figure [3\)](#page-4-0).
+Our empirical analysis in Figure [2](#page-2-1) suggests that the AI research community has paid relatively little attention to computational efficiency. In fact, as Figure [1](#page-1-0) illustrates, the computational cost of research is increasing exponentially, at a pace that far exceeds Moore's Law [\[28\]](#page-10-5). Red AI is on the rise despite the well-known diminishing returns of increased cost (e.g., Figure [3\)](#page-4-0). This paper identifies key factors that contribute to Red AI and advocates the introduction of a simple, easy-to-compute efficiency metric that could help make some AI research greener, more inclusive, and perhaps more cognitively plausible. Green AI is part of a broader, long-standing interest in environmentally-friendly scientific research (e.g., see the journal *Green Chemistry*). Computer science, in particular, has a long history of investigating sustainable and energy-efficient computing (e.g., see the journal *Sustainable Computing: Informatics and Systems*).
 
-[描述已截斷以避免過長]
+The remainder of this paper is organized as follows. Section [2](#page-1-1) analyzes practices that move deep-learning research into the realm of Red AI. Section [3](#page-4-1) discusses our proposals for Green AI. Section [4](#page-7-0) considers related work, and we conclude with a discussion of directions for future research.
 
-## <span id="page-1-1"></span>2 Red AI
+### <span id="page-1-1"></span>2 Red AI
 
 Red AI refers to AI research that seeks to obtain state-of-the-art results in accuracy (or related measures) through the use of massive computational power—essentially "buying" stronger results. Yet the relationship between model performance and model complexity (measured as number of parameters or inference time) has long been understood to be at best logarithmic; for a linear gain in performance, an exponentially larger model is required [\[18\]](#page-9-2). Similar trends exist with increasing the quantity of training data [\[41,](#page-11-3) [13\]](#page-9-3) and the number of experiments [\[9\]](#page-9-4). In each of these cases, diminishing returns come at increased computational cost.
 
@@ -96,116 +46,69 @@ This section analyzes the factors contributing to Red AI and shows how it is res
 
 <span id="page-2-1"></span>![](_page_2_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a bar chart comparing the performance of various AI models on different tasks, including accuracy, efficiency, and other metrics. The chart shows the number of papers published for each model, with different colors representing different metrics. The chart is based on data from 2018 and 2019.
-
-**Figure Data (Q&A):**
-
-Q: How many papers were published for LCA-1.5 in 2018?
-
-Q: How many papers were published for LCA-1.5 in 2019?
-
-Q: How many papers were published for LCA-1.16
-
-Q: How many papers were published for L-1.5
-
-Q: How many papers were
-
-Q: How many
-
-
-
-
-Note: The chart is not provided in the text, but based on the description, I created a table to represent the data. The actual chart may have different data and layout, but this table represents the data as described.
-
-
-There is no table in the provided image.
-
-**Chart/PLOT Processing**
-
-The image contains a bar chart with three datasets: ACL 2018, CVPR 2019, and NeurIPS 2019. The chart has two axes: "Number of papers" on the Y-axis and "Year" on the X-axis.
-
-Here are the extracted data points:
-
-*   **ACL 2018:**
-    *   Accuracy: 16
-    *   Efficiency: 2
-    *   Both: 1
-    *   Other: 0
-*   **CVPR 2019:**
-    *   Accuracy: 13
-    *   Efficiency: 3
-    *   Both: 2
-    *   Other: 1
-*   **NeurIPS 2019:**
-    *   Accuracy: 9
-    *   Efficiency: 4
-    *   Both: 3
-    *   Other: 2
-
-**Chart/PLOT Processing (continued)**
-
-The chart has a legend with four colors:
-
-*   **Red:** Accuracy
-*   **Green:** Efficiency
-*   **Yellow:** Both
-*   **Blue:** Other
-
-The Y-axis has a range of 0-16, and the X-axis has three categories: "Accuracy", "Efficiency", "Both", and "Other".
-
-The Y-axis has a range of 0-16, and the X-axis has three categories: "Accuracy", "Eff
-**Chart/PLOT Processing (continued)**
-
-The Y-axis has a range of 0-16, and the X
-**Chart/PLOT Processing (continued)**
-
-The chart has a legend with four
-
-
-| Model | Accuracy | Efficiency | Both | Other |
-| --- | --- | --- | --- | --- |
-| ACL 2018 | 16 | 2 | 1 | 0 |
-| CVPR 2019 | 14 | 3 | 2 | 1 |
-| NeurIPS 2019 | 10 | 4 | 3 | 2 |
-
-**Chart/PLOT:**
-
-**Data Points:**
-
-* ACL 2018: 16
-* CVPR 2019: 14
-* NeurIPS 2019: 10
-* Other: 1
-
-**X and Y Axis Units:**
-
-* X-axis: Model (e.g. ACL 2018, CVPR 2019, NeurIPS 2019)
-* Y-axis: Number of papers
-
-**No Diagram:**
-
-There is no diagram in the provided image.
-
-
 Figure 2: AI papers tend to target *accuracy* rather than *efficiency*. The figure shows the proportion of papers that target accuracy, efficiency, both or other from a sample of 60 papers from top AI conferences.
 
 by pushing the boundaries of AI. Our exposition here is meant to highlight areas where computational expense is high, and to present each as an opportunity for developing more efficient techniques.
 
+To demonstrate the prevalence of Red AI, we sampled 60 papers from top AI conferences (ACL,[3](#page-2-2) NeurIPS,[4](#page-2-3) and CVPR[5](#page-2-4) ). For each paper we noted whether the authors claim their main contribution to be (a) an improvement to accuracy or some related measure, (b) an improvement to efficiency, (c) both, or (d) other. As shown in Figure [2,](#page-2-1) in all conferences we considered, a large majority of the papers target accuracy (90% of ACL papers, 80% of NeurIPS papers and 75% of CVPR papers). Moreover, for both empirical AI conferences (ACL and CVPR) only a small portion (10% and 20% respectively) argue for a new efficiency result.[6](#page-2-5) This highlights the focus of the AI community on measures of performance such as accuracy, at the expense of measures of efficiency such as speed or model size. In this paper we argue that a larger weight should be given to the latter.
 
-[描述已截斷以避免過長]
+To better understand the different ways in which AI research can be red, consider an AI result reported in a scientific paper. This result typically includes a model trained on a training dataset and evaluated on a test dataset. The process of developing that model often involves multiple experiments to tune its hyperparameters. When considering the different factors that increase the computational and environmental cost of producing such a result, three factors come to mind: the cost of executing the model on a single (E)xample (either during training or at inference time); the size of the training (D)ataset, which controls the number of times the model is executed during training, and the number of (H)yperparameter experiments, which controls how many times the model is trained during model development. The total cost of producing a (R)esult in machine learning increases linearly with each of these quantities. This cost can be estimated as follows:
 
+$$Cost(R) \propto E \cdot D \cdot H$$
 
-The image appears to be a collection of four graphs, each representing a different target task (ImageNet-1k, ImageNet-5k, ImageNet-9k, and CUB-2011) with multiple lines and colors.
+<span id="page-2-0"></span>Equation 1: The equation of Red AI: The cost of an AI (R)esult grows linearly with the cost of processing a single (E)xample, the size of the training (D)ataset and the number of (H)yperparameter experiments.
 
-[描述已截斷以避免過長]
+Equation [1](#page-2-0) is a simplification (e.g., different hyperparameter assignments can lead to different costs for processing a single example). It also ignores other factors such as the number of training epochs. Nonetheless, it illustrates three
+
+<span id="page-2-2"></span><sup>3</sup><https://acl2018.org>
+
+<span id="page-2-3"></span><sup>4</sup><https://nips.cc/Conferences/2018>
+
+<span id="page-2-5"></span><span id="page-2-4"></span><sup>5</sup><http://cvpr2019.thecvf.com>
+
+<sup>6</sup> Interestingly, many NeurIPS papers included convergence rates or regret bounds which describe performance as a function of examples or iterations, thus targeting efficiency (55%). This indicates an increased awareness of the importance of this concept, at least in theoretical analyses.
+
+quantities that are each an important factor in the total cost of generating a result. Below, we consider each quantity separately.
+
+Expensive processing of one example Our focus is on neural models, where it is common for each training step to require inference, so we discuss training and inference cost together as "processing" an example. Some works have used increasingly expensive models which require great amounts of resources, and as a result, in these models, performing inference can require a lot of computation, and training even more so. For instance, Google's BERT-large [\[8\]](#page-9-1) contains roughly 350 million parameters. openAI's openGPT2-XL model [\[30\]](#page-10-4) contains 1.5 billion parameters. AI2, our home organization, recently released Grover [\[49\]](#page-11-4), also containing 1.5 billion parameters. In the computer vision community, a similar trend is observed (Figure [1\)](#page-1-0).
+
+Such large models have high costs for processing each example, which leads to large training costs. BERT-large was trained on 64 TPU chips for 4 days. Grover was trained on 256 TPU chips for two weeks, at an estimated cost of \$25,000. XLNet had a similar architecture to BERT-large, but used a more expensive objective function (in addition to an order of magnitude more data), and was trained on 512 TPU chips for 2.5 days.[7](#page-3-0) It is impossible to reproduce the best BERT-large results[8](#page-3-1) or XLNet results[9](#page-3-2) using a single GPU. Specialized models can have even more extreme costs, such as AlphaGo, the best version of which required 1,920 CPUs and 280 GPUs to play a single game of Go [\[37\]](#page-10-6) at a cost of over \$1,000 per hour.[10](#page-3-3)
+
+When examining variants of a single model (e.g., BERT-small and BERT-large) we see that larger models can have stronger performance, which is a valuable scientific contribution. However, this implies the financial and environmental cost of increasingly large AI models will not decrease soon, as the pace of model growth far exceeds the resulting increase in model performance [\[16\]](#page-9-5). As a result, more and more resources are going to be required to keep improving AI models by simply making them larger.
+
+Processing many examples Another way state-of-the-art performance has recently been progressing in AI is by successively increasing the amount of training data models are trained on. BERT-large had top performance in 2018 across many NLP tasks after training on 3 billion word-pieces. XLNet recently outperformed BERT after training on 32 billion word-pieces, including part of Common Crawl; openGPT-2-XL trained on 40 billion words; FAIR's RoBERTa [\[23\]](#page-9-6) was trained on 160GB of text, roughly 40 billion word-pieces, requiring around 25,000 GPU hours to train. In computer vision, researchers from Facebook [\[25\]](#page-9-7) pretrained an image classification model on 3.5 billion images from Instagram, three orders of magnitude larger than existing labelled image datasets such as Open Images.[11](#page-3-4)
+
+The use of massive data creates barriers for many researchers for reproducing the results of these models, or training their own models on the same setup (especially as training for multiple epochs is standard). For example, the June 2019 Common Crawl contains 242 TB of uncompressed data,[12](#page-3-5) so even storing the data is expensive. Finally, as in the case of model size, relying on more data to improve performance is notoriously expensive because of the diminishing return of adding more data [\[41\]](#page-11-3). For instance, Figure [3,](#page-4-0) taken from [\[25\]](#page-9-7), shows a logarithmic relation between the object recognition top-1 accuracy and the number of training examples.
+
+Massive number of experiments Some projects have poured large amounts of computation into tuning hyperparameters or searching over neural architectures, well beyond the reach of most researchers. For instance, researchers from Google [\[51\]](#page-11-5) trained over 12,800 neural networks in their neural architecture search to improve performance on object detection and language modeling. With a fixed architecture, researchers from DeepMind [\[26\]](#page-10-7) evaluated 1,500 hyperparameter assignments to demonstrate that an LSTM language model [\[15\]](#page-9-8) can reach state-of-the-art perplexity results. Despite the value of this result in showing that the performance of an LSTM does not plateau after only a few hyperparameter trials, fully exploring the potential of other competitive models for a fair comparison is prohibitively expensive.
+
+<span id="page-3-0"></span><sup>7</sup>Some estimates for the cost of this process reach \$250,000 ([twitter.com/eturner303/status/1143174828804857856](https://twitter.com/eturner303/status/1143174828804857856)).
+
+<span id="page-3-1"></span><sup>8</sup>See <https://github.com/google-research/bert>
+
+<span id="page-3-2"></span><sup>9</sup>See <https://github.com/zihangdai/xlnet>
+
+<span id="page-3-3"></span><sup>10</sup>Recent versions of AlphaGo are far more efficient [\[39\]](#page-10-8).
+
+<span id="page-3-4"></span><sup>11</sup><https://opensource.google.com/projects/open-images-dataset>
+
+<span id="page-3-5"></span><sup>12</sup><http://commoncrawl.org/2019/07/>
+
+<span id="page-4-0"></span>![](_page_4_Figure_0.jpeg)
+
+Figure 3: Diminishing returns of training on more data: object detection accuracy increases linearly as the number of training examples increases exponentially [\[25\]](#page-9-7).
+
+The topic of massive number of experiments is not as well studied as the first two discussed above. In fact, the number of experiments performed during model construction is often underreported. Nonetheless, evidence for a logarithmic relation exists here as well, between the number of experiments and performance gains [\[9\]](#page-9-4).
+
+Discussion The benefits of pouring more resources into models are certainly of interest to the AI community. Indeed, there is value in pushing the limits of model size, dataset size, and the hyperparameter search space. Currently, despite the massive amount of resources put into recent AI models, such investment still pays off in terms of downstream performance (albeit at an increasingly lower rate). Finding the point of saturation (if such exists) is an important question for the future of AI.
+
+Our goal in this paper is to raise awareness of the cost of Red AI, as well as encourage the AI community to recognize the value of work by researchers that take a different path, optimizing efficiency rather than accuracy. Next we turn to discuss concrete measures for making AI more green.
 
 ### <span id="page-4-1"></span>3 Green AI
 
 The term Green AI refers to AI research that yields novel results without increasing computational cost, and ideally reducing it. Whereas Red AI has resulted in rapidly escalating computational (and thus carbon) costs, Green AI has the opposite effect. If measures of efficiency are widely accepted as important evaluation metrics for research alongside accuracy, then researchers will have the option of focusing on the efficiency of their models with positive impact on both the environment and inclusiveness. This section reviews several measures of efficiency that could be reported and optimized, and advocates one particular measure—FPO—which we argue should be reported when AI research findings are published.
 
-### <span id="page-4-2"></span>3.1 Measures of Efficiency
+#### <span id="page-4-2"></span>3.1 Measures of Efficiency
 
 To measure efficiency, we suggest reporting the amount of work required to generate a result in AI, that is, the amount of work required to train a model, and if applicable, the sum of works for all hyperparameter tuning experiments. As the cost of an experiment decomposes into the cost of a processing a single example, the size of the dataset, and the number of experiments (Equation [1\)](#page-2-0), reducing the amount of work in each of these steps will result in AI that is more green.
 
@@ -231,62 +134,6 @@ Several packages exist for computing FPO in various neural network libraries,[14
 
 <span id="page-6-0"></span>![](_page_6_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of various AI models, including LLa
-    [A brief 3-sentence summary of what this image is about, for broad search.]
-
-**Figure Data (Q&A):**
-Q: What is the accuracy of the DPT-1 model? A: 79.7
-Q: What is the accuracy of the DPT-1 model on the Image- 1-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-
-
-
-
-Note: The table only shows the data for the 2012, 2015, and 2017 models. The actual data for the 2015 and 2017 models is not provided in the original image.
-
-
-# Image Analysis
-
-
-There is no table in the provided image.
-
-
-### Chart 1: FPO (B) vs. Model/Year
-
-| Model/Year | FPO (B) |
-| :—: | :—: |
-| AlexNet 2012 | 0.7 |
-| ResNet 2015 | 11.6 |
-| ResNet 2017 | 15.5 |
-| DPN 2017 | 18.4 |
-
-### Chart 2: FPO (B) vs. Number of Layers
-
-| Number of Layers | FPO (B) |
-| :—: | :—: |
-| 18 | 1.8 |
-| 34 | 3.7 |
-| 50 | 4.1 |
-| 101 | 7.8 |
-| 152 | 11.6 |
-
-## Diagrams
-
-There are no diagrams in the provided image.
-
-## Mathematical Formulas
-
-There are no mathematical formulas in the provided image.
-
-
-The provided image contains two charts: FPO (B) vs. Model/Year and FPO (B) vs. Number of Layers. The charts show the FPO (B) values for different models and models/years, and for different number of layers. The FPO (B) values range from 0.7 to 18.4, and 1.8 to 11.6, respectively. The charts do not have any labels or legends. The x-axis and y-axis labels and units are not provided. The charts do not have any legends or labels. The charts do not have any data points. The charts do not have any data points. The charts do not have any data points. The charts do not have any data points. The charts do not have any data points. The charts do not have any data points. The charts do not have any data points. The charts do not have any data points. The charts do not have any data points. The charts do not have any data points. The charts do not have any data points. The charts do not have any data points. The charts do not have any data
-The charts do not have any data
-The charts do not have any data
-The charts do
-The charts
-
-
 <span id="page-6-1"></span>Figure 4: Increase in FPO results in diminishing return for object detection top-1 accuracy. Plots (bottom to top): model parameters (in million), FPO (in billions), top-1 accuracy on ImageNet. [\(4a\)](#page-6-0): Different models: AlexNet [\[20\]](#page-9-0), ResNet [\[14\]](#page-9-10), ResNext [\[47\]](#page-11-8), DPN107 [\[5\]](#page-8-2), SENet154 [\[17\]](#page-9-11). [\(4b\)](#page-6-1): Comparison of different sizes (measured by the number of layers) of the ResNet model [\[14\]](#page-9-10).
 
 Discussion Efficient machine learning approaches have received attention in the research community, but are generally not motivated by being green. For example, a significant amount of work in the computer vision community has addressed efficient inference, which is necessary for real-time processing of images for applications like self-driving cars [\[24,](#page-9-12) [31,](#page-10-10) [22\]](#page-9-13), or for placing models on devices such as mobile phones [\[16,](#page-9-5) [34\]](#page-10-11). Most of these approaches target efficient model inference [\[32,](#page-10-12) [50,](#page-11-9) [12\]](#page-9-9),[15](#page-6-2) and thus only minimize the cost of processing a single example, while ignoring the other two red practices discussed in Section [2.](#page-1-1)[16](#page-6-3)
@@ -311,13 +158,13 @@ performance on the ImageNet dataset [\[6\]](#page-8-4).[19](#page-7-1) A few tre
 
 Figure [4b](#page-6-1) shows the same analysis for a single object recognition model, ResNet [\[14\]](#page-9-10), while comparing different versions of the model with different number of layers. This creates a controlled comparison between the different models, as they are identical in architecture, except for their size (and accordingly, their FPO cost). Once again, we notice the same trend: the large increase in FPO cost does not translate to a large increase in performance.
 
-### 3.3 Additional Ways to Promote Green AI
+#### 3.3 Additional Ways to Promote Green AI
 
 In addition to reporting the FPO cost of the final reported number, we encourage researchers to report the budget/accuracy curve observed during training. In a recent paper [\[9\]](#page-9-4), we observed that selecting the better performing model on a given task depends highly on the amount of compute available during model development. We introduced a method for computing the expected best validation performance of a model as a function of the given budget. We argue that reporting this curve will allow users to make wiser decisions about their selection of models and highlight the stability of different approaches.
 
 We further advocate for making efficiency an official contribution in major AI conferences, by advising reviewers to recognize and value contributions that do not strictly improve state of the art, but have other benefits such as efficiency. Finally, we note that the trend of releasing pretrained models publicly is a green success, and we would like to encourage organizations to continue to release their models in order to save others the costs of retraining them.
 
-### <span id="page-7-0"></span>4 Related Work
+## <span id="page-7-0"></span>4 Related Work
 
 Recent work has analyzed the carbon emissions of training deep NLP models [\[40\]](#page-10-0) and concluded that computationally expensive experiments can have a large environmental and economic impact. With modern experiments using such large budgets, many researchers (especially those in academia) lack the resources to work in many high-profile areas; increased value placed on computationally efficient approaches will allow research contributions from more diverse groups. We emphasize that the conclusions of [\[40\]](#page-10-0) are the result of long-term trends, and are not isolated within NLP, but hold true across machine learning.
 

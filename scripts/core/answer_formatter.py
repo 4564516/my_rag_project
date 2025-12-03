@@ -28,11 +28,22 @@ class AnswerFormatter:
     def load_metadata(self, path: str):
         """加載 metadata.csv 以建立 id -> url 映射"""
         try:
+            # 嘗試 UTF-8
             with open(path, "r", encoding="utf-8") as f:
                 reader = csv.DictReader(f)
                 for row in reader:
                     if "id" in row and "url" in row:
                         self.metadata_map[row["id"].strip()] = row["url"].strip()
+        except UnicodeDecodeError:
+            print(f"Warning: UTF-8 failed for {path}, trying latin-1...")
+            try:
+                with open(path, "r", encoding="latin-1") as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        if "id" in row and "url" in row:
+                            self.metadata_map[row["id"].strip()] = row["url"].strip()
+            except Exception as e:
+                print(f"Warning: Failed to load metadata from {path}: {e}")
         except Exception as e:
             print(f"Warning: Failed to load metadata from {path}: {e}")
 

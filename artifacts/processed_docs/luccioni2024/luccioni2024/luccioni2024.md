@@ -4,109 +4,13 @@ ALEXANDRA SASHA LUCCIONI and YACINE JERNITE, Hugging Face, Canada/USA EMMA STRUB
 
 <span id="page-0-0"></span>![](_page_0_Figure_3.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the carbon emissions and model sizes of various AI models, including LLa
- 
-**Figure Data (Q&A):**
-Q: What is the size of the LLa
-Q: How many
+Fig. 1. The tasks examined in our study and the average quantity of carbon emissions they produced (in g of 2) for 1,000 queries. N.B. The y axis is in logarithmic scale.
 
+Recent years have seen a surge in the popularity of commercial AI products based on generative, multi-purpose AI systems promising a unified approach to building machine learning (ML) models into technology. However, this ambition of "generality" comes at a steep cost to the environment, given the amount of energy these systems require and the amount of carbon that they emit. In this work, we propose the first systematic comparison of the ongoing inference cost of various categories of ML systems, covering both task-specific (i.e. finetuned models that carry out a single task) and 'general-purpose' models, (i.e. those trained for multiple tasks). We measure deployment cost as the amount of energy and carbon required to perform 1,000 inferences on representative benchmark dataset using these models. We find that multi-purpose, generative architectures are orders of magnitude more expensive than task-specific systems for a variety of tasks, even when controlling for the number of model parameters. We conclude with a discussion around the current trend of deploying multi-purpose generative ML systems, and caution that their utility should be more intentionally weighed against increased costs in terms of energy and emissions. All the data from our study can be accessed via an [interactive demo](https://huggingface.co/spaces/sasha/CO2_inference/) to carry out further exploration and analysis.
 
+CCS Concepts: • Computing methodologies → Machine learning; Neural networks; • Hardware → Impact on the environment; Power estimation and optimization.
 
-
-### Table 1: Model Emissions
-
-| Model | Emissions (g of CO2) |
-| --- | --- |
-| Text classification | 1.2 |
-| Extractive QA | 1.5 |
-| Masked Language Modeling | 2.1 |
-
-### Table 2: Model Emissions
-
-| Model | Emissions (g of CO2) |
-| --- | --- |
-
-### Table 3: Model E
-| Model | E
-
-### Table 4: Model E
-| Model | E
-
-### Table 5: Model E
-| Model | E
-
-### Table 6: Model E
-| Model | E
-
-### Table 7: Model E
-| Model | E
-
-### Table 8: Model E
-| Model | E
-
-### Table 9: Model E
-| Model | E
-
-### Table 10: Model E
-| Model | E
-
-### Table 11: Model E
-| Model | E
-
-### Table 1: Model E
-| Model | E
-
-
-However, I don't see the image. Could you please provide the image or describe it to me so I can extract the information?
-
-
-Unfortunately, the image does not contain a table that needs to be transcribed.
-
-**Chart/Plot Extraction:**
-
-The image contains two plots. I will extract the data points and summarize the X and Y axis units.
-
-**Plot 1: Model Emissions (g of CO2)**
-
-*   **Data Points:**
-    *   Text classification: 1.5
-    *   Extractive QA: 2.5
-    *   Masked Language Modeling: 3.5
-    *   Token classification: 4.5
-    *   Image classification: 5.5
-    *   Multitask text classification: 6.5
-    *   Object detection: 7.5
-    *   Text classification: 8.5
-    *   Text classification: 9.5
-    *   Text classification: 10.5
-    *   Text classification: 11.5
-    *   Text classification: 12.5
-    *   Text classification: 13.5
-    *   Text classification: 14.5
-    *   Text classification: 15.5
-    *   Text classification: 16.5
-    *   Text classification: 17.5
-    *   Text classification: 18.5
-    *   Text classification: 19.5
-    *   Text classification: 20.5
-    *   Text classification: 21.5
-    *   Text classification: 22.5
-    *   Text classification: 23.5
-    *   Text classification: 24.5
-    *   Text classification: 25.5
-    *   Text classification: 26.5
-    *   Text classification: 27.5
-    *   Text classification: 28.5
-    *   Text classification: 29.5
-    *   Text classification: 30.5
-    *   Text classification: 31.5
-    *   Text classification: 32.5
-    *   1.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-
-# ACM Reference Format:
+### ACM Reference Format:
 
 Alexandra Sasha Luccioni, Yacine Jernite, and Emma Strubell. 2024. Power Hungry Processing: Watts Driving the Cost of AI Deployment?. In ACM Conference on Fairness, Accountability, and Transparency (ACM FAccT '24), June 3–6, 2024, Rio de Janeiro, Brazil. ACM, New York, NY, USA, [21](#page-20-0) pages.<https://doi.org/10.1145/3630106.3658542>
 
@@ -116,9 +20,7 @@ Permission to make digital or hard copies of part or all of this work for person
 
 Manuscript submitted to ACM
 
-1
-
-#### 1 INTRODUCTION
+### 1 INTRODUCTION
 
 Understanding the environmental impacts of different industries is an important first step towards developing effective strategies to mitigate those impacts. For newer industries such as information and communication technologies (ICT) of which Artificial Intelligence (AI) and Machine Learning (ML) are considered to be a part of, more work is needed to understand the extent of their environmental impacts and the factors that influence it. Between 2017 and 2021, the electricity used by Meta, Amazon, Microsoft, and Google, the main providers of commercially-available cloud compute, more than doubled [\[22\]](#page-15-0). According to the most recent figures available, global data centre electricity consumption has grown by 20-40% annually in recent years, reaching 1-1.3% of global electricity demand and contributing 1% of energy-related greenhouse gas emissions in 2022 [\[21\]](#page-15-1). However the contribution of the AI sector specifically towards these figures is unclear.
 
@@ -138,7 +40,7 @@ Despite these empirical studies, there is currently a lack of standardized metho
 
 The current study further pursues this line of work, delving deeper into the inference stage of ML models, the energy it consumes and the carbon it emits. By testing a variety of architectures on different tasks and datasets, we aim to gain a better understanding of the degree of variance that can be observed and how seemingly small user choices can result in large differences in model's environmental impacts.
 
-## 3 METHODOLOGY
+# 3 METHODOLOGY
 
 As stated above, our study focuses on the inference (i.e. deployment) stage in the model life cycle, aiming to address the knowledge gaps that currently exist with regards to its energy consumption and ensuing emissions. We describe how we chose the tasks, datasets and models in the sections below, and present the results of our analysis in Section [4.](#page-4-0)
 
@@ -160,7 +62,7 @@ As the starting point of our study, we chose 10 ML tasks from 5 different modali
 
 Table 1. A list of the tasks and datasets used in our study.
 
-#### <span id="page-3-3"></span>3.2 Models
+# <span id="page-3-3"></span>3.2 Models
 
 To be representative of a broad diversity of deployment use cases, we sampled 88 models, some of which were trained or finetuned specifically for the tasks that we selected, whereas others were designed to be used as zero-shot or multi-task models, to allow comparisons both for different architectures on a given task and between tasks for the same architecture.
 
@@ -168,21 +70,21 @@ Task-specific Models. For all of the tasks listed above, we selected the 8 most 
 
 <span id="page-3-1"></span><sup>2</sup>We were obliged to discard some models, e.g. if they were trained on another language or if the specific task they were fine-tuned for was not compatible with any of the datasets selected.
 
-Multi-Purpose Models. In addition to the task-specific models listed above, we also selected 8 multi-purpose models to analyze on different tasks – models that were specifically trained to perform well in various different application settings. We chose 4 sequence-to-sequence models of different sizes from the Flan-T5 family [8] (base, large, xl and xxl) and 4 decoder-only models from the BLOOMz family [34]: BLOOMz–560M, BLOOMz–1B, BLOOMz–3B and BLOOMz–7B. We tested these on a subset of the tasks to allow a comparison of multi-purpose generative models with individual task-specific systems in terms of their energy consumption and emissions: question answering, text classification and summarization. We selected these three tasks because we were able to find a set of models that were capable of carrying them out with a unified model architecture (which wasn't possible for all tasks, especially ones that involved multiple modalities.) We prompted these 8 models in a zero-shot setting that was constant across models, e.g. "Summarize the following text: [text]. Summary:" on the same 1,000 samples as the fine-tuned models, also repeating each experiment ten times to measure the significance of results.
+Multi-Purpose Models. In addition to the task-specific models listed above, we also selected 8 multi-purpose models to analyze on different tasks – models that were specifically trained to perform well in various different application settings. We chose 4 sequence-to-sequence models of different sizes from the Flan-T5 family [8] (base, large, xl and xxl) and 4 decoder-only models from the BLOOMz family [34]: BLOOMz-560M, BLOOMz-1B, BLOOMz-3B and BLOOMz-7B. We tested these on a subset of the tasks to allow a comparison of multi-purpose generative models with individual task-specific systems in terms of their energy consumption and emissions: question answering, text classification and summarization. We selected these three tasks because we were able to find a set of models that were capable of carrying them out with a unified model architecture (which wasn't possible for all tasks, especially ones that involved multiple modalities.) We prompted these 8 models in a zero-shot setting that was constant across models, e.g. "Summarize the following text: [text]. Summary:" on the same 1,000 samples as the fine-tuned models, also repeating each experiment ten times to measure the significance of results.
 
 We ran all of our experiments on a node of 8 NVIDIA A100-SXM4-80GB GPUs hosted on Amazon Web Services, and used the Code Carbon package [47] to measure both the energy consumed and the carbon emitted during inference  $^3$ . Given that all of our experiments were run in the same compute region (AWS's us-west-2), which is based in Oregon and has an average carbon intensity of 297.6 grams of  $CO_2eq$  per kWh<sup>4</sup>, this means that both the energy consumed during inference and the carbon emitted are correlated; we will therefore plot one or the other depending on which aspect of our results we are discussing. While the energy consumed during inference will remain similar for models deployed on A100 GPUs in other compute regions, the carbon emissions will vary depending on the source of energy used in the region – it is therefore helpful to report both energy and carbon separately to allow for meaningful comparisons across regions and hardware. We provide all the code used for our experiments in our GitHub repository, alongside the logs produced by Code Carbon, which not only provides the total energy consumed but also a more fine-grained breakdown by hardware component (GPU, CPU and RAM), which can be used to carry out further analyses. In total, for all of model experimentation and evaluation, we used a total of 754.66 kWh of energy and emitted 178.97 kg of  $CO_2eq$ .
 
-# <span id="page-4-0"></span>4 RESULTS
+#### <span id="page-4-0"></span>4 RESULTS
 
 We present our results in the subsections below: in Section 4.1, we analyze the range of energy used and carbon emitted for each task for task-specific models. In Section 4.2, we shift our focus to multi-purpose (i.e. 'zero-shot' models), looking at the variation between different sizes and architectures of multi-purpose models and the difference in the energy consumption and emissions between task-specific and multi-purpose models. In Section 4.3, we carry out a comparison between model training and inference costs for models of different sizes, calculating when parity is reached.
 
-#### <span id="page-4-3"></span>4.1 Task-specific model analysis
+# <span id="page-4-3"></span>4.1 Task-specific model analysis
 
 We start by analyzing the degree of variability in terms of the energy cost of ML models specifically trained for a variety of tasks. Table 2 shows each of the ten tasks that we analyzed as well as the mean energy used across all models for 1,000 inferences and its standard deviation. We can see that classification tasks for both images and text are on the lower end of the spectrum in terms of emissions (ranging between 0.002 and 0.007 kWh for 1,000 inferences), whereas
 
 <span id="page-4-1"></span> $<sup>^{3}</sup>$ While all of our experiments were run on a single GPU, the idle power usage of the other GPUs is also reflected in the numbers that we report in our results.
 
-<span id="page-4-2"></span> $<sup>^4</sup>$ The carbon intensity of an energy grid is measured in  $CO_2eq$ , and not in  $CO_2$  specifically, because the different greenhouse gases that are generated during electricity generation are reduced to a common denominator, that of carbon dioxide, or  $CO_2$ . For a more in-depth discussion of how this is done, see Luccioni and Hernandez-Garcia [2023].
+<span id="page-4-2"></span><sup>&</sup>lt;sup>4</sup>The carbon intensity of an energy grid is measured in  $CO_2eq$ , and not in  $CO_2$  specifically, because the different greenhouse gases that are generated during electricity generation are reduced to a common denominator, that of carbon dioxide, or  $CO_2$ . For a more in-depth discussion of how this is done, see Luccioni and Hernandez-Garcia [2023].
 
 generative tasks such as text generation and summarization use, on average, over 10 times more energy for the same number of inferences (around 0.05 kWh for 1,000 inferences), and multimodal tasks such as image captioning and image generation are on the highest end of the spectrum (0.06-2.9 kWh for 1,000 inferences). Text-based tasks are, all things considered, more energy-efficient than image-based tasks, with image classification requiring less energy (median of 0.0068 kWh for 1,000 inferences) than image generation (1.35 kWh) and, conversely, text generation (0.042 KwH) requiring more than text classification (0.0023 kWh). For comparison, charging the average smartphone requires 0.022 kWh of energy [\[51\]](#page-16-23), which means that the most efficient text generation model uses as much energy as 9% of a full smartphone charge for 1,000 inferences, whereas the least efficient image generation model uses as much energy as 522 smartphone charges (11.49 kWh), or around half a charge per image generation [5](#page-5-1) , although there is also a large variation between image generation models, depending on the size of image that they generate.
 
@@ -210,89 +112,13 @@ We can also observe that there is a large variation in the amount of energy used
 
 <span id="page-6-0"></span>![](_page_6_Figure_2.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents two scatter plots comparing the carbon emissions of various models, including GShard, LLa
- 
-**Figure Data (Q&A):**
+Fig. 2. The 5 modalities examined in our study, with the number of parameters of each model on the x axis and the average amount of carbon emitted for 1000 inferences on the y axis. NB: Both axes are in logarithmic scale.
 
-Q: What were the net CO2e emissions for GShard?
-A: 4.3 tCO2
+Next, we examine the respective influences of model size and task structure on model emissions. Figure [2](#page-6-0) shows the relationship between model emissions (in grams of 2 per 1,000 inferences) and sizes (in terms of the number of parameters) across the task categories listed in Section [3.1.](#page-3-2) We do observe a relationship between model size and quantity of emissions produced during inference, with differing progressions for each modality – however, the task structure accounts for more of the variation than the model size does. We can observe once again that text-to-image is by far the most carbon- and energy-intensive task, with smaller image generation models such as segmind/tiny-sd that have around 500M parameters producing magnitudes more carbon than text-to-category models (100g vs. 0.6g of 2 per 1,000 inferences). Within the text-to-text tasks, we see two separate sets of models: the masked language modeling task following a lower trend, producing emissions akin to text-to-category models, compared to text generation and summarization tasks, which produce similar amounts of carbon to the image captioning models with a similar number of parameters. For context, the most carbon-intensive image generation model (stable-diffusion-xl-base-1.0) generates 1,594 grams of2 for 1,000 inferences, which is roughly the equivalent to 4.1 miles driven by an average gasoline-powered passenger vehicle [\[51\]](#page-16-23), whereas the least carbon-intensive text generation model (distilbert-base-uncased) generates as much carbon as 0.0006 miles driven by a similar vehicle, i.e. 6,833 times less. This can add up quickly when image generation models such as [Dall·E](https://openai.com/dall-e-2) and [MidJourney](https://www.midjourney.com/explore) are deployed in user-facing applications and used by millions of users globally (we discuss this point further in Section [5\)](#page-12-0).
 
-Q: What is the model size of LLa
+The (high-level) takeaway of this analysis is that even for models specifically trained to carry out a single task, there is a large level of variation both within each task and an even larger one between tasks from different modalities. In essence, tasks that map both image and text inputs to categorical outputs are less energy- and carbon-intensive than those that generate text or images. Making these distinctions can help inform policies seeking to mitigate the environmental impacts of AI, given that it is important to be aware of this variation, which can sometimes reach several orders of magnitude. In the next section, we delve deeper into multi-purpose systems, which are meant to carry out several tasks concurrently, to better understand their environmental impacts and how they compare to task-specific models.
 
-Q: What is the model size of L
-
-Q: What is the model
-
-Q: What is the
-
-Q: What is
-
-
-
-
-This section appears to be a scatter plot or chart, but I'll extract information from it as per the instructions.
-
-Unfortunately, I don't have enough information to extract data points or descriptions from this section. It seems to be a chart or plot, but I'll describe it as follows:
-
-* **X-axis:** Model size (number of parameters)
-* **Y-axis:** Model emissions (g of CO2)
-* **Data points:** Not available
-
-**Section 2: Model Emissions (g of CO2)**
-
-**Section 3: Model Emissions (g of CO2)**
-
-This section appears to be a chart or plot, but I'll extract information from it as per the instructions.
-
-**Section 4: Model Emissions (g of CO2)**
-
-This section appears to be a chart or plot, but I'll
-**Section 5: Model E
-This section appears to be a chart or plot, but I'll
-**Section 6: Model E
-This section appears to be a chart or
-**Section 7: Model E
-This section appears to be a chart or
-**Section 8: Model E
-This section appears to be a chart or
-**Section 9: Model E
-This section appears to be a chart or
-**Section 10: Model E
-This section appears to be a chart or
-**Section 11: Model E
-This section appears to be a chart or
-**Section 12: Model E
-This section appears to be a chart or
-**Section 13: Model E
-This section appears to be a chart or
-**Section 14: Model E
-This section appears to be a chart or
-**Section 15: Model E
-This section appears to be a chart or
-**Section 16: Model E
-This section appears to be a chart or
-**Section 17: Model E
-This section appears to be a chart or
-**Section 18: Model E
-This section appears to be a chart or
-**Section 19: Model E
-This section appears to be a chart or
-**Section 20: Model E
-This section appears to be a chart or
-**Section 21: Model E
-This section appears to be a chart or
-**Section 22: Model E
-This section appears to be a chart or
-
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
-
-#### <span id="page-7-0"></span>4.2 The environmental cost of multi-purpose systems
+### <span id="page-7-0"></span>4.2 The environmental cost of multi-purpose systems
 
 The second part of our analysis examines multi-task models of two types: decoder only, from the BLOOMz family, and sequence-to-sequence models from the FLAN-T5 family, with the goal of comparing energy intensity and carbon emissions of models with differing numbers of parameters when applied to different tasks. To address this question, we selected a subset of 3 tasks – text classification, extractive question answering, and summarization – given their diversity and broad applicability in a variety of settings, and compare the 8 zero-shot models of different sizes, based on the same 3 datasets per task as described in Table [1.](#page-3-0)
 
@@ -302,114 +128,21 @@ To start our analysis, we examined how the choice of model and architecture type
 
 <span id="page-7-1"></span>![](_page_7_Figure_6.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of carbon emissions and model sizes for various AI models, including L
-**Figure Data (Q&A):**
+Fig. 3. Model emissions (measured in g 2) and architecture type for each of the datasets from our analysis. The y axis is in logarithmic scale, dot size is proportional to model size.
 
-Q: What is the model size of L
+In Figure [3,](#page-7-1) we plot the mean query emissions for each model on a dataset-by-dataset basis. We can see that for the two discriminative tasks, sentiment analysis (which includes SST 2, Rotten Tomatoes and IMDB datasets) and question answering (which encompasses SciQ, SQuAD and SQuAD v2) there is a clear distinction between task-specific discriminative models (in blue), which have less emissions than both multi-purpose sequence-to-sequence (in yellow) and decoder-only generative models (in green). Given that the y axis in Figure [3](#page-7-1) is in logarithmic scale, this indicates that the difference is several orders of magnitude - e.g. with the most efficient task-specific models emit 0.3g of 2 per 1,000 inferences for extractive question answering on a dataset like SciQ, multi-purpose models emit 10g for the same task. This result follows intuitions derived from the model structures: while a task-specific model trained on binary text classification will carry out a softmax on a two-category vector to predict a class, a multi-purpose model will generate 'positive' or 'negative', which logically requires more energy because the prediction is based on the model's entire vocabulary. For the generative task, summarization (represented by the SAMsum, XSum and CNN-Daily Mail datasets), the task-specific and multi-purpose models are closer in terms of emissions: task-specific sequence-to-sequence models
 
-Q: How many
+generate 4-10g of 2 for 1,000 inferences, while multi-purpose models emit 20-30g for the same task. The difference appears to mostly come from model size – all of the task-specific summarization models we looked at were 600 million parameters at most, compared to the larger multi-purpose architectures, which attained the 11 billion parameters.
 
-Q: What is the
+We also carry out an evaluation of both the task-specific and multi-purpose models examined in our study to ensure that they have comparable performance. For task-specific models, we used the evaluate library [\[52\]](#page-17-6) and the LM Evaluation Harness [\[14\]](#page-15-18) for zero-shot models. Fundamentally speaking, it is hard to compare task-specific and multi-purpose models using the same metrics, given that task-specific models have a much more constrained decision space (e.g. two classes in the case of binary text classification), whereas multi-purpose models have a large output vocabulary to choose from, and are dependent upon the prompt schema and prompting strategy used. However, by utilizing two standardized packages (evaluate and lm-evaluation-harness) and keeping the prompting approach stable across zero-shot models, we endeavor to standardize our evaluation approach as much as possible.
 
+<span id="page-8-0"></span>![](_page_8_Figure_4.jpeg)
 
+Fig. 4. Model size, measured in number of parameters (x axis, logarithmic scale) and text classification accuracy (y axis), with dot size indicating the quantity of emissions (logarithmic scale).
 
+We hone in on one specific task, text classification, in Figure [4,](#page-8-0) which illustrates the relationship between model size (x axis, in logarithmic scale), accuracy (y axis) and emissions (dot size, in logarithmic scale). Among task-specific encoder models, we observe that accuracy varies more widely, i.e. there are several smaller models of similar size and comparably small amounts of carbon emissions, with widely varying levels of accuracy. The multi-purpose models vary less in terms of accuracy, having higher average accuracy overall. Both sequence-to-sequence and decoder-only models produce comparable amounts of emissions (several orders of magnitude more than task-specific models).We can see that mid-size multi-purpose models (in the 3B parameter range) may have slightly better accuracy compared to both larger and smaller models. However, given the many caveats and specificities involved in multi-purpose LLM evaluation, this difference may not be significant. We present the full results of our evaluation, which include the other 2 tasks, in Section [B](#page-19-0) in the Supplementary Materials.
 
-The scatter plot has a title, but it is not provided in the input. The X-axis and Y-axis labels are not specified, but the plot appears to be a comparison of model emissions (g of CO2) for various models.
-
-**Data Points**
-
-The data points are represented by various colors and symbols. The colors and symbols are not specified in the input, so I will not describe them.
-
-**X-Axis and Y-Axis**
-
-The X-axis and Y-axis labels are not specified in the input. The X-axis appears to be a list of model names, and the Y-axis appears to be a list of model emissions (g of CO2).
-
-The data points are represented by various colors and symbols. The colors and models are:
-
-* imdb: 5.5
-* sst2: 4.5
-* rotten_tomatoes: 4.5
-* sciq: 4.5
-* squad: 4.5
-* imdb: 5.5
-* sst2: 4.5
-* rotten_tomatoes: 4.5
-* sciq: 4.5
-* squad: 4.5
-
-* imdb: 5.5
-* sst2: 4.5
-* rotten_tom
-The provided image is a scatter plot with multiple data points, but it does not contain any tables, diagrams, or mathematical formulas. Therefore, I will focus on describing the scatter plot.
-
-The scatter plot has a title, but it is not provided in the input. The X-axis and Y-axis labels are not specified in the input, but the plot appears to be a comparison of model emissions (g of CO2) for various models.
-
-* imdb: 5.5
-* sst2: 4.5
-* rotten_t
-The provided image is a scatter plot with multiple data points, but it does not contain any tables, diagrams, or mathematical formulas. Therefore, I will focus on describing the scatter
-
-
-There is no table in the provided image. The image appears to be a chart or plot with multiple data points.
-
-**Chart/PLOT Transcription:**
-
-Here are the visible data points:
-
-* imdb: 2.5
-* sst2: 2.2
-* rotten_tomatoes: 2.1
-* sciq: 2.0
-* squad: 1.9
-* imdb: 2.5
-* sst2: 2.2
-
-
-[描述已截斷以避免過長]
-
-
-The image contains a scatter plot with multiple data points, but it's not possible to extract specific information from it without further context or description. The plot appears to be a scatter plot with multiple data points, but it's not possible to extract specific information from it.
-
-**Data Points:**
-
-Unfortunately, I cannot extract specific data points from the image without further context or description. The image appears to be a scatter plot with multiple data points, but it's not possible to extract specific information from it.
-
-**Table:**
-
-There is no table in the provided image.
-
-**Chart/PLOT:**
-
-Unfortunately, I cannot extract specific information from the image without further context or description. The image appears to be a scatter plot with multiple data points, but it's not possible to extract specific information from it.
-
-**Diagrams:**
-
-**Mathematical Formulas:**
-
-There are no mathematical formulas in the provided image.
-
-**Output Format:**
-
-Unfortunately, I cannot provide a specific output format for the provided image. The image appears to be a scatter plot with multiple data points, but it's not possible to extract specific information from it.
-
-**Critical Rules:**
-
-I have followed the critical rules to extract information from the provided image. However, I cannot provide specific information from the image without further context or description. The image appears to be a scatter plot with multiple data points, but it's not possible to
- extract specific information from it.
-
-
-There is no table in the provided image. The image appears to be a scatter plot with multiple data points.
-
-**Chart/PLOT Transcription:**
-
-Here are the visible data points:
-
-
-[描述已截斷以避免過長]
-
-### 4.2.2 Differences within multi-purpose architectures.
+# 4.2.2 Differences within multi-purpose architectures.
 
 Beyond the differences between task-specific and multi-purpose models generally, we also observed variation within the multi-purpose models that we examined. We present our results in Table [3;](#page-9-0) in it, we can observe that on a per-architecture basis (i.e. within the family of decoder-only models and the family of sequence-to-sequence models), size and emissions are correlated, with smaller models emitting less carbon and using less energy. However, sequence-to-sequence models are more efficient than their decoder-only counterparts when models of the same size are compared: for instance, Flan-T5-XL and BLOOMz-3B are both of a similar size (around 3B parameters), but the former generates, on average, 2 grams of emissions less for 1,000 inferences than the latter. This difference holds when comparing Flan-T5-XXL, which is the biggest model in terms of parameter count in the multi-purpose models that we tested (11 billion), yet it has lower emissions (11.48g on average) compared to the smaller BLOOMz-7B. Comparing the models on a per-task basis in Figure [5,](#page-10-0) we can see the same pattern for zero-shot models as for task-specific ones, with text classification a less carbon-intensive task compared to question answering, and summarization the most intensive one of the three. The spread between the tasks is smaller for sequence-to-sequence models (indicated with dots in Figure [5\)](#page-10-0), whereas for decoder-only models (indicated with crosses), the difference between the different tasks is more significant.
 
@@ -433,101 +166,34 @@ As we have observed in the current section, there is no 'one-size-fits-all' patt
 
 <span id="page-10-0"></span>![](_page_10_Figure_2.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the carbon emissions and model sizes of various models, including GShard, LLa
- 
-**Figure Data (Q&A):**
-Q: What were the net CO2e emissions for GShard? A: 4.3 t
-Q: What is the size of the LLa
-Q: How many
+Fig. 5. A plot of the total emissions (in grams of 2) for 1,000 inferences for all multi-purpose models.
 
+<span id="page-10-1"></span>
 
+|          |        | BLOOMz | BLOOMz | BLOOMz | BLOOMz | Flan-T5 | Flan-T5 | Flan-T5 | Flan-T5 |
+|----------|--------|--------|--------|--------|--------|---------|---------|---------|---------|
+|          |        | 560M   | 1B     | 3B     | 7B     | base    | large   | xl      | xxl     |
+| dataset  | input  | output | output | output | output | output  | output  | output  | output  |
+| IMDB     | 58.73  | 1.64   | 2.61   | 1.72   | 1.53   | 1.00    | 1.00    | 1.00    | 1.00    |
+| Rotten   |        |        |        |        |        |         |         |         |         |
+| Tomatoes | 30.08  | 1.00   | 0.99   | 1.03   | 1.00   | 1.00    | 1.00    | 1.00    | 1.00    |
+| SST 2    | 28.35  | 0.98   | 0.99   | 1.01   | 1.02   | 1.00    | 1.00    | 1.00    | 1.00    |
+| SciQ     | 113.12 | 1.28   | 1.25   | 1.10   | 1.10   | 2.03    | 5.41    | 3.12    | 2.42    |
+| SQuAD    | 134.00 | 1.93   | 1.96   | 2.02   | 1.95   | 2.01    | 2.15    | 2.16    | 2.13    |
+| SQuAD 2  | 115.85 | 2.33   | 2.54   | 2.58   | 2.41   | 2.28    | 2.74    | 2.71    | 2.58    |
+| CNN      | 54.00  | 12.05  | 11.91  | 11.73  | 10.34  | 8.52    | 11.34   | 11.34   | 10.68   |
+| SamSUM   | 47.82  | 9.54   | 9.41   | 9.75   | 9.85   | 10.56   | 11.05   | 10.18   | 10.57   |
+| XSum     | 53.85  | 11.53  | 12.22  | 11.94  | 11.92  | 12.95   | 13.62   | 13.49   | 13.09   |
 
+Table 4. Average input and output length (in number of tokens) for the 8 zero-shot models and 9 tasks examined as part of our study. The darker the cell, the more carbon was output by the model for the task.
 
-The image appears to be a scatter plot with multiple data points, but it's not possible to extract specific information from it without further context or description. The image shows a scatter plot with multiple data points, but it's not possible to extract specific information from it without further context or description.
+<span id="page-10-2"></span>![](_page_10_Figure_6.jpeg)
 
-**Data Points:**
+Fig. 6. A plot of the output length (X axis) and carbon emissions (Y axis) for the summarization task. The symbol refers to the type of architecture (BLOOMz vs Flan-T5), symbol size references the relative model size (in terms of the number of parameters), and color the input length.
 
-Unfortunately, I cannot extract specific data points from the image without further context or description. The image appears to be a scatter plot with multiple data points, but it's not possible to extract specific information from it.
+including model size and output length. This would indicate that more careful consideration is needed when making
 
-**Table:**
-
-There is no table in the provided image.
-
-**Chart/PLOT:**
-
-Unfortunately, I cannot extract specific information from the image without further context or description. The image appears to be a scatter plot with multiple data points, but it's not possible to extract specific information from it.
-
-**Diagrams:**
-
-Unfortunately, I cannot extract specific information from the image without further context or description. The image appears to be a scatter plot with multiple data points, but it's not possible to
-**Table:**
-
-Unfortunately, I cannot extract specific information from the image without further context or description. The image appears to be a scatter plot with multiple data points, but it's not
-**Mathematical Formulas:**
-
-There are no mathematical formulas in the provided image.
-
-**Output:**
-
-Unfortunately, I cannot provide any output as the provided image does not contain any specific information or data points. The image appears to be a scatter
-**Output:**
-
-Unfortunately, I cannot provide any output as the provided image does not contain any specific information or data
-**Output:**
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
-
-
-The first chart is a scatter plot with two axes: "Model Emissions (g of CO2)" on the y-axis and "Output Length (number of tokens)" on the x-axis. The chart shows a scatter plot of model emissions vs. output length, with several data points and a trend line.
-
-**Chart 2: Scatter Plot**
-
-The second chart is another scatter plot with two axes: "Model Emissions (g of CO2)" on the y-axis and "Output Length (number of tokens)" on the x-axis. This chart shows a scatter plot of model emissions vs. output length, with several data points and a trend line.
-
-**Chart 3: Scatter Plot**
-
-The third chart is another scatter plot with two axes: "Model Emissions (g of CO2)" on the y-axis and "Output Length (number of tokens)" on the x-axis. This chart shows a scatter plot of model emissions vs. output length, with several data points and a trend line.
-
-**No Tables or Diagrams**
-
-There are no tables or diagrams in the provided image. The image appears to be a collection of three separate charts, each with its own unique content.
-
-**No Mathematical Formulas**
-
-There are no mathematical formulas in the provided image.
-
-**No Output**
-
-There is no output to provide. The image is a collection of three charts, each with its own unique content.
-
-**No Code**
-
-There is no code to provide.
-
-**No Data Points**
-
-There are no data points to provide.
-
-**No Descriptions**
-
-There are no descriptions to provide.
-
-**No Conclusions**
-
-There are no conclusions to provide.
-
-
-I was unable to extract any information from the image. The image appears to be a collection of three separate charts, each with its own unique content. There are no tables, diagrams, or code to provide.
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
+choices to deploy these models for different tasks and applying them in different scenarios. We further discuss our results and further avenues of research in the next and final section.
 
 #### <span id="page-11-0"></span>4.3 Comparing model training and inference costs
 
@@ -580,7 +246,7 @@ Finally, the intent of our study is to set the stage for better understanding of
 
 The main ethical concerns that we faced in our experimentation is the sheer amount of energy needed and carbon emissions generated by our study, given that we ran each of the 88 models on 3 datasets 10 times to ensure statistical significance of our measurements. In total, for all of model experimentation and evaluation, we used a total of 754.66 kWh of energy and emitted 178.97 kg of 2. In order to reduce our impacts as much as possible, we did all up-front experimentations on smaller portions of the dataset (to reduce wasted resources).
 
-# RESEARCHER POSITIONALITY STATEMENT
+### RESEARCHER POSITIONALITY STATEMENT
 
 The authors of this paper have backgrounds in theoretical and applied machine learning and work in institutions based in North America. We therefore recognize that our way of planning and running experiments is not necessarily reflective of other institutions from other regions, or the constraints faced by researchers from institutions with more limited access to compute.
 
@@ -592,7 +258,7 @@ We recognize that our work can be perceived as a critique of ML deployment in ge
 
 We thank Will Alpine, Nima Boscarino, Priya Donti, Régis Pierrard, David Rolnick, Roy Schwartz and Rajiv Shah for their useful feedback and suggestions.
 
-#### REFERENCES
+### REFERENCES
 
 - <span id="page-15-8"></span>[1] Nesrine Bannour, Sahar Ghannay, Aurélie Névéol, and Anne-Laure Ligozat. 2021. Evaluating the carbon footprint of NLP methods: a survey and analysis of existing tools. In EMNLP, Workshop SustaiNLP.
 - <span id="page-15-3"></span>[2] Jeff Barr. 2019. Amazon ec2 update–inf1 instances with AWS inferentia chips for high performance cost-effective inferencing. [https://aws.amazon.](https://aws.amazon.com/blogs/aws/amazon-ec2-update-inf1-instances-with-aws-inferentia-chips-for-high-performance-cost-effective-inferencing/) [com/blogs/aws/amazon-ec2-update-inf1-instances-with-aws-inferentia-chips-for-high-performance-cost-effective-inferencing/](https://aws.amazon.com/blogs/aws/amazon-ec2-update-inf1-instances-with-aws-inferentia-chips-for-high-performance-cost-effective-inferencing/)
@@ -609,10 +275,10 @@ We thank Will Alpine, Nima Boscarino, Priya Donti, Régis Pierrard, David Rolnic
 - <span id="page-15-7"></span>[13] Ahmad Faiz, Sotaro Kaneda, Ruhan Wang, Rita Osi, Parteek Sharma, Fan Chen, and Lei Jiang. 2023. LLMCarbon: Modeling the end-to-end Carbon Footprint of Large Language Models. arXiv preprint arXiv:2309.14393 (2023).
 - <span id="page-15-18"></span>[14] Leo Gao, Jonathan Tow, Stella Biderman, Sid Black, Anthony DiPofi, Charles Foster, Laurence Golding, Jeffrey Hsu, Kyle McDonell, Niklas Muennighoff, Jason Phang, Laria Reynolds, Eric Tang, Anish Thite, Ben Wang, Kevin Wang, and Andy Zou. 2021. A framework for few-shot language model evaluation.<https://doi.org/10.5281/zenodo.5371628>
 - <span id="page-15-14"></span>[15] Bogdan Gliwa, Iwona Mochol, Maciej Biesek, and Aleksander Wawer. 2019. SAMSum Corpus: A Human-annotated Dialogue Dataset for Abstractive Summarization. In Proceedings of the 2nd Workshop on New Frontiers in Summarization. Association for Computational Linguistics, Hong Kong, China, 70–79.<https://doi.org/10.18653/v1/D19-5409>
-- <span id="page-15-24"></span><span id="page-15-22"></span>[16] Google. 2019. Understanding searches better than ever before.<https://blog.google/products/search/search-language-understanding-bert/>
-- [17] Google. 2023. Bard can now connect to your Google apps and services. [https://blog.google/products/bard/google-bard-new-features-update-sept-](https://blog.google/products/bard/google-bard-new-features-update-sept-2023/)[2023/](https://blog.google/products/bard/google-bard-new-features-update-sept-2023/)
-- <span id="page-15-21"></span><span id="page-15-5"></span>[18] Google. 2023. An important next step on our AI journey.<https://blog.google/technology/ai/bard-google-ai-search-updates/>
-- [19] Walid A Hanafy, Qianlin Liang, Noman Bashir, David Irwin, and Prashant Shenoy. 2023. CarbonScaler: Leveraging Cloud Workload Elasticity for Optimizing Carbon-Efficiency. arXiv preprint arXiv:2302.08681 (2023).
+- <span id="page-15-24"></span>[16] Google. 2019. Understanding searches better than ever before.<https://blog.google/products/search/search-language-understanding-bert/>
+- <span id="page-15-22"></span>[17] Google. 2023. Bard can now connect to your Google apps and services. [https://blog.google/products/bard/google-bard-new-features-update-sept-](https://blog.google/products/bard/google-bard-new-features-update-sept-2023/)[2023/](https://blog.google/products/bard/google-bard-new-features-update-sept-2023/)
+- <span id="page-15-21"></span>[18] Google. 2023. An important next step on our AI journey.<https://blog.google/technology/ai/bard-google-ai-search-updates/>
+- <span id="page-15-5"></span>[19] Walid A Hanafy, Qianlin Liang, Noman Bashir, David Irwin, and Prashant Shenoy. 2023. CarbonScaler: Leveraging Cloud Workload Elasticity for Optimizing Carbon-Efficiency. arXiv preprint arXiv:2302.08681 (2023).
 - <span id="page-15-15"></span>[20] Karl Moritz Hermann, Tomás Kociský, Edward Grefenstette, Lasse Espeholt, Will Kay, Mustafa Suleyman, and Phil Blunsom. 2015. Teaching Machines to Read and Comprehend. In NeurIPS. 1693–1701.<http://papers.nips.cc/paper/5945-teaching-machines-to-read-and-comprehend>
 - <span id="page-15-1"></span>[21] Ralph Hintemann and Simon Hinterholzer. 2022. Cloud computing drives the growth of the data center industry and its energy consumption. Data centers 2022. ResearchGate (2022).
 - <span id="page-15-0"></span>[22] International Energy Authority. 2023. Data Centres and Data Transmission Networks. [https://www.iea.org/energy-system/buildings/data-centres](https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks)[and-data-transmission-networks](https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks)
@@ -656,190 +322,106 @@ We thank Will Alpine, Nima Boscarino, Priya Donti, Régis Pierrard, David Rolnic
 - <span id="page-17-2"></span>[58] Jiazheng Xu, Xiao Liu, Yuchen Wu, Yuxuan Tong, Qinkai Li, Ming Ding, Jie Tang, and Yuxiao Dong. 2023. ImageReward: Learning and Evaluating Human Preferences for Text-to-Image Generation. arXiv[:2304.05977](https://arxiv.org/abs/2304.05977) [cs.CV]
 - <span id="page-17-3"></span>[59] Yukun Zhu, Ryan Kiros, Rich Zemel, Ruslan Salakhutdinov, Raquel Urtasun, Antonio Torralba, and Sanja Fidler. 2015. Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books. In The IEEE International Conference on Computer Vision (ICCV).
 
-## A FULL LIST OF TASK-SPECIFIC MODELS TESTED
+### A FULL LIST OF TASK-SPECIFIC MODELS TESTED
 
 <span id="page-18-0"></span>
 
-| Task           | Models                                   | Task           | Models                                                |
-|----------------|------------------------------------------|----------------|-------------------------------------------------------|
-| image          | microsoft/resnet-50                      |                | distilbert-base-uncased-distilled-squad               |
-|                | microsoft/beit-base-patch16-224          |                | distilbert-base-cased-distilled-squad                 |
-|                | google/vit-base-patch16-384              |                | deepset/roberta-base-squad2                           |
-|                | facebook/convnextv2-tiny-22k-384         | question       | bert-large-uncased-whole-word-masking-finetuned-squad |
-| classification | microsoft/resnet-18                      | answering      | timpal0l/mdeberta-v3-base-squad2                      |
-|                | google/mobilenet_v1_0.75_192             |                | deepset/tinyroberta-squad2                            |
-|                | facebook/convnextv2-tiny-1k-224          |                | deepset/electra-base-squad2                           |
-|                | google/vit-base-patch16-224              |                | deepset/bert-large-uncased-whole-word-masking-squad2  |
-|                | nlpconnect/vit-gpt2-image-captioning     |                | sshleifer/distilbart-xsum-12-6                        |
-|                | Salesforce/blip-image-captioning-large   |                | sshleifer/distilbart-cnn-12-6                         |
-|                | Salesforce/blip-image-captioning-base    |                | pszemraj/led-large-book-summary                       |
-| image          | microsoft/git-large-coco                 |                | google/pegasus-xsum                                   |
-| captioning     | Salesforce/blip2-flan-t5-xl              | summarization  | google/pegasus-large                                  |
-|                | Salesforce/blip2-opt-2.7b                |                | google/pegasus-multi_news                             |
-|                | ydshieh/vit-gpt2-coco-en                 |                | facebook/bart-large-cnn                               |
-|                | microsoft/git-base                       |                | ainize/bart-base-cnn                                  |
-|                | runwayml/stable-diffusion-v1-5           |                | distilbert-base-uncased-finetuned-sst-2-english       |
-|                | stabilityai/stable-diffusion-2-1         |                | nlptown/bert-base-multilingual-uncased-sentiment      |
-|                | stabilityai/stable-diffusion-xl-base-1.0 |                | twitter-roberta-base-sentiment-latest                 |
-| image          | CompVis/stable-diffusion-v1-4            | text           | cardiffnlp/twitter-xlm-roberta-base-sentiment         |
-| generation     | prompthero/openjourney                   | classification | lvwerra/distilbert-imdb                               |
-|                | dreamlike-art/dreamlike-photoreal-2.0    |                | siebert/sentiment-roberta-large-english               |
-|                | nota-ai/bk-sdm-tiny                      |                | finiteautomata/bertweet-base-sentiment-analysis       |
-|                | segmind/tiny-sd                          |                | sbcBI/sentiment_analysis_mode                         |
-|                | bert-base-uncased                        |                | gpt2                                                  |
-|                | xlm-roberta-base                         |                | bigscience/bloom-560m                                 |
-|                | distilbert-base-uncased                  |                | distilgpt2                                            |
-| masked         | roberta-base                             | text           | facebook/opt-6.7b                                     |
-| language       | albert-base-v2                           | generation     | EleutherAI/gpt-neo-125m                               |
-| modeling       | bert-base-cased                          |                | gpt2-medium                                           |
-|                | microsoft/deberta-base                   |                | facebook/opt-1.3b                                     |
-|                | bert-base-multilingual-cased             |                | gpt2-xl                                               |
-|                | facebook/detr-resnet-50                  |                | QCRI/bert-base-multilingual-cased-pos-english         |
-|                | hustvl/yolos-tiny                        |                | dslim/bert-base-NER                                   |
-| object         | jozhang97/deta-swin-large                |                | dslim/bert-large-NER                                  |
-|                | facebook/detr-resnet-101                 | token          | Jean-Baptiste/roberta-large-ner-english               |
-| detection      | hustvl/yolos-small                       | classification | oliverguhr/fullstop-punctuation-multilang-large       |
-|                | SenseTime/deformable-detr                |                | Babelscape/wikineural-multilingual-ner                |
-|                | polejowska/detr-r50-cd45rb-8ah-6l        |                | ml6team/keyphrase-extraction-distilbert-inspec        |
-|                |                                          |                |                                                       |
-|                | polejowska/detr-r50-cd45rb-1ah-6l        |                | obi/deid_roberta_i2b2                                 |
+| Task                | Models                                   | Task           | Models                                                |
+|---------------------|------------------------------------------|----------------|-------------------------------------------------------|
+|                     | microsoft/resnet-50                      |                | distilbert-base-uncased-distilled-squad               |
+|                     | microsoft/beit-base-patch16-224          |                | distilbert-base-cased-distilled-squad                 |
+|                     | google/vit-base-patch16-384              |                | deepset/roberta-base-squad2                           |
+| image               | facebook/convnextv2-tiny-22k-384         | question       | bert-large-uncased-whole-word-masking-finetuned-squad |
+| classification      | microsoft/resnet-18                      | answering      | timpal0l/mdeberta-v3-base-squad2                      |
+|                     | google/mobilenet_v1_0.75_192             |                | deepset/tinyroberta-squad2                            |
+|                     | facebook/convnextv2-tiny-1k-224          |                | deepset/electra-base-squad2                           |
+|                     | google/vit-base-patch16-224              |                | deepset/bert-large-uncased-whole-word-masking-squad2  |
+|                     | nlpconnect/vit-gpt2-image-captioning     |                | sshleifer/distilbart-xsum-12-6                        |
+|                     | Salesforce/blip-image-captioning-large   |                | sshleifer/distilbart-cnn-12-6                         |
+|                     | Salesforce/blip-image-captioning-base    |                | pszemraj/led-large-book-summary                       |
+| image               | microsoft/git-large-coco                 |                | google/pegasus-xsum                                   |
+| captioning          | Salesforce/blip2-flan-t5-xl              | summarization  | google/pegasus-large                                  |
+|                     | Salesforce/blip2-opt-2.7b                |                | google/pegasus-multi_news                             |
+|                     | ydshieh/vit-gpt2-coco-en                 |                | facebook/bart-large-cnn                               |
+|                     | microsoft/git-base                       |                | ainize/bart-base-cnn                                  |
+|                     | runwayml/stable-diffusion-v1-5           |                | distilbert-base-uncased-finetuned-sst-2-english       |
+|                     | stabilityai/stable-diffusion-2-1         |                | nlptown/bert-base-multilingual-uncased-sentiment      |
+|                     | stabilityai/stable-diffusion-xl-base-1.0 |                | twitter-roberta-base-sentiment-latest                 |
+| image               | CompVis/stable-diffusion-v1-4            | text           | cardiffnlp/twitter-xlm-roberta-base-sentiment         |
+| generation          | prompthero/openjourney                   | classification | lvwerra/distilbert-imdb                               |
+|                     | dreamlike-art/dreamlike-photoreal-2.0    |                | siebert/sentiment-roberta-large-english               |
+|                     | nota-ai/bk-sdm-tiny                      |                | finiteautomata/bertweet-base-sentiment-analysis       |
+|                     | segmind/tiny-sd                          |                | sbcBI/sentiment_analysis_mode                         |
+|                     | bert-base-uncased                        |                | gpt2                                                  |
+|                     | xlm-roberta-base                         |                | bigscience/bloom-560m                                 |
+|                     | distilbert-base-uncased                  |                | distilgpt2                                            |
+| masked              | roberta-base                             | text           | facebook/opt-6.7b                                     |
+| language            | albert-base-v2                           | generation     | EleutherAI/gpt-neo-125m                               |
+| modeling            | bert-base-cased                          |                | gpt2-medium                                           |
+|                     | microsoft/deberta-base                   |                | facebook/opt-1.3b                                     |
+|                     | bert-base-multilingual-cased             |                | gpt2-xl                                               |
+|                     | facebook/detr-resnet-50                  |                | QCRI/bert-base-multilingual-cased-pos-english         |
+|                     | hustvl/yolos-tiny                        |                | dslim/bert-base-NER                                   |
+|                     | jozhang97/deta-swin-large                |                | dslim/bert-large-NER                                  |
+| object<br>detection | facebook/detr-resnet-101                 | token          | Jean-Baptiste/roberta-large-ner-english               |
+|                     | hustvl/yolos-small                       | classification | oliverguhr/fullstop-punctuation-multilang-large       |
+|                     | SenseTime/deformable-detr                |                | Babelscape/wikineural-multilingual-ner                |
+|                     | polejowska/detr-r50-cd45rb-8ah-6l        |                | ml6team/keyphrase-extraction-distilbert-inspec        |
+|                     | polejowska/detr-r50-cd45rb-1ah-6l        |                | obi/deid_roberta_i2b2                                 |
+|                     |                                          |                |                                                       |
 
 Table 6. The full list of the 80 finetuned models that were tested for the ten tasks we analyzed.
 
-#### <span id="page-19-0"></span>B MODEL EVALUATION
+### <span id="page-19-0"></span>B MODEL EVALUATION
 
 ![](_page_19_Figure_3.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of various AI models' performance on the Image- and Natural- Language- and-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+Fig. 7. A plot of model size, measured in number of parameters (x axis, in logarithmic scale) and summarization accuracy (y axis), with dot size indicating the quantity of emissions.
 
+![](_page_19_Figure_5.jpeg)
 
+Fig. 8. A plot of model size, measured in number of parameters (x axis, in logarithmic scale) and question answering accuracy (y axis), with dot size indicating the quantity of emissions.
 
+<span id="page-20-0"></span>
 
-The chart is titled "Summarization Rouge Score vs. num_param" and has two axes: "Summarization Rouge Score" on the y-axis and "num_param" on the x-axis. The chart contains several data points, each represented by a colored circle.
+| model                                                    | SST 2<br>(acc) | IMDB<br>(acc) | Rotten<br>Tomatoes<br>(acc) | SciQ<br>(acc) | SQuAD<br>(F1) | SQuAD v2<br>(F1, has<br>answer) | SamSUM<br>(ROUGE) | XSum<br>(ROUGE) | CNN<br>(ROUGE) |
+|----------------------------------------------------------|----------------|---------------|-----------------------------|---------------|---------------|---------------------------------|-------------------|-----------------|----------------|
+| bloomz-560m                                              | 0.92           | 0.94          | 0.85                        | 0.92          | 0.43          | 0.21                            | 0.23              | 0.15            | 0.10           |
+| bloomz-1b7                                               | 0.94           | 0.97          | 0.93                        | 0.96          | 0.50          | 0.25                            | 0.26              | 0.16            | 0.18           |
+| bloomz-3b                                                | 0.95           | 0.98          | 0.95                        | 0.97          | 0.53          | 0.26                            | 0.28              | 0.17            | 0.21           |
+| bloomz-7b1                                               | 0.94           | 0.98          | 0.95                        | 0.97          | 0.54          | 0.27                            | 0.32              | 0.21            | 0.09           |
+| flan-t5-xxl                                              | 0.96           | 0.97          | 0.92                        | 0.72          | 0.98          | 0.49                            | 0.30              | 0.37            | 0.23           |
+| flan-t5-xl                                               | 0.96           | 0.97          | 0.93                        | 0.66          | 0.97          | 0.49                            | 0.49              | 0.38            | 0.24           |
+| flan-t5-large                                            | 0.94           | 0.96          | 0.92                        | 0.53          | 0.97          | 0.50                            | 0.45              | 0.30            | 0.24           |
+| flan-t5-base                                             | 0.93           | 0.95          | 0.88                        | 0.61          | 0.95          | 0.48                            | 0.46              | 0.32            | 0.23           |
+| distilbert-base-uncased<br>-distilled-squad              |                |               |                             | 0.44          | 0.87          | 0.86                            |                   |                 |                |
+| distilbert-base-cased<br>distilled-squad                 |                |               |                             | 0.46          | 0.87          | 0.87                            |                   |                 |                |
+| deepset/roberta-base-squad2                              |                |               |                             | 0.48          | 0.93          | 0.83                            |                   |                 |                |
+| bert-large-uncased-whole<br>word-masking-finetuned-squad |                |               |                             | 0.48          | 0.93          | 0.84                            |                   |                 |                |
+| timpal0l/mdeberta-v3-<br>base-squad2                     |                |               |                             | 0.46          | 0.91          | 0.90                            |                   |                 |                |
+| deepset/tinyroberta-squad2                               |                |               |                             | 0.45          | 0.98          | 0.91                            |                   |                 |                |
+| deepset/electra-base-squad2                              |                |               |                             | 0.48          | 0.89          | 0.82                            |                   |                 |                |
+| deepset/bert-large-uncased                               |                |               |                             |               |               |                                 |                   |                 |                |
+| whole-word-masking-squad2                                |                |               |                             | 0.46          | 0.92          | 0.92                            |                   |                 |                |
+| sshleifer/distilbart-xsum-12-6                           |                |               |                             |               |               |                                 | 0.20              | 0.45            | 0.23           |
+| sshleifer/distilbart-cnn-12-6                            |                |               |                             |               |               |                                 | 0.29              | 0.21            | 0.44           |
+| pszemraj/led-large                                       |                |               |                             |               |               |                                 |                   |                 |                |
+| book-summary                                             |                |               |                             |               |               |                                 | 0.33              | 0.16            | 0.33           |
+| pegasus-xsum                                             |                |               |                             |               |               |                                 | 0.22              | 0.22            | 0.22           |
+| pegasus-large                                            |                |               |                             |               |               |                                 | 0.27              | 0.17            | 0.34           |
+| pegasus-multi_news                                       |                |               |                             |               |               |                                 | 0.12              | 0.16            | 0.29           |
+| facebook/bart-large-cnn                                  |                |               |                             |               |               |                                 | 0.32              | 0.21            | 0.44           |
+| ainize/bart-base-cnn                                     |                |               |                             |               |               |                                 | 0.27              | 0.16            | 0.26           |
+| distilbert-base-uncased<br>finetuned-sst-2-english       | 0.99           | 0.88          | 0.90                        |               |               |                                 |                   |                 |                |
+| nlptown/bert-base<br>multilingual-uncased-sentiment      | 0.75           | 0.85          | 0.73                        |               |               |                                 |                   |                 |                |
+| twitter-roberta-base                                     | 0.82           | 0.80          | 0.77                        |               |               |                                 |                   |                 |                |
+| sentiment-latest                                         |                |               |                             |               |               |                                 |                   |                 |                |
+| cardiffnlp/twitter-xlm-roberta<br>base-sentiment         | 0.79           | 0.71          | 0.74                        |               |               |                                 |                   |                 |                |
+| lvwerra/distilbert-imdb                                  | 0.88           | 0.93          | 0.82                        |               |               |                                 |                   |                 |                |
+| siebert/sentiment-roberta                                |                |               |                             |               |               |                                 |                   |                 |                |
+| large-english                                            | 0.92           | 0.92          | 0.92                        |               |               |                                 |                   |                 |                |
+| finiteautomata/bertweet                                  | 0.82           | 0.72          | 0.77                        |               |               |                                 |                   |                 |                |
+| base-sentiment-analysis                                  |                |               |                             |               |               |                                 |                   |                 |                |
+| sbcBI/sentiment_analysis_model                           | 0.81           | 0.75          | 0.76                        |               |               |                                 |                   |                 |                |
 
-**Data Points:**
-
-1. **Task-specific Seq2Seq**: 0.2, 3.5
-2. **Multi-Tasking**: 0.3, 4.2
-3. **Multi-Tasking**: 0.4, 5.5
-4. **Multi-Tasking**: 0.5, 6.2
-5. **Multi-Tasking**: 0.6, 7.5
-6. **Multi-Tasking**: 0.7, 8.3
-7. **Multi-Tasking**: 0.8, 9.5
-8. **Multi-Tasking**: 0.9, 10.2
-9. **Multi-Tasking**: 0.10, 11.5
-10. **Multi-Tasking**: 0.11, 12.3
-
-**X-axis:** num_param
-**Y-axis:** Summarization Rouge Score
-
-**Color Legend:**
-
-* Red: Task-specific Seq2
-* Green: Multi-Tasking
-* Yellow: Multi-Tasking
-
-**Note:** The chart appears to be a scatter
-I was unable to extract any tables from the provided image. The image appears to be a collection of charts and plots, but I was only able to extract information from the first chart, which is a scatter plot.
-
-If you would like me to extract information from the other charts or tables, please let me know and I will do my best to assist you.
-
-
-Unfortunately, the image does not contain a table. I will move on to the next step.
-
-**Chart/Plot Extraction:**
-
-The image contains two plots. I will extract the data points from each plot.
-
-**Plot 1: Summarization Rouge Score vs. num_param**
-
-* Label: Value
-	+ 0.2: 0.3
-	+ 0.3: 0.4
-	+ 0.4: 0.5
-	+ 0.5: 0.6
-	+ 0.6: 0.7
-	+ 0.7: 0.8
-	+ 0.8: 0.9
-	+ 0.9: 1.0
-	+ 1.0: 1.1
-	+ 1.1: 1.2
-	+ 1.2: 1.3
-	+ 1.3: 1.4
-	+ 1.4: 1.5
-	+ 1.5: 1.6
-	+ 1.6: 1.7
-	+ 1.7: 1.8
-	+ 1.8: 1.9
-	+ 1.9: 2.0
-	+ 2.0: 2.1
-	+ 2.1: 2.2
-	+ 2.2: 2.3
-	+ 2.3: 2.4
-	+ 2.4: 2.5
-	+ 2.5: 2.6
-	+ 2.6: 2.7
-	+ 2.7: 2.8
-	+ 2.8: 2.9
-	+ 2.9: 3.0
-	+ 3.0: 3.1
-	+ 3.1: 3.2
-	+ 3.2: 3.3
-	+ 3.3: 3.4
-	+ 3.4: 3.5
-	+ 3.5: 3.6
-	+ 3.6: 3.7
-	+ 3.7: 3.8
-	+ 3.8: 3.9
-	+ 3.
-
-[描述已截斷以避免過長]
-
-
-The image contains a scatter plot with multiple data points, but it's not possible to extract specific information from it without further context or description. The plot appears to have multiple data points, but it's not possible to extract specific information from it.
-
-**Data Points:**
-
-Unfortunately, I cannot extract specific data points from the image without further context or description. The image appears to be a scatter plot with multiple data points, but it's not possible to extract specific information from it.
-
-**Table:**
-
-There is no table in the provided image.
-
-**Chart/PLOT:**
-
-Unfortunately, I cannot extract specific information from the image without further context or description. The image appears to be a scatter plot with multiple data points, but it's not possible to extract specific information from it.
-
-**Diagrams:**
-
-Unfortunately, I cannot extract specific information from the image without further context or description. The image appears to be a scatter plot with multiple data points, but it's not possible to
-**Table:**
-
-There are no mathematical formulas in the provided image.
-
-**Output:**
-
-Unfortunately, I cannot provide any output or extracted information from the provided image. The image appears to be a scatter
-**Output:**
-
-Unfortunately, I cannot provide any output or extracted information from the provided image. The image appears to be a
-**Output:**
-
-Unfortunately, I cannot provide any output or
-**Output:**
-
-Unfortunately, I cannot provide any
-**Output:**
-
-Unfortunately, I
-**Output:**
-
-
-There is no table in the provided image. The image appears to be a scatter plot with multiple data points.
-
-**Chart/Plot Extraction**
-
-
-[描述已截斷以避免過長]
+Table 7. Full performance metrics for the 32 models (24 finetuned, 8 multi-purpose) that we evaluated as part of our study.

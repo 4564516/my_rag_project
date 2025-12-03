@@ -4,7 +4,7 @@ Jae-Won Chung Jeff J. Ma Ruofan Wu Jiachen Liu Oh Jun Kweon Yuxuan Xia Zhiyu Wu 
 
 > University of Michigan **The ML.ENERGY Initiative**
 
-# Abstract
+## Abstract
 
 As the adoption of Generative AI in real-world services grow explosively, *energy* has emerged as a critical bottleneck resource. However, energy remains a metric that is often overlooked, under-explored, or poorly understood in the context of building ML systems. We present the ML.ENERGY Benchmark, a benchmark suite and tool for measuring inference energy consumption under realistic service environments, and the corresponding ML.ENERGY Leaderboard, which have served as a valuable resource for those hoping to understand and optimize the energy consumption of their generative AI services. In this paper, we explain four key design principles for benchmarking ML energy we have acquired over time, and then describe how they are implemented in the ML.ENERGY Benchmark. We then highlight results from the early 2025 iteration of the benchmark, including energy measurements of 40 widely used model architectures across 6 different tasks, case studies of how ML design choices impact energy consumption, and how automated optimization recommendations can lead to significant (sometimes more than 40%) energy savings without changing what is being computed by the model. The ML.ENERGY Benchmark is open-source and can be easily extended to various customized models and application scenarios.
 
@@ -18,128 +18,24 @@ However, despite its growing importance, energy remains a secondary consideratio
 
 <span id="page-1-3"></span>![](_page_1_Figure_0.jpeg)
 
-**Figure Description:**
-I'll do my best to extract every single piece of data from the image and format it as Question-Answer pairs.
+Figure 1: Overview of the benchmarking and optimization flow of the ML.ENERGY Benchmark.
 
-**Figure Context:**
-This image is a flowchart of a deep learning model's architecture, showing the various components and their interactions.
+generative AI model architectures across a wide range of tasks – including Large Language Model (LLM) chat and coding, Vision–Language Model (VLM) visual chat, and text-to-image, text-to-video, and image-to-video generation using Diffusion models – and (2) more up-to-date hardware and software stacks following rapid advancements in each area.
 
-**Figure Data (Q&A):**
+In this paper, we share the design principles we have established over time (Section [2\)](#page-1-0) and present the ML.ENERGY Benchmark that embodies them (Section [3\)](#page-3-0). It provides two key functionalities:
 
-Q: What is the input data for the model?
-A: The input data is a combination of 10-20% of the data from the 2000-2005-2006-2007-2008-2009-2010-2011-2012-2013-2014-2015-2016-2017-2018-2019-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-202-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-202-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-2028-2029-2020-2021-2022-2023-2024-2025-2026-2027-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-202-20
+- Extensible benchmark: It provides an easily extensible benchmark suite and a comprehensive set of tools for measuring the inference energy consumption of generative AI models for various tasks under *realistic* deployment environments.
+- Automated optimization: Based on energy measurement results, it provides automated energy optimization recommendations for generative AI model deployment.
 
-[描述已截斷以避免過長]
+Finally, we highlight notable results from the early 2025 iteration of the ML.ENERGY Leaderboard, shedding light on (1) how energy consumption varies across different generative AI models and tasks, (2) the complex trade-offs that involve energy, time, and model architecture design, and (3) the energy savings opportunity unlocked by automated optimization (Section [4\)](#page-5-0).
 
-
-
-
-Note: The image does not contain any data or tables that can be transcribed. The components are described in a list below:
-
-* **Model & Dataset**: The model is a deep learning model
-* **Configuration Space**: The configuration space is not specified
-* **Latency Target**: The target is not specified
-* **Optimization**: The model is not specified
-* **Model & Dataset**: The model is a deep learning model
-* **Configuration Space**: The configuration is not specified
-* **Latency Target**: The target is not specified
-* **Optimization**: The model is not specified
-
-The image does not contain any data or tables that can be transcribed. The components are described in a list below:
-
-* **Model & Dataset**: The model is a deep learning model
-* **Configuration Space**: The configuration is not specified
-
-
-[描述已截斷以避免過長]
-
-
-### Dataset
-
-*   **Dataset Name**: Not specified
-*   **Dataset Description**: Not specified
-*   **Dataset Size**: Not specified
-*   **Dataset Type**: Not specified
-
-**Configuration Space**
-----------------
-
-### Configuration Space
-
-*   **Model & Dataset**: Not specified
-*   **Configuration Space**: Not specified
-*   **Configuration Space Description**: Not specified
-*   **Configuration Space Size**: Not specified
-*   **Configuration Space Type**: Not specified
-
-**Latency Target**
-----------------
-
-### Latency Target
-
-*   **Latency Target**: Not specified
-*   **Latency Target Description**: Not specified
-*   **Latency Target Size**: Not specified
-*   **Latency Target Type**: Not specified
-
-**Optimization**
-----------------
-
-### Optimization
-
-
-*   **Model Name**: Not specified
-*   **Model Type**: Not specified
-*   **Model Description**: Not specified
-*   **Model
-
-### Configuration
-*   **Configuration
-
-*   **Model
-
-**Configuration
-
-
-The image is labeled as "2. Benchmark" and has several sections, including "1. Model & Dataset", "2. Benchmark", "3. Configuration Space", "4. Optimization", and "5. Results". However, I don't see any tables, charts, or diagrams that I can extract information from.
-
-If you could provide more context or clarify what specific information you would like me to extract, I would be happy to help. Please let me know if you have any further questions or if there is anything else I can help with.
-
-Here is the output in the requested format:
-
-**No tables, charts, or diagrams were found in the provided image.**
-
-If you have any further questions or need help with anything else, please let me know. I'll be happy to assist you.
-
-
-| **Model & Dataset** | **Configuration Space** | **Latency Target** | **Optimization** |
-| :----------------- | :------------------- | :----------------- | :----------------- |
-| Model & Dataset    | Configuration Space  | Latency Target     | Optimization      |
-| Model & Dataset    | Configuration Space  | Latency Target     | Optimization      |
-
-**Chart/Pplot Analysis**
-
-There are no charts or plots in this image.
-
-**Diagrams**
-
-There is only one diagram in this image.
-
-1.  **Flow:**
-    *   The leftmost box is labeled "Model & Dataset."
-    *   An arrow points to the right, which is labeled "Configuration Space."
-    *   Another arrow points to the right, which is labeled "Latency Target."
-    *   The rightmost box is labeled "Optimization."
-2.  **Labels:**
-
-
-[描述已截斷以避免過長]
+This paper describes the state of the ML.ENERGY Benchmark and Leaderboard as of *early 2025*. The latest version of the ML.ENERGY Benchmark is open-source on GitHub,[2](#page-1-1) and the ML.ENERGY Leaderboard allows everyone to browse full results from the latest ML.ENERGY Benchmark.
 
 # <span id="page-1-0"></span>2 Design Principles
 
 The design of the ML.ENERGY Benchmark is guided by four core principles. Our overarching goal is to create a benchmark that is representative of real-world generative AI service deployments, and to produce energy measurement results that are accurate, reusable, and ultimately actionable.
 
-### <span id="page-1-2"></span>2.1 Generalizability and Portability
+#### <span id="page-1-2"></span>2.1 Generalizability and Portability
 
 Goal. Every computer system is configured with different hardware and software components, and measurements from a particular system will never truly represent those from another system. For instance, systems can be configured with different CPU and DRAM models, and running different Linux kernel versions with different daemons running in the background. Further, not all users have
 
@@ -153,7 +49,7 @@ Our approach. We focus on software-based GPU energy measurement for the followin
 - Compared to other hardware components, GPU models are more standardized across different systems [\[13\]](#page-10-5), making measurements useful across systems that use the same GPU.
 - GPUs allow accurate software-based energy measurement [\[1,](#page-10-6) [2,](#page-10-7) [11,](#page-10-8) [81\]](#page-14-0), allowing measurement tools to be portable across systems without requiring physical hardware access or modification.
 
-### <span id="page-2-0"></span>2.2 Representing Real-World Deployments
+## <span id="page-2-0"></span>2.2 Representing Real-World Deployments
 
 Goal. Benchmarking results often inform real-world deployment optimizations, are used to plan future power capacity and energy usage, affect the design of new hardware and software systems, and serve as base numbers for long term projections that affect policymaking. Therefore, it is crucial that our measurements represent those from real-world deployments as closely as possible.
 
@@ -162,13 +58,13 @@ Our approach. To obtain realistic measurements, we adhere to the following princ
 - We adopt production-grade software and hardware (e.g., vLLM [\[39\]](#page-12-9) on NVIDIA H100 GPUs) and run them with generation request workloads that are representative of real-world use cases.
 - During our measurement, we directly run or closely mimic the state of a serving system during long term deployment. This allows us to capture the *steady state* energy consumption of the service while using a fixed-size benchmarking dataset.
 
-### <span id="page-2-1"></span>2.3 Energy Measurement at the Right Granularity
+## <span id="page-2-1"></span>2.3 Energy Measurement at the Right Granularity
 
 Goal. Energy can be measured at different computation granularities. For instance, for LLM text generation, energy can be reported for the end-to-end benchmarking run, for each generated response, or for each token generated. Our goal is to measure and report energy consumption at a granularity that is neither too coarse (as it only provides limited insight into the runtime behavior of the service) nor too fine (as it may miss important higher-level insights relevant to the service).
 
 Our approach. Also aligned with our goal of representing real-world deployments (Section [2.2\)](#page-2-0), our approach is to mainly report energy consumption at the granularity of a single, whole generation response to a request (e.g., entire chat response, image, video). This is because any work less than the full response (e.g., per token) is not considered a complete request, and may ignore model- and task-specific characteristics. For instance, for LLM text generation, different models exhibit different *verbosity* (i.e., given the same prompt, different models respond with varying number of tokens), and different tasks have vastly different output token length distributions (e.g., chat vs. code generation), all of which we want to capture in our measurements.
 
-### <span id="page-2-2"></span>2.4 Actionable Measurement Results
+## <span id="page-2-2"></span>2.4 Actionable Measurement Results
 
 Goal. While energy measurements are useful in themselves, they are even more useful when they lead to actionable insights and recommendations. For instance, how much is the potential energy savings of your model without sacrificing accuracy or latency? If your service intends to guarantee a specific generation latency deadline (e.g., 50 ms), what is the energy-optimal configuration, and how much is the potential energy savings?
 
@@ -176,90 +72,17 @@ Our approach. The ML.ENERGY Benchmark allows users to provide computation latenc
 
 <span id="page-3-3"></span>![](_page_3_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is about the performance and energy consumption of the LLM (L- 3- 2- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 1- 
-
-
-
-
-### Request and Response
-
-| Request | Response |
-| 3000 requests | 3000 waiting requests |
-
-| Request | Response |
-| 3000 requests | 3000
-### Request and Response
-
-| Request | Response
-### Request and Response
-
-| Request |  |  |
-
-
-The image appears to be a flowchart or a system architecture diagram, with multiple components and connections. The diagram is divided into several sections, each with its own set of components and connections.
-
-**Components:**
-
-The image appears to have the following components:
-
-* A top-level section with a title "LLM Inference Server"
-* A section with a title "3000 requests"
-* A section with a title "3000 waiting requests"
-* A section with a title "Steady state (stable server utilization)"
-* A section with a title "Time"
-
-**Data Points:**
-
-The image appears to have the following data points:
-
-* 3000 requests
-* 3000 waiting requests
-* Steady state (stable server utilization)
-
-**No specific information can be extracted from the image without further context or a clear description of the image's content.**
-
-If you have any further questions or need help with anything else, please let me know. I'll be happy to help.
-
-
-| **Request Size** | **Number of Requests** |
-| :----------------- | :----------------- |
-| 1,000              | 3,000               |
-| 2,000              | 2,000               |
-| 3,000              | 1,000               |
-
-**Chart/PLOT:**
-
-*   **Label: Value**
-    *   Steady state: 3,000
-    *   LLM Inference Server: 1,000
-    *   Time: 1,000
-    *   Request: 1,000
-    *   Time: 2,000
-    *   Request: 2,000
-    *   Time: 3,000
-    *   Request: 3,000
-
-**X Axis:** Time
-**Y Axis:** Request
-
-**Diagram:**
-
-The diagram illustrates the flow of requests to the LLM Inference Server. It shows the number of requests for each request size (1,000, 2,000, 3,000) and the time it takes for the server to reach a stable state. The flow is as follows:
-
-
-[描述已截斷以避免過長]
+Figure 2: LLM inference server and per-request energy accounting. The steady state is defined as the period when batch size is saturated at the server's maximum configured batch size, and measurements during the steady state represent that of a serving system during long-term deployment.
 
 # <span id="page-3-0"></span>3 The ML.ENERGY Benchmark
 
 The ML.ENERGY Benchmark is a comprehensive tool for measuring and optimizing the inference energy consumption of generative AI models, built upon our core design principles (Section [2\)](#page-1-0). Here, we describe the overall flow of the ML.ENERGY Benchmark (Section [3.1\)](#page-3-1), which includes service-aware energy measurement and accounting (Section [3.2\)](#page-3-2) and automated optimization recommendations (Section [3.3\)](#page-4-0). Finally, we describe extension points of the ML.ENERGY Benchmark that allows users to easily benchmark their customized application scenarios (Section [3.4\)](#page-4-1).
 
-### <span id="page-3-1"></span>3.1 Benchmark Flow
+#### <span id="page-3-1"></span>3.1 Benchmark Flow
 
 Figure [1](#page-1-3) provides an overview of the usage flow of the ML.ENERGY Benchmark. 1 First, the generative model to benchmark and the request dataset (set of inputs) to use are selected, alongside with the set of configurations to sweep (e.g., GPU model, parallelism configuration, maximum batch size). 2 Then the ML.ENERGY Benchmark runs configurations independently on designated hardware, and measures the time and energy consumption of each configuration using Zeus [\[2\]](#page-10-7), a library that provides programmatic energy measurement (Section [3.2\)](#page-3-2). 3 After benchmarking is complete, users can specify a latency target based on their application requirements. 4 Given that, the ML.ENERGY Benchmark constructs the time–energy Pareto frontier, and recommends the energy-optimal configuration while satisfying the latency target (Section [3.3\)](#page-4-0).
 
-### <span id="page-3-2"></span>3.2 Energy Measurement and Service-Aware Energy Accounting
+#### <span id="page-3-2"></span>3.2 Energy Measurement and Service-Aware Energy Accounting
 
 Our goal is to provide per-request energy measurements (Section [2.3\)](#page-2-1) that are representative of real-world deployments (Section [2.2\)](#page-2-0). However, a realistic serving system batches together the generation of multiple requests (e.g., iteration-level batching [\[82\]](#page-14-1) for LLM text generation), making the energy consumption of a single request dependent on all other requests being processed at the same time. Therefore, we implement measurement and energy accounting methods that capture the batching behavior of different types of models.
 
@@ -281,13 +104,13 @@ In essence, we compute the average energy consumption per token during the stead
 
 As we will see in Section [4,](#page-5-0) batch size is a critical configuration that significantly affects both generation time and energy consumption. By sweeping the batch size configuration, the ML.ENERGY benchmark can capture varying levels of system utilization and collect various operation points with different time and energy consumption.
 
-### <span id="page-4-0"></span>3.3 Automated Optimization Recommendation
+#### <span id="page-4-0"></span>3.3 Automated Optimization Recommendation
 
 Our goal is to provide actionable insights beyond just energy measurements (Section [2.4\)](#page-2-2) by recommending energy-optimal configurations for a given model and task. Central to the optimization recommendation is the construction of the *Pareto frontier* of energy vs. time, which is a collection of configurations where there are no other configurations that lead to both lower energy and lower time. Then, the energy-optimal configuration is selected based on user-specified latency constraints.
 
 Latency constraints inherently depend on the user's or application's needs. For example, for image generation with Diffusion models, computation results are useful only when the full image is generated, so latency constraints would be specified in terms of the time to generate the whole image. On the other hand, for LLM text generation for chat, output tokens are *streamed* to users (either in written text or synthesized speech) as they are generated. As such, for user-facing conversational AI services, as long as the average time per output token is at least as fast as the users' reading or listening speed, user experience will not be affected [\[44\]](#page-12-10). However, for LLM text generation for coding, where code is likely only useful when it is fully generated, latency constraints would be specified in terms of the time to generate the whole snippet, similar to the case of image generation. Given the latency constraints, the time–energy Pareto frontier is used to suggest the minimum-energy configuration that satisfies the latency constraint.
 
-# <span id="page-4-1"></span>3.4 Extending the Benchmark
+#### <span id="page-4-1"></span>3.4 Extending the Benchmark
 
 The ML.ENERGY Benchmark is designed to be easily extensible, allowing users to benchmark their own models or customized application scenarios.
 
@@ -310,7 +133,7 @@ Metrics. Energy is a fundamental physical quantity that can be used to derive ot
 
 In this section, we highlight notable results from the ML.ENERGY Benchmark; the full set of results is available on the ML.ENERGY Leaderboard.[5](#page-5-3) The early 2025 iteration of the benchmark and leaderboard presents energy measurements across 40 models and 6 tasks (See Appendix [A](#page-22-0) for a full list). We ran the benchmark on NVIDIA A100 (40 GB) and H100 (80 GB) GPUs, each using AWS p4d.24xlarge and p5.48xlarge instances, respectively, and used vLLM [\[39\]](#page-12-9) and Diffusers [\[77\]](#page-13-2) as the inference runtime. In the following, we first present energy measurement results and discuss implications (Section [4.1\)](#page-5-4), and then provide deeper understanding by showing how model architecture choices affect their energy consumption (Section [4.2\)](#page-6-0). Then, we present the energy savings opportunities from our automated optimization recommendations (Section [4.3\)](#page-8-0).
 
-### <span id="page-5-4"></span>4.1 Energy Measurements
+#### <span id="page-5-4"></span>4.1 Energy Measurements
 
 Significant variation in energy consumption. The solid bars in Figure [3](#page-6-1) (A100 GPUs in Figure [3a](#page-6-1) and H100 in Figure [3b\)](#page-6-1) show the per-request energy consumption of various generative AI models across different tasks. First, energy consumption varies widely across models. In particular, Diffusion models generally consume energy that is on par with larger LLMs (e.g., Mistral Large (123B)). This
 
@@ -322,646 +145,65 @@ Significant variation in energy consumption. The solid bars in Figure [3](#page-
 
 <span id="page-6-1"></span>![](_page_6_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of energy consumption and carbon emissions of various AI models, including GShard, LLa
- 
-**Figure Data (Q&A):**
-
-Q: What is the energy consumption of GShard?
-Q: What is the size of the LLa
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-Q: What is the size of the L
-
-
-[描述已截斷以避免過長]
-
-
-
-
-### Table 1: Energy Consumption Comparison
-
-| Model | Energy Consumption (J) |
-| --- | --- |
-| Gemm 2.2B | 2.5x |
-| Gemm 2.2B | 2.5x |
-| Gemm 2.2B | 2.5
-
-
-| Application | Energy Consumption (J) |
-| --- | --- |
-| Gemm 2.2B | 2.5x |
-| Gemm 2.2B | 1.8x |
-| Gemm 2.2B | 1.7x |
-| Gemm 2.2B | 1.8x |
-| Gemm 2.2B | 2.5x |
-| Gemm 2.2B | 1.8x |
-| Gemm 2.2B | 1.7x |
-| Gemm 2.2B | 1.8x |
-| Gemm 2.2B | 2.5x |
-| Gemm 2.2B | 1.8x |
-| Gemm 2.2B | 1.7x |
-| Gemm 2.2B | 1.8x |
-| Gemm 2.2B | 2.5x |
-| Gemm 2.2B | 1.8x |
-| Gemm 2.2B | 1.7x |
-| Gemm 2.2B | 1.8x |
-| Gemm 2.2B | 2.5x |
-| Gemm 2.2B | 1.8x |
-| Gemm 2.2B | 1.7x |
-| Gemm 2.2B | 1.8
-| Gemm 2.2B | 2.5
-| Gemm 2.2B | 1.8
-| Gemm 2.2B | 2.5
-| Gemm 2.2B | 1.8
-| Gemm 2.2B | 2.5
-| Gemm 2.2B | 1.8
-| Gemm 2.2B | 2.5
-| Gemm 2.2B | 1.8
-| Gemm 2.2B | 2.5
-| Gemm 2.2B | 1.8
-| Gemm 2.2B | 2.5
-| Gemm 2.2B | 1.8
-| Gemm 2.2B | 2.5
-| Gemm 2.2B | 1.8
-| Gemm 2.2B | 2.5
-| Gemm 2.2B | 1.8
-| Gemm 2.2B | 2.5
-| Gemm 2.2B | 1.8
-| Gemm 2.2B | 2.5
-| Gemm 2.2B | 1.8
-
 Figure 3: Per-request energy consumption across various generative AI models. Black and orange represents text and vision modalities, respectively. Solid bars are energy measurements, whereas dimmed bars behind each solid bar are estimations based on the GPU's TDP, with numbers showing the ratio of overestimation. Note the log scale Y-axis.
 
 <span id="page-6-2"></span>
 
-| Model                                 | TP | Max batch size |         |         |         |         |  |  |
+| Model                                 | ТР | Max batch size |         |         |         |         |  |  |
 |---------------------------------------|----|----------------|---------|---------|---------|---------|--|--|
-| Wiodei                                | IF | 4              | 8       | 16      | 32      | 64      |  |  |
+| Wiodei                                | 11 | 4              | 8       | 16      | 32      | 64      |  |  |
 | DeepSeek distilled Qwen 3 8B [23, 80] | 1  | 9713.7         | 6010.1  | 4314.9  | 3340.8  | 2770.8  |  |  |
-| Phi 4 reasoning plus 15B [3]          | 1  | 19974.
+| Phi 4 reasoning plus 15B [3]          | 1  | 19974.4        | 12389.6 | 9347.3  | 7634.9  | 7595.4  |  |  |
+| Qwen 3 32B [80]                       | 2  | 26419.7        | 15168.3 | 9140.5  | 6165.5  | 4520.6  |  |  |
+| Qwen 3 235B-A22B thinking [80]        | 8  | 122523.1       | 86491.5 | 56720.4 | 40275.5 | 33096.4 |  |  |
 
-[描述已截斷以避免過長]
+Table 1: Energy per generation of reasoning models on GPQA [64] and NVIDIA H100 GPUs. TP is the tensor parallelism degree, which is also equal to the number of GPUs used.
 
-### <span id="page-6-0"></span>4.2 Energy Implications of ML Design Decisions
+is mainly because Diffusion models (1) draw higher power in general (more in Section 4.2) and (2) cannot perform as many concurrent generations compared to LLMs due to their long latency in real services, preventing them from amortizing energy consumption across many generations.
+
+**Importance of measuring.** The dimmed bars behind each solid bar in Figure 3 show the estimated energy consumption based on the GPU's Thermal Design Power (TDP) instead of measuring the real GPU power consumption, which is a common practice [8,9,28,40,47,74]. Estimations using TDP are nearly always an overestimation since it is rare for a GPU – or any computing device – to draw its maximum power at every moment in time. In fact, such an estimation can lead to a worst-case overestimation of energy consumption by a factor of 4.1 (CodeGemma 2B on H100 GPUs). Inaccuracies may be overlooked when they influence downstream decisions and projections, leading to misleading conclusions. Accurate measurements that reflect production environments are crucial.
+
+#### <span id="page-6-0"></span>**4.2** Energy Implications of ML Design Decisions
 
 ML decisions reflected in model architectures and trained models impact energy consumption. For the interest of space, we defer systems implications on energy consumption to Appendix B.
 
-**LLM response verbosity and energy.** In Figure 3, we can see that energy consumption varies even among LLMs of similar sizes. This is because different LLMs generate responses of different *length* even when given the same prompt. Such differences in *verbosity* can be non-trivial; for instance, Mistral Large's responses were on average 36% longer than that of Mixtral  $8\times7B$ . As the number of
+**LLM response verbosity and energy.** In Figure 3, we can see that energy consumption varies even among LLMs of similar sizes. This is because different LLMs generate responses of different *length* even when given the same prompt. Such differences in *verbosity* can be non-trivial; for instance, Mistral Large's responses were on average 36% longer than that of Mixtral  $8 \times 7B$ . As the number of
 
 <span id="page-7-0"></span>![](_page_7_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a line graph comparing the energy consumption of two AI models, Phi 3 mini (3.8B) and Phi 3 small (7B), in terms of their batch sizes and energy consumption.
-
-**Figure Data (Q&A):**
-
-Q: What is the energy consumption of Phi 3 mini (3.8B) at a batch size of 50?
-
-Q: What is the energy consumption of Phi 3 mini (3.8B) at a batch size of 100?
-
-Q: What is the energy consumption of Phi 3 mini (3.8B) at a batch size of 150?
-
-Q: What is the energy consumption of Phi 3 mini (3.8B) at a batch size of 200?
-
-Q: What is the energy consumption of Phi 3 mini (3.8B) at a batch size of 250?
-
-Q: What is the energy consumption of Phi 3 mini (3.8B) at a batch size of 300?
-
-Q: What is the energy consumption of Phi 3 small (7B) at a batch size of 50?
-
-Q: What is the energy consumption of Phi 3 small (7B) at a batch size of 100?
-
-Q: What is the energy consumption of Phi 3 small (7B) at a batch size of 150?
-
-Q: What is the energy consumption of Phi 3 small (7B) at a batch size of 200?
-
-Q: What is the energy consumption of Phi 3 small (7B) at a batch size of 250?
-
-Q: What is the energy consumption of Phi 3 small (7B) at a batch size of 300?
-
-**Figure Data (Table):**
-
-| Batch Size | Energy Consumption (J) |
-| 50 | 80 |
-| 100 | 60 |
-| 150 | 50 |
-| 200 | 40 |
-| 250 | 30 |
-| 300 | 20 |
-
-| Batch Size | Energy Consumption (J) |
-| 50 | 90 |
-| 100 | 60 |
-| 150 | 50 |
-| 200 | 40 |
-| 250 | 30 |
-| 300 | 20 |
-
-
-
-[描述已截斷以避免過長]
-
-
-
-
-Note: The data points are not exact, as the original image does not provide exact values. The values above are estimates based on the trend of the graph.
-
-
-No table is present in the provided image. The image appears to be a line graph.
-
-**Line Graph:**
-
-The line graph shows the energy consumption of two systems, Phi 3 mini (3.8B) and Phi 3 small (7B), against the batch size. The graph has two lines, one for each system, and the x-axis represents the batch size.
-
-**Data Points:**
-
-The data points on the graph are not explicitly listed. However, the graph shows the energy consumption of the two systems against the batch size. The x-axis labels are not provided, but the graph shows the energy consumption of the two systems.
-
-**X-axis and Y-axis:**
-
-The x-axis represents the batch size, and the y-axis represents the energy consumption. The units are not explicitly stated, but the graph shows the energy consumption of the two systems.
-
-**Legend:**
-
-The graph does not have a legend. The two lines on the graph represent the energy consumption of the two systems.
-
-The data points on the graph are not explicitly listed. However, the graph shows the energy consumption of the two systems.
-
-The x-axis represents the batch size, and the y-axis represents the energy consumption. The units are not explicitly stated, but the graph shows the energy consumption of the energy
-
-The data points on the graph are not explicitly listed. However, the graph shows the energy
-
-The x-axis represents the batch size, and the y-axis represents the energy
-
-The data points on the graph are not
-
-The x-axis represents the
-
 ![](_page_7_Figure_1.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a line graph comparing the performance of two AI models, Phi 3 mini and Phi 3 small, in terms of batch size and maximum batch size configuration.
+- (a) Energy vs. Batch Size
+- (b) Batch Size vs. Max Batch Size config
 
-**Figure Data (Q&A):**
+<span id="page-7-1"></span>Figure 4: Phi-3 Mini and Small [26] benchmarked with the chat task on one NVIDIA A100 GPU.
 
-Q: What is the batch size for Phi 3 mini?
-
-Q: What is the maximum batch size for Phi 3 mini?
-
-Q: What is the batch size for Phi 3 small?
-
-Q: What is the maximum batch size for Phi 3 small?
-
-Q: What is the batch size for Phi 3 mini at 0?
-
-Q: What is the maximum batch size for Phi 3 mini at 100?
-
-Q: What is the batch size for Phi 3 small at 0?
-
-Q: What is the maximum batch size for Phi 3 small at 100?
-
-Q: What is the batch size for Phi 3 mini at 200?
-
-Q: What is the maximum batch size for Phi 3 mini at 200?
-
-Q: What is the batch size for Phi 3 small at 200?
-
-Q: What is the maximum batch size for Phi 3 small at 200?
-
-Q: What is the batch size for Phi 3 mini at 300?
-
-Q: What is the maximum batch size for Phi 3 mini at 300?
-
-Q: What is the batch size for Phi 3 small at 300?
-
-Q: What is the maximum batch size for Phi 3 small at 300?
-
-Q: What is the batch size for Phi 3 mini at 400?
-
-Q: What is the maximum batch size for Phi 3 mini at 400?
-
-Q: What is the batch size for Phi 3 small at 400?
-
-Q: What is the maximum batch size for Phi 3 small at 400?
-
-Q: What is the batch size for Phi 3 mini at 500?
-
-Q: What is the maximum batch size for Phi 3 mini at 500?
-
-Q: What is the batch size for Phi 3 small at 500?
-
-Q: What is the maximum batch size for Phi 3 small at 500?
-
-
-
-[描述已截斷以避免過長]
-
-
-
-
-Note: The data points are not provided in the original image, so I've created a table with sample data for demonstration. The actual data points would depend on the original image's data.
-
-
-Here is the extracted information in the required format:
-
-**Table Processing:**
-No table is present in the provided image. The image is a line graph.
-
-**Chart/Plot Processing:**
-
-* The X-axis represents the maximum batch size configuration.
-* The Y-axis represents the batch size.
-* The two lines represent the performance of the two models, Phi 3 mini (3.8B) and Phi 3 small (7B).
-* The data points are not explicitly labeled, but the graph shows the relationship between the two models' performance and the maximum batch size configuration.
-
-**Data Points:**
-
-* No specific data points are provided in the image. The graph shows the relationship between the two models' performance and the maximum batch size configuration.
-
-**Diagrams:**
-
-* The graph is a line graph with two lines representing the performance of the two models.
-* The X-axis represents the maximum batch size configuration.
-* The Y-axis represents the batch size.
-* The two lines represent the performance of the two models, with the green line representing the Phi 3 mini (3.8B) and the purple line representing the Phi 3 small (7B).
-
-**Mathematical Formulas:**
-
-* No mathematical formulas are provided in the image.
-
-**Output Format:**
-
-The output format is a line graph with two lines representing the performance of the two models, with the X- and Y-axes representing the maximum batch size and the performance of the two models.
-
-**Extracted Information:**
-
-* The graph shows the relationship between the two models’ performance and the maximum batch size
-* The X- and Y-axes represent the maximum
-* The two lines represent the
-
-
-[描述已截斷以避免過長]
-
-
-1. **8 x A100 TDP (max power draw)**
-	* Label: 8 x A100 TDP (max power draw)
-	* Color: Green
-	* Data Points:
-		* 0: 1000 W
-		* 200: 1000 W
-		* 400: 1000 W
-		* 600: 1000 W
-		* 800: 1000 W
-		* 1000: 1000 W
-2. **4 x H100 TDP (max power draw)**
-	* Label: 4 x H100 TDP (max power draw)
-	* Color: Purple
-	* Data Points:
-		* 0: 1000 W
-		* 200: 1000 W
-		* 400: 1000 W
-		* 600: 1000 W
-		* 800: 1000 W
-		* 1000: 1000 W
-3. **8 x A100**
-	* Label: 8 x A100
-	* Color: Green
-	* Data Points:
-		* 0: 1000 W
-		* 200: 1000 W
-		* 400: 1000 W
-		* 600: 1000 W
-		* 800: 1000 W
-		* 1000: 1000 W
-4. **4 x H100**
-	* Label: 4 x H100
-	* Color: Purple
-	
-**Legend:**
-
-* Green: 8 x A100
-* Purple: 4 x H100
-
-**Note:** The graph shows the power
-**Note:** The graph shows the
-**Note:** The graph shows the
-**Note:** The
-
+![](_page_7_Figure_5.jpeg)
 
 ![](_page_7_Figure_6.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a line graph comparing the performance of two models, H100 and A100, in terms of power draw and batch size. The graph shows the power draw in watts (W) on the y-axis and batch size on the x-axis.
-
-**Figure Data (Q&A):**
-
-Q: What is the power draw of the H100 model?
-
-Q: What is the power draw of the A100 model?
-
-Q: What is the batch size of the H100 model?
-
-Q: What is the batch size of the A100 model?
-
-Q: What is the power draw of the H100 model at a batch size of 10?
-
-Q: What is the power draw of the A100 model at a batch size of 5?
-
-Q: What is the maximum power draw of the H100 model?
-
-Q: What is the maximum power draw of the A100 model?
-
-Q: What is the batch size of the H100 model at a power draw of 600 W?
-
-Q: What is the batch size of the A100 model at a power draw of 400 W?
-
-**Figure Data (Table):**
-| Model | Batch Size | Power Draw |
-| --- | --- | --- |
-| H100 | 10 | 600 W |
-| A100 | 5 | 400 W |
-
-**Note:** The table above is a direct extraction of data from the graph. The values are based on the data points on the graph.
-
-
-
-
-Note: The data points are the same for both systems at all batch sizes, indicating that the power draw is the same for both systems.
-
-
-Here is the extracted information in the required format:
-
-**Table:**
-
-No table is present in the provided image. The image is a line graph.
-
-**Line Graph:**
-
-The line graph shows the power draw (W) of two systems, A100 TDP and H100 TDP, at different batch sizes.
-
-| Label | A100 TDP (max power draw) | H100 TDP (max power draw) |
-| --- | --- | --- |
-| 0 | 400 | 600 |
-| 5 | 400 | 600 |
-| 10 | 400 | 600 |
-| 15 | 400 | 600 |
-| 20 | 400 | 600 |
-| 25 | 400 | 600 |
-| 30 | 400 | 600 |
-
-**X-axis and Y-axis labels:**
-
-* X-axis: Batch size
-* Y-axis: Power draw (W)
-
-**Data Points:**
-
-* A100 TDP (max power draw): 400 W
-* H100 TDP (max power draw): 600 W
-
-**Legend:**
-
-No legend is present in the image.
-
-**Description:**
-
-The graph shows the power draw (W) of two systems, A100 TDP and H100 TDP, at different batch sizes. The A100 TDP (max power draw) and H100 TDP (max power draw) are both 400 and 600, respectively. The graph shows that both systems have the same power draw at all batch sizes.
+- (a) Llama 3.1 70B [73]
+- (b) Stable Diffusion 3 Medium [25]
 
 Figure 5: Power consumption of Llama 3.1 70B and Stable Diffusion 3 Medium models.
 
 output tokens equals the number of forward passes through the model, longer responses leads to a proportional increase in energy consumption. As humans are known to prefer longer responses [85], this potentially introduces a trade-off between energy consumption and user satisfaction.
 
-This is even more pronounced for reasoning models, which produce significantly more output tokens. Table 1 shows energy measurements for reasoning models on the GPQA dataset. Reasoning models produce one to two orders of magnitude more output tokens per request compared to standard chat models, significantly increasing energy consumption per generation.
+This is even more pronounced for reasoning models, which produce significantly more output tokens. Table 1 shows energy measurements for reasoning models on the GPQA dataset. Reasoning models produce one to two orders of magnitude more output tokens per request compared to standard chat models, significantly increasing energy consumption per generation. Additionally, due to their long output lengths, servers cannot run as large a batch size, preventing them from amortizing energy across more requests. This leads to higher energy per token as well, further increasing energy consumption. As long horizon reasoning and task decomposition become more common in real-world LLM-based applications, we expect this trend to continue.
 
-[描述已截斷以避免過長]
+Memory consumption of operations and energy amortization. Generally, models with more parameters consume more energy, but this is not always the case. Figure 4 highlights the case of Phi-3 Mini (3.8B) and Small (7B) [26]. Even though Small has nearly twice the parameters, the left plot shows that the larger Small model can consume less energy than Mini as batch size grows. This happens because Mini uses Multi-Head Attention (MHA) [76], whereas Small uses Grouped Query Attention (GQA) [10]. Due to this, Mini's KV cache uses  $3\times$  more memory than Small, which prevents it from scaling to larger batch sizes and amortizing energy consumption across more generations.
 
+Compute-intensity of operations and power draw. Figure 5 shows the power consumption of Llama 3.1 70B [73] and Stable Diffusion 3 Medium [25] on A100 and H100 GPUs. It can be seen that the LLM's power consumption is much lower than what the GPUs can draw at maximum, whereas the Diffusion model's power consumption is close to the maximum. This is because LLM decoding is characterized by *low compute-intensity*, meaning that the number of arithmetic operations (e.g., multiplication and addition) per byte of memory loaded is low [37, 58]. This leads to the GPU's computation throughput being bottlenecked by VRAM bandwidth and results in the GPU's computation units being underutilized, leading to low power draw. Appendix C dives deeper into power consumption with measurements for all models and GPU power breakdowns over time.
 
-Unfortunately, the image does not contain a table. I will move on to the next section.
-
-**Section 2: Chart/PLOT**
-
-The image contains two charts: (a) Different Resolutions and (b) Varying Denoising Steps.
-
-**(a) Different Resolutions**
-
-| Label | Value |
-| --- | --- |
-| SSDL (1024x1024) | 1000 |
-| SSDL (1024x1024) | 1000 |
-
-**(b) Varying Denoising Steps**
-
-**Section 3: Chart/PLOT**
-
-**(b) Varying Deno
-**Section 4: Chart/PLOT**
-
-The image contains two charts: (a) Different Resolutions and (b) Varying Deno
-
-**(a) Different Res
+<span id="page-8-1"></span>![](_page_8_Figure_0.jpeg)
 
 <span id="page-8-2"></span>Figure 6: Energy consumption of SDXL [\[61\]](#page-13-6) and SDXL Turbo [\[7\]](#page-10-14) on one NVIDIA A100 GPU.
 
 ![](_page_8_Figure_2.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents two plots comparing the performance of different models on various tasks, including LLa
-**Figure Data (Q&A):**
+Figure 7: Time–energy Pareto frontiers constructed by the ML.ENERGY Benchmark.
 
-Q: What is the average energy consumption of the LLa
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy consumption of the L
-Q: What is the average energy
-Q: What is the average energy
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-Q: What is the average
-
-
-[描述已截斷以避免過長]
-
-
-
-
-Note: The actual data is not provided in the image, so I've created a table with some sample data to demonstrate the format. The actual data should be transcribed from the image, but I've created a table with some sample data to demonstrate the format.
-
-
-### Figure 1a: Energy Consumption vs. Average Time Per Output Token
-
-| Model | Energy Consumption (J) | Average Time Per Output Token (s) |
-| --- | --- | --- |
-| A100 | 80.5 | 0.05 |
-| H100 | 60.5 | 0.05 |
-
-### Figure 1b: Energy Consumption vs. Generation Latency
-
-| Model | Energy Consumption (J) | Generation Latency (s) |
-| --- | --- | — |
-| A100 | 80.5 | 10.5 |
-| H100 | 60.5 | 10.5 |
-
-### Figure 2: Energy Consumption vs. Average Time Per Output Token
-
-| Model | Energy Consumption (J) | Average Time Per Output Token (s) |
-| — | — | — |
-| A100 | 80.5 | 0.05 |
-| H100 | 60.5 | 0.05 |
-
-### Figure 3: Energy Consumption vs. Generation Lat
-| Model | Energy Consumption (J) | Generation Lat
-| — | — | — |
-| A100 | 80.5 | 10.5 |
-| H100 | 60.5 | 10.5 |
-
-### Figure 4: Energy Consumption vs. Average
-| Model | Energy Consumption (J) | Average
-| — | — | — |
-| A100 | 80.5 | 0.05 |
-| H100 | 60.5 | 0.05 |
-
-### Figure 5: Energy
-| Model | Energy
-| A100 | 80.5
-| H100 | 60.5 |
-
-### Figure 6: Energy
-| Model | Energy
-| A100 | 80.5
-| H100 | 60.5 |
-
-### Figure 7: Energy
-| Model | Energy
-| A100 | 80.5
-| H100 | 60.5 |
-
-### Figure 8: Energy
-| Model | Energy
-| A100 | 80.5
-| H100 | 60.5 |
-
-### Figure 9: Energy
-| Model | Energy
-| A100 | 80.5
-| H100 | 60.5 |
-
-### Figure 10: Energy
-| Model | Energy
-| A100 | 80.5
-| H100 | 60.5 |
-
-### Figure 11: Energy
-| Model | Energy
-| A100 | 80.5
-| H100 | 60.5 |
-
-### Figure 12: Energy
-| Model | Energy
-| A 100 | 80.
-
-[描述已截斷以避免過長]
-
-
-This graph appears to be a scatter plot comparing the performance of two models, A100 and H100, in terms of energy consumption and average time per output token. The x-axis represents the average time per output token, and the y-axis represents the energy consumption in joules. The graph shows that both models have similar performance in terms of energy consumption, with A100 and H100 having similar values for both energy consumption and average time per output token.
-
-**Graph 2: Llama 3.1 8B**
-
-**Graph 3: Llama 3.1 8B**
-
-However, I can provide a general description of the content of the image:
-
-The image appears to be a collection of scientific graphs and charts, including:
-
-* A graph showing the performance of two models, A100 and H100, in terms of energy consumption and average time per output
-* A graph showing the performance of two models, A100 and H100, in terms of energy
-* A graph showing the performance of two models, A100 and H
-I was unable to extract any specific information from the image. The image appears to be a collection of scientific graphs and charts, but it does not contain any tables, charts, or diagrams that require processing according to the provided instructions.
-
-* A graph showing the performance of two
-I was unable to extract any specific information from the image. The image appears to be a collection of scientific graphs and charts, but it does not contain any tables, charts, or diagrams that require processing according to the provided instructions.
-
-
-I was unable to extract any specific information from the image. The image appears to be a collection of scientific graphs and charts, but it does not contain any tables, charts, or diagrams that require
-
-
-[描述已截斷以避免過長]
+Inference-time parameters and energy. Figure [6](#page-8-1) shows the energy consumption of Stable Diffusion XL (SDXL) [\[61\]](#page-13-6) and SDXL Turbo [\[7\]](#page-10-14). On the left, while SDXL and SDXL Turbo have identical model sizes and architectures, their energy consumption is significantly different. This is because SDXL Turbo is tuned to generate smaller resolution images (512×512) than SDXL (1024×1024), which leads to different latent sizes and amounts of computation. On the right, it can be seen that the number of denoising steps linearly increases energy consumption, as one denoising step requires one forward pass through the model. While simple in isolation, these inference-time parameters lead to non-trivial design tradeoffs at the application-level. For instance, increasing the number of denoising steps may improve final image quality, but beyond some point, it may be virtually indistinguishable to human users. Also, generating images in lower resolution and then upscaling them with a separate super-resolution model (e.g., DAT [\[19\]](#page-10-15)) may consume less energy end-to-end.
 
 ### <span id="page-8-0"></span>4.3 Automated Energy Optimization Recommendation
 
@@ -983,7 +225,7 @@ ML energy optimization. The ML.ENERGY Benchmark provides automated energy optimi
 
 In this work, we described the ML.ENERGY Benchmark, a comprehensive energy benchmark for generative AI models that not only provides realistic energy measurements, but also automatically suggests energy-optimal configurations based on user- and app-specific performance constraints. Measurement results show that energy consumption is a metric that is impacted by design choices across the whole AI stack, including application, model, software, and hardware, demonstrating the importance of automated *cross-layer* energy optimizations instead of siloed optimizations within a single layer. We are confident that the ML.ENERGY Benchmark will democratize the art of measuring, understanding, and optimizing ML energy consumption for the community.
 
-# Acknowledgments and Disclosure of Funding
+## Acknowledgments and Disclosure of Funding
 
 We would like to thank Yunseok Jang and SymbioticLab members for helpful comments and suggestions on the paper. This work and its authors were in part supported by NSF grants CNS-2104243, CNS-2106184, and CNS-2450085, grants from VMware, the Mozilla Foundation, Cisco, Ford, and GitHub, and gifts from Salesforce and Google. Jae-Won Chung is additionally supported by the Kwanjeong Educational Foundation.
 
@@ -1083,7 +325,7 @@ We would like to thank Yunseok Jang and SymbioticLab members for helpful comment
 
 # NeurIPS Paper Checklist
 
-### 1. Claims
+## 1. Claims
 
 Question: Do the main claims made in the abstract and introduction accurately reflect the paper's contributions and scope?
 
@@ -1098,7 +340,7 @@ Guidelines:
 - The claims made should match theoretical and experimental results, and reflect how much the results can be expected to generalize to other settings.
 - It is fine to include aspirational goals as motivation as long as it is clear that these goals are not attained by the paper.
 
-### 2. Limitations
+#### 2. Limitations
 
 Question: Does the paper discuss the limitations of the work performed by the authors?
 
@@ -1117,7 +359,7 @@ Guidelines:
 - If applicable, the authors should discuss possible limitations of their approach to address problems of privacy and fairness.
 - While the authors might fear that complete honesty about limitations might be used by reviewers as grounds for rejection, a worse outcome might be that reviewers discover limitations that aren't acknowledged in the paper. The authors should use their best judgment and recognize that individual actions in favor of transparency play an important role in developing norms that preserve the integrity of the community. Reviewers will be specifically instructed to not penalize honesty concerning limitations.
 
-### 3. Theory assumptions and proofs
+#### 3. Theory assumptions and proofs
 
 Question: For each theoretical result, does the paper provide the full set of assumptions and a complete (and correct) proof?
 
@@ -1125,7 +367,7 @@ Answer: [NA]
 
 Justification: This paper does not include theoretical results.
 
-# Guidelines:
+## Guidelines:
 
 - The answer NA means that the paper does not include theoretical results.
 - All the theorems, formulas, and proofs in the paper should be numbered and crossreferenced.
@@ -1134,7 +376,7 @@ Justification: This paper does not include theoretical results.
 - Inversely, any informal proof provided in the core of the paper should be complemented by formal proofs provided in appendix or supplemental material.
 - Theorems and Lemmas that the proof relies upon should be properly referenced.
 
-### 4. Experimental result reproducibility
+## 4. Experimental result reproducibility
 
 Question: Does the paper fully disclose all the information needed to reproduce the main experimental results of the paper to the extent that it affects the main claims and/or conclusions of the paper (regardless of whether the code and data are provided or not)?
 
@@ -1142,19 +384,19 @@ Answer: [Yes]
 
 Justification: The benchmark code and the result data that supply the leaderboard are available open-source and documented at <https://github.com/ml-energy/leaderboard>. The full result data can be browsed at the ML.ENERGY Leaderboard at [https://ml.](https://ml.energy/leaderboard) [energy/leaderboard](https://ml.energy/leaderboard).
 
-### Guidelines:
+#### Guidelines:
 
 - The answer NA means that the paper does not include experiments.
 - If the paper includes experiments, a No answer to this question will not be perceived well by the reviewers: Making the paper reproducible is important, regardless of whether the code and data are provided or not.
 - If the contribution is a dataset and/or model, the authors should describe the steps taken to make their results reproducible or verifiable.
 - Depending on the contribution, reproducibility can be accomplished in various ways. For example, if the contribution is a novel architecture, describing the architecture fully might suffice, or if the contribution is a specific model and empirical evaluation, it may be necessary to either make it possible for others to replicate the model with the same dataset, or provide access to the model. In general. releasing code and data is often one good way to accomplish this, but reproducibility can also be provided via detailed instructions for how to replicate the results, access to a hosted model (e.g., in the case of a large language model), releasing of a model checkpoint, or other means that are appropriate to the research performed.
 - While NeurIPS does not require releasing code, the conference does require all submissions to provide some reasonable avenue for reproducibility, which may depend on the nature of the contribution. For example
-- (a) If the contribution is primarily a new algorithm, the paper should make it clear how to reproduce that algorithm.
+  - (a) If the contribution is primarily a new algorithm, the paper should make it clear how to reproduce that algorithm.
 - (b) If the contribution is primarily a new model architecture, the paper should describe the architecture clearly and fully.
 - (c) If the contribution is a new model (e.g., a large language model), then there should either be a way to access this model for reproducing the results or a way to reproduce the model (e.g., with an open-source dataset or instructions for how to construct the dataset).
 - (d) We recognize that reproducibility may be tricky in some cases, in which case authors are welcome to describe the particular way they provide for reproducibility. In the case of closed-source models, it may be that access to the model is limited in some way (e.g., to registered users), but it should be possible for other researchers to have some path to reproducing or verifying the results.
 
-### 5. Open access to data and code
+#### 5. Open access to data and code
 
 Question: Does the paper provide open access to the data and code, with sufficient instructions to faithfully reproduce the main experimental results, as described in supplemental material?
 
@@ -1162,7 +404,7 @@ Answer: [Yes]
 
 Justification: The benchmark code and the result data that supply the leaderboard are available open-source and documented at <https://github.com/ml-energy/leaderboard>. The full result data can be browsed at the ML.ENERGY Leaderboard at [https://ml.](https://ml.energy/leaderboard) [energy/leaderboard](https://ml.energy/leaderboard).
 
-### Guidelines:
+## Guidelines:
 
 - The answer NA means that paper does not include experiments requiring code.
 - Please see the NeurIPS code and data submission guidelines ([https://nips.cc/](https://nips.cc/public/guides/CodeSubmissionPolicy) [public/guides/CodeSubmissionPolicy](https://nips.cc/public/guides/CodeSubmissionPolicy)) for more details.
@@ -1173,7 +415,7 @@ Justification: The benchmark code and the result data that supply the leaderboar
 - At submission time, to preserve anonymity, the authors should release anonymized versions (if applicable).
 - Providing as much information as possible in supplemental material (appended to the paper) is recommended, but including URLs to data and code is permitted.
 
-### 6. Experimental setting/details
+## 6. Experimental setting/details
 
 Question: Does the paper specify all the training and test details (e.g., data splits, hyperparameters, how they were chosen, type of optimizer, etc.) necessary to understand the results?
 
@@ -1187,7 +429,7 @@ Justification: We mention important details in the main paper and provide more d
 - The experimental setting should be presented in the core of the paper to a level of detail that is necessary to appreciate the results and make sense of them.
 - The full details can be provided either with the code, in appendix, or as supplemental material.
 
-### 7. Experiment statistical significance
+## 7. Experiment statistical significance
 
 Question: Does the paper report error bars suitably and correctly defined or other appropriate information about the statistical significance of the experiments?
 
@@ -1195,7 +437,7 @@ Answer: [No]
 
 Justification: We were not able to run the benchmark multiple times due to the high monetary cost of even a single run.
 
-# Guidelines:
+## Guidelines:
 
 - The answer NA means that the paper does not include experiments.
 - The authors should answer "Yes" if the results are accompanied by error bars, confidence intervals, or statistical significance tests, at least for the experiments that support the main claims of the paper.
@@ -1208,7 +450,7 @@ Justification: We were not able to run the benchmark multiple times due to the h
 - For asymmetric distributions, the authors should be careful not to show in tables or figures symmetric error bars that would yield results that are out of range (e.g. negative error rates).
 - If error bars are reported in tables or plots, The authors should explain in the text how they were calculated and reference the corresponding figures or tables in the text.
 
-### 8. Experiments compute resources
+#### 8. Experiments compute resources
 
 Question: For each experiment, does the paper provide sufficient information on the computer resources (type of compute workers, memory, time of execution) needed to reproduce the experiments?
 
@@ -1216,14 +458,14 @@ Answer: [Yes]
 
 Justification: We mention compute resources in the beginning of Section [4.](#page-5-0)
 
-### Guidelines:
+Guidelines:
 
 - The answer NA means that the paper does not include experiments.
 - The paper should indicate the type of compute workers CPU or GPU, internal cluster, or cloud provider, including relevant memory and storage.
 - The paper should provide the amount of compute required for each of the individual experimental runs as well as estimate the total compute.
 - The paper should disclose whether the full research project required more compute than the experiments reported in the paper (e.g., preliminary or failed experiments that didn't make it into the paper).
 
-### 9. Code of ethics
+## 9. Code of ethics
 
 Question: Does the research conducted in the paper conform, in every respect, with the NeurIPS Code of Ethics <https://neurips.cc/public/EthicsGuidelines>?
 
@@ -1231,13 +473,13 @@ Answer: [Yes]
 
 Justification: We confirm that we reviewed the NeurIPS Code of Ethics and that our research conforms to it.
 
-### Guidelines:
+# Guidelines:
 
 - The answer NA means that the authors have not reviewed the NeurIPS Code of Ethics.
 - If the authors answer No, they should explain the special circumstances that require a deviation from the Code of Ethics.
 - The authors should make sure to preserve anonymity (e.g., if there is a special consideration due to laws or regulations in their jurisdiction).
 
-### 10. Broader impacts
+#### 10. Broader impacts
 
 Question: Does the paper discuss both potential positive societal impacts and negative societal impacts of the work performed?
 
@@ -1245,7 +487,7 @@ Answer: [Yes]
 
 Justification: We discuss this in Appendix [F.](#page-27-2)
 
-### Guidelines:
+## Guidelines:
 
 • The answer NA means that there is no societal impact of the work performed.
 
@@ -1255,7 +497,7 @@ Justification: We discuss this in Appendix [F.](#page-27-2)
 - The authors should consider possible harms that could arise when the technology is being used as intended and functioning correctly, harms that could arise when the technology is being used as intended but gives incorrect results, and harms following from (intentional or unintentional) misuse of the technology.
 - If there are negative societal impacts, the authors could also discuss possible mitigation strategies (e.g., gated release of models, providing defenses in addition to attacks, mechanisms for monitoring misuse, mechanisms to monitor how a system learns from feedback over time, improving the efficiency and accessibility of ML).
 
-### 11. Safeguards
+#### 11. Safeguards
 
 Question: Does the paper describe safeguards that have been put in place for responsible release of data or models that have a high risk for misuse (e.g., pretrained language models, image generators, or scraped datasets)?
 
@@ -1263,14 +505,14 @@ Answer: [NA]
 
 Justification: We do not believe safeguards are necessary for our work.
 
-### Guidelines:
+## Guidelines:
 
 - The answer NA means that the paper poses no such risks.
 - Released models that have a high risk for misuse or dual-use should be released with necessary safeguards to allow for controlled use of the model, for example by requiring that users adhere to usage guidelines or restrictions to access the model or implementing safety filters.
 - Datasets that have been scraped from the Internet could pose safety risks. The authors should describe how they avoided releasing unsafe images.
 - We recognize that providing effective safeguards is challenging, and many papers do not require this, but we encourage authors to take this into account and make a best faith effort.
 
-### 12. Licenses for existing assets
+## 12. Licenses for existing assets
 
 Question: Are the creators or original owners of assets (e.g., code, data, models), used in the paper, properly credited and are the license and terms of use explicitly mentioned and properly respected?
 
@@ -1290,7 +532,7 @@ Justification: We extensively use models and datasets created by others in our b
 - For existing datasets that are re-packaged, both the original license and the license of the derived asset (if it has changed) should be provided.
 - If this information is not available online, the authors are encouraged to reach out to the asset's creators.
 
-### 13. New assets
+#### 13. New assets
 
 Question: Are new assets introduced in the paper well documented and is the documentation provided alongside the assets?
 
@@ -1298,14 +540,14 @@ Answer: [Yes]
 
 Justification: The benchmark code is available open-source and documented at [https:](https://github.com/ml-energy/leaderboard) [//github.com/ml-energy/leaderboard](https://github.com/ml-energy/leaderboard) under the Apache-2.0 license.
 
-### Guidelines:
+#### Guidelines:
 
 - The answer NA means that the paper does not release new assets.
 - Researchers should communicate the details of the dataset/code/model as part of their submissions via structured templates. This includes details about training, license, limitations, etc.
 - The paper should discuss whether and how consent was obtained from people whose asset is used.
 - At submission time, remember to anonymize your assets (if applicable). You can either create an anonymized URL or include an anonymized zip file.
 
-### 14. Crowdsourcing and research with human subjects
+#### 14. Crowdsourcing and research with human subjects
 
 Question: For crowdsourcing experiments and research with human subjects, does the paper include the full text of instructions given to participants and screenshots, if applicable, as well as details about compensation (if any)?
 
@@ -1317,7 +559,7 @@ Justification: This paper does not involve crowdsourcing nor research with human
 - Including this information in the supplemental material is fine, but if the main contribution of the paper involves human subjects, then as much detail as possible should be included in the main paper.
 - According to the NeurIPS Code of Ethics, workers involved in data collection, curation, or other labor should be paid at least the minimum wage in the country of the data collector.
 
-### 15. Institutional review board (IRB) approvals or equivalent for research with human subjects
+## 15. Institutional review board (IRB) approvals or equivalent for research with human subjects
 
 Question: Does the paper describe potential risks incurred by study participants, whether such risks were disclosed to the subjects, and whether Institutional Review Board (IRB) approvals (or an equivalent approval/review based on the requirements of your country or institution) were obtained?
 
@@ -1331,7 +573,7 @@ Justification: This paper does not involve crowdsourcing nor research with human
 - We recognize that the procedures for this may vary significantly between institutions and locations, and we expect authors to adhere to the NeurIPS Code of Ethics and the guidelines for their institution.
 - For initial submissions, do not include any information that would break anonymity (if applicable), such as the institution conducting the review.
 
-### 16. Declaration of LLM usage
+## 16. Declaration of LLM usage
 
 Question: Does the paper describe the usage of LLMs if it is an important, original, or non-standard component of the core methods in this research? Note that if the LLM is used only for writing, editing, or formatting purposes and does not impact the core methodology, scientific rigorousness, or originality of the research, declaration is not required.
 
@@ -1339,21 +581,21 @@ Answer: [NA]
 
 Justification: We have used LLMs to assist in editing the paper, generating figures, and writing code snippets, and its use does not impact the core methodology, scientific rigorousness, or originality of the research.
 
-### Guidelines:
+#### Guidelines:
 
 - The answer NA means that the core method development in this research does not involve LLMs as any important, original, or non-standard components.
 - Please refer to our LLM policy (<https://neurips.cc/Conferences/2025/LLM>) for what should or should not be described.
 
 <span id="page-22-2"></span>Table 2: Model type, task, and default request dataset used in the ML.ENERGY Benchmark.
 
-| Model architecture    | Task           | Request dataset                                  |  |  |  |
-|-----------------------|----------------|--------------------------------------------------|--|--|--|
-| Large Language Model  | Chat           | ShareGPT [72]                                    |  |  |  |
-|                       | Code           | EvalPlus [45]                                    |  |  |  |
-| Vision Language Model | Visual chat    | LLaVA instruction dataset [43]                   |  |  |  |
-|                       | Text-to-image  | PartiPrompts [83]                                |  |  |  |
-| Diffusion Model       | Text-to-video  | Captions in ShareGPT4Video [18]                  |  |  |  |
-|                       | Image-to-video | Captions and first frames in ShareGPT4Video [18] |  |  |  |
+| Model architecture    | Task           | Request dataset                                  |
+|-----------------------|----------------|--------------------------------------------------|
+| Large Language Model  | Chat           | ShareGPT [72]                                    |
+|                       | Code           | EvalPlus [45]                                    |
+| Vision Language Model | Visual chat    | LLaVA instruction dataset [43]                   |
+|                       | Text-to-image  | PartiPrompts [83]                                |
+| Diffusion Model       | Text-to-video  | Captions in ShareGPT4Video [18]                  |
+|                       | Image-to-video | Captions and first frames in ShareGPT4Video [18] |
 
 Table 3: Model architectures supported by the ML.ENERGY Benchmark for each task.
 
@@ -1383,131 +625,21 @@ The ML.ENERGY Benchmark cannot avoid being outdated given the rapid pace of deve
 
 This section discusses the energy implication of different system-level configurations. System-level configurations are those that do not change *what* is computed but rather *how* it is computed by the underlying software system.
 
-### B.1 Request Preemption Mechanism
+## B.1 Request Preemption Mechanism
 
 Even with the model and inference parameters fixed, the software system used to serve inference requests, which determines how model computations are executed on a given hardware, significantly impacts energy consumption. As a concrete example, we will examine the effect of "preemption mechanism," a configuration parameter for LLM inference servers. When a server is overloaded with more requests than its capacity, it needs to temporarily remove (or, preempt) some requests from the system and then later bring them back (or, restore). For LLM inference, there are two widely-used mechanisms for preemption: Recomputation and Swapping [\[39\]](#page-12-9). Recomputation simply drops all temporary request data or state on preemption and recomputes everything from scratch on restoration. On the other hand, Swapping moves the request state to the CPU's memory, and then returns it to the GPU on restoration. The best preemption mechanism depends on the computing hardware and software configuration and the LLM being served.
 
 <span id="page-23-0"></span>![](_page_23_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a line graph comparing the energy consumption of two different models, "Recomputation" and "Swapping", with the x-axis representing the maximum batch size configuration and the y-axis representing the energy consumption in megahour (MWh). The graph shows that the "Recomputation" model has a higher energy consumption than the "Swapping" model, but both models have a significant decrease in energy consumption as the batch size increases.
+<span id="page-23-1"></span>Figure 8: Energy consumption per generation while varying the maximum batch size for Mistral Nemo (12B). The LLM inference server's preemption mechanism is compared.
 
-**Figure Data (Q&A):**
-
-Q: What is the energy consumption of the "Recomputation" model at a batch size of 250?
-
-Q: What is the energy consumption of the "Swapping" model at a batch size of 500?
-
-Q: What is the energy consumption of the "Recomputation" model at a batch size of 1000?
-
-Q: What is the energy consumption of the "Swapping" model at a batch size of 1250?
-
-Q: What is the energy consumption of the "Recomputation" model at a batch size of 1500?
-
-Q: What is the energy consumption of the "Swapping" model at a batch size of 2000?
-
-Q: What is the energy consumption of the "Recomputation" model at a batch size of 2500?
-
-Q: What is the energy consumption of the "Swapping" model at a batch size of 3000?
-A: 60 M  (Note: This value is not provided in the original text. The value is 60 M )
-
-Q: What is the energy consumption of the "Recomputation" model at a batch size of 1000?
-A: 70 M  (Note: This value is not provided in the original text. The value is 70 M )
-
-
-
-[描述已截斷以避免過長]
-
-
-
-
-Note: The data points are not provided in the original text, so I've created a table based on the graph's trend. The actual data points may vary depending on the original source.
-
-
-The image appears to be a line graph with two lines representing "Recomputation" and "Swapping" with a third line representing "Server is Overloaded". However, there is no table to process.
-
-**Chart/Plot Processing:**
-
-The image is a line graph with two lines representing "Recomputation" and "Swapping". The X-axis represents the "Maximum batch size configuration" and the Y-axis represents the "Energy consumption (J)".
-
-Here are the data points:
-
-* 1000: 60
-* 1250: 70
-* 1500: 80
-
-The lines are not labeled, but they represent "Recomputation" and "Swapping" with a third line representing "Server is Overloaded".
-
-**Diagrams:**
-
-The image is a line graph with two lines representing "Recomputation" and "Swapping" with a third line representing "Server is Overloaded". The lines are not labeled, but they represent "Recomputation" and "Swapping" with a third line representing "Server is Overloaded".
-
-**Mathematical Formulas:**
-
-There are no mathematical formulas in the image.
-
-**Output Format:**
-
-The image is a line graph with two lines representing "Recomputation" and "Swapping" with a third line representing "Server is Overloaded". The X-axis represents the "Maximum batch size configuration" and the Y-axis represents the "Energy consumption (J)".
-
-The lines are not l
-The image is a line graph with two lines representing "Recomputation" and "Swapping" with a third line representing "Server is Overloaded". The X-axis represents the "Maximum batch size configuration" and the Y-axis represents the "Energy consumption (J)".
-
-
-The image is a line graph with two lines representing "Recomputation" and "Swing" with a third line representing "Server is Over
-The image is a line graph with two lines representing "Recom
-The image is a line graph with two lines representing "Re
-The image is a line graph with two lines representing "Re
-
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
-
-
-Here is the extracted information in the specified format:
-
-**Table Processing:**
-No table is present in the provided image. The image is a line graph.
-
-**Chart/Plot Processing:**
-
-* The x-axis represents the batch size, ranging from 0 to 1000.
-* The y-axis represents the energy consumption in Joules (J).
-* The graph shows the energy consumption of 1, 2, 4, and 8 GPUs with varying batch sizes.
-* The data points are not explicitly labeled, but the graph shows the energy consumption of each type of GPU.
-
-**Data Points:**
-
-* The graph shows the energy consumption of 1, 2, 4, and 8 GPUs with varying batch sizes.
-* The data points are not explicitly labeled, but the graph shows the energy consumption of each type of GPU.
-
-**X-axis and Y-axis:**
-
-* The x-axis represents the batch size, ranging from 0 to 1000.
-* The y-axis represents the energy consumption in Joules (J).
-
-**Legend:**
-
-* The graph shows the energy consumption of 1, 2, 4, and 8 GPUs with varying batch sizes.
-* The colors and symbols represent the different types of 1, 2, 4, and 8 GPUs.
-
-* The graph shows the energy consumption of 1, 2, 4, and 8 GPUs with varying batch sizes.
-* The data points are not explicitly l
-
-* The graph shows the energy consumption of 1, 2, 4, and 8 GPUs with varying batch
-* The graph shows the energy
-* The graph shows the
-* The graph shows the
+![](_page_23_Figure_2.jpeg)
 
 Figure 9: Energy consumption per generation while varying batch size for Llama 3.1 8B. The number of NVIDIA A100 GPUs used to run the same model is scaled up.
 
+Figure [8,](#page-23-0) we compare the energy consumption per generation of the two preemption mechanisms with the Mistral Nemo (12B) model by intentionally overloading the server with a high maximum batch size configuration and causing preemption. It can be seen that when the server is overloaded, Swapping consistently consumes less energy. This is because Recomputation performs extra computation when restoring requests whereas Swapping copies data without running computation, and the energy consumption of computation is larger than memory operations (this will be further examined in the next section). Furthermore, as the server gets more and more overloaded, energy consumption generally increases. This is because with higher overload, more preemptions – and thus more recomputation or data movement – occur. Since preemptions do not directly contribute to the completion of the request, the extra energy consumption from preemptions increases the average energy consumption of completing each request.
 
-[描述已截斷以避免過長]
-
-### B.2 Tensor Parallelism Scaling
+#### B.2 Tensor Parallelism Scaling
 
 We investigate the impact of communication overhead to energy consumption. This is important as modern large models frequently do not fit within the memory capacity of a single GPU. This requires multiple GPUs to execute inference for a single model, and GPUs must constantly communicate with each other to do so [\[67\]](#page-13-17).
 
@@ -1542,58 +674,19 @@ Table 5: Energy per generation (Joules) of Llama 3.1 8B on a synthetic long cont
 
 From this scaling experiment, we can observe that the energy impact of communication overhead can be large. This impact will be even more pronounced in hardware environments without sufficient or state-of-the-art networking infrastructure, which is common in real world settings due to its cost [\[36\]](#page-11-17).
 
-### B.3 Prefill–Decode Disaggregation
+#### B.3 Prefill–Decode Disaggregation
 
 Prefill–decode (PD) disaggregation is a rising production deployment setting where prefill and decode phases are run on separate GPUs [\[59,](#page-12-19) [86\]](#page-14-8). This allows for independent scaling and optimization of prefill and decode phases based on workload characteristics, and leads to better latency deadline attainment. Table [4](#page-24-0) shows energy measurements for different PD disaggregation configurations, where "xPyD" denotes x prefill instances and y decode instances.
 
 Overall, decode consumes the majority of energy, with some amount shifting to prefill when input length is long. In our setup, PD disaggregation configurations did not have a large impact on absolute energy consumption or the energy split as long as the throughput of prefill and decode instances are reasonably balanced.
 
-### B.4 Chunked Prefill
+#### B.4 Chunked Prefill
 
 Chunked prefill is a technique where long input prompts are split into chunks and processed alongside decode iterations, improving GPU utilization and reducing the interference between long prefills and decode iterations [\[5\]](#page-10-18). For chunked prefill, the max number of batched tokens is a key parameter that controls the chunk size. Table [5](#page-24-1) shows the impact of this parameter on energy consumption.
 
 Table [5](#page-24-1) shows that the more sequences or tokens you batch, the better the energy amortization you get and energy per generation decreases, and after a certain point, returns diminish.
 
 <span id="page-25-1"></span>![](_page_25_Figure_0.jpeg)
-
-**Figure Description:**
-**Figure Context:**
-This image is a collection of charts and graphs comparing the performance of various AI models, including LLaM, GShard, and others, in terms of model size, energy, and data, as well as their performance and accuracy.
-
-**Figure Data (Q&A):**
-
-Q: What is the size of the LLaM 65B model?
-
-Q: How many parameters does LLaM 65B have?
-
-Q: What is the size of the GShard 1.5B model?
-
-Q: How many G-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-33-34-35-36-37-38-39-40-41-42-43-44-45-46-47-48-49-50-51-52-53-54-55-56-57-58-59-60-61-62-63-64-65-66-67-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-33-40-41-42-43-44-45-46-47-48-49-50-51-52-53-54-55-56-57-58-59-60-61-62-63-64-65-66-67-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-33-40-41-42-43-44-45-46-47-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-33-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-33-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-3-4-
-
-
-
-
-The image contains six graphs, each with a different title and description. The graphs appear to be related to various topics, including Llama 3.1, Llama 3.1 70B, Llama 3.1 8B, Llama 3.1 7B, Llama 3.1 6B, and Llama 3.1 5B. The graphs show various data points and trends, but I will not be able to provide a table or chart format as there is no table or chart to process.
-
-Here is a description of the content of the image:
-
-1. **Llama 3.1 8B**: This graph shows the performance of Llama 3.1 8B, a model that is used to generate text. The graph shows the performance of the model, including the number of words, the number of words per
-2. **Llama 3.1 7B**: This graph shows the performance of Llama 3.1 7B, a model that is used to generate text. The graph shows the number of words, the number of
-3. **Llama 3.1 6B**: This graph shows the performance of L
-4. **Llama 3.1 5B**: This graph shows the
-5. **Llama 3.1 4B**: This graph shows the
-6. **Llama 3.1 3B**: This graph shows the
-
-The image does not contain any tables or charts that can be processed according to the provided instructions. The image appears to be a collection of graphs and charts, but it does not contain any data that can be processed.
-
-If you would like me to describe the content of the image in more detail, I can provide a description of the graphs and the data they contain. However, I will not be able to provide a table or chart format as there is no table or chart to process.
-
-* The image contains six graphs, each with a different title and
-* The graphs show
-
-I hope this helps. Let me know if you have any
-
-I hope this helps. Let
 
 Figure 10: Power consumption of various models on A100 and H100 GPUs.
 
@@ -1605,62 +698,31 @@ Figure [12](#page-26-1) shows the GPU power draw breakdown over time on one NVID
 
 <span id="page-26-0"></span>![](_page_26_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the performance of various AI models, including LLa
- 
-**Figure Data (Q&A):**
-
-Q: What is the average power consumption of the LLa
-
-Q: What is the average power
-
-Q: What is the average
-
-
-
-
 Figure 11: Ratio of power consumption to maximum GPU power draw across various models.
 
 <span id="page-26-1"></span>![](_page_26_Figure_2.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents two line graphs comparing the performance of different models, including LLa
- 
-**Figure Data (Q&A):**
-
-Q: What is the maximum power draw of the H100 TDP?
-
-Q: What is the maximum power draw of the H100 T
-
-Q: What is the maximum power
-
-Q: What is the maximum
-
-
-
-
-Note: The data is not provided in the original image, so I created a table based on the plot's data. The actual data is not available, so I created a table based on the plot's data. The actual data is not available, so I created a table based on the plot's data. The actual data is not available, so I created a table based on the plot’s data. The actual data is not available, so I created a table based on the plot’s data. The actual data is not available, so I created a table based on the plot’s data.
-
-[描述已截斷以避免過長]
-
-
 Figure 12: GPU power draw breakdown over time on one NVIDIA H100 GPU. "Entire GPU" and "Only VRAM" (memory) were measured, and the two were subtracted to derive "Entire GPU excluding VRAM."
 
-in power draw – when the benchmark begins, the server begins admitting new requests, creating a short period where numerous Prefills are executed back-to-back, leading to high power draw. After the initial spike, power draw repeats a periodic fluctuation.
+in power draw – when the benchmark begins, the server begins admitting new requests, creating a short period where numerous Prefills are executed back-to-back, leading to high power draw. After the initial spike, power draw repeats a periodic fluctuation. This is because, before each Prefill or Decode, the server must make numerous control decisions, including determining which requests are now finished and which ones should run next. Since these decisions are executed by the CPU, this creates a periodic time gap where the GPU is not running any computation. This GPU idle time leads to the periodic drop in GPU power draw.
 
-[描述已截斷以避免過長]
+On the other hand, Stable Video Diffusion XT shows a different power draw pattern. Diffusion models generally have three phases: Encode, Denoise, and Decode. The Encode phase digests the
+
+input prompt and passes it to the Denoise phase, which iteratively removes noise from a random vector. Finally, the Decode phase transforms the denoised vector into the final image or video.
+
+From the timeline, especially Denoise and Decode can be clearly distinguished. Denoise is the most compute-intensive and consumes power close to the GPU's TDP. For each batch, there are 25 local peaks that hit the GPU's TDP, each of which corresponds to one denoising step in Denoise. During Decode, power draw generally decreases, with each local power peak corresponding to the two large layers in the decoding module. On the other hand, VRAM power draw increases during Decode because it allocates a large chunk of memory and performs writes in order to generate the final video. Finally, as the final generated video is copied from the GPU's memory to the CPU's, the GPU does not run any computation, resulting in a steep drop in power draw.
+
+From the power breakdown, we can observe that memory operations indeed draw significantly less power compared to computation, and thus computations with low compute-intensity should indeed draw less power. Furthermore, we can observe that the power draw and energy consumption of a specific hardware (GPU in this case) is not a function of just itself and the computations that it runs. Rather, software and hardware components that are integrated in the same system stack impacts how computations are executed on each other, affecting their power draw and energy consumption.
 
 # <span id="page-27-0"></span>D The ML.ENERGY Leaderboard and Benchmark
 
 On July 2023, we launched the ML.ENERGY Leaderboard and Benchmark, the first inference energy leaderboard for modern generative AI models.[6](#page-27-3) Our goal was to measure and understand the energy consumption of generative AI models, and we provided a web-based leaderboard to allow everyone to browse the results. The leaderboard started with only LLM chat with tens of different LLMs, but gradually expanded to include more tasks, models, and datasets. Our benchmarking suite to supply data to the leaderboard is what we dub the ML.ENERGY Benchmark. This paper shares our design philosophy and principles we have acquired over time by gradually maintaining and upgrading the ML.ENERGY Benchmark and the Leaderboard, and highlights notable results we have obtained from the early 2025 iteration of the benchmark. Importantly, we plan to continuously update the benchmark and the leaderboard as long as resources allow, and what is presented in this paper is only a snapshot of the current state of the benchmark at the time of writing. We encourage readers to visit the leaderboard website and benchmark repository for the latest results and updates.
 
-# <span id="page-27-1"></span>E Limitations
+## <span id="page-27-1"></span>E Limitations
 
 The ML.ENERGY Benchmark is not without limitations. First, we note that the benchmark is not exhaustive and does not cover all possible tasks, models, and datasets. This is particularly true as time passes and new models and tasks are developed. We are aware of newer open-weight models and worthy tasks that were released after the early 2025 iteration of the benchmark was finalized. However, we cannot add each model or task one by one incrementally as they are released, due to the prohibitive monetary cost of running the benchmark on representative hardware; rather, we collect new advances in a window of time and then mass-update the whole benchmark, accompanied by upgrades in hardware, software, and datasets. Second, the benchmark is not exhaustive in terms of hardware. We currently mainly support flagship NVIDIA GPUs, which arguably dominates the market especially when it comes to real-world generative AI services. Furthermore, we do not have access to all possible hardware configurations, nor do they always provide a way for us to measure energy consumption from software. Regardless, we are working to expand the benchmark to support more hardware configurations.
 
-# <span id="page-27-2"></span>F Broader Impacts
+## <span id="page-27-2"></span>F Broader Impacts
 
 By allowing everyone to accurate measure, understand, and optimize the energy consumption of generative AI models, we believe the ML.ENERGY Benchmark can enhance the understanding of energy consumption of generative AI in the research community and the industry, and ultimately fuel works that optimize energy consumption. Furthermore, energy is essentially throughput per watt,
 

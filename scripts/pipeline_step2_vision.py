@@ -15,13 +15,17 @@ python scripts/pipeline_step2_vision.py
 import os
 import re
 import base64
+import hashlib
 from pathlib import Path
 import requests
 from tqdm import tqdm
 
 # 配置
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
-VISION_MODEL = "llama3.2-vision"
+# 優先使用的模型列表 (按順序嘗試)
+VISION_MODELS_TO_TRY = ["minicpm-v", "llama3.2-vision"] 
+VISION_MODEL = "llama3.2-vision" # 默認值，會被自動切換
+
 PROMPT = """You are an expert AI researcher creating a "Cheat Sheet" for a QA system.
 Your goal is to extract every single piece of data from this image and format it as Question-Answer pairs.
 
@@ -42,7 +46,11 @@ Your goal is to extract every single piece of data from this image and format it
     *   **Hardware/GPUs:** (e.g., "Q: How many GPUs were used? A: 128 A100s")
     *   **Performance/Accuracy:** (e.g., "Q: What is the accuracy on ImageNet? A: 85.3%")
 
-4.  **OUTPUT FORMAT (Strict):**
+4.  **CRITICAL RULE:** 
+    *   Try your best to extract ANY text or data visible. If absolutely no data is visible, describe the visual content briefly.
+    *   Do NOT hallucinate or repeat "What is the...".
+
+5.  **OUTPUT FORMAT (Strict):**
     
     **Figure Context:**
     [A brief 3-sentence summary of what this image is about, for broad search.]
@@ -57,6 +65,17 @@ Your goal is to extract every single piece of data from this image and format it
     [The raw Markdown table for backup]
 """
 
+# 全局緩存：{image_hash: description}
+processed_images_cache = {}
+
+def get_image_hash(image_path):
+    """計算圖片的 MD5 Hash (指紋)"""
+    hash_md5 = hashlib.md5()
+    with open(image_path, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
+
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
@@ -67,37 +86,41 @@ def get_image_description(image_path):
         print(" [編碼中...]", end="", flush=True)
         b64_image = encode_image(image_path)
         
+        # 嘗試每個模型
+        for model_name in VISION_MODELS_TO_TRY:
         payload = {
-            "model": VISION_MODEL,
+                "model": model_name,
             "prompt": PROMPT,
             "images": [b64_image],
             "stream": False,
             "options": {
-                "num_ctx": 2048,  # 減少 context 大小以加快處理速度
-                "num_predict": 800,  # 限制最大生成長度（約 800 tokens，約 600-1000 字元）
-                "temperature": 0.0,  # 設為 0 以獲得最穩定的輸出，減少重複
-                "repeat_penalty": 1.5,  # 增加重複懲罰（從 1.2 提高到 1.5），更積極地減少重複內容
-                "top_p": 0.9,  # 使用 nucleus sampling 以獲得更好的多樣性
-                "top_k": 40  # 限制候選詞彙數量
+                    "num_ctx": 2048,
+                    "num_predict": 800,
+                    "temperature": 0.0,
+                    "repeat_penalty": 1.5,
+                    "top_p": 0.9,
+                    "top_k": 40
             }
         }
         
-        # 發送請求（圖片處理可能需要較長時間）
-        print(" [處理中...]", end="", flush=True)
-        # 設置合理的超時：連接超時 10 秒，讀取超時 5 分鐘（300秒）
-        # 如果單張圖片處理超過 5 分鐘，可能是卡住了或生成過長內容
-        response = requests.post(OLLAMA_API_URL, json=payload, timeout=(10, 300))
-        
+            # print(f" [使用模型: {model_name}]", end="", flush=True)
+            response = requests.post(OLLAMA_API_URL, json=payload, timeout=(10, 300))
+            
         if response.status_code == 200:
-            result = response.json().get("response", "")
-            if result:
-                print(f" ✓ 完成 (長度: {len(result)} 字元)", flush=True)
+                result = response.json().get("response", "")
+                # 如果成功獲得結果，直接返回
+                if result:
+                     # print(f" ✓ {model_name} 成功", flush=True)
+                     return result
             else:
-                print(f" ⚠️  完成但無回應內容", flush=True)
-            return result
-        else:
-            print(f" ✗ Ollama 錯誤 (狀態碼 {response.status_code}): {response.text[:200]}", flush=True)
-            return ""
+                # 如果這個模型失敗 (例如 404 模型不存在)，就嘗試下一個
+                # print(f" ✗ {model_name} 失敗 ({response.status_code}), 嘗試下一個...", flush=True)
+                continue
+
+        # 如果所有模型都失敗
+        print(f" ✗ 所有視覺模型皆失敗", flush=True)
+        return ""
+
     except requests.exceptions.Timeout as e:
         # 超時（連接超時或讀取超時）
         if "ConnectTimeout" in str(type(e)) or "連接" in str(e):
@@ -114,7 +137,7 @@ def get_image_description(image_path):
         print(f"   請確認：", flush=True)
         print(f"   1. Ollama 服務正在運行：ollama serve", flush=True)
         print(f"   2. 服務監聽在正確的端口 (11434)", flush=True)
-        return ""
+            return ""
     except Exception as e:
         print(f" ✗ 處理失敗: {type(e).__name__}: {str(e)[:200]}", flush=True)
         return ""
@@ -146,6 +169,7 @@ def clean_markdown_content(content):
         # 1. 舊版：**Figure Description:**
         # 2. 新版：**Figure Context:** 和 **Figure Data:**
         # 3. 激進版：# Table Processing, # Chart/Plot Processing, **Chart/PLOT**
+        # 4. 垃圾版："Q: What is the" 連續出現
         
         lower_line = line.lower()
         if ("**figure context:**" in lower_line or 
@@ -154,7 +178,10 @@ def clean_markdown_content(content):
             "# table processing" in lower_line or
             "# chart/plot processing" in lower_line or
             "# chart/plot processing" in lower_line or
-            "**chart/plot**" in lower_line):
+            "**chart/plot**" in lower_line or
+            line.strip().startswith("Q: What is the") or # 清理殘留的垃圾問題
+            line.strip().startswith("Q: What is a") # 清理殘留的垃圾問題
+           ):
             skipping = True
             continue
             
@@ -167,7 +194,7 @@ def clean_markdown_content(content):
             elif line.strip().startswith('#'):
                 # 再次檢查這是不是我們要刪除的標題
                 if not ("table processing" in lower_line or "chart/plot" in lower_line):
-                    skipping = False
+                skipping = False
             # 條件 3: 遇到明顯的 Figure Caption
             elif line.strip().startswith('Figure ') or line.strip().startswith('Table '):
                 skipping = False
@@ -188,14 +215,14 @@ def clean_markdown_content(content):
                     not "table processing" in next_lower and
                     not "chart/plot" in next_lower and
                     not next_line.startswith('|')):
-                    skipping = False
+                skipping = False
             
             if not skipping:
                 new_lines.append(line)
             # else: continue skipping (delete this line)
         else:
             new_lines.append(line)
-    
+            
     # 再次清理：移除連續重複的短行（可能是模型輸出錯誤）
     cleaned_lines = []
     for i, line in enumerate(new_lines):
@@ -328,11 +355,26 @@ def process_docs_with_vision():
 
             if not img_full_path.exists():
                 continue
-            
-            print(f"    Captioning {img_rel_path}...", end="", flush=True)
+
+            # --- 圖片去重邏輯 (Image Deduplication) ---
+            img_hash = get_image_hash(img_full_path)
+            if img_hash in processed_images_cache:
+                print(f"    [Cache Hit] Skipping duplicate image {img_rel_path}...", flush=True)
+                description = processed_images_cache[img_hash]
+            else:
+                print(f"    Captioning {img_rel_path}...", end="", flush=True)
             description = get_image_description(img_full_path)
+                
+                # 只有當描述有效時才快取 (避免快取錯誤)
+                # 移除 NO_DATA_EXTRACTED 檢查，確保 cache 住所有結果（即使是空數據，避免重複跑空數據）
+                if description:
+                     processed_images_cache[img_hash] = description
             
             if description:
+                # 如果是 "NO_DATA_EXTRACTED"，我們就直接跳過不寫入
+                # if "NO_DATA_EXTRACTED" in description:
+                #      # print(f"      [Skipped] No data extracted from {img_rel_path}", flush=True)
+                #      continue # 跳過，不寫入描述到 Markdown
                 # 清理描述中的重複內容
                 original_length = len(description)
                 

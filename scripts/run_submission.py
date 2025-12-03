@@ -61,7 +61,7 @@ async def run_submission():
     
     # 輸入與輸出路徑
     test_csv = project_root / "data/test_Q.csv"
-    output_csv = project_root / "artifacts/submission.csv"
+    output_csv = project_root / "artifacts/submissionZZZZZ.csv"
     train_csv_for_examples = project_root / "data/train_QA.csv" # 用於 Few-Shot 檢索
     
     if not test_csv.exists():
@@ -107,82 +107,90 @@ async def run_submission():
         pass
 
     llm = LLMClient(model=config.llm_model)
-    pipeline = RAGPipeline(vector_store, llm, embedder, example_retriever=example_retriever)
+    print(f"✅ LLM 模型已加載: {config.llm_model}") # 明確顯示當前使用的模型
+    pipeline = RAGPipeline(
+        vector_store, 
+        llm, 
+        embedder, 
+        example_retriever=example_retriever,
+        rerank_model=config.rerank_model
+    )
     
     metadata_path = project_root / config.metadata_csv
     formatter = AnswerFormatter(metadata_path=str(metadata_path))
     
     # 開始回答
-    print(f"\n=== 開始生成提交檔案 ===")
-    answers = []
+    print(f"\n=== 開始生成提交檔案 (併發模式) ===")
     
-    for idx, q in enumerate(questions, 1):
-        question = q["question"]
-        print(f"\n[{idx}/{len(questions)}] ID: {q['id']}")
-        print(f"問題: {question[:60]}...")
-        
-        try:
-            # 選擇 Prompt
-            if is_true_false_question(question):
-                system_prompt = BOOLEAN_SYSTEM_PROMPT
-            else:
-                system_prompt = config.system_prompt
+    # 使用 Semaphore 限制併發數 (建議: 14B模型用3-5個，7B模型用5-10個)
+    sem = asyncio.Semaphore(5) 
+    
+    async def process_question(idx, q):
+        async with sem:
+            question = q["question"]
+            print(f"[{idx}/{len(questions)}] 正在處理 ID: {q['id']}...")
+            
+            try:
+                # 選擇 Prompt
+                if is_true_false_question(question):
+                    system_prompt = BOOLEAN_SYSTEM_PROMPT
+                else:
+                    system_prompt = config.system_prompt
 
-            result = await pipeline.answer(
-                question,
-                top_k=100,           # 恢復到 100 (足夠召回，又不至於太慢)
-                llm_top_k=10,        # 恢復到 10 (專注於最高分的片段，減少幻覺)
-                system_prompt=system_prompt
-            )
-            
-            formatted = formatter.format_answer(
-                result["raw_response"],
-                result["ref_ids"],
-                question
-            )
-            
-            # --- WattBot 評分規則強制檢查 ---
-            # 規則：如果 answer_value 是 is_blank，則所有其他欄位必須也是 is_blank
-            if formatted["answer_value"] == "is_blank":
-                formatted["answer_unit"] = "is_blank"
-                formatted["ref_id"] = "is_blank"
-                formatted["ref_url"] = "is_blank"
-                formatted["supporting_materials"] = "is_blank"
-                # explanation 可以保留，或者也設為 is_blank，根據規則 "all relevant fields"
-                # 為了安全起見，通常 answer, explanation 可以保留為 "Unable to answer..." 以便人類閱讀，
-                # 但評分系統可能檢查這些。這裡我們保留 explanation 讓你知道為什麼 blank。
-            
-            answers.append({
-                "id": q["id"],
-                "question": question,
-                "answer": formatted["answer"],
-                "answer_value": formatted["answer_value"],
-                "answer_unit": formatted["answer_unit"],
-                "ref_id": formatted["ref_id"],
-                "ref_url": formatted["ref_url"],
-                "supporting_materials": formatted["supporting_materials"],
-                "explanation": formatted["explanation"]
-            })
-            
-            print(f"Value: {formatted['answer_value']}")
-            print(f"Ref ID: {formatted['ref_id']}")
-            
-            await asyncio.sleep(0.1) # 避免太快
-            
-        except Exception as e:
-            print(f"❌ 錯誤: {e}")
-            # 發生錯誤時，填寫 is_blank 以避免提交失敗
-            answers.append({
-                "id": q["id"],
-                "question": question,
-                "answer": "Error processing question",
-                "answer_value": "is_blank",
-                "answer_unit": "is_blank",
-                "ref_id": "is_blank",
-                "ref_url": "is_blank",
-                "supporting_materials": "is_blank",
-                "explanation": str(e)
-            })
+                result = await pipeline.answer(
+                    question,
+                    top_k=config.top_k,  # 使用 Config 統一管理
+                    llm_top_k=config.llm_top_k, # 使用 Config 統一管理
+                    system_prompt=system_prompt
+                )
+                
+                formatted = formatter.format_answer(
+                    result["raw_response"],
+                    result["ref_ids"],
+                    question
+                )
+                
+                # WattBot 規則
+                if formatted["answer_value"] == "is_blank":
+                    formatted["answer_unit"] = "is_blank"
+                    formatted["ref_id"] = "is_blank"
+                    formatted["ref_url"] = "is_blank"
+                    formatted["supporting_materials"] = "is_blank"
+                
+                print(f"  ✅ [{idx}] 完成: {formatted['answer_value'][:20]}")
+                
+                return {
+                    "id": q["id"],
+                    "question": question,
+                    "answer": formatted["answer"],
+                    "answer_value": formatted["answer_value"],
+                    "answer_unit": formatted["answer_unit"],
+                    "ref_id": formatted["ref_id"],
+                    "ref_url": formatted["ref_url"],
+                    "supporting_materials": formatted["supporting_materials"],
+                    "explanation": formatted["explanation"]
+                }
+                
+            except Exception as e:
+                print(f"  ❌ [{idx}] 錯誤: {e}")
+                return {
+                    "id": q["id"],
+                    "question": question,
+                    "answer": "Error processing question",
+                    "answer_value": "is_blank",
+                    "answer_unit": "is_blank",
+                    "ref_id": "is_blank",
+                    "ref_url": "is_blank",
+                    "supporting_materials": "is_blank",
+                    "explanation": str(e)
+                }
+
+    # 建立所有任務
+    tasks = [process_question(i, q) for i, q in enumerate(questions, 1)]
+    
+    # 併發執行
+    results = await asyncio.gather(*tasks)
+    answers = results
 
     # 寫入 CSV
     if answers:

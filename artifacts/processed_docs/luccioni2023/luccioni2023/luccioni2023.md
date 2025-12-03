@@ -4,7 +4,7 @@ ALEXANDRA SASHA LUCCIONI, Hugging Face, Montreal, Canada ALEX HERNANDEZ-GARCIA, 
 
 Machine learning (ML) requires using energy to carry out computations during the model training process. The generation of this energy comes with an environmental cost in terms of greenhouse gas emissions, depending on quantity used and the energy source. Existing research on the environmental impacts of ML has been limited to analyses covering a small number of models and does not adequately represent the diversity of ML models and tasks. In the current study, we present a survey of the carbon emissions of 95 ML models across time and different tasks in natural language processing and computer vision. We analyze them in terms of the energy sources used, the amount of CO2 emissions produced, how these emissions evolve across time and how they relate to model performance. We conclude with a discussion regarding the carbon footprint of our field and propose the creation of a centralized repository for reporting and tracking these emissions.
 
-# <span id="page-0-0"></span>1 INTRODUCTION
+### <span id="page-0-0"></span>1 INTRODUCTION
 
 In recent years, machine learning (ML) models have achieved high performance in a multitude of tasks such as image classification, machine translation, and object detection. However, this progress also comes with a cost in terms of energy, since developing and deploying ML models requires access to computational resources such as Graphical Processing Units (GPUs) and therefore energy to power them. In turn, producing this energy comes with a cost to the environment, given that energy generation often entails the emission of greenhouse gases (GHG) such as carbon dioxide (CO2) [\[40\]](#page-14-0). On a global scale, electricity generation represents over a quarter of the global GHG emissions, adding up to 33.1 gigatonnes of CO2 in 2019 [\[24\]](#page-13-0). Recent estimates put the contribution of the information and communications technology (ICT) sector – which includes the data centers, devices and networks used for training and deploying ML models – at 2–6 % of global GHG emissions, although the exact number is still debated [\[25,](#page-13-1) [32,](#page-14-1) [36\]](#page-14-2). In fact, there is limited information about the overall energy consumption and carbon footprint of our field, how it is evolving, and how it correlates with performance on different tasks.
 
@@ -19,7 +19,7 @@ Authors' addresses: Alexandra Sasha Luccioni, Hugging Face, Montreal, Canada, sa
 
 We start our article with a survey of related work in Section [2,](#page-1-0) followed by a presentation of our methodology in Section [3.](#page-2-0) In Section [4](#page-4-0) we present our analysis, and we conclude with our proposals for future work, including a centralized hub for reporting the carbon footprint of machine learning..
 
-# <span id="page-1-0"></span>2 RELATED WORK
+### <span id="page-1-0"></span>2 RELATED WORK
 
 Measuring the environmental impact of ML models is a relatively new undertaking, but one that has been gathering momentum in recent years. In the current section, we present several directions pursued in this domain, from empirical studies of specific models to the development of efficient algorithms and hardware.
 
@@ -39,7 +39,7 @@ Other aspects of the carbon impact of ML. Finally, efforts have been made to qua
 
 As stated in Section [1,](#page-0-0) the goal of this paper is descriptive – to observe the evolution of the carbon emissions of our field of ML across time and to analyze the different aspects of the carbon emissions produced by training ML models. In this section, we present the different aspects and details of our methodology.
 
-# 3.1 Data collection
+### 3.1 Data collection
 
 In order to gather data from a diverse set of ML models from a variety of domains and tasks, we leveraged the dataset collected by Thompson et al. [\[50\]](#page-14-12) in the scope of a recent study on the computational requirements of ML. From this dataset, we equally sampled 500 papers published from 2012 to 2021 spanning 5 tasks: Image Classification, Object Detection, Machine Translation, Question Answering and Named Entity Recognition. We then contacted the first author of each of the papers and asked them to provide missing training details regarding their model (See Supplementary Materials [A.1](#page-16-0) for the email text). We were able to collect information for a total of 95 models from 77 papers (since some of the papers trained more than one model), which represents an author response rate of 15.4 %.
 
@@ -49,7 +49,7 @@ Table 1. Summary of the models analyzed in our study
 
 The models in our sample cover a diversity of tasks spanning nine years of research in the field and a variety of conferences and journals. They all represent novel architectures at the time of publication, achieving high performance in their respective tasks: on average, the models are within 8 % of SOTA performance according to [Papers With Code](https://paperswithcode.com/) leaderboards at the time of their publication . This sample represents the largest amount of information regarding the carbon footprint of ML model training to date, and provides us with opportunities to analyze it from a variety of angles, which we present in Section [4.](#page-4-0) In the remaining of this section, we describe our method for estimating carbon emissions.
 
-### 3.2 Estimating carbon emissions
+#### 3.2 Estimating carbon emissions
 
 The unit of measurement typically used for quantifying and comparing carbon emissions is CO2 equivalents. This unit allows us to compare different sources of greenhouse (GHG) emissions using a common denominator, that of grams of CO<sup>2</sup> emitted per kilowatt hour of electricity generated (gCO2eq/kWh) [1](#page-3-0) .
 
@@ -69,7 +69,7 @@ Training Time. Training time was computed as the total number of hardware hours,
 
 model used 16 GPUs for 24 hours, this equals a training time of 384 GPU hours; a model using 8 GPUs for 48 hours will therefore have an equivalent training time.
 
-# <span id="page-4-0"></span>4 DATA ANALYSIS
+### <span id="page-4-0"></span>4 DATA ANALYSIS
 
 In the sections below, we present several aspects regarding the carbon footprint of training ML models, examining the main sources of energy used for training (§ [4.1\)](#page-4-1), the order of magnitude of CO2 emissions produced (§ [4.2\)](#page-5-0), the evolution of these emissions over time (§ [4.3\)](#page-7-0) and the relationship between carbon emissions and model performance (§ [4.4\)](#page-8-0) [2](#page-4-2) .
 
@@ -77,7 +77,15 @@ In the sections below, we present several aspects regarding the carbon footprint
 
 The primary energy source used for powering an electricity grid is the single biggest influence on the carbon intensity of that grid, in the face of the large differences between energy sources. For instance, renewable energy sources like hydroelectricity, solar and wind have low carbon intensity (ranging from 11 to 147 gCO2eq/kWh), whereas nonrenewable energy sources like coal, natural gas and oil are generally orders of magnitude more carbon-intensive (ranging from 360 to 680 gCO2eq/kWh) [\[24,](#page-13-0) [44\]](#page-14-21). That means that the energy source that powers the hardware to train ML models can result in differences of up to 60 times more CO2eq in terms of total emissions.
 
-<span id="page-4-3"></span>Main energy source Number of Models Low-Carbon? Average Carbon Intensity (gCO2eq/kWh) Coal 38 No 512.3 Natural Gas 23 No 350.5 Hydroelectricity 19 Yes 100.6 Oil 12 No 453.6 Nuclear 3 Yes 147.2
+<span id="page-4-3"></span>
+
+| Main energy source | Number of Models | Low-Carbon? | Average Carbon Intensity<br>(gCO2eq/kWh) |
+|--------------------|------------------|-------------|------------------------------------------|
+| Coal               | 38               | No          | 512.3                                    |
+| Natural Gas        | 23               | No          | 350.5                                    |
+| Hydroelectricity   | 19               | Yes         | 100.6                                    |
+| Oil                | 12               | No          | 453.6                                    |
+| Nuclear            | 3                | Yes         | 147.2                                    |
 
 Table 2. Main Energy Sources for the models analyzed and their carbon intensities [\[24,](#page-13-0) [52\]](#page-14-22)
 
@@ -93,29 +101,11 @@ countries where model training was carried out (e.g. the US and China), are on t
 
 <span id="page-5-1"></span>![](_page_5_Figure_3.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a world map with various countries colored according to their carbon emissions, model sizes, and energy consumption. The map highlights the carbon emissions, model sizes, and energy consumption of various countries.
+Fig. 1. Map with the countries where the models in the data were trained, as reported by the authors. The colors code the median carbon intensity of the energy used by the models trained in each country. The legend indicates the number of models trained in each country, as well as a colored patch marking the main energy source – see bottom of the legend for the values.
 
-**Figure Data (Q&A):**
+Another observation that can be made based on our data is that none of the models from our sample were trained in either Africa nor South America – in fact, the majority of the models from our sample (76) were trained in countries representing the Global North. This is consistent with previous work examining the 'digital divide' in ML and observing the centralization of power in the field, which hinders researchers from underrepresented locations and groups from contributing to the field, given the attribution of computing resources [\[2,](#page-13-19) [3,](#page-13-20) [9\]](#page-13-21). Generally speaking, emissions, matters of equity and accessibility are closely connected to those around climate change, and the centralization of resources remains a major problem [\[33,](#page-14-24) [34\]](#page-14-25).
 
-Q: What is the total carbon emissions for GShard?
-A: 4.3 tCO2
-
-Q: What is the size of the LLa
-
-Q: How many models and main energy sources are there?
-
-Q: What is the size of the L
-
-Q: What is the total
-
-Q: What is the
-
-
-
-
-# <span id="page-5-0"></span>4.2 What is the order of magnitude of CO2 emissions produced by training ML models?
+### <span id="page-5-0"></span>4.2 What is the order of magnitude of CO2 emissions produced by training ML models?
 
 As explained in Section [3,](#page-2-0) there is a linear relationship between the energy consumed and the carbon emissions produced, with the energy source (discussed in the Section above) influencing the magnitude of this relationship. In Figure [2,](#page-6-0) we plot the energy consumed (X axis, logarithmic scale) and the CO2 emitted (Y axis, logarithmic scale) of every model in our data set, color-coded with the main energy source, which are the same as those presented in Table [2.](#page-4-3) First, we can observe differences of several orders of magnitude in the energy used by models in our sample, ranging from just about 10 kWh to more than 10,000 kWh, which results in similar differences in the total quantity of CO2 emitted. As expected, the relationship between energy consumed and carbon emitted is largely linear. However, Figure [2](#page-6-0) Manuscript pending review
 
@@ -123,233 +113,25 @@ also shows that models trained with cleaner energy sources, such hydroelectricit
 
 <span id="page-6-0"></span>![](_page_6_Figure_3.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a scatter plot comparing the CO2e emissions of various AI models, including GShard, LLa
- 
-**Figure Data (Q&A):**
-Q: What were the net CO2e emissions for GShard? A: 4.3 tCO2e
-Q: What is the size of the LLa
- 
-**Figure Data (Table):**
-| Model | CO2e | Energy | Carbon | 
- 
-**Figure Data (Q&A):**
-Q: What is the size of the L
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q&A):**
-Q: What is the
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
- 
-**Figure Data (Q
+Fig. 2. Estimated energy consumed (kWh) and CO2 (kg) by each model in the data set, plotted in a log-log scale. Colors indicate the principal energy source, and the size of the dot carbon intensity. While the relationship between energy and carbon emissions is mostly linear, the data show that models trained with less carbon-intensive energy (e.g. hydroelectric) emit orders of magnitude less carbon than those trained using more carbon-intensive energy (e.g. coal).
 
+For instance, honing in on the central bottom portion of Figure [2,](#page-6-0) it can be seen that the models trained using hydroelectricity (the blue dots) are about two orders of magnitude lower in terms of carbon emissions than models that consumed similar amounts of energy from more carbon-intensive sources such as coal (in brown) and gas (in orange), given that the Y axis is on a logarithmic scale. Furthermore, the size of the dots varies as a function of the carbon intensity of the electricity grid used, illustrating two parallel groups of models, both exhibiting a largely linear trend, with the more carbon intensive models positioned higher than the lower carbon models for similar amounts of energy consumed. This further supports the analysis carried out in Section [4.1,](#page-4-1) suggesting that the primary energy source used for training ML models has a strong impact on the overall resulting emissions from model training, and that choosing a low-carbon energy grid can play a significant role towards reducing the carbon emissions of ML model training.
 
-[描述已截斷以避免過長]
+Besides the primary energy source, carbon emissions are a function of power consumed by the hardware used and the training time. The choice of hardware has a relatively small influence on the large variation of carbon emissions that we observe in our sample , given that the TDP ranges from 180 W to 300 W, while the carbon emissions span from 10<sup>5</sup> kgCO2eq to even less than 10 kgCO2eq (see Section [A.2](#page-16-1) of the appendix for further details). While using renewable energy can reduce up to 1,000 the carbon emissions for the same amount of energy used, the remaining factor responsible for the large variation in both energy and carbon emissions in our sample is therefore the training time.
 
-
-
-
-The scatter plot has two axes: CO2 emissions (kg) on the y-axis and energy consumption (kWh) on the x-axis. The data points are colored according to the main energy source: brown (coal), red (oil), orange (gas), purple (nuclear), blue (hydro), and gray (hydro). The legend is located in the top-left corner of the plot.
-
-**Data Points**
-
-The data points are not labeled, but they can be described as follows:
-
-* Brown: 1.5, 10.5
-* Red: 2.5, 15.5
-* Orange: 3.5, 20.5
-* Purple: 4.5, 25.5
-* Blue: 5.5, 30.5
-* Gray: 6.5, 35.5
-
-**X-Axis and Y-Axis**
-
-The x-axis represents energy consumption (kWh) and the y-axis represents CO2 emissions (kg). The units are not specified, but it is likely that they are both in units of energy and CO2
-
-**Color Legend**
-
-The color legend is located in the top-left corner of the plot. It is not possible to provide a list of all data points, as there are too many. However, I can provide a few examples:
-
-**X-Aaxis and Y-Aaxis**
-
-The x-axis and y-axis are not specified, but it is likely that they are both in units of energy and CO
-
-I was unable to extract any tables, diagrams, or mathematical formulas from the image. The image appears to be a simple scatter plot with multiple data points. I will not be able to provide any further information.
-
-
-There is no table in the provided image. The image appears to be a scatter plot with multiple data points.
-
-**Chart/PLOT:**
-
-Here are the visible data points:
-
-* Main energy source: 
-	+ Coal: 1,000
-	+ Oil: 1,000
-	+ Gas: 1,000
-	+ Nuclear: 1,000
-	+ Hydro: 1,000
-	+ Coal: 1,000
-	+ Oil: 1,000
-	+ Gas: 1,000
-	+ Nuclear: 1,000
-	+ Hydro: 1,000
-* Carbon intensity: 
-
-
-# <span id="page-7-0"></span>4.3 How do the CO2 emissions produced by training ML models evolve over time?
+### <span id="page-7-0"></span>4.3 How do the CO2 emissions produced by training ML models evolve over time?
 
 Some recent analyses have predicted that the carbon emissions of our field will increase in the future, estimating that achieving further progress on benchmarks such as ImageNet will require emitting thousands of tons of CO2 [\[50\]](#page-14-12), whereas others have predicted a plateau in future emissions due to increased hardware efficiency and carbon offsetting [\[37\]](#page-14-5). Therefore, one of the goals of our study was to observe the evolution of carbon emissions over time and study whether there are clear trends. Given that the papers from our study span from 2012 to the present time, we aimed to specifically compare whether new generations of ML models from our sample consistently used more energy and emitted more carbon than previous ones.
 
 <span id="page-7-1"></span>![](_page_7_Figure_4.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the carbon emissions and energy
-  
-  **Figure Data (Q&A):**
-  Q: What were the net CO2e emissions for GSh
-  Q: What is the file
-  Q: What was
- 
+Fig. 3. CO2 emitted (in kg) by the all models included in the data set, on a logarithmic scale. Each small marker corresponds to a model and the large markers indicate the 99 % trimmed mean within each task and year(s) of publication. The error lines cover the bootstrapped 99 % confidence intervals. The gray line corresponds to the average over all tasks.
 
+In Figure [3,](#page-7-1) we show the carbon emissions emitted by every model from our sample, disaggregated by task and by year. While we cannot claim that the models and papers in our data set are fully representative of the whole machine learning field, a sample of 95 models spanning 9 years can offer interesting insights. The first observation, related to the conclusions from the sections above, is that there is a large variability in the carbon emissions from ML models. Second, we do not observe a consistent trend by which carbon emissions have systematically increased for each individual task. This is the case, for instance, of image classification models (in blue) and question answering models (in yellow) from our sample. However, the carbon emissions of machine translation models have peaked in 2019 and has since decreased.
 
+If we look at the aggregated data from all tasks (grand average curve, in light gray), we can observe that overall, the carbon emissions per model have increased by a factor of about 100 (two orders of magnitude) from 2012 to recent years, with slight fluctuations, as in 2020. It is important to note that the vertical axis of Figure [3](#page-7-1) is on a logarithmic scale, in order to reflect the non-linearity introduced by the much larger models from recent years, even though they do not represent a majority in the sample. In fact, the last three years of our sample (2019-2021), have seen models that have emitted orders of magnitude more carbon than before: e.g. there are several vertical outliers in tasks such as Image Classification (shown in blue) and Question Answering (in yellow) that have set new records in terms of the Manuscript pending review
 
-
-[描述已截斷以避免過長]
-
-
-### Table 1: CO2eq Emitted (kg) by AI-Related Activities (2012-2016)
-
-| Year | Image Classification | Object Detection | Machine
-                              
-
-Please provide the image or data you want me to process, and I will follow the instructions to extract the information and provide the output.
-
-
-There is no table in the provided image.
-
-**Chart/Plot Transcription:**
-
-The image appears to be a line graph with multiple data points. Here is the transcription of the visible data points:
-
-* 2012-2016: CO2eq emitted (kg): 10,000
-* 2017: CO2eq emitted (kg): 10,000
-* 2018: CO2eq emitted (kg): 10,000
-* 2019: CO2eq (kg): 10,000
-* 2020: CO2 (kg): 10,000
-* 2021: CO2 (kg): 10,000
-
-**X and Y Axis Units:**
-
-The X-axis represents the year, and the Y-axis represents the CO2 (kg) or CO2 (kg) emissions.
-
-**Chart/Plot Summary:**
-
-The chart appears to be a line graph showing the CO2 (kg) or CO2 (kg) emissions over the years.
-
-[描述已截斷以避免過長]
+total amount of emissions produced by model training, responsible for about 10<sup>4</sup> and 10<sup>5</sup> kilograms of CO2eq. There are several possible explanations for this, ranging from the widespread adoption of Transformers, which are using increasing amounts of both labeled and unlabeled data [\[53\]](#page-14-26), as well as computationally-expensive techniques such as NAS [\[59\]](#page-15-4), which result in more carbon emissions [\[48\]](#page-14-3). It is hard to disentangle the influence of different factors on the overall carbon emissions of ML models, as well as the relative contributions of different parts of the pre-training and fine-tuning process – this requires further work, which we discuss in Section [5.3](#page-11-0) – however, it is worth noting the evolution of emissions in recent years, among the papers of our sample.
 
 # <span id="page-8-0"></span>4.4 Does more energy and CO2 lead to better model performance?
 
@@ -365,45 +147,11 @@ For other tasks, the trend is even less clear – for instance, for the 30 model
 
 <span id="page-9-1"></span>![](_page_9_Figure_2.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a collection of four charts and tables that compare the performance of various AI models and datasets, including L-                               
+Fig. 4. Comparison of the accuracy achieved by each model trained on Machine Translation (top left, evaluated using BLEU score on the English-French and English-German WMT datasets), Image Classification (top right, measured using Top-1 accuracy on ImageNet), Question Answering (bottom left, evaluated using F1 score on SQuAD v.1) and Named Entity Recognition (bottom right, evaluated using F1 score on the CoNLL dataset) and the CO2 emitted for training models. The black curves correspond to the Pareto fronts given the data, that is data points under the line are sub-optimal in terms of performance and CO2 emitted.Note that the x axis is in logarithmic scale.
 
+Despite the lack of clear correlation between carbon intensity and model performance, there are some interesting observations to be made based on Figure [4.](#page-9-1) While we did not expect to see a strong link between these two factors, we find it worth noting that neither consuming more energy nor emitting more carbon seems to necessarily correlate with a higher accuracy, even in tasks such as Machine Translation, where Transformer models are largely seen to do better compared to other models [5](#page-9-2) .
 
-
-
-The image appears to be a collection of charts and graphs related to machine translation. The charts and graphs seem to be related to machine translation, but I do not see any tables, charts, or diagrams that I can extract information from.
-
-**Image Classification**
-
-The image appears to be a collection of charts and graphs related to image classification. The charts and graphs seem to be related to image classification, but I do not see any tables, charts, or diagrams that I can extract information from.
-
-**Question Answering**
-
-The image appears to be a collection of charts and graphs related to question answering. The charts and graphs seem to be related to question answering, but I do not see any tables, charts, or diagrams that I can extract information from.
-
-**Named Entity Recognition**
-
-The image appears to be a collection of charts and graphs related to named entity recognition. The charts and graphs seem to be related to named entity recognition, but I do not see any tables, charts, or diagrams that I can extract information from.
-
-**Machine Learning**
-
-The image appears to be a collection of charts and graphs related to machine learning. The charts and graphs seem to be related to machine learning, but I do not see any tables, charts, or diagrams that I can extract information from.
-
-**Data Analysis**
-
-The image appears to be a collection of charts and graphs related to data analysis. The charts and graphs seem to be related to data analysis, but I do not see any tables, charts, or diagrams that I can extract information from.
-
-**Machine Learning
-
-**Data Analysis
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
-
-# <span id="page-9-0"></span>5 DISCUSSION AND FUTURE WORK
+### <span id="page-9-0"></span>5 DISCUSSION AND FUTURE WORK
 
 In the current section, we discuss the significance and the context of our analysis, its limitations, as well as promising directions for future work to improve the transparency of carbon emissions reporting in our field.
 
@@ -417,7 +165,7 @@ In Section [4,](#page-4-0) we have discussed that the main sources of variance i
 
 An important observation from our analysis is that better performance is not generally achieved by using more energy. In other words, good performance can be achieved with limited carbon emissions because the progress in recent years has brought the possibility to train machine learning models efficiently. Image Classification is the task in our sample in which we observed the strongest correlation between performance and emissions. However, even in this task we also observed that small increments in carbon emissions lead to large increments in top-1 accuracy (see the left-hand-side of Figure [4\)](#page-9-1). This highlights the availability of efficient approaches and architectures.
 
-### <span id="page-10-0"></span>5.2 Limitations
+# <span id="page-10-0"></span>5.2 Limitations
 
 The analyses that we have carried out and the insights that they have provided us are useful towards a better understanding of the overall carbon emissions of ML model training. We are also aware of the limitations of our study: for one, we recognize that our sample is not fully representative of the field as a whole, given the diversity of models and architectures that exist and the speed at which our field is evolving. As we discussed in Section [3,](#page-2-0) despite our best efforts and several reminders, only 15% of authors from our initial sample of 500 were willing to share relevant
 
@@ -425,7 +173,7 @@ information with us. We also recognize that there are several factors that we ar
 
 Furthermore, while this study and much of the related work in this field has focused on estimating the carbon emissions of model training, there are many pieces of other overall carbon footprint of our field which are still missing: for instance, the carbon emissions of tasks such as data processing, data transfer, and data storage [\[28\]](#page-14-17), as well as the carbon footprint of manufacturing and maintaining the hardware used for training ML models [\[19\]](#page-13-11), We are also lacking information regarding the carbon impact of model development and inference – given that a model that is trained a single time can be deployed on-demand for millions of queries, this can ultimately add up to more emissions than those produced by the initial model training [\[31\]](#page-14-4). These are all directions for future research, which we discuss in more detail below.
 
-### <span id="page-11-0"></span>5.3 Future Work
+#### <span id="page-11-0"></span>5.3 Future Work
 
 There is much interesting and exciting work to be done that would help us better understand the carbon emissions and broader environmental implications of ML. This includes:
 
@@ -441,7 +189,7 @@ years can be attributed to training increasingly deep and computationally expens
 
 While discussions regarding the carbon footprint of our daily lives has started to become more common in many communities, alongside increased awareness of how our lifestyle choices (such as the way we travel and the food we eat) contribute to carbon emissions, we are lacking much of the necessary information necessary to regarding the impacts of the models we train. We hope that our work encourages better practices and more transparency in reporting the computational needs of the models and details of the energy used, and that our study will be a meaningful contribution towards a better understanding of our impact as ML researchers and practitioners.
 
-### REFERENCES
+#### REFERENCES
 
 - <span id="page-13-25"></span>[1] Mohamed Abdalla and Moustafa Abdalla. 2021. The Grey Hoodie Project: Big tobacco, big tech, and the threat on academic integrity. In Proceedings of the 2021 AAAI/ACM Conference on AI, Ethics, and Society. 287–297.
 - <span id="page-13-19"></span>[2] Orevaoghene Ahia, Julia Kreutzer, and Sara Hooker. 2021. The Low-Resource Double Bind: An Empirical Study of Pruning for Low-Resource Machine Translation. arXiv preprint arXiv:2110.03036 (2021).
@@ -458,8 +206,8 @@ While discussions regarding the carbon footprint of our daily lives has started 
 - <span id="page-13-10"></span>[13] Yu-Hsin Chen, Tien-Ju Yang, Joel Emer, and Vivienne Sze. 2019. Eyeriss v2: A flexible accelerator for emerging deep neural networks on mobile devices. IEEE Journal on Emerging and Selected Topics in Circuits and Systems 9, 2 (2019), 292–308.
 - <span id="page-13-12"></span>[14] Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li Fei-Fei. 2009. ImageNet: A large-scale hierarchical image database. In 2009 IEEE conference on computer vision and pattern recognition. Ieee, 248–255.
 - <span id="page-13-24"></span>[15] Jesse Dodge, Taylor Prewitt, Remi Tachet des Combes, Erika Odmark, Roy Schwartz, Emma Strubell, Alexandra Sasha Luccioni, Noah A Smith, Nicole DeCario, and Will Buchanan. 2022. Measuring the carbon intensity of ai in cloud instances. In 2022 ACM Conference on Fairness, Accountability, and Transparency. 1877–1894.
-- <span id="page-13-18"></span><span id="page-13-14"></span>[16] Facebook. 2020. Facebook 2020 Sustainability Report. [https://sustainability.fb.com/wp-content/uploads/2021/06/2020\\_FB\\_Sustainability-Report.pdf](https://sustainability.fb.com/wp-content/uploads/2021/06/2020_FB_Sustainability-Report.pdf)
-- [17] Johannes Friedrich, Mengpin Ge, and Andrew Pickens. 2020. This interactive chart shows changes in the world's top 10 emitters. (2020).
+- <span id="page-13-14"></span>[16] Facebook. 2020. Facebook 2020 Sustainability Report. [https://sustainability.fb.com/wp-content/uploads/2021/06/2020\\_FB\\_Sustainability-Report.pdf](https://sustainability.fb.com/wp-content/uploads/2021/06/2020_FB_Sustainability-Report.pdf)
+- <span id="page-13-18"></span>[17] Johannes Friedrich, Mengpin Ge, and Andrew Pickens. 2020. This interactive chart shows changes in the world's top 10 emitters. (2020).
 - <span id="page-13-16"></span>[18] Google. 2022. Carbon free energy for Google Cloud regions.<https://cloud.google.com/sustainability/region-carbon>
 - <span id="page-13-11"></span>[19] Udit Gupta, Young Geun Kim, Sylvia Lee, Jordan Tse, Hsien-Hsin S Lee, Gu-Yeon Wei, David Brooks, and Carole-Jean Wu. 2021. Chasing Carbon: The Elusive Environmental Footprint of Computing. In 2021 IEEE International Symposium on High-Performance Computer Architecture (HPCA). IEEE, 854–867.
 - <span id="page-13-3"></span>[20] Peter Henderson, Jieru Hu, Joshua Romoff, Emma Brunskill, Dan Jurafsky, and Joelle Pineau. 2020. Towards the systematic reporting of the energy and carbon footprints of machine learning. Journal of Machine Learning Research 21, 248 (2020), 1–43.
@@ -495,8 +243,8 @@ While discussions regarding the carbon footprint of our daily lives has started 
 - <span id="page-14-23"></span>[49] Siddharth Suman. 2018. Hybrid nuclear-renewable energy systems: A review. Journal of Cleaner Production 181 (2018), 166–177.
 - <span id="page-14-12"></span>[50] Neil C Thompson, Kristjan Greenewald, Keeheon Lee, and Gabriel F Manso. 2020. The computational limits of deep learning. arXiv preprint arXiv:2007.05558 (2020).
 - <span id="page-14-11"></span>[51] Tristan Trébaol. 2020. CUMULATOR — a tool to quantify and report the carbon footprint of machine learning computations and communication in academia and healthcare. Technical Report.
-- <span id="page-14-26"></span><span id="page-14-22"></span>[52] United States Energy Information Administration. 2012-2021. Detailed State Data.<https://www.eia.gov/electricity/data/state/>
-- [53] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Advances in neural information processing systems. 5998–6008.
+- <span id="page-14-22"></span>[52] United States Energy Information Administration. 2012-2021. Detailed State Data.<https://www.eia.gov/electricity/data/state/>
+- <span id="page-14-26"></span>[53] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Advances in neural information processing systems. 5998–6008.
 
 - <span id="page-15-1"></span>[54] Carole-Jean Wu, Ramya Raghavendra, Udit Gupta, Bilge Acun, Newsha Ardalani, Kiwan Maeng, Gloria Chang, Fiona Aga Behram, James Huang, Charles Bai, et al. 2021. Sustainable AI: Environmental Implications, Challenges and Opportunities. arXiv preprint arXiv:2111.00364 (2021).
 - <span id="page-15-5"></span>[55] Guangxuan Xu and Qingyuan Hu. 2022. Can model compression improve NLP fairness. arXiv preprint arXiv:2201.08542 (2022).
@@ -505,9 +253,9 @@ While discussions regarding the carbon footprint of our daily lives has started 
 - <span id="page-15-3"></span>[58] Xiyou Zhou, Zhiyu Chen, Xiaoyong Jin, and William Yang Wang. 2020. Hulk: An energy efficiency benchmark platform for responsible natural language processing. arXiv preprint arXiv:2002.05829 (2020).
 - <span id="page-15-4"></span>[59] Barret Zoph and Quoc V Le. 2016. Neural architecture search with reinforcement learning. arXiv preprint arXiv:1611.01578 (2016).
 
-### A SUPPLEMENTARY MATERIALS
+#### A SUPPLEMENTARY MATERIALS
 
-# <span id="page-16-0"></span>A.1 Emails sent to authors
+### <span id="page-16-0"></span>A.1 Emails sent to authors
 
 **Subject:** Information Request: Computing Infrastructure Used in your Paper Hello,
 
@@ -523,239 +271,39 @@ More specifically, could you tell me:
 
 Thank you very much for this information, XXXX
 
-# <span id="page-16-1"></span>A.2 Information regarding training hardware
+### <span id="page-16-1"></span>A.2 Information regarding training hardware
 
 <span id="page-16-2"></span>Table 3. The top 5 GPUs/TPUs used, the number of models that used them for training, the range of quantities that were used, and their Thermal Design Power (TDP).
 
-| Model       | Number of models | TDP   | Quantity used |
-|-------------|------------------|-------|---------------|
-| Tesla V100  | 30               | 300 W | 1-128         |
-| TPU v3      | 9                | 450 W | 1-1024        |
-| RTX 2080 Ti | 8                | 250 W | 4-16          |
-| Tesla M40   | 5                | 250 W | 8             |
-| GTX 1080    | 4                | 180 W | 1-8           |
+| Number of models | TDP   | Quantity used |
+|------------------|-------|---------------|
+| 30               | 300 W | 1-128         |
+| 9                | 450 W | 1-1024        |
+| 8                | 250 W | 4-16          |
+| 5                | 250 W | 8             |
+| 4                | 180 W | 1-8           |
+|                  |       |               |
 
 In Table [3,](#page-16-2) we represent the 5 most popular GPU and TPU models used in the papers we analysed, accompanied by the number of papers that used them, the range of quantities used, and their TDP. The Tesla V100 was by far the most popular piece of hardware, representing almost a third of the papers, followed by the TPU v3. The TDP of the hardware used in our paper sample also varies significantly, from 180W for models such as the GTX 1080 to 450W for the TPU v3 model, meaning that TPUs, on average, consume more energy during usage.Looking at the number of GPUs and TPUs used for ML training in the papers that we surveyed, we can see that there is a large range in the quantity of GPUs/TPUs used for model training, with some models leveraging up to 1024 TPU v3s for training, while others utilize a single GTX 1080 GPU for varying amounts of time, which makes the total energy consumption vary significantly. We analyze the connection between energy usage and performance on different ML tasks in § [4.4,](#page-8-0) in order to determine whether higher energy consumption helps achieve better performance in different ML tasks.
 
-### A.3 Energy Consumption by Task
+#### A.3 Energy Consumption by Task
 
 In Figure [5](#page-17-0) below, we plot the same four tasks as in Figure [3,](#page-7-1) representing the energy consumed instead of the CO2 emitted. We find largely similar trends as the ones we describe in Section [4.4,](#page-8-0) with better performance on tasks like machine translation and image classification not necessarily being contingent on higher energy consumption.
 
 <span id="page-17-0"></span>![](_page_17_Figure_4.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a collection of four charts and tables that compare the performance of various AI models and datasets, including L-                               
+Fig. 5. Comparison of the performance achieved by each model trained on Machine Translation tasks (BLEU score) and Image Classification (top-1 accuracy), and the energy consumed.
 
-
-
-
-The top-left chart is titled "Machine Translation" and appears to be a scatter plot of the BLEU score (a measure of the quality of a machine translation) against the energy consumption (in kWh) of various energy sources. The chart shows a range of energy sources, including coal, oil, gas, nuclear, and hydro, with some data points and trends.
-
-**Image Classification**
-
-The top-right chart is titled "Image Classification" and appears to be a scatter plot of the top-1 accuracy of various energy sources. The chart shows a range of energy sources, including coal, oil, gas, nuclear, and hydro, with some data points and trends.
-
-**Question Answering**
-
-The bottom-left chart is titled "Question Answering" and appears to be a scatter plot of the performance of various energy sources, including coal, oil, gas, and others. The chart shows a range of data points and trends.
-
-**Named Entity Recognition**
-
-The bottom-right chart is titled "Named Entity Recognition" and appears to be a scatter plot of the performance of various energy sources, including coal, oil, gas, and others. The chart shows a range of data points and trends.
-
-**Data Points and Trends**
-
-The charts show a range of data points and trends, including:
-
-* A range of energy sources, including
-	
-	
 ### A.4 Carbon intensity over time
 
 In Figure [6,](#page-18-0) we plot the evolution over the years of the carbon intensity of the energy grid for each model, as well as the number of models trained with each energy source. We observe that, despite the need to address the climate crisis by using cleaner energy sources, there has not been a decrease in neither the average carbon intensity nor the number of models trained with cleaner energy. On the contrary, we do observe a stark increase of models trained with coal.
 
 <span id="page-18-0"></span>![](_page_18_Figure_4.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comprehensive analysis of carbon emissions, model sizes, and energy consumption for various models, including GShard, LLa
-**Figure Data (Q&A):**
+(a) Carbon intensity of the models per year and energy source.
 
-Q: What were the net CO2e emissions for GShard?
-Q: What is the size of the LLa
-Q: How many
-**Figure Data (Table):**
-| **Year** | **CO2e** | **G
-| **Year** | **CO
-| **Year** | **C
-| **Year** | **C
-| **Year** **C
-| **Year** | **C
-| **Year** | **C
-| **Year** |
+![](_page_18_Figure_6.jpeg)
 
+(b) Number of models trained with each energy source per year.
 
-
-
-Note: The data table is empty because the original image does not contain any data. The above table is a placeholder for the actual data.
-
-
-### Table 1: Carbon Intensity of Energy Sources (g CO2eq/kWh)
-
-| Year | Coal | Oil | Gas | Nuclear | Hydro | Hydro
-| --- | --- | --- | --- | --- | --- | --- |
-| 2012-2016 | 200 | 100 | 50 | 0 | 100 | 100 |
-| 2017 | 200 | 100 | 50 | 0 | 100 | 100 |
-| 2018 | 200 | 100 | 50 | 0 | 100 | 100 |
-
-### Table 2: Carbon Intensity of Energy Sources (g CO2eq/kWh)
-
-### Table 3: Carbon Intensity of Energy Sources (g CO2eq/kWh)
-
-| Year | Coal | Oil | Gas | Nuclear | Hydro | Hydro
-| --- | --- | --- | — | — | — | — |
-| 2012-2016 | 200 | 100 | 50 | 0 | 100 | 100 |
-| 2017 | 200 | 100 | 50 | 0 | 100 | 100 |
-| 2018 | 200 | 100 | 50 | 0 | 100 | 100 |
-
-### Chart 1: Carbon Intensity of Energy Sources (g CO2
-**Carbon Intensity (g CO2
-**Carbon Int
-
-
-| **Year(s)** | **2012-2016** | **2017** | **2018** |
-| **---** | **---** | **---** | **---** |
-| **Carbon Intensity (g CO2eq/kWh)** | 200 | 300 | 400 |
-| **Carbon Intensity (g CO2eq/kWh)** | 200 | 300 | 400 |
-
-**Graph:**
-
-The graph appears to be a line plot with multiple lines representing different types of carbon intensity. The x-axis represents the year(s) from 2012-2016, 2017, and 2018. The y-axis represents the carbon intensity in g CO2eq/kh.
-
-**Data Points:**
-
-* 2012-2016: 200
-* 2017: 300
-* 2018: 400
-
-**Description:**
-
-The graph shows the carbon intensity of different types of carbon
-* 2012-2016: 200
-* 2017: 300
-* 2018: 400
-
-**LaTeX Formula:**
-
-No formulas were found in the image.
-
-**Output:**
-
-The output is a table and a graph with multiple lines representing different types of carbon
-* 2012-2016: 200
-* 2017: 300
-* 2018: 400
-
-I was unable to extract any further information from the image. The output is a table and a graph with multiple
-* 2012-2016: 200
-* 2017: 300
-* 2018: 400
-
-I hope this meets your requirements. Let me know if you need any further assistance.
-
-
-There is no table in the provided image. The image appears to be a line graph with multiple data points.
-
-
-Here are the visible data points:
-
-* 2012-2016: 200-300 (no specific value, as the graph is not a table)
-* 2017: 400-500 (no specific value, as the graph is not a table)
-* 2018: 300-400 (no specific value, as the graph is not a table)
-
-**X and Y Axis Units**
-
-The X-axis represents the years from 2012 to 2021. The Y-axis represents the carbon intensity in g CO2e/ktW
-
-**Diagrams**
-
-There are no diagrams in the provided image. The image appears to be a line graph with multiple data points.
-
-However, I can provide a summary of the graph:
-
-
-[描述已截斷以避免過長]
-
-
-This chart appears to be a bar chart with multiple categories. I will extract the data points and labels.
-
-*   **2012-2016:**
-    *   **Coal:** 20
-    *   **Oil:** 18
-    *   **Gas:** 16
-    *   **Nuclear:** 14
-    *   **Hydro:** 12
-    *   **Other:** 10
-*   **2017:**
-    *   **Coal:** 22
-    *   **Oil:** 20
-    *   **Gas:** 18
-    *   **Nuclear:** 16
-    *   **Hydro:** 14
-    *   **Other:** 12
-*   **2018:**
-    *   **Coal:** 24
-    *   **Oil:** 22
-    *   **Gas:** 20
-    *   **Nuclear:** 18
-    *   **Hyro:** 16
-    *   **Other:** 14
-
-**Chart 2:**
-
-*   **2012-2016:**
-    *   **Coal:** 20
-    *   **Oil:** 18
-    **Gas:** 16
-    **Nuclear:** 14
-    **Hyro:** 12
-    **Other:** 10
-*   **2017:**
-    *   **Coal:** 22
-    *   **Oil:** 20
-    *   **Gas:** 18
-    *   **Nuclear:** 16
-    *   **Hyro:** 14
-    *   **Other:** 12
-*   **2018:**
-    **C** **: 24**
-    **O** **: 22**
-    **G** **: 20**
-    **N** **: 18**
-    **H** **: 16**
-    **O** **: 12**
-
-**Table:**
-
-| **Year** | **Coal** | **Oil** | **G** | **N** | **H** | **O** |
-| **2012-2016** | 20 | 18 | 16 | 14 | 12 | 10 |
-| **2017** | 22 | 20 | 18 | 16 | 14 | 12 |
-| **2018** | 24 | 22 | 20 | 16 | 14 | 12 |
-
-**Table 2:**
-
-| **Year** | **C** | **O** | **G** | **N** | **H** | **O** |
-| **2012-2016** | 20 | 18 | 16 | 14 | 12 | 10 |
-| **2017** | 22 | 20 | 18 | 16 | 14 | 12 |
-| **2018** | 24 | 22 | 20 | 16 | 14 | 12 |
-
-I have extracted the information from the charts and table. Please note that I have followed the instructions to the best of my
-  - If this is a table, convert it to Markdown table format.
-  - Extract ALL cell values exactly as shown - do not summarize, approximate, or skip any cells.
-
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
+Fig. 6. Carbon intensity and energy sources over the years.

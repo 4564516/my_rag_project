@@ -6,13 +6,12 @@
 - <sup>2</sup>Salesforce, Paris, France
 - <sup>3</sup>Ekimetrics, Paris, France
 - <sup>4</sup>Carnegie Mellon University, School of Computer Science, Pittsburgh, USA
-- \*sasha.luccioni@huggingface.co
 
-# **ABSTRACT**
+## **ABSTRACT**
 
 In recent years, Artificial Intelligence (AI) models have grown in size and complexity, driving greater demand for computational power and natural resources. In parallel to this trend, transparency around the costs and impacts of these models has decreased, meaning that the users of these technologies have little to no information about their resource demands and subsequent impacts on the environment. Despite this dearth of adequate data, escalating demand for figures quantifying AI's environmental impacts has led to numerous instances of misinformation evolving from inaccurate or de-contextualized best-effort estimates of greenhouse gas emissions. In this article, we explore pervasive myths and misconceptions shaping public understanding of AI's environmental impacts, tracing their origins and their spread in both the media and scientific publications. We discuss the importance of data transparency in clarifying misconceptions and mitigating these harms, and conclude with a set of recommendations for how AI developers and policymakers can leverage this information to mitigate negative impacts in the future.
 
-## **Introduction**
+### **Introduction**
 
 AI-powered tools and systems are becoming increasingly ubiquitous, reshaping human behavior with corresponding impacts to our socioeconomic systems. While the companies that develop and deploy AI-driven technology strongly emphasize AI's positive impacts (real and speculative) [1](#page-7-0) – [3](#page-7-1) , the negative impacts are typically left unspoken. These are often uncovered by researchers or a concerned public who audit AI systems, driven by the desire to understand the impacts of these systems on society and the planet. Among the many impacts that have been analyzed in recent years are: algorithmic discrimination and bias [4](#page-7-2) , [5](#page-7-3) , the use of AI in military applications [6](#page-7-4) , the threat of AI to democracy [7](#page-7-5) , [8](#page-7-6) , and environmental impacts [9](#page-7-7) , [10](#page-7-8) .
 
@@ -20,7 +19,9 @@ Honing in on the latter, researchers and activists alike have been sounding the 
 
 As a result, researchers, investors, companies and policymakers are left to attempt best-effort approximations given limited data availability. In some cases, these estimates can be wildly flawed due to lack of critical prerequisite data, understanding or expertise. In other cases, estimates may be taken out of the careful, qualified contexts in which they were originally presented, leading to misinterpretation and in some cases severely inaccurate generalizations. The increasingly high stakes political and economic contexts surrounding climate change and AI severely compound this challenge; mistakes and misinterpretation devolve into misinformation as estimates are repeatedly shared and transformed through subsequent analyses, adopted as accurate measures and spread as trending posts through social media and the news, finally arriving on the desks of decisionmakers. The resulting misconceptions harm all stakeholders: policymakers and the public are unable to make informed decisions, and AI technology developers suffer from negative perceptions arising from overestimates of their social harms, further exacerbating their lack of disclosure. In this paper, we aim to elucidate some common myths surrounding AI's environmental impacts, explore the pitfalls that led to the emergence of those myths, and propose recommendations for remedying this challenge in the future.
 
-# **Related Work**
+<sup>\*</sup>sasha.luccioni@huggingface.co
+
+## **Related Work**
 
 Approaches to calculating the environmental impacts of AI systems have evolved significantly over the last several years, as these systems have grown more impactful and widely deployed in user-facing applications. Initial studies, such as that of Strubell et al., underscored the environmental cost of training Transformer-based language models[12](#page-7-11). Research done in the following years extended this analysis, for instance by calculating the energy use and GHG footprint for several notable AI models including GPT-3, T5, Meena, and Switch Transformer, providing new estimates[16](#page-7-12) and expanding the scope of analysis beyond model training to account for operational and embodied emissions[17](#page-7-13), improving methodology for software energy measurement[18](#page-7-14), and a lifecycle approach to assessing emissions from model training and deployment[11](#page-7-9). Wu et al. further advanced this analysis by explicitly mapping the environmental impacts across the entire AI development pipeline,[19](#page-7-15). Most recently, Luccioni, Jernite, and Strubell [20](#page-7-16) pioneered the AI inference impact methodology, revealing generative architectures as particularly energy-intensive compared to task-specific models and underscoring the critical importance of addressing inference impacts. These methodologies were then adapted into the AI Energy Score [21](#page-7-17), a project aiming to establish a unified approach for comparing the inference efficiency of AI models[22](#page-7-18) .
 
@@ -40,29 +41,25 @@ Overall, we find that models exhibit three transparency categories:
 
 From 2010 to 2018, only 17% of the models shared data that could be used to indirectly estimate environmental impact of model training (ranging from 0 to 33% each year); no direct environmental impact data was released during this period. This is expected, given that AI models of that era required significantly less compute and resource usage transparency was not
 
-<span id="page-2-0"></span>**Figure 1.** Environmental Impact Transparency of Notable AI Models by Release Year[27](#page-8-2)
+<span id="page-2-0"></span>![](_page_2_Figure_0.jpeg)
 
-yet common practice, although many articles accompanying papers did provide related information about, e.g. the amount of training data used or number of epochs trained. From 2019 to 2022, transparency improved as awareness of impacts grew and open-weights model releases became more common. This period includes the the work of Strubell et al.[12](#page-7-11), Luccioni[11](#page-7-9) and others. The direct release of environmental information peaked in 2022, with 10% of notable models that year releasing some degree of information. However, the introduction of increasingly commercial and proprietary models after 2022, potentially catalyzed by the popular launch of ChatGPT, which provided very limited information about the training approach used and even the final size of the underlying model, triggered a notable reversal in this trend, dramatically reducing direct environmental disclosures. By the first quarter of 2025, the majority of notable AI models again fell under the "no disclosure" category, as the
+**Figure 1.** Environmental Impact Transparency of Notable AI Models by Release Year[27](#page-8-2)
+
+<span id="page-2-1"></span>yet common practice, although many articles accompanying papers did provide related information about, e.g. the amount of training data used or number of epochs trained. From 2019 to 2022, transparency improved as awareness of impacts grew and open-weights model releases became more common. This period includes the the work of Strubell et al.[12](#page-7-11), Luccioni[11](#page-7-9) and others. The direct release of environmental information peaked in 2022, with 10% of notable models that year releasing some degree of information. However, the introduction of increasingly commercial and proprietary models after 2022, potentially catalyzed by the popular launch of ChatGPT, which provided very limited information about the training approach used and even the final size of the underlying model, triggered a notable reversal in this trend, dramatically reducing direct environmental disclosures. By the first quarter of 2025, the majority of notable AI models again fell under the "no disclosure" category, as the line between research and commercial deployment became increasingly blurred.
+
+![](_page_2_Figure_3.jpeg)
 
 **Figure 2.** Environmental Impact Transparency of LLM Usage – OpenRouter[28](#page-8-3) (May 2025)
 
-Beyond the long term trend, zooming in to examine recent AI model usage data helps illustrate today's environmental impact transparency conditions. OpenRouter[28](#page-8-3), a widely-used API platform for LLMs, publicly shares data on model traffic including top 20 models by month, and the number of tokens running through every model. May 2025 data (Figure [2\)](#page-2-1) indicates that of the top 20 used models, only one (Meta Llama 3.3 70B) directly released environmental data and three (DeepSeek R1, DeepSeek V3, Mistral Nemo) release it indirectly (by sharing compute data like GPU type and training length, as well as by releasing their model weights to enable efficiency analysis). In terms of token usage, 84% of LLM usage is through models with no disclosure, 14% for indirectly disclosed models, and only 2% for models with direct disclosure. This indicates that the majority of users who interact with LLMs have no information about their environmental impacts, and cannot make informed
+Beyond the long term trend, zooming in to examine recent AI model usage data helps illustrate today's environmental impact transparency conditions. OpenRouter[28](#page-8-3), a widely-used API platform for LLMs, publicly shares data on model traffic including top 20 models by month, and the number of tokens running through every model. May 2025 data (Figure [2\)](#page-2-1) indicates that of the top 20 used models, only one (Meta Llama 3.3 70B) directly released environmental data and three (DeepSeek R1, DeepSeek V3, Mistral Nemo) release it indirectly (by sharing compute data like GPU type and training length, as well as by releasing their model weights to enable efficiency analysis). In terms of token usage, 84% of LLM usage is through models with no disclosure, 14% for indirectly disclosed models, and only 2% for models with direct disclosure. This indicates that the majority of users who interact with LLMs have no information about their environmental impacts, and cannot make informed decisions based on model efficiency or carbon intensity.
 
-From the limited data that is publicly available, we can observe significant disparities in energy use and emissions across models. In fact, the energy required to pre-train an LLM spans from as little as 0.8 MWh (OLMo 20M) to 3,500 MWh (LLaMa 4 Scout), with associated GHG emissions varying even more significantly (due to variation in the carbon intensity of electricity across training locations). Inference workloads also show wide variation depending on model size, architecture and
-
-**3[/12](#page-11-0)**
-
-<span id="page-2-1"></span>line between research and commercial deployment became increasingly blurred.
-
-decisions based on model efficiency or carbon intensity.
-
-task type, with GPU energy usage for 1,000 queries spanning from just 0.06 Wh (bert-tiny) to over 3,426 Wh (Command-R Plus), depending on model size, architecture, and task complexity (see Tables [1](#page-10-0) and [2](#page-11-1) in the Appendix for more information). These ranges highlight not only the scale of potential impacts, but also the pressing need for more standardized and transparent reporting to enable meaningful comparisons.
+From the limited data that is publicly available, we can observe significant disparities in energy use and emissions across models. In fact, the energy required to pre-train an LLM spans from as little as 0.8 MWh (OLMo 20M) to 3,500 MWh (LLaMa 4 Scout), with associated GHG emissions varying even more significantly (due to variation in the carbon intensity of electricity across training locations). Inference workloads also show wide variation depending on model size, architecture and task type, with GPU energy usage for 1,000 queries spanning from just 0.06 Wh (bert-tiny) to over 3,426 Wh (Command-R Plus), depending on model size, architecture, and task complexity (see Tables [1](#page-10-0) and [2](#page-11-1) in the Appendix for more information). These ranges highlight not only the scale of potential impacts, but also the pressing need for more standardized and transparent reporting to enable meaningful comparisons.
 
 ## **Investigating the Urban Legends of AI's Environmental Impacts**
 
 Making sustainably-minded decisions when using AI systems requires having the necessary information about different aspects of their development and deployment. While there are empirical studies focusing on AI's environmental impacts, such as those cited in previous sections, these numbers have often been taken out of context or used as proxies for conditions (e.g., model size, architecture, optimizations, hardware, location, setup, system) that they are not representative of. This fuels misinformation, undermines scientific research, and can result in decisions that are not grounded in facts[29](#page-8-4). In the paragraphs below, we address some of the common estimates for the environmental impacts of AI, in an effort to contextualize their provenance and to explore their potential for spreading environmental misinformation.
 
-### **Training an AI model emits as much CO**<sup>2</sup> **as five cars in their lifetimes**
+## **Training an AI model emits as much CO**<sup>2</sup> **as five cars in their lifetimes**
 
 Among the first efforts to quantify the environmental impacts of AI was the 2019 study by Strubell et al.,[12](#page-7-11) which estimated the monetary costs, energy use, and GHG emissions required to train a variety of typical natural language processing (NLP) models of that era, including the first generation of large language models. This analysis included both the costs to train several individual models, including the two original "base" (65M) and "big" (213M parameter) variants of the Transformer neural network architecture[30](#page-8-5) that forms the basis of LLMs to this day, as well as the cost to perform model *development*, i.e. identifying the best model architecture with respect to some optimization objective. The authors quantified the costs of model development through both a case study of the energy required for them to develop a model published in the previous year, and by estimating the energy required to automate that process using an approach called neural architecture search (NAS) based on figures reported in a recent Google study using NAS to identify an optimized variant of the Transformer architecture.[31](#page-8-6) In the case of the latter, they estimated that the NAS approach, assuming United States average electricity GHG emissions intensity and typical AI hardware running in an average-efficiency datacenter, could yield 626,155 pounds (284 metric tons) CO2-equivalent GHG emissions (CO2e), or about five times the emissions of a car during its lifetime, including fuel.
 
@@ -78,64 +75,7 @@ To understand the impact of the propagation of this estimate, we analyzed 100 ne
 
 <span id="page-4-0"></span>![](_page_4_Figure_2.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of various AI models' performance, including L
-    [A brief 3-sentence summary of what this image is about, for broad search.]
-
-**Figure Data (Q&A):**
-Q: What is the size of the L
-
-
-
-
-Note: The pie chart and bar chart are not provided in the text, so I couldn't transcribe them. The above table is based on the text description of the charts.
-
-
-The pie chart is divided into five sections, each representing a different aspect of search data. The sections are:
-
-* **"Include '3 WH' or '10x Google Search'"**: 53.2%
-* **"Call for transparency/caution"**: 5.1%
-* **"Other topics (e.g., optimization)"**: 8.2%
-* **"Include global figures"**: 11.3%
-* **"Include other numbers"**: 22.2%
-
-The pie chart is not provided in the text, but I will focus on the pie chart's sections.
-
-**Pie Chart Sections:**
-
-The pie chart's sections are:
-
-* **"Include '3 WH' or '10x Google Search'"**: 53.2% - This section represents the percentage of data that is related to the "3 WH" or "10x Google Search" topic.
-* **"Call for transparency/ ca
-* **"Other topics (e.g., optimization)"**: 8.2% - This section represents the percentage of data that is related to other topics
-* **"Include global figures"**: 11.3% - This section represents the
-* **"Include other numbers"**: 22.2% - This section represents the
-
-* **"Include '3 WH' or '10x Google Search'": 53.2%**
-* **"Call for transparency/ ca
-* **"Other topics (e.g.,
-* **"Include global figures"**: 11.3% - This section
-* **"Include other
-* **"Other
-
-There is no table in the provided image. The image appears to be a chart or plot with multiple sections.
-
-**Chart/PLOT Extraction:**
-
-Here are the visible data points:
-
-* "Include '3 WH' or '10x Google Search': 53.2%"
-* "Call for transparency/caution: 5.1%"
-* "Other topics (e.g., optimization): 8.2%"
-* "Include global figures: 11.3%"
-* "Include other numbers: 22.2%"
-
-**X and Y Axis Units:**
-
-The X and Y axis units are not explicitly mentioned in the provided image.
-
-[描述已截斷以避免過長]
+**Figure 3.** Analysis of media articles discussing ChatGPT energy consumption.
 
 #### **AI can reduce 10% of global emissions**
 
@@ -168,7 +108,7 @@ This section explores how comprehensive environmental transparency can address t
 
 The current trend toward reduced transparency around AI's environmental impact contributes to misinformation and hinders informed decision-making across all levels, from individual researchers and developers to organizations and policymakers. This declining transparency is particularly troubling given AI's escalating environmental impacts amid global climate concerns and looming planetary boundaries. While competition is frequently cited to justify opacity, other competitive industries, such as food (with ingredient labeling) and healthcare (with side-effect and pricing transparency), demonstrate that a balance between transparency and competition is achievable. Reversing the trend toward opacity in AI environmental reporting is essential for informed decision-making, accountability, and sustainable technology advancement, particularly as new model paradigms emerge that may alter these impacts. As members of the AI community committed to addressing the climate crisis, we aim to ensure the sustainability of our field as it continues to expand – recognizing that increased transparency is fundamental to this goal.
 
-# **References**
+## **References**
 
 - <span id="page-7-0"></span>1. Luers, A. *et al.* Will ai accelerate or delay the race to net-zero emissions? *Nature* 628, 718–720 (2024).
 - 2. Kshirsagar, M. *et al.* Becoming good at AI for good. In *Proceedings of the 2021 AAAI/ACM Conference on AI, Ethics, and Society*, 664–673 (2021).
@@ -243,7 +183,7 @@ The current trend toward reduced transparency around AI's environmental impact c
 
 B.G. conducted the environmental impact transparency analysis, T.A.d.C carried out the media analysis. All authors wrote, edited and reviewed the manuscript.
 
-# <span id="page-10-0"></span>**Appendix**
+## <span id="page-10-0"></span>**Appendix**
 
 **Table 1.** Range of Pre-Training Environmental Impacts (Representative Models Displayed)
 

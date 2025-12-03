@@ -10,7 +10,7 @@ Hans-Arno Jacobsen University of Toronto jacobsen@eecg.toronto.edu
 
 This paper aims to answer the question: Can deep learning models be cost-efficiently trained on a global market of spot VMs spanning different data centers and cloud providers? To provide guidance, we extensively evaluate the cost and throughput implications of training in different zones, continents, and clouds for representative CV, NLP and ASR models. To expand the current training options further, we compare the scalability potential for hybrid-cloud scenarios by adding cloud resources to on-premise hardware to improve training throughput. Finally, we show how leveraging spot instance pricing enables a new cost-efficient way to train models with multiple cheap VMs, trumping both more centralized and powerful hardware and even on-demand cloud offerings at competitive prices.
 
-#### PVLDB Reference Format:
+### PVLDB Reference Format:
 
 Alexander Erben,
 
@@ -20,7 +20,7 @@ Ruben Mayer, and Hans-Arno Jacobsen. . PVLDB, 17(6): 1214 - 1226, 2024. [doi:10.
 
 The source code, data, and/or other artifacts have been made available at [https://github.com/cirquit/hivemind-multi-cloud.](https://github.com/cirquit/hivemind-multi-cloud)
 
-# 1 INTRODUCTION
+## 1 INTRODUCTION
 
 Deciding whether to invest in on-premise hardware or move to the cloud for deep learning (DL) is not easy. Wanting to scale existing infrastructure means paying upfront, as combining cloud and onpremise is not an option with popular DL frameworks due to needing a dedicated high-bandwidth interconnect. To enabled model- and data-parallelism, current state-of-the-art accelerators have bandwidths of 900 GB/s for intra-node [\[19\]](#page-12-0) and 25 Gb/s for inter-node setups [\[1,](#page-12-1) [26\]](#page-12-2). Due to the initial investment of the cloud providers in the accelerators, they naturally want to reap profit by maximizing resource utilization. Therefore, it is common to have "spot" pricing, which offers the VMs at a strongly reduced rate, typically at a 40-90% discount (Section [1\)](#page-0-0), but with the drawback that the VM can be terminated at any time if another customer is willing to pay the on-demand price [\[33\]](#page-12-3). Unfortunately, popular DL frameworks have not been developed with failure semantics in mind and cannot adequately deal with peers that fail [\[12\]](#page-12-4). While services like Amazon Sagemaker [\[14\]](#page-12-5) and projects like Skypilot [\[43\]](#page-12-6) offer automatic job migration in case of VM termination, they are limited to single-node training due to the bandwidth requirements between accelerators.
 
@@ -40,35 +40,27 @@ Deciding whether to invest in on-premise hardware or move to the cloud for deep 
 
 <span id="page-0-1"></span>![](_page_0_Figure_18.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a scatter plot comparing the performance of various AI models, including L- 2, L- 3, L- 4, L- 5, L- 6, L- 7, L- 8, L- 9, L- 10, L- 11, L- 12, L- 13, L- 14, L- 15, L- 16, L- 17, L- 18, L- 19, L- 20, L- 21, L- 22, L- 23, L- 24, L- 25, L- 26, L- 27, L- 28, L- 29, L- 30, L- 31, L- 32, L- 33, L- 34, L- 35, L- 36, L- 37, L- 38, L- 39, L- 40, L- 41, L- 42, L- 43, L- 44, L- 45, L- 46, L- 47, L- 48, L- 49, L- 50, L- 51, L- 52, L- 53, L- 54, L- 55, L- 56, L- 57, L- 58, L- 59, L- 60, L- 61, L- 62, L- 3, L- 4, L- 5, L- 6, L- 7, L- 8, L- 9, L- 10, L- 11, L- 12, L- 13, L- 14, L- 15, L- 16, L- 17, L- 18, L- 19, L- 20, L- 21, L- 22, L- 23, L- 24, L- 25, L- 26, L- 27, L- 28, L- 29, L- 30, L- 31, L- 32, L- 3, L- 4, L- 5, L- 6, L- 7, L- 8, L- 9, L- 10, L- 11, L- 12, L- 13, L- 14, L- 15, L- 16, L- 17, L- 18, L- 19, L- 20, L- 21, L- 22, L- 23, L- 24, L- 25, L- 26, L- 27, L- 28, L- 9, L- 10, L- 11, L- 12, L- 13, L- 14, L- 15, L- 16, L- 17, L- 18, L- 19, L- 20, L- 21, L- 22, L- 23, L- 24, L- 25, L- 26, L- 27, L- 28, L- 9, L- 10, L- 11, L- 12, L- 13, L- 14, L- 15, L- 16, L- 17, L- 18, L- 19, L- 20, L- 21, L- 22, L- 23, L- 24, L- 25, L- 26, L- 27
-
-
-
-
-Here's the extracted information:
-
-**Scatter Plot:**
-
-* The X-axis label is "Samples per Second".
-* The Y-axis label is "Cost in $ per 1M Samples".
-* The data points are scattered across the plot, with various labels and symbols.
-
-**Data Points:**
-
-* 1xT4: 1xT4
-* 1xT4: 1xT
-
 Figure 1: Cost to throughput tradeoff for ConvNextLarge at different instance types. Our training setups (circled) are cheaper (8xT4) and faster (8xA10) than centralized offerings (DGX-2).
 
 But what if we could use spot pricing for long-running, distributed jobs and reduce bandwidth requirements to leverage multiple lowcost GPUs? This could be possible through a framework for collaborative DL training, Hivemind [\[39\]](#page-12-7), which inherently deals with peers that can stop running at any time. While there is research on how Hivemind can be used for training on spot VMs [\[17,](#page-12-8) [37,](#page-12-9) [38\]](#page-12-10),it does not compare the cost-throughput tradeoff for different cloud offerings or perform ablation studies on geographic distribution or model sizes.
 
-To motivate this new possibility, we trained the ConvNextLarge model [\[29\]](#page-12-11) on theImagenet1K dataset [\[15\]](#page-12-12) on different Google Cloud hardware (T4's and DGX-2), and on the very competitively priced A10 from LambdaLabs (see Section [6](#page-7-0) for the full experimental description). Figure [1](#page-0-1) shows the training throughput and the costs per 1 million processed samples for each setup. The single node (1xT4, 1xA10, DGX-2) experiments show the current state-of-the-art costthroughput ratio for training on GC and LambdaLabs.
+To motivate this new possibility, we trained the ConvNextLarge model [\[29\]](#page-12-11) on theImagenet1K dataset [\[15\]](#page-12-12) on different Google Cloud hardware (T4's and DGX-2), and on the very competitively priced A10 from LambdaLabs (see Section [6](#page-7-0) for the full experimental description). Figure [1](#page-0-1) shows the training throughput and the costs per 1 million processed samples for each setup. The single node (1xT4, 1xA10, DGX-2) experiments show the current state-of-the-art costthroughput ratio for training on GC and LambdaLabs. The DGX-2 node is the fastest, with a throughput of 413 SPS, but it also costs \$6.30/h (\$4.24/1M samples), shown by the horizontal and vertical lines. The single-accelerator experiments(1xT4, 1xA10) have a better cost-throughput ratio (\$0.62/1M samples and \$0.9/1M samples), but have a much lower throughput of 80 and 185 SPS, respectively. However, when using our approach of distributing the training between multiple GPUs with Hivemind (circled), we make training possible that is both faster (8xA10, 621 SPS, \$2.15/1M samples) and cheaper
 
-[描述已截斷以避免過長]
+This work is licensed under the Creative Commons BY-NC-ND 4.0 International License. Visit<https://creativecommons.org/licenses/by-nc-nd/4.0/> to view a copy of this license. For any use beyond those covered by this license, obtain permission by emailing [info@vldb.org.](mailto:info@vldb.org) Copyright is held by the owner/author(s). Publication rights licensed to the VLDB Endowment.
 
-## <span id="page-1-0"></span>2 DEEP LEARNING ON SPOT INSTANCES
+Proceedings of the VLDB Endowment, Vol. 17, No. 6 ISSN 2150-8097. [doi:10.14778/3648160.3648165](https://doi.org/10.14778/3648160.3648165)
+
+(8xT4, 262 SPS, \$1.77/1M samples) than using the DGX-2. Every cloud provider deals differently with how they price spot instances and network traffic (cf. Section [1\)](#page-0-0) and has varying interruption rates for different accelerators [\[23\]](#page-12-13). Being able to choose the best option was not possible before, and having the option to combine older, more available GPUs is a net benefit for both consumers and cloud providers alike.
+
+We aim to develop guidelines and help practitioners assess under which conditions they can cost-efficiently speed up their training tasks with spot instances. To be able to do this, they need a precise definition of the model size at which geo-distributed spot training becomes viable, what hardware can be used for it, and what the minimum bandwidth and latency are. We close this research gap by performing a comprehensive analysis of multiple DL tasks from CV and NLP, breaking down how time is spent in each epoch, and comparing them to non-distributed runs to quantify the advantages and disadvantages of distributed spot training.We determine which models scale with additional spot instances and which cannot be scaled without running into a communication bottleneck or resource inefficiencies. To quantify total training cost, we assess cost-effectiveness and evaluate a hybrid or multi-cloud approach with popular cloud providers through training on up to four continents. For comparison of the models' scalability and to show which of them can be trained in a distributed fashion, we introduce the granularity metric, the ratio of calculation to communication time, and show how it can be used for predicting performance with different hardware setups. Finally, we summarize our lessons on how to design geo-distributed spot training and what to watch out for when evaluating the feasibility of such a training regime. Our contributions are:
+
+- (1) We analyze the impact of multi-cloud training with spot and on-demand instances from Google Cloud (GC), Microsoft Azure, Amazon Web Services (AWS), and LambdaLabs on cost-efficiency.While we find performance penalties due to remote versus on-premise compute resources, the throughput still scales with increased computing power. By leveraging multiple spot instances with one T4 GPU each, we can be more cost-efficient than a DGX-2 node or the very competitively priced A10 offerings from LambdaLabs.
+- (2) We investigate the suitability of geo-distributed training for various CV and NLP models and hardware configurations on up to four continents. Not surprisingly, the more parallelizable and the larger the task, the better the performance. Moreover, we verify the scalability claims of the related work and define additional constraints, such as the minimum granularity for effective training. This enables, for the first time, distributed training of smaller millionparameter models (12M-560M) over <1 Gb/s bandwidth and >150ms latency networks.
+- (3) We evaluate two different hybrid-cloud experimental setups with consumer- and server-grade on-premise hardware and try to improve the throughput with a bandwidth of, at worst, 50 Mb/s to the cloud resources. While we show that it is possible to improve throughput even at these constraints, local cloud offerings are better suited for models that show limited suitability for distributed training.
+
+(4) We summarize our findings of training in a geo-distributed, multi-cloud environment. We propose the granularity metric to compare model suitability for distributed spot training and estimate training performance with additional spot VMs. This provides guidance on the trade-off between performance and cost when using geo-distributed spot instances. To apply our findings, we perform a casestudy on a state-of-the-art model from the ASR domain and achieve speedups on low-end hardware.
+
+# <span id="page-1-0"></span>2 DEEP LEARNING ON SPOT INSTANCES
 
 In this section, we describe how the Hivemind framework works and how it can enable distributed spot training.
 
@@ -76,7 +68,7 @@ In this section, we describe how the Hivemind framework works and how it can ena
 
 Hivemind [\[39\]](#page-12-7)is a PyTorch-based [\[32\]](#page-12-14) framework developedinitially to enable collaborative DL training where participants could donate their heterogeneous hardware to train a single model together in a data-parallel fashion. Its main difference to other state-of-the-art distributed training frameworks, such as PyTorch DDP [\[26\]](#page-12-2) and DeepSpeed [\[35\]](#page-12-15), is that it runs in a decentralized fashion and can handle peers that drop out at any stage of the training. It does so with two features: a distributed hash table [\[31\]](#page-12-16) (DHT) which spans over all participating peers for metadata storage, such as training progress and peer health, and a gradient averaging algorithm that is designed to reduce the impact of lost gradients. A key difference to other distributed training frameworks is the definition of a hivemind epoch, which is the number of samples that must be aggregated before an averaging step is performed. This sample count is called the target batch size (TBS), which corresponds to the minibatch size in standard DL training. The DHT is used for coordination, and shortly before the TBS is predicted to be reached, the peers start to form the initial groups for averaging. The time allocated for group forming is called matchmaking time and typically runs asynchronously to the training (cf. Section [3\)](#page-2-0). The individual peer gradients are accumulated locally and sent to the other peers via an adaptive all-reduce algorithm (MoshpitSGD [\[38\]](#page-12-10)). The next hivemind epoch starts after each peer applies the accumulated gradients to the local model. The advantage of Hivemind for geo-distributed training comes from cumulating different techniques, such as Delayed Parameter Updates [\[36\]](#page-12-17), bigbatch training [\[44\]](#page-12-18) and aggressive communication quantization [\[16\]](#page-12-19). All of these combined reduce time and frequency of the communication rounds, which in turn makes training on heterogeneous devices and low-bandwidth networks possible.
 
-## 2.2 Distributed Spot Training
+# 2.2 Distributed Spot Training
 
 In this paper, we focus only on models that fit into the memory of a single GPU, as we are interested in utilizing data parallelism on cheaper and more readily available hardware. However, our insights are applicable to larger models with techniques such as ZeRO offloading [\[36\]](#page-12-17), more aggressive quantization [\[41\]](#page-12-20) and even model parallelism [\[37\]](#page-12-9). The current options for data parallelism are either using multiple GPUs on the same node (e.g., a DGX system with eight GPUs) or having multiple nodes with a GPU each in the same high-bandwidth network (>25 Gb/s) to minimize communication time. The latter does not work on cheap but interruptable instances,
 
@@ -84,7 +76,7 @@ while the former has some use in the form of Amazon Sagemaker but is limited to 
 
 With the newly added training setups from Figure [1](#page-0-1) (circled), it was not previously possible to choose the best option, and having the option to combine older, more available GPUs is a net benefit for both consumers as well as cloud providers. Our paper shows that it is possible to train on multiple clouds across multiple continents and provides guidelines on how to accomplish this cost-efficiently.
 
-## <span id="page-2-0"></span>3 MODEL SUITABILITY
+# <span id="page-2-0"></span>3 MODEL SUITABILITY
 
 Selecting suitable models with a big enough parallel workload is essential to ensure successful distributed spot training. To cover a wide range of established models, we drew from MLCommons' comprehensive DL training benchmark [\[30\]](#page-12-21). We used models from the CV and NLP domains and gradually increased their size and TBS to increase the parallel compute amount. As discussed in Section [2,](#page-1-0) the TBS may be exclusively responsible for the success of distributed training and was chosen to cover both medium and large batches (8K, 16K and 32K). These minibatch sizes start to become more common due to the LAMB optimizer [\[44\]](#page-12-18), which works well enough for both smaller (512) and huge batches (64K) and should be representative of state-of-the-art workloads. For a represenatative experimental study with a minibatch size of 256 on the automatic speech recognition model (Whisper [\[34\]](#page-12-22)), please refer to Section [11.](#page-11-0) All experiments were run with FP16 precision, as the target T4 GPUs have a considerable improvement in FLOPs compared to FP32 (8:1).
 
@@ -102,260 +94,19 @@ To establish a fair baseline, we train all models from ?? on a single GPU that a
 
 <span id="page-3-0"></span>![](_page_3_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the performance of various AI models, including LLa
- 
-**Figure Data (Q&A):**
+Figure 2: Hivemind penalty on normalized throughputs.
 
-Q: What is the size of the LLa
-
-Q: How many
-
-Q: What is the
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### CV Models
-
-| Model | Throughput (Samples per Second) |
-| --- | --- |
-| RN18 | 1462 |
-| RN50 | 958 |
-| RN50 | 778 |
-| RN50 | 529 |
-| RN50 | 299 |
-| RN50 | 217 |
-| RN50 | 117 |
-| RN50 | 77 |
-| RN50 | 52 |
-| RN50 | 29 |
-| RN50 | 17 |
-| RN50 | 11 |
-| RN50 | 7 |
-| RN50 | 5 |
-| RN50 | 3 |
-| RN50 | 2 |
-| RN50 | 1 |
-
-### NLP Models
-
-| Model | Throughput (Samples per Second) |
-| --- | --- | 
-| RBase | 1310 |
-| RBase | 804 |
-| RBase | 700 |
-| RBase | 661 |
-| RBase | 359 |
-| RBase | 313 |
-| RBase | 247 |
-| RBase | 215 |
-| RBase | 147 |
-| RBase | 99 |
-| RBase | 66 |
-| RBase | 43 |
-| RBase | 29 |
-| RBase | 17 |
-| RBase | 11 |
-| RBase | 7 |
-| RBase | 5 |
-| RBase | 3 |
-| RBase | 2 |
-| RBase | 1 |
-
-### Throughput Comparison
-
-| Model | Throughput (CV) | Throughput (NLP) |
-| ... | ... | ... |
-
-
-The image compares the performance of two models: CV and NLP. The comparison is based on the number of samples per second.
-
-**CV Model**
-
-| Model | Samples per Second |
-| --- | --- |
-| RN18 | 1462 |
-| RN50 | 1024 |
-| RN50 | 958 |
-| RN50 | 778 |
-| RN50 | 529 |
-| RN50 | 299 |
-| RN50 | 217 |
-| RN50 | 117 |
-| RN50 | 99 |
-| RN50 | 77 |
-| RN50 | 52 |
-| RN50 | 29 |
-| RN50 | 17 |
-| RN50 | 11 |
-| RN50 | 7 |
-| RN50 | 5 |
-| RN50 | 3 |
-| RN50 | 2 |
-| RN50 | 1 |
-| RN50 | 0 |
-
-**NLP Model**
-
-| Model | Samples per Second |
-| --- | --- |
-| RBase | 1310 |
-| RBase | 804 |
-| RBase | 700 |
-| RBase | 661 |
-| RBase | 359 |
-| RBase | 313 |
-| RBase | 247 |
-| RBase | 163 |
-| RBase | 86 |
-| RBase | 39 |
-| RBase | 18 |
-| RBase | 9 |
-| RBase | 6 |
-| RBase | 4 |
-| RBase | 3 |
-| RBase | 2 |
-| RBase | 1 |
-| RBase | 0 |
-
-**Note**: The image is not a table, chart, or diagram, but a comparison of two models' performance. The image is not a table, chart, or diagram, but a comparison of two models' performance. The image is not a table, chart, or diagram, but a comparison of two models' performance. The image is not a table, chart, or diagram, but a comparison of two models' performance. The image is not a table, chart, or diagram, but a comparison of two models' performance. The image is not a table, chart, or diagram, but a comparison of two models' performance. The image is not a table, chart, or diagram, but a comparison of two models' performance. The image is not a table, chart, or diagram, but a comparison of two models' performance. The image is not a table, chart, or
-
-I will stop here as the image is not a table, chart, or diagram, but a comparison of two models' performance. The image is not a table, chart, or
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
-
-| Model | Samples per Second | Samples per Second |
-| --- | --- | --- |
-| Model | 1466 | 1954 |
-| Model | 768 | 964 |
-| Model | 1462 | 1954 |
-| Model | 768 | 964 |
-
-**Table 2:**
-
-**Table 3:**
-
-**Table 4:**
-
-| Model | Samples per Second | Samples per Second |
-| --- | --- (a) CV 1xA10 | (b) CV 2xA10 |
-| Model | 1466 | 1954 |
-| Model | 768 | 964 |
-| Model | 1462 | 1954 |
-| Model | 768 | 964 |
-
-**Table 5:**
-
-**Table 6:**
-
-| Model | Samples per Second | Samples per 2x A10 |
-| --- | --- (a) CV 1x A10 | (b) CV 2x A10 |
-| Model | 1466 | 1954 |
-| Model | 768 | 964 |
-| Model | 1462 | 1954 |
-| Model | 768 | 964 |
-
-**Table 7:**
-
-| Model | Samples per 2x A10 |
-| --- | --- (a) CV 1x A10 | (b) CV 2x A 10 |
-| Model | 1466 | 1954 |
-| Model | 768 |  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4  2  1  4 
+<span id="page-3-1"></span>![](_page_3_Figure_2.jpeg)
 
 Figure 3: Throughput comparison between single GPU baselines and the Hivemind runs with two GPUs.
 
 models training quadratically longer per parameter, but the communication only increases linearly [37]. While an implementation issue currently affects performance, and the worst total performance drop is at 47% (CONV baseline vs. global), scaling is still possible with a ratio of roughly 2:1 of GPUs to throughput. We further refine this ratio in the following section by comparing which models are most suitable to be trained in a distributed environment.
 
-(2) Less suitable models for distributed spot training.
+(2) Less suitable models for distributed spot training. While training billion-parameter NLP models scale well due to the "square-cube" law, the minimum model size is not yet fully defined [37]. The reason is that many factors play a role in whether a model is suited for geo-distributed training. On the one hand, a small model results in small gradients exchanged between peers, so the averaging step is fast. On the other hand, a small model will also reach the TBS faster than larger models, which may lead to a low speedup if the calculation time is disproportionally lower than the communication time.
 
-[描述已截斷以避免過長]
+We found the granularity metric [22], typically used in highperformance computing, practical to attach a comparable value to each setup to quantify the ratio of the calculation to communication time. The higher the granularity, the more parallelizable the task, as more calculation can be distributed between peers, ensuring a good speedup. It is important to note that this metric depends on the model and the hardware being used. The communication time is affected by the parameter count, and the calculation time is affected by the layer type of the parameters (including feedforward, convolution, and transformer). Therefore, the calculation time can decrease with improved hardware, which we evaluate in Section 6. Another parameter that affects the calculation time is the TBS that all peers work to accumulate. There is a practical limit to the TBS where a model is still trainable, which is currently at 64K with the LAMB optimizer [44]. This limits the possibility of improving the speedup of small models by increasing the batch size, meaning that at some point, the speed will be limited by the communication time. It is
 
+<span id="page-3-2"></span>![](_page_3_Figure_7.jpeg)
 
 Figure 4: TBS vs. total training time on 2xA10s. Granularity is shown above each bar. Dotted lines separate different models.
 
@@ -363,52 +114,19 @@ important to remember that just increasing the TBS to create more calculation ti
 
 Our experimental results in Figure 3 show the practical implications of this observation. For the 2xGPU experiments in Figures 3b and 3d, we can see the effect of a TBS increase which improves the total throughput. Doubling the TBS equals cutting down the persample communication cost by two, which leads to the slight increase in performance visible in both CV and NLP experiments. However, the smallest models, RN18 and RBase, fluctuate significantly at a TBS of 8K due to a minimum matchmaking time of 5 seconds. Whenever all peers accumulate the TBS in less than 5 seconds, the asynchronous thread that matches the peers in groups to perform the all-reduce may still need to finish. This results in an unstable averaging time, which limits the scalability of small models with a small TBS.
 
-To illustrate how the TBS and model size affect the individual timings, we visualize the total training time split up into the calculation and communication time in Figure 4. CV models are generally computationally more expensive and have a higher granularity than NLP models, which have slightly longer averaging rounds due to the much larger model sizes. When comparing the models at the same TBS (e.g., 32K), there is an inconclusive relation between runtime and parameter count. Some models increase their runtime with parameter count w.r.t.
+To illustrate how the TBS and model size affect the individual timings, we visualize the total training time split up into the calculation and communication time in Figure 4. CV models are generally computationally more expensive and have a higher granularity than NLP models, which have slightly longer averaging rounds due to the much larger model sizes. When comparing the models at the same TBS (e.g., 32K), there is an inconclusive relation between runtime and parameter count. Some models increase their runtime with parameter count w.r.t. smaller models (RN50 to RN152, RBase to RLrg), while others decrease their runtime (RN152 to WRN101, RLrg to RXLM). This performance is due to not all layer parameters contributing similarly to computational complexity. Depending on the specific architecture, even models with more parameters can be faster to train due to a more efficient architecture, such as the WRN101 [46].
 
-[描述已截斷以避免過長]
+The communication time between different TBS sizes stays the same, barring the two matchmaking time exceptions (RN18, RBase), as the gradients are accumulated before being sent. For all other models, doubling the TBS leads to exactly double the amount of work and doubles the granularity. With a TBS of 32K, all models have a granularity of at least 4.2 (RXLM) and at most 21.6 (CONV), which show strong scaling potential. Therefore, we decided to use a TBS of 32K for all following experiments to ensure that the setup scales before introducing bandwidth and computational limitations.
 
+Summarizing, whether a model is scalable without network bandwidth limitations depends on the minimum time to reach the TBS and on the granularity. Tuning the TBS is possible to a certain extent but depends on the specific training task and optimizer configuration.
 
-Instead, I will provide a general description of the image:
+(3) Per-GPU speedup decreases with low granularity. To evaluate the scalability with additional hardware, we profile all models on 2,3,4, and 8 GPUs with a TBS of 32K. Figure 5 shows the throughput for all models in the different hardware scenarios. Generally, all models scale well regardless of size, with the best speedup of 4.37x (RN152) and the lowest at 2.29x (RXLM) with 8 GPUs. There is a
 
-The image shows two graphs, one for CV and one for NLP, with various models and their performance metrics. The graphs are not labeled, and the data points are not described. The image appears to be a comparison of the performance of various models, but it is not possible to extract any specific data points or descriptions.
-
-If you could provide more context or clarify the image, I would be happy to assist further.
+<span id="page-4-0"></span>![](_page_4_Figure_0.jpeg)
 
 Figure 5: Throughput comparison from 1 to 8 A10 GPUs.
 
 <span id="page-4-1"></span>![](_page_4_Figure_2.jpeg)
-
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the performance and energy consumption of various AI models, including L-  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 
-
-
-
-
-Based on the provided text, it appears to be a comparison of two models, CV and NLP, with their respective performance metrics. I'll extract the information as per the instructions.
-
-**Table Extraction**
-
-Unfortunately, there is no table in the provided text. However, I can extract the performance metrics for both models.
-
-**Performance Metrics for CV**
-
-| Model | Accuracy | Precision |  |  |
-|  |  |  |  |  |
-
-**Performance Metrics for NLP**
-
-| Model |  |  |  |  |
-|  |  |  |  |  |
-
-**Chart/PLOT Extraction**
-
-Unfortunately, there is no chart or plot in the provided text. However, I can extract the performance metrics for both models.
-
-**Model Performance**
-
-| Model |  |  |  |  |
-|  |  |  |  |  |
 
 Figure 6: Multi-GPU scalability at 32K TBS. Granularity is shown above each bar. Dotted lines separate different models.
 
@@ -425,200 +143,43 @@ visible trend in the per-GPU contribution to the speedup (
 
 Additionally, we see the drop in throughput when comparing the single GPU and dual GPU experiments for most larger models (Figure 5), which stems from observation (1) of the Hivemind penalty.
 
+We also observe that with each subsequent doubling of GPUs, the calculation time is halved, while the communication increases sub-linearly due to the more efficient group-based all-reduce of MoshpitSGD [38]. For example, the averaging step for the RXLM on 2xA10 takes 5 seconds per GPU (10s total), while the 8xA10 averaging step takes 1.8 seconds per GPU (14.4s total).
 
-[描述已截斷以避免過長]
+In summary, all models show a speedup but have a decreasing per-GPU contribution due to smaller granularity with more GPUs. Therefore, the larger the model and TBS, the greater the scaling potential. High granularity is a good indicator of scalability, and since the communication time only increases linearly with additional peers (cf. Section 2.1), knowing the initial calculation time is a good indicator of future throughput. Under the optimal conditions of good compute performance and an interconnect with relatively high bandwidth, scaling was not a problem. But what happens under less favorable conditions in geo-distributed settings?
 
 #### <span id="page-4-3"></span>4 GEO-DISTRIBUTED PERFORMANCE
 
 As spot prices for the same hardware differ depending on the region, zone, and time of day [23], it might be a good idea to use VMs across different data centers. However, is the connectivity between regions and continents good enough to enable distributed deep learning? To explore this question, we decided to conduct three types of experiments (Table 2):
 
 - (A) Intra-zone Can we scale if the VMs are co-located in the same zone (us-central-1)?
-- (B) Transatlantic Can we scale when we combine VMs from two regions (US and EU), and what happens when the compute is unevenly distributed across regions?
-- (C) Intercontinental Can we scale if we combine VMs from four continents (US, EU, ASIA, AUS)?
+- **(B) Transatlantic** Can we scale when we combine VMs from two regions (US and EU), and what happens when the compute is unevenly distributed across regions?
+- **(C) Intercontinental** Can we scale if we combine VMs from four continents (US, EU, ASIA, AUS)?
 
 **Experimental design.** Based on the insights from Section 3, we decided to use the largest models (CONV, RXLM) for all further cloud experiments in Sections 4 to 6, with the TBS of 32K as a baseline with good scaling properties. We abbreviate them with their respective domain names (CV, NLP). We used Google Cloud [5] for all experiments in this section, as they were the first to give us access to all necessary zones. The default networking solution in GC is the "Premium Tier", which tries to use a Google-owned network instead of the public internet. We measured the throughput and latency between all zones via iperf and ping and report the average of 5 consecutive runs in Table 3. Unsurprisingly, the diagonal shows that the local connectivity between zones runs at almost 7 Gb/s with a latency of 0.7ms, probably due to the hypervisors being in the same data center. While the up- and download were perfectly symmetrical in all setups, the throughput dropped to <210 Mb/s for all non-local connections. The US-based data center is located in Iowa and is best connected with at least 120 Mb/s to the remaining regions, namely Belgium in the EU (6,911km), Taiwan in ASIA (11,853km), and Sydney in Australia (AUS, 14,555km), presumably due to the physical distance. The lowest bandwidth and highest latency connections are between the EU region and ASIA and AUS, reaching around 80 Mb/s and 270ms. We decided to use the n1-standard-8 template with eight cores, 30 GB memory, and a T4 GPU, as the smaller image with 15 GB was insufficient to meet the memory requirements for gradient application on the CPU with the biggest models. The experiment naming in this section is prefixed with the type of location (A), (B) or (C) and the number of VMs, e.g., A-4 is the intra-zone experiment with 4 VMs. The full experimental description is specified in Table 2.
 
-Table 3: Throughput and latency between GC zones.
+<span id="page-4-4"></span>Table 3: Throughput and latency between GC zones.
 
-<span id="page-4-4"></span>![](_page_4_Figure_17.jpeg)
+![](_page_4_Figure_17.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of single-stream TCP throughput and ICMP latency in various regions, including the US, EU, Asia, and Australia. The data is organized into two tables, one for single-stream TCP throughput in Gb/s and another for ICMP latency in ms.
-
-**Figure Data (Q&A):**
-
-Q: What is the single-stream TCP throughput in the US?
-A: 6.90 Gb/s
-
-Q: What is the single-stream TCP throughput in the EU?
-A: 0.21 Gb/s
-
-Q: What is the single-stream TCP throughput in Asia?
-A: 0.08 Gb/s
-
-Q: What is the single-stream TCP throughput in Australia?
-A: 0.16 Gb/s
-
-Q: What is the ICMP latency in the US?
-A: 0.66 ms
-
-Q: What is the ICMP latency in the EU?
-A: 0.65 ms
-
-Q: What is the ICMP latency in Asia?
-
-Q: What is the ICMP latency in Australia?
-
-**Figure Data (Table):**
-
-| Region | Single-Stream TCP Throughput (Gb/s) | ICMP Latency (ms) |
-| --- | --- | --- |
-| US | 6.90 | 0.66 |
-| EU | 0.21 | 0.65 |
-| Asia | 0.08 | 0.7 |
-| Australia | 0.16 | 0.7 |
-
-Note: The table only includes the data from the tables in the image. If you need more data, please let me know.
-
-
-
-
-Note: The table only shows the data for the regions mentioned, and the values for each region are based on the data provided in the table.
-
-
-[描述已截斷以避免過長]
-
-
-| From | To | US | EU | ASIA | AUS |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **US** | **US** | 6.90 | 0.21 | 0.13 | 0.12 |
-| **US** | **EU** | 0.21 | 6.81 | 0.08 | 0.07 |
-| **US** | **ASIA** | 0.13 | 0.08 | 6.79 | 0.16 |
-| **US** | **AUS** | 0.12 | 0.07 | 0.16 | 6.84 |
-| **EU** | **US** | 0.21 | 6.81 | 0.08 | 0.07 |
-| **EU** | **EU** | 6.81 | 0.21 | 0.08 | 0.07 |
-| **EU** | **ASIA** | 0.08 | 0.13 | 6.79 | 0.16 |
-| **EU** | **AUS** | 0.07 | 0.08 | 0.16 | 6.84 |
-| **ASIA** | **US** | 0.13 | 0.08 | 6.79 | 0.16 |
-| **ASIA** | **EU** | 0.08 | 0.13 | 6.79 | 0.16 |
-| **ASIA** | **AUS** | 0.16 | 0.08 | 6.79 | 0.16 |
-| **AUS** | **US** | 0.12 | 0.07 | 0.16 | 6.84 |
-| **AUS** | **EU** | 0.07 | 0.08 | 0.16 | 6.84 |
-| **AUS** | **ASIA** | 0.16 | 0.08 | 6.79 | 0.16 |
-
-**Table 2: ICMP Latency in ms**
-
-| From | To | US | EU | ASIA | AUS |
-| :— | :— | :— | :— | :— | :— |
-| **US** | **US** | 0.66 | 103.14 | 0.65 | 0.7 |
-| **US** | **EU** | 103.14 | 0.65 | 0.7 | 0.7 |
-| **US** | **ASIA** | 0.65 | 0.7 | 0.7 | 0.7 |
-| **US** | **AUS** | 0.7 | 0.7 | 0.7 | 0.7 |
-| **EU** | **US** | 0.65 | 0.65 | 0.7 | 0.7 |
-| **EU** | **EU** | 0.65 | 0.65 | 0.7 | 0.7 |
-| **EU** | **ASIA** | 0.65 | 0.65 | 0.7 | 0.7 |
-| **EU** | **AUS** | 0.65 | 0.65 | 0.7 | 0.7 |
-| **ASIA** | **US** | 0.65 | 0.65 | 0.7 | 0.7 |
-| **ASIA** | **EU** | 0.65 | 0.65 | 
+(A) Intra-zone scalability. Figure 7 shows the result of the intra-zone experiments, which we used as a baseline to compare geodistributed deployments to. As the scalability of the CV and NLP models was already shown with much better hardware and slightly worse network connectivity (cf. Section 3), the scalability with the T4 GPUs is not too surprising. We do not see an improvement in throughput for two GPUs for either model due to the Hivemind penalty discussed
 
 <span id="page-5-0"></span>![](_page_5_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents an analysis of the performance and carbon emissions of a GShard-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-33-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-24-25-26-27-28-29-30-31-32-33-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5-…-13-4-5-6-7-8-9-10-11-12-13-4-5-6-7-8-9-10-11-12-13-4-5
+Figure 7: (A) Intra-zone performance for CV and NLP.
 
-
-
-
-[描述已截斷以避免過長]
-
-
-The table section is not provided, so I'll describe the process for tables in general.
-
-If the table is provided, I'll convert it to Markdown table format, extract all cell values, and maintain the exact table structure with proper headers and rows. I'll use the following format:
-
-| Header 1 | Header 2 |
-| ... | ... |
-
-I'll extract all cell values exactly as shown, maintaining the exact table structure with proper headers and rows. I'll use the following format:
-
-| Cell 1,1 | Cell 1,2 | ... |
-| ... | ... |
-
-**Chart/Pilot Section:**
-
-The chart section is not provided, so I'll describe the process for charts in general.
-
-If the chart is provided, I'll list every visible data point in the format "Label: Value" and describe the X- and Y-axes labels and units. I'll use the following format:
-
-* Label: Value
-* X- and Y-axes: [description of X- and Y-axes]
-
-**Diagrams Section:**
-
-The diagrams section is not provided, so I'll describe the process for diagrams in general.
-
-If the diagram is provided, I'll describe the flow, structure, and all visible labels. I’ll use the following format:
-
-* [Description of the diagram’s structure]
-* [Description of the diagram’s labels]
-
-**Mathematical Formulas:**
-
-The image does not contain mathematical formulas, so I’ll skip this section.
-
-**Output Format:**
-
-The output format will be in the following format:
-
-* [Table/Chart/Section] Description
-* [Table/Chart/Section] Description
-
-I’ll maintain the original document’s structure as
-[Table/Chart/Section] Description
-[Table/Chart/Section] Description
-
-I’ll use the following format:
-
-* [Table/Chart/Section] Description
-* [Table/Chart/Throughput] Description
-* [Table/Chart/Throughput] Description
-
-* [Table/Chart/Throughput] Description
-
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
-
-
-Please go ahead and provide the image or describe the content you'd like me to extract. I'll get started!
+<span id="page-5-1"></span>![](_page_5_Figure_2.jpeg)
 
 Figure 8: (B) Transatlantic performance for CV and NLP.
 
-in Section 3. However, starting with three GPUs, we see an increase in throughput with a maximum speedup of up to 3.2x CV and 2.75x for NLP at eight GPUs. CV's per-GPU speedup (  $\frac{\rm speedup}{\# \rm GPUs}$ ) is almost linear (0.43, 0.42, 0.43, 0.41, 0.41), while NLP starts dropping off faster (0.51, 0.47, 0.45, 0.40, 0.34) for 2, 3, 4, 6 and 8 GPUs, respectively. The reason for this is the NLP granularity of 1.15 with 8 GPUs indicating an almost equal part in communication and calculation (Figure 7b) due to the much longer averaging round related to the model size (198M vs. 560M parameters). The peak network bandwidth utilization between peers was at most a symmetric 1.1 Gb/s while averaging and 33 Mb/s ingress while training due to data loading. This means that the network bandwidth of 7 Gb/s was not a limiting factor.
+in Section 3. However, starting with three GPUs, we see an increase in throughput with a maximum speedup of up to 3.2x CV and 2.75x for NLP at eight GPUs. CV's per-GPU speedup (  $\frac{\text{speedup}}{\#\text{GPUs}}$ ) is almost linear (0.43, 0.42, 0.43, 0.41, 0.41), while NLP starts dropping off faster (0.51, 0.47, 0.45, 0.40, 0.34) for 2, 3, 4, 6 and 8 GPUs, respectively. The reason for this is the NLP granularity of 1.15 with 8 GPUs indicating an almost equal part in communication and calculation (Figure 7b) due to the much longer averaging round related to the model size (198M vs. 560M parameters). The peak network bandwidth utilization between peers was at most a symmetric 1.1 Gb/s while averaging and 33 Mb/s ingress while training due to data loading. This means that the network bandwidth of 7 Gb/s was not a limiting factor.
 
-**(B)** Transatlantic scalability. We scale when computing hardware is local. However, what happens when there is cheap capacity in another region? In this case, we study the throughput of experiments with resources in the us-west and eu-central regions (B-2,4,6,8).
+**(B) Transatlantic scalability.** We scale when computing hardware is local. However, what happens when there is cheap capacity in another region? In this case, we study the throughput of experiments with resources in the us-west and eu-central regions (B-2,4,6,8).
 
-The B-2 experiment has one VM in the US and one in the EU, achieving a virtually identical throughput of 68.4 (US-EU) versus 70.1 (US) at CV (Figure 8a). Our maximum peak egress rate of 250 Mb/s does not affect the CV experiments, while the US experiments peaked at 1.1 Gb/s. The reduction in bandwidth penalizes NLP harder, where we are 16% slower with 177.3 SPS (US-EU) compared to the intra-zone experiment with 211.4 SPS (US).
+The B-2 experiment has one VM in the US and one in the EU, achieving a virtually identical throughput of 68.4 (US-EU) versus 70.1 (US) at CV (Figure 8a). Our maximum peak egress rate of 250 Mb/s does not affect the CV experiments, while the US experiments peaked at 1.1 Gb/s. The reduction in bandwidth penalizes NLP harder, where we are 16% slower with 177.3 SPS (US-EU) compared to the intra-zone experiment with 211.4 SPS (US). The resulting increased communication can be easily seen in the granularity analysis in Figure 8b (NLP A-2,4,6,8 vs. B-2,4,6,8). As only communication time increases in the NLP (B) experiments compared to (A), a granularity of  $\gg$  1 indicates good scalability: Adding two more GPUs to the B-6 experiment with a granularity of 1.03 results in a throughput increase of 15% (B-8) relative to the baseline. Meanwhile, adding two more GPUs to the B-2 experiment with a granularity of 2.21 results in a throughput increase of 77% (B-4) relative to the baseline.
 
-[描述已截斷以避免過長]
+In the B-4 experiment, we look at what happens when we increase the number of VMs to four, with two in the US and two in the EU. Nothing surprising happens with CV, as the workload continues to be mostly computation, with a throughput of 135.8 (B-4), only 3% slower than the intra-zone experiment with 140.4 SPS (A-4). However, at NLP, things get more interesting as we now have more overall communication with four peers, but they can average locally first and only later transmit across the Atlantic. However, compared to their A-counterparts, we do not see a difference in relative scalability with either B-4, B-6, or B-8. This means that training across regions
 
-
-Please note that I'll follow the instructions to:
-
-1. Convert tables to Markdown table format
-2. Extract all cell values exactly as shown
-3. Describe charts and plots with all visible data points
-4. Describe diagrams and labels
-5. Convert mathematical formulas to LaTeX
-6. Use a clear structure with appropriate line breaks
-7. Keep descriptions
-8. Use a maximum description length of 1500 characters
-
-Please provide the image or content you'd like me to extract. I'll get started!
+<span id="page-5-2"></span>![](_page_5_Figure_8.jpeg)
 
 Figure 9: (C) Intercontinental performance for CV and NLP.
 
@@ -628,9 +189,9 @@ Summarizing, with an transatlantic setup, CV achieves a virtually identical maxi
 
 **(C) Intercontinental scalability.** To take geo-distribution to the extreme, we spawn VMs in up to 4 regions: USA, EU, ASIA, and AUS, to see how much worse bandwidth affects the training throughput (C-3,4,6,8 in Table 2).
 
+How does the intercontinental penalty investigated in (B) affect deployments with a single GPU on each continent? Comparing the A-3 and C-3 experiments with three local versus three fully remote GPUs, CV is only 5% slower, while NLP suffers a 34% drop in throughput (Figure 9a) and does not even reach the baseline single GPU performance (A-1). The peak egress for each region was 318, 258, and 237 Mb/s for the US, EU, and ASIA, respectively. Since our bandwidth measurements were 210 and 130 Mb/s from the US to the EU and ASIA, respectively (Table 3), this suggests that the averaging was done over the US node and not an N-to-N all-reduce (a detailed analysis of how averaging affects bandwidths is discussed in Section 6). Thus, the limiting factor was the US-ASIA connection at 130 Mb/s rather than the 80 Mb/s from EU-ASIA. The same trend continues with the C-4 run, which adds AUS as a continent with one additional VM. As we know from the transatlantic experiments (B) that an additional continent has a detrimental effect on throughput, which, for the four continents experiment, C-4, results in a 9% slower throughput for CV and 36% slower for NLP compared to the A-4 runs (Figure 7a). Again, the US VM is used as an averaging intermediary with a peak egress of 365 Mb/s, while the other continents are between 318 and 330 Mb/s. When comparing the two continents (B-4) versus four continents (C-4) experiments, one GPU on each continent (C-4) is slower by 6% for CV and 20% for NLP compared to two GPUs on two continents (B-4). This reinforces that local hardware should be preferred whenever possible. However, we are always faster than the baseline (A-1), starting from 4 GPUs in both the transatlantic and intercontinental settings. While these experiments were specifically designed to be a worst-case scenario, what about a more balanced GPU distribution with at least two GPUs in each region?
 
-[描述已截斷以避免過長]
-
+<span id="page-6-2"></span>![](_page_6_Figure_0.jpeg)
 
 Figure 10: Multi-cloud performance for CV and NLP.
 
@@ -638,7 +199,7 @@ When comparing the C-6 experiment with two GPUs in three continents to the local
 
 In summary, while local compute is the best choice for maximum throughput, for high granularity tasks like CV, even distributing VMs over four continents only slows down performance by 7%. However, intercontinental training leads to a significant penalty on a task with lower granularity, like NLP, resulting in a performance drop of 41% (C-8) compared to the fully local experiment (A-8). Finally, each additional region introduces a constant penalty that is not amortized by adding local hardware, which should be considered when running geo-distributed training setups.
 
-#### <span id="page-6-0"></span>5 MULTI-CLOUD PERFORMANCE
+## <span id="page-6-0"></span>5 MULTI-CLOUD PERFORMANCE
 
 Using multiple cloud providers makes sense if we want to use resources cost-effectively and have additional reliability. In our scenario, we are interested in what throughput per \$ can be expected and if any barriers prevent multi-cloud training. However, one can also consider the data center's carbon footprint, which can change depending on the season and time of day [6].
 
@@ -652,96 +213,16 @@ cheaper at only \$0.02/GB. Because of the additional offerings around compute, s
 
 With the multi-cloud experiments from this section, we want to evaluate the following scenarios: First, partially switching from one provider to another without stopping the training. Second, scaling resources in the same region when one of the cloud providers is already at capacity for spot-priced VMs or the current price is too high [24]. We know from Section 4 that scaling resources in the same location can significantly improve performance, which may only be possible using additional cloud providers.
 
-**Experimental design**. To enable a fair comparison between the cloud providers, we rented hardware most similar to each other in the same region. We used each provider's default settings and only changed hardware specs. For GC, it is the same instance as in Section 4. At AWS, it is a g4dn. 2xlarge with eight cores and 32 GB in the us-west-2c region. Unfortunately, we had to make two compromises with Azure. There was only the combination of four cores and 30 GB RAM (NC4as\_T4\_v3), and there were no T4 GPU resources available in the us-west, so we had to fall back to us-south-2.
+**Experimental design**. To enable a fair comparison between the cloud providers, we rented hardware most similar to each other in the same region. We used each provider's default settings and only changed hardware specs. For GC, it is the same instance as in Section 4. At AWS, it is a g4dn.2xlarge with eight cores and 32 GB in the us-west-2c region. Unfortunately, we had to make two compromises with Azure. There was only the combination of four cores and 30 GB RAM (NC4as\_T4\_v3), and there were no T4 GPU resources available in the us-west, so we had to fall back to us-south-2.
 
 The network profiling between all cloud providers in Table 4 shows that their intra-cloud connectivity is comparably fast with 6.4, 4.9, and 7.6 Gb/s for GC, AWS, and Azure, respectively. All connections are mostly symmetric, with inter-cloud connectivity between GC and AWS providing up to 1.8 Gb/s and a ping of 15.3ms, indicating that while they are likely not in the same data center, they are close to each other and connected to the same Internet exchange point. However, connectivity to Azure could be better since it operates in a different zone, with a bandwidth of 0.5 Gb/s and a ping of 51ms.
 
 Our experimental setup consists of four GPUs with equal contributions from each cloud provider. D-1 is the baseline with four GPUs at GC, D-2 with two GPUs each at GC and AWS, and D-3 with two GPUs at GC and Azure. We compare moving two VMs to a different cloud provider to see the impact on cost and throughput.
 
-(1) No inter-cloud throughput penalty. Figure 10 shows the throughput and granularity of each multi-cloud experiment. CV and NLP runs have essentially identical throughput regardless of the combination of cloud providers. Only the D-3 experiments show a very slight slowdown in communication time, reflected in the lower granularity score (Figure 10b) of 12.72 in CV and 1.99 in NLP compared to the D-1 baseline scores of 14.48 and 2.73, respectively. Actual throughput was between 1-2% slower than the baseline, which is negligible and only related to the slightly worse connection to the Azure data center. These results confirm our observation from Section 4 that network connectivity determines scalability, and one can easily train in a multi-cloud scenario.
-
-(2) External egress costs can overshadow VM costs. One drawback to training in multiple regions or zones is that egress traffic can incur additional costs depending on the cloud provider. We have summarized the cost of egress traffic within a zone (intra-zone), between zones in each region (inter-zone), and between continents in Section 1. Notably, any traffic to Oceania (Australia, New Zealand, and others, abbreviated as OCE) generates the highest cost of \$0.15/GB for GC. We have broken down the costs for the multi-cloud experiment in Figure 11a on an hourly per-VM basis. With only four peers in the D-1/2/3 experiments, we have an N-to-N communication, i.e.,
+- (1) No inter-cloud throughput penalty. Figure 10 shows the throughput and granularity of each multi-cloud experiment. CV and NLP runs have essentially identical throughput regardless of the combination of cloud providers. Only the D-3 experiments show a very slight slowdown in communication time, reflected in the lower granularity score (Figure 10b) of 12.72 in CV and 1.99 in NLP compared to the D-1 baseline scores of 14.48 and 2.73, respectively. Actual throughput was between 1-2% slower than the baseline, which is negligible and only related to the slightly worse connection to the Azure data center. These results confirm our observation from Section 4 that network connectivity determines scalability, and one can easily train in a multi-cloud scenario.
+- (2) External egress costs can overshadow VM costs. One drawback to training in multiple regions or zones is that egress traffic can incur additional costs depending on the cloud provider. We have summarized the cost of egress traffic within a zone (intra-zone), between zones in each region (inter-zone), and between continents in Section 1. Notably, any traffic to Oceania (Australia, New Zealand, and others, abbreviated as OCE) generates the highest cost of \$0.15/GB for GC. We have broken down the costs for the multi-cloud experiment in Figure 11a on an hourly per-VM basis. With only four peers in the D-1/2/3 experiments, we have an N-to-N communication, i.e.,
 
 <span id="page-7-1"></span>![](_page_7_Figure_0.jpeg)
-
-**Figure Description:**
-**Figure Context:**
-This image presents a comprehensive analysis of the carbon emissions, model sizes, and energy consumption of various models, including LLa
-**Figure Data (Q&A):**
-
-Q: What is the size of the LLa
-Q: How many
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-
-
-
-
-[描述已截斷以避免過長]
-
 
 Figure 11: Costs breakdown for D-2/3 and C-8 experiments.
 
@@ -751,103 +232,21 @@ First, loading data from Backblaze costs \$0.01/GB from anywhere in the world, w
 
 Second, the external egress costs for the NLP experiments are very high compared to the other costs. They are 2.2x higher than the spot instance for GC and 5.7x higher for Azure, as the traffic costs in the US zone are \$0.01/GB and \$0.02/GB, respectively. The Azure cost is even higher (\$0.763/h) than the on-demand instance price of \$0.489/h. The CV experiments are much less affected due to the smaller model size, but Azure still manages to almost match its spot instance price of \$0.134/h with the external egress cost of \$0.115/h.
 
+Finally, the total compute cost, including egress and data loading in this multi-cloud constellation, is the sum of all the cloud providers' prices times the number of VMs used. For the CV experiments, GC, AWS, and Azure cost \$0.762/h, \$1.192/h, and \$0.363/h, respectively, making the combination of GC with Azure 42% cheaper than GC with AWS. For the NLP experiments, GC, AWS, and Azure cost \$0.835/h, \$1.05/h, and \$0.973/h, respectively, and GC combined with Azure is better than GC with AWS by a smaller margin of 3.9%. However, the intercontinental network egress prices for both GC and Azure are up to 15 times higher than the inter-zone prices, so what about the cost-effectiveness compared to geo-distributed experiments?
 
-[描述已截斷以避免過長]
+(3) Geo-distributed egress can incur most of the cost. To illustrate the cost of intercontinental training, we use our C-8 experiment with two VMs in four continents from Section 4 to plug the cost for each cloud provider. The egress costs are calculated slightly differently than in the D-2 and D-3 experiments because four groups of two VMs average locally and then distribute the gradients across the other groups. This results in  $\frac{8}{20}$  internal egress calls (two calls between each group),  $\frac{6}{20}$  intercontinental egress calls (two calls between three regions), and  $\frac{6}{20}$  AUS egress calls (three regions share their gradients with AUS and vice versa).
 
+Figure 11b shows the resulting egress traffic cost per VM. The high cost between continents scales to a multiple of the remaining
 
-Unfortunately, the provided image does not contain a table. I will move on to the next section.
-
-**Section 2: Chart/PLOT**
-
-The image contains multiple charts and plots. I will extract the data points and describe the charts.
-
-**Chart 1: Egress MB per Second**
-
-| Label | Value |
-| --- | --- |
-| RN18 | 1.5 |
-| RN50 | 2.5 |
-| RN50 | 3.5 |
-| RN50 | 4.5 |
-| RN50 | 5.5 |
-| RN50 | 6.5 |
-| RN50 | 7.5 |
-| RN50 | 8.5 |
-| RN50 | 9.5 |
-| RN50 | 10.5 |
-| RN50 | 11.5 |
-| RN50 | 12.5 |
-| RN50 | 13.5 |
-| RN50 | 14.5 |
-| RN50 | 15.5 |
-| RN50 | 16.5 |
-| RN50 | 17.5 |
-| RN50 | 18.5 |
-| RN50 | 19.5 |
-| RN50 | 20.5 |
-| RN50 | 21.5 |
-| RN50 | 22.5 |
-| RN50 | 23.5 |
-| RN50 | 24.5 |
-| RN50 | 25.5 |
-| RN50 | 26.5 |
-| RN50 | 27.5 |
-| RN50 | 28.5 |
-| RN50 | 29.5 |
-| RN50 | 30.5 |
-| RN50 | 31.5 |
-| RN50 | 32.5 |
-| RN50 | 33.5 |
-| RN50 | 34.5 |
-| RN50 | 35.5 |
-| RN50 | 36.5 |
-| RN50 | 37.5 |
-| RN50 | 38.5 |
-| RN50 | 39.5 |
-| RN50 | 40.5 |
-| RN50 | 41.5
-| RN50 | 42.5
-| RN50 | 43.5
-| RN50 | 44.5
-| RN50 | 45.5
-| RN50 | 46.5
-| RN50 | 47.5
-| RN50 | 48.5
-| RN50 | 49.5
-| RN50 | 50.5
-| RN50 | 51.5
-| RN50 | 52.0
-| RN50 | 53.0
-| RN50 | 54.0
-| RN50 | 55.0
-| RN50 | 56.0
-| RN50 | 57.0
-| RN50 | 58.0
-| RN50 | 59.0
-| RN50 | 60.0
-| RN50 | 61.0
-| RN50 | 62.0
-| RN50 | 63.0
-| RN50 | 64.0
-| RN50 | 65.0
-| RN50 | 66.0
-| RN50 | 67.0
-| RN50 | 68.0
-| RN50 | 69.0
-| RN50 | 70.0
-| RN50 | 71.0
-| RN50 | 72.0
-| RN50 | 73.0
-| RN50 | 74.0
-| RN50 | 75. 0
-| RN50 | 76.0
-
+<span id="page-7-2"></span>![](_page_7_Figure_8.jpeg)
 
 Figure 12: Baseline egress rate on 2-8 A10 GPUs.
 
-cost for CV and NLP with GC and Azure. For NLP, the external egress cost for GC is \$4.329/h, more than 90% of the total cost per VM (\$4.804/h). Even with Azure having a more moderate rate of \$0.02/GB for intercontinental communication and only \$0.
+cost for CV and NLP with GC and Azure. For NLP, the external egress cost for GC is \$4.329/h, more than 90% of the total cost per VM (\$4.804/h). Even with Azure having a more moderate rate of \$0.02/GB for intercontinental communication and only \$0.08/GB for OCE traffic, it still results in \$1.882/h external egress cost (\$2.101/h total). This is in contrast to AWS, which has a cap of \$0.02/GB to any location, resulting in the best total cost of \$1.376/h per VM. The relatively high AWS instance cost compares favorably to the other cloud providers regarding geo-distributed training. Keeping egress traffic in mind when deciding to scale to other continents is essential, as it can be the most significant part of the total cost. This raises another question: If egress traffic matters so much, how does model size affect it?
 
-[描述已截斷以避免過長]
+(4) Small models have lower egress rates than larger models. Model size affects two parts of the distributed training time. First, larger models tend to have slower averaging rates, but more data movement costs due to their size. However, larger models are also averaged less frequently because they take longer to perform a step. To analyze this, we review the experiments in Section 3, where we evaluate different model sizes and GPUs counts. Figure 12 shows the average egress rate over each experiment's runtime for both CV and NLP from two to eight A10 GPUs. The trend is clear: the smaller the model, the lower the egress rate for all GPUs (e.g., RN18 vs. RN50). This is surprising, as the "square-cube" law [37] states that with a decrease in parameters, the calculation time will decrease quadratically while the communication time decreases linearly. This means that with a sufficiently small model, most of the training will consist of communication time, and the egress rate would increase, as it is defined through parameter count . However, we find that even with our smallest model, RN18, with 11.7M parameters and eight A10 GPUs, we are still not at the point where the communication time takes up most of the time.
+
+In summary, multi-cloud training is generally possible and can be cost-effective when keeping the egress costs and granularity in mind. Regardless of the cloud provider, staying in the same region is preferred, with the US having the most favorable egress price offers. A significant portion of the cost may be hidden in egress costs, accounting for more than 90% of the total cost in our NLP experiments in GC and Azure. Based on the additional egress costs alone, renting on-demand hardware may be more advantageous than using spot instances between different regions. CV training is generally more calculation- than communication-heavy, resulting in slightly higher data-loading but fewer egress costs. However, from our experiments, this is a favorable trade-off because data-loading is much cheaper than egress costs.
 
 #### <span id="page-7-0"></span>6 HYBRID-CLOUD PERFORMANCE
 
@@ -855,11 +254,11 @@ Can augmenting on-premise hardware with cloud resources be worthwhile to speed u
 
 <span id="page-8-0"></span>Table 5: Average hybrid-cloud throughput and latency.
 
-| (a) Single stream TCP throughput in Gb/s. |       |       |        | (b) ICMP Latency in ms. |       |        |        |
-|-------------------------------------------|-------|-------|--------|-------------------------|-------|--------|--------|
-| To From                                   | EU T4 | US T4 | US A10 | To From                 | EU T4 | US T4  | US A10 |
-| RTX8000                                   | 0.45  | 0.06  | 0.05   | RTX8000                 | 16.73 | 150.80 | 159.05 |
-| DGX-2 (8xV100                             | 0.55  | 0.08  | 0.07   | DGX-2 (8xV100)          | 16.19 | 150.27 | 158.54 |
+| (a) Single stream TCP throughput in Gb/s. |       |       |        | (b) ICMP Latency in ms. |       |        |        |  |
+|-------------------------------------------|-------|-------|--------|-------------------------|-------|--------|--------|--|
+| To From                                   | EU T4 | US T4 | US A10 | To<br>From              | EU T4 | US T4  | US A10 |  |
+| RTX8000                                   | 0.45  | 0.06  | 0.05   | RTX8000                 | 16.73 | 150.80 | 159.05 |  |
+| DGX-2 (8xV100)                            | 0.55  | 0.08  | 0.07   | DGX-2 (8xV100)          | 16.19 | 150.27 | 158.54 |  |
 
 <span id="page-8-2"></span>Table 6: Hybrid- vs. cloud-only throughput for the (E) setting.
 
@@ -870,118 +269,29 @@ Can augmenting on-premise hardware with cloud resources be worthwhile to speed u
 
 <span id="page-8-1"></span>![](_page_8_Figure_4.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comprehensive analysis of various AI models' performance, including L- 3, L- 2, L- 1, and L- 0, with a focus on their performance, carbon emissions, and data- 1- 2- 3- 4- 5- 6- 7- 8- 9- 10- 11- 12- 13- 14- 15- 16- 17- 18- 19- 20- 21- 22- 23- 24- 25- 26- 27- 28- 29- 30- 31- 32- 33- 34- 35- 36- 37- 38- 39- 40- 41- 42- 43- 44- 45- 46- 47- 48- 49- 50- 51- 52- 53- 54- 55- 56- 57- 58- 59- 60- 61- 62- 63- 64- 65- 66- 67- 68- 69- 70- 71- 72- 73- 74- 75- 76- 77- 78- 79- 80- 81- 82- 83- 84- 85- 86- 87- 88- 89- 90- 91- 92- 93- 94- 95- 96- 97- 98- 99- 100- 101- 102- 103- 104- 105- 106- 107- 108- 109- 10- 11- 12- 13- 14- 15- 16- 17- 18- 19- 20- 21- 22- 23- 24- 25- 26- 27- 28- 29- 30- 31- 32- 33- 34- 35- 36- 37- 38- 39- 40- 41- 42- 43- 44- 45- 46- 47- 48- 49- 50- 51- 52- 53- 54- 55- 56- 57- 8- 9- 10- 11- 12- 13- 14- 15- 16- 17- 18- 19- 20- 21- 22- 23- 24- 25- 26- 27- 28- 29- 30- 31- 32- 33- 34- 35- 36- 37- 8- 9- 10- 11- 12- 13- 14- 15- 16- 17- 18- 19- 20- 21- 22- 23- 24- 25- 26- 27- 28- 29- 30- 31- 32- 33- 4- 5- 6- 7- 8- 9- 10- 11- 12- 13- 14- 15- 16- 17- 18- 19- 20- 21- 22- 23- 24- 25- 26- 27- 28- 29- 30- 31- 32- 33- 4- 5- 6- 7- 8- 9
-
-
-
-
-Note: The actual data is not provided in the original image, so I've created a sample table based on the context. The actual data may vary depending on the source.
-
-
-[描述已截斷以避免過長]
-
-
-| **GPU Type** | **RTX8000** | **EU T4 (E-A)** | **US T4 (E-B)** | **US A10 (E-C)** |
-| **---** | **---** | **---** | **---** | **---** |
-| **GPU Count** | 1 | 2 | 3 | 4 |
-| **GPU Count** | 1 | 2 | 3 | 4 |
-
-**Table 2:**
-
-**Table 3:**
-
-**Chart 1:**
-
-| **Label** | **Value** |
-| **---** | **---** |
-| **GPU Count** | 1 | 2 | 3 | 4 |
-| **GPU Count** | 1 | 2 | 3 | 4 |
-
-**Chart 2:**
-
-| **Label** | **Value** |
-| **---** | **---** |
-| **GPU Count** | 1 | 2 | 3 | 4 |
-| **GPU Count** | 1 | 2 | 3 | 4 |
-| **G** | 1 | 2 | 3 | 4 |
-
-**Chart 3:**
-
-| **Label** | **Value** |
-| **---** | **---** |
-| **G** | 1 | 2 | 3 | 4 |
-| **G** | 1 | 2 | 3 | 4 |
-
-**Chart 4:**
-
-**Chart 5:**
-
-| **Label** | **Value** |
-| **---** | **—** |
-| **G** | 1 | 2 | 3 | 4 |
-| **G** | 1 | 2 | 3 | 4 |
-
-**Chart 6:**
-
-| **Label** | **Value** |
-| **—** | **—** |
-| **G** | 1 | 2 | 3 | 4 |
-| **G** | 1 | 2 | 3 | 4 |
-
-**Chart 7:**
-
-| **Label** | **
-
 Figure 13: Hybrid-cloud experiments for the (E) setting.
 
-settings: **(E)**, where a consumer-grade GPU, the RTX8000, is deployed on-site, and **(F)**, where a server-grade node, the DGX-2 (8xV100), is deployed on-site. We vary the extra resources, between one to eight T4 EU ({E,F}-A), T4 US ({E,F}-B) and A10 US ({E,F}-C) GPUs.
+settings: **(E)**, where a consumer-grade GPU, the RTX8000, is deployed on-site, and **(F)**, where a server-grade node, the DGX-2 (8xV100), is deployed on-site. We vary the extra resources, between one to eight T4 EU ( $\{E,F\}$ -A), T4 US ( $\{E,F\}$ -B) and A10 US ( $\{E,F\}$ -C) GPUs.
 
-**Experimental design.** In both settings, we want to investigate how to extend local hardware with cloud resources and when this leads to better throughput. The cloud resources, in this case, are the same US/EU GC T4 instances as in Section 4 and the US LambdaLabs A10 GPUs from Section 3. We double the number of cloud VMs with each increment, starting with one additional GPU (i.e., E-A-1) until we have eight additional cloud VMs (i.e., E-A-8).
+**Experimental design.** In both settings, we want to investigate how to extend local hardware with cloud resources and when this leads to better throughput. The cloud resources, in this case, are the same US/EU GC T4 instances as in Section 4 and the US LambdaLabs A10 GPUs from Section 3. We double the number of cloud VMs with each increment, starting with one additional GPU (i.e., E-A-1) until we have eight additional cloud VMs (i.e., E-A-8). This allows us to compare the same hardware in the EU and the US, and slightly weaker, local hardware (EU T4) and better, but more distant hardware (US A10).
 
-[描述已截斷以避免過長]
+Both the **(E)** and **(F)** setups share the network uplink between 450 and 550 Mb/s to the EU datacenter in Belgium, as they are located in the same building in Europe (Table 5). However, as this is not a Google-owned datacenter, the traffic is partly going over the public internet, which results in a lower bandwidth of 50 and 80 Mb/s to the US-based VMs compared to 210 Mb/s between the US and EU GC datacenters (Table 3a).
 
+(E) Consumer-grade setting. The results follow the same trend as in Section 4. The CV task has a higher granularity of 8.21 with 2 GPUs at E-A-1 than NLP (1.27) (Figures 13b and 13d), and scales regardless of the location of the cloud resources (Figure 13a). We almost match the baseline throughput of 195 SPS at 5 GPUs in all settings for CV (E-A-4, E-B-4, E-C-4). The best throughput was reached at E-C-8 with the US A10 GPUs with 429 SPS. For NLP, only the E-A-8 experiment beats the baseline with a speedup of 1.29x and 556 SPS due to the low granularity and the intercontinental base penalty for the US experiments.
 
-Unfortunately, there is no table to process. Please provide the table or image, and I'll follow the instructions to extract the content.
-
-**Chart/Pilot Processing:**
-
-The image is not provided, so I'll describe the process for chart and plot processing:
-
-1. **Chart/Pilot Processing:**
-   - No data points to extract.
-   - No chart or plot to process.
-
-**Diagrams:**
-
-No diagrams are provided. If you provide the image, I'll follow the instructions to extract the content.
-
-**Mathematical Formulas:**
-
-No mathematical formulas are provided. If you provide the image, I'll follow the instructions to extract the content.
-
-**Output Format:**
-
-Since there is no image or data to process, I'll provide a sample output format:
-
-| **Table/Chart/Plot/ Diagram** | **Description** |
-| **Table/Chart/Plot/ Diagram** | **Description** |
-
-Please provide the image or data, and I'll follow the instructions to extract the content.
-
-**Critical Rules:**
-
-I'll follow the critical rules to ensure accurate and complete extraction. I'll not repeat the same information multiple times, and I'll follow the instructions to provide a clear and concise output.
-
-Please provide the image or data, and I'll follow the instructions to extract the content. If you need further assistance, please provide the image or data, and I'll guide you through the extraction process.
+<span id="page-8-3"></span>![](_page_8_Figure_10.jpeg)
 
 Figure 14: Hybrid-cloud experiments for the (F) setting.
 
-However, is combining on-premise and remote cloud resources better than using the cloud without paying the intercontinental bandwidth tax? To analyze this, we compare the **(E)** experiments with the 8xA10 experiment from Section 3 and 8xT4 experiment from Section 4 in Section 6.
+However, is combining on-premise and remote cloud resources better than using the cloud without paying the intercontinental bandwidth tax? To analyze this, we compare the **(E)** experiments with the 8xA10 experiment from Section 3 and 8xT4 experiment from Section 4 in Section 6. First, the 8xA10 experiments are the fastest for both CV and NLP, which removes the respective hybrid-cloud combination from contention (E-C-8). Second, the 8xT4 experiments for NLP are faster than any other hybrid-cloud setup, making the cloud-only solution favorable. Finally, while we always beat the baseline 8xT4 CV throughput (261.9 SPS), but in the case of E-B-8 (283.5 SPS), just barely. The throughput of E-A-8 (316.8 SPS) makes the hybrid-cloud setup the most favorable in terms of relative GPU scaling (32.5 SPS per GPU), but it does not come close to the best cloud-only throughput of 8xA10 with 620.6 SPS.
 
-[描述已截斷以避免過長]
+Summarizing, the cloud-only experiments are the fastest overall due to their single-GPU throughput and locality. Adding cloud resources to on-premise hardware leads to a high communication time, which is not compensated by the additional processing speed of the GPUs. Proximity to the on-premise hardware is essential, as the more local cloud resources (E-A-8) consistently resulted in a better throughput than the same remote cloud resources (E-B-8).
 
+**(F) Server-grade setting.** The baseline throughput is significantly higher compared to the RTX8000, with a much more powerful 8xV100 DGX node to 413 SPS for CV and 1811 SPS for NLP (Figures 14a and 14c) via PyTorch data parallelism [26]. This increases the penalties from Section 3, leading to the only speedup from baseline for CV in experiments F-A-8 (507 SPS) and F-C-8 (510 SPS). This is surprising, as the older T4 GPUs in the EU perform similarly to the much newer A10 GPUs in the US, showcasing the trade-off between slower, local compute and faster, remote compute. The granularity of 2.46 for F-A-8 shows that there is enough calculation time to distribute, while the F-C-8 experiments spend  $\approx$  62% of the total training time on communication with a granularity of 0.57 (Figure 14b). The NLP experiments never reach the baseline throughput of the 8xV100 due to using most of the time for communication. The NLP F-B and F-C experiments mainly consist of communication (Figure 14d) with a granularity of up to 0.02, which results in a nonlinear, unstable training time due to the minimum matchmaking time issue (2) from Section 3.
+
+In summary, the hybrid-cloud experiments conclude that while on-premise hardware can be augmented with cloud resources, it will likely be cost-efficient if all resources are on the same continent. Using only cloud resources is more advantageous if the on-premises hardware is not co-located.
+
+<span id="page-9-0"></span>![](_page_9_Figure_0.jpeg)
 
 Figure 15: Cost to throughput tradeoff for RoBERTaXLM at different instance types. Our training setups (circled), that are due the low granularity of the NLP model, neither cheaper, nor faster than the centralized offering (DGX-2).
 
@@ -1009,7 +319,7 @@ Third, the time required for the new peer to synchronize the training state with
 
 Finally, while the VM setup and synchronization of the training state take time, the interruption frequency significantly affects the final throughput. We faced difficulties acquiring even a single spot VM during our GC experiments during daylight hours. This highlights the need for systems like SkyPilot [\[43\]](#page-12-6), which utilizes automation to deploy spot instances across various clouds and zones. In our case, the interruption frequency can be used as a penalty on the training throughput, i.e., a 5% interruption frequency over the entire training time means roughly a 5% slower training.
 
-## 8 LESSONS LEARNED
+# 8 LESSONS LEARNED
 
 We find it important to summarize our findings more generically to provide guidance for DL practitioners that want to perform distributed spot training. These lessons are based on the Sections [3](#page-2-0) to [6.](#page-7-0)
 
@@ -1047,63 +357,13 @@ We perform a case study on Automatic Speech Recognition (ASR) to showcase spot t
 
 <span id="page-11-1"></span>![](_page_11_Figure_8.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents an analysis of the performance and carbon emissions of a GShard-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19-20-21-22-23-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
-
-
-
-
-[描述已截斷以避免過長]
-
-
-Unfortunately, the image does not contain a table. I will move on to the next sections.
-
-**Line Graph Section**
-
-The line graph section is not present in the provided image. I will move on to the next section.
-
-**Bar Chart Section**
-
-The bar chart section is not present in the provided image. I will move on to the next section.
-
-**No Data to Process**
-
-The provided image does not contain any data to process. I will provide a final answer based on the instructions.
-
-**Final Answer**
-
-There is no data to extract from the provided image. The image does not contain any tables, line graphs, or bar charts. I will provide a final answer based on the instructions.
-
-**No Data to Extract**
-
-There is no data to process from the provided image. The image does not contain any tables, line graphs, or bar charts. I will provide a final answer based on the instructions.
-
-There is no data to extract from the provided image. The image does not contain any tables, line graphs, or
-The provided image appears to be a scientific image with multiple sections: a table, a line graph, and a bar chart. I will process each section according to the instructions.
-
-Unfortunately, the image does not contain a line graph section. I will move on to the next section.
-
-Unfortunately, the image does not contain a bar chart section. I will move on to the next section.
-
-There is no data to extract from the provided image. The image does not contain
-
 Figure 16: WhisperSmall performance with varying TBS.
 
 <span id="page-11-2"></span>![](_page_11_Figure_10.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a scatter plot comparing the performance of various AI models, including L- 2- 3- 4- 5- 6- 7- 8- 9- 10- 11- 12- 13- 14- 15- 16- 17- 18- 19- 20- 21- 22- 23- 24- 25- 26- 27- 28- 29- 30- 31- 32- 33- 34- 35- 36- 37- 38- 39- 40- 41- 42- 43- 44- 45- 46- 47- 48- 49- 50- 51- 52- 53- 54- 55- 56- 57- 58- 59- 60- 61- 62- 63- 64- 65- 66- 67- 68- 69- 70- 71- 72- 73- 74- 75- 76- 77- 78- 79- 80- 81- 82- 83- 84- 85- 86- 87- 88- 89- 90- 91- 92- 93- 94- 95- 96- 97- 98- 99- 100- 101- 102- 103- 104- 105- 106- 107- 108- 109- 10- 11- 12- 13- 14- 15- 16- 17- 18- 19- 20- 21- 22- 23- 24- 25- 26- 27- 28- 29- 30- 31- 32- 33- 34- 35- 36- 37- 38- 39- 40- 41- 42- 43- 44- 45- 46- 47- 48- 49- 50- 51- 52- 53- 54- 55- 56- 57- 58- 9- 10- 11- 12- 13- 14- 15- 16- 17- 18- 19- 20- 21- 22- 23- 24- 25- 26- 27- 28- 29- 30- 31- 32- 33- 34- 35- 36- 37- 38- 39- 40- 41- 42- 43- 44- 45- 46- 47- 48- 49- 50- 51- 52- 53- 54- 55- 6- 7- 8- 9- 10- 11- 12- 13- 14- 15- 16- 17- 18- 19- 20- 21- 22- 23- 24- 25- 26- 27- 28- 29- 30- 31- 32- 33- 34- 35- 36- 37- 38- 39- 40- 41- 42- 43- 44- 45- 46- 47- 48- 49- 50- 51- 52- 53- 54- 55- 6- 7- 8- 9- 10-
-
-
-
-
 Figure 17: Cost to throughput tradeoff for WhisperSmall at TBS=1024 with different instance types. Our training setups (circled) provide mixed result of being slightly faster and more expensive than comparable, centralized DDP offering.
 
-transcribe audio. It features different sizes, from 37.8M to 1.5B parameters, and was trained with a minibatch size of 256. We use the Commonvoice [11] dataset, preprocessed to Log-Mel spectrograms. In our distributed experiments, we start with a TBS of 256 and increase to 512 and 1024 to combat potential granularity issues.
-
-[描述已截斷以避免過長]
+transcribe audio. It features different sizes, from 37.8M to 1.5B parameters, and was trained with a minibatch size of 256. We use the Commonvoice [11] dataset, preprocessed to Log-Mel spectrograms. In our distributed experiments, we start with a TBS of 256 and increase to 512 and 1024 to combat potential granularity issues. Due to memory constraints, only three model sizes (Tiny, Base, Small) were trainable on the T4 GPU. Unfortunately, the original TBS of 256 was not large enough to train the relatively small models due to their small granularity (0.04, 0.14 and 0.57 at 8xT4, respectively) with no performance benefits. The only model showing scaling potential is WhisperSmall, with a granularity of 1.8 with 2xT4. However, when scaling the target batch size to 512 and 1024, we see some benefit over the single GPU runs for the WhisperSmall model (Figure 16). By effectively increasing the amount of computation by the factors of 2 and 4, we can generate a speedup of 1.27× and 2.2× with 8xT4's for the TBS 512 and 1024, respectively. When compared to other hardware setups, our A100 80GB GPU and the best multi-T4 GPU on GC (4xT4) with Pytorch DDP (Figure 17) have almost double the throughput at 46 SPS and are slightly slower at 24 SPS, respectively, compared to our 8xT4 setup which runs at 28 SPS. This outcome is not surprising due to the generational leap in architecture for the A100 and the slower interconnect with our 8xT4 experiments compared to a single 4xT4 node (see Section 3 for a detailed throughput analysis). The proposed cost-throughput ratio is mixed: the A100 is at \$12.19/1M samples, the DDP 4xT4 is at \$8.41/1M, and our 8xT4 is at \$14.53/1M. Our proposed setup is slightly more expensive than the A100, and it will not scale beyond eight T4 GPUs due a granularity at 1.17, leaving the A100 as the fastest and the DDP 4xT4 setup as the cheaper but slower alternative. Despite these results, our proposed setup has several benefits, including resilience for spot interruptions, interruption-free migration to the lowest cloud prices, and the possibility to scale the GPU count up as long as granularity permits it.
 
 #### **ACKNOWLEDGMENTS**
 

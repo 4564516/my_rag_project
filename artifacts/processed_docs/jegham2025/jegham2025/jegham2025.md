@@ -60,7 +60,7 @@ CIF measures carbon emissions per kilowatt-hour of energy consumed, largely driv
 
 This section presents our novel methodology for estimating the environmental footprint of LLM inference. Our framework integrates model-specific performance metrics with infrastructure-level environmental multipliers to calculate operational energy consumption, water usage, and carbon emissions per query. We also evaluate eco-efficiency using DEA, mapping sustainability trade-offs against a composite performance benchmark, and develop an interactive dashboard for a more thorough analysis.
 
-#### 4.1 Model Selection and Hardware Estimation
+### 4.1 Model Selection and Hardware Estimation
 
 We analyze 30 large language models across OpenAI, Anthropic, Meta, and DeepSeek. Table [1](#page-3-0) summarizes each model's deployment context, including provider, cloud host, hardware type and specifications, and company-specific environmental multipliers (PUE, WUE, CIF). All models are usually run on NVIDIA DGX systems using A100, H100, H200, or H800 GPUs [\[30,](#page-14-0) [45,](#page-15-0) [46,](#page-15-1) [47,](#page-15-2) [48\]](#page-15-3). U.S.-based providers such as OpenAI and Anthropic have acquired large volumes of H200 and H100 chips [\[31,](#page-14-1) [41,](#page-14-2) [42\]](#page-14-3), making them the most probable choice for recent deployments. DeepSeek, which operates under U.S. export restrictions, uses the H800, NVIDIA's export-compliant GPU for the Chinese market [\[38,](#page-14-4) [49\]](#page-15-4). Both the H200 and H800 retain the same Hopper architecture and peak
 
@@ -68,38 +68,38 @@ Table 1: Deployment and infrastructure specifications of models.
 
 <span id="page-3-0"></span>
 
-| Model                | Launch<br>Date | Company   | Host            | Hardware                    | Critical<br>Power<br>(kW) | PUE           | WUE<br>(on-site, L/kWh) | WUE<br>(off-site, L/kWh) | CIF<br>(kgCO <sub>2</sub> e/kWh) |
-|----------------------|----------------|-----------|-----------------|-----------------------------|---------------------------|---------------|-------------------------|--------------------------|----------------------------------|
-| GPT-4.1              | Apr, 2025      |           |                 |                             |                           |               |                         |                          |                                  |
-| GPT-4.1 mini         | Apr, 2025      |           |                 |                             |                           |               |                         |                          |                                  |
-| GPT-4.1 nano         | Apr, 2025      |           |                 |                             |                           |               |                         |                          |                                  |
-| o4-mini (high)       | Apr, 2025      |           |                 |                             |                           |               |                         |                          |                                  |
-| 03                   | Apr, 2025      |           |                 |                             |                           |               |                         |                          |                                  |
-| o3-mini (high)       | Jan, 2025      | OpenAI    | Microsoft Azure | DGX H200/H100 [30, 31]      | 10.20 [32]                | 1.12 [33]     | 0.30 [34]               | 4.35 [35]                | 0.35 [36]                        |
-| o3-mini              | Jan, 2025      |           |                 |                             |                           |               |                         |                          |                                  |
-| o1                   | Dec, 2024      |           |                 |                             |                           |               |                         |                          |                                  |
-| o1-mini              | Sep, 2024      |           |                 |                             |                           |               |                         |                          |                                  |
-| GPT-40 (Mar '25)     | May, 2024      |           |                 |                             |                           |               |                         |                          |                                  |
-| GPT-40 mini          | July, 2024     |           |                 |                             |                           |               |                         |                          |                                  |
-| GPT-4 Turbo          | Nov, 2023      | OpenAI    | Microsoft Azure | DGX A100*                   | 6.50[37]                  | 1.12          | 0.30                    | 4.35                     | 0.35                             |
-| GPT-4                | Mar. 2023      |           |                 |                             |                           |               |                         |                          |                                  |
-| DeepSeek-R1          | Jan, 2025      | ъ .       | ъ .             | DGW 11000 101               | 10.20.5203                | 1.07.1003     | 1.20.5203               | ( 01 ( 125)              | 0.61403                          |
-| DeepSeek-V3          | Dec, 2024      | Deepseek  | Deepseek        | DGX H800 [8]                | 10.20 [38]                | 1.27 [39]     | 1.20 [39]               | 6.016 [35]               | 0.6 [40]                         |
-| DeepSeek-R1          | Jan, 2025      | ъ .       |                 | crosoft Azure DGX H200/H100 | 10.20                     | 1.12          | 0.30                    | 4.35                     | 0.35                             |
-| DeepSeek-V3          | Dec. 2024      | Deepseek  | Microsoft Azure |                             |                           |               |                         |                          |                                  |
-| Claude-3.7 Sonnet    | Feb. 2025      |           |                 |                             |                           |               |                         |                          |                                  |
-| Claude-3.5 Sonnet    | Jun, 2024      |           | 17770           | DGW 11200 #1100 F41 421     | 10.20                     | 1 1 4 5 4 2 3 | 0.10.5403               | 5 11 (25)                | 0.207.5443                       |
-| Claude-3.5 Haiku     | Nov, 2024      | Anthropic | AWS             | DGX H200/H100 [41, 42]      | 10.20                     | 1.14 [43]     | 0.18 [43]               | 5.11 [35]                | 0.287 [44]                       |
-| LLaMA-3.3 70B        | Dec. 2024      |           |                 |                             |                           |               |                         |                          |                                  |
-| LLaMA-3.2-vision 90B | Sep, 2024      |           |                 |                             |                           |               |                         |                          |                                  |
-| LLaMA-3.2-vision 11B | Sep, 2024      |           |                 |                             |                           |               |                         |                          |                                  |
-| LLaMA-3.2 3B         | Sep, 2024      |           |                 |                             |                           |               |                         |                          |                                  |
-| LLaMA-3.2 1B         | Sep, 2024      |           |                 | DGX H200/H100               | 10.20                     | 1.14          | 0.18                    | 5.11                     | 0.287                            |
-| LLaMA-3.1-405B       | Jul. 2024      | Meta      | AWS             |                             |                           |               |                         |                          |                                  |
-| LLaMA-3.1-70B        | Jul. 2024      |           |                 |                             |                           |               |                         |                          |                                  |
-| LLaMA-3.1-8B         | Jul. 2024      |           |                 |                             |                           |               |                         |                          |                                  |
-| LLaMA-3-70B          | Apr., 2024     |           |                 |                             |                           |               |                         |                          |                                  |
-| LLaMA-3-8B           | Apr, 2024      |           |                 |                             |                           |               |                         |                          |                                  |
+| Model                | Launch<br>Date | Company   | Host            | Hardware               | Critical<br>Power<br>(kW) | PUE       | WUE<br>(on-site, L/kWh) | WUE<br>(off-site, L/kWh) | CIF<br>(kgCO <sub>2</sub> e/kWh) |
+|----------------------|----------------|-----------|-----------------|------------------------|---------------------------|-----------|-------------------------|--------------------------|----------------------------------|
+| GPT-4.1              | Apr, 2025      |           |                 |                        |                           |           |                         |                          |                                  |
+| GPT-4.1 mini         | Apr, 2025      |           |                 |                        |                           |           |                         |                          |                                  |
+| GPT-4.1 nano         | Apr, 2025      |           |                 |                        |                           |           |                         |                          |                                  |
+| o4-mini (high)       | Apr, 2025      |           |                 |                        |                           |           |                         |                          |                                  |
+| 03                   | Apr, 2025      |           |                 |                        |                           |           |                         |                          |                                  |
+| o3-mini (high)       | Jan, 2025      | OpenAI    | Microsoft Azure | DGX H200/H100 [30, 31] | 10.20 [32]                | 1.12 [33] | 0.30 [34]               | 4.35 [35]                | 0.35 [36]                        |
+| o3-mini              | Jan, 2025      |           |                 |                        |                           |           |                         |                          |                                  |
+| o1                   | Dec, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
+| o1-mini              | Sep, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
+| GPT-4o (Mar '25)     | May, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
+| GPT-40 mini          | July, 2024     |           |                 |                        |                           |           |                         |                          |                                  |
+| GPT-4 Turbo          | Nov, 2023      | OpenAI    | Microsoft Azure | DGX A100*              | 6.50[37]                  | 1.12      | 0.30                    | 4.35                     | 0.35                             |
+| GPT-4                | Mar, 2023      |           |                 |                        |                           |           |                         |                          |                                  |
+| DeepSeek-R1          | Jan, 2025      | Deepseek  | Deepseek        | DGX H800 [8]           | 10.20 [38]                | 1.27 [39] | 1.20 [39]               | 6.016 [35]               | 0.6 [40]                         |
+| DeepSeek-V3          | Dec, 2024      | Deepseek  | Deepseek        | DGX 11800 [8]          |                           |           |                         |                          |                                  |
+| DeepSeek-R1          | Jan, 2025      | December  | Microsoft Azure | DGX H200/H100          | 10.20                     | 1.12      | 0.30                    | 4.35                     | 0.35                             |
+| DeepSeek-V3          | Dec, 2024      | Deepseek  |                 |                        |                           |           |                         |                          |                                  |
+| Claude-3.7 Sonnet    | Feb, 2025      |           |                 |                        |                           |           |                         |                          |                                  |
+| Claude-3.5 Sonnet    | Jun, 2024      | Anthropic | AWS D           | DGX H200/H100 [41, 42] | 10.20                     | 1.14 [43] | 0.18 [43]               | 5.11 [35]                | 0.287 [44]                       |
+| Claude-3.5 Haiku     | Nov, 2024      | Anthropic |                 |                        |                           |           |                         |                          |                                  |
+| LLaMA-3.3 70B        | Dec, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
+| LLaMA-3.2-vision 90B | Sep, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
+| LLaMA-3.2-vision 11B | Sep, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
+| LLaMA-3.2 3B         | Sep, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
+| LLaMA-3.2 1B         | Sep, 2024      | Mari      | AVVC            | DCV H200/IH00          | 10.20                     | 1.14      | 0.10                    | £ 11                     | 0.207                            |
+| LLaMA-3.1-405B       | Jul, 2024      | Meta      | AWS             | DGX H200/H100          | 10.20                     | 1.14      | 0.18                    | 5.11                     | 0.287                            |
+| LLaMA-3.1-70B        | Jul, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
+| LLaMA-3.1-8B         | Jul, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
+| LLaMA-3-70B          | Apr, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
+| LLaMA-3-8B           | Apr, 2024      |           |                 |                        |                           |           |                         |                          |                                  |
 
 <sup>\*</sup>DGX A100 was estimated for GPT-40 mini, GPT-4 Turbo, and GPT-4. Justification and estimation details are provided in Section 4.3.1.
 
@@ -122,21 +122,21 @@ $$E_{i,\{\min,\max\}} = \underbrace{\left(\frac{L_i + \frac{\text{Output Length}
 We also define an expected per-query energy as a weighted combination of both scenarios ( $w_{\rm max}=0.5$ ), and the framework aggregates all Monte Carlo draws to produce a distribution of per-query energy outcomes. The final metrics are reported as the sample mean and standard deviation:
 
 <span id="page-4-0"></span>
-$$E_{i, \exp} = w_{\max} E_{i, \max} + (1 - w_{\max}) E_{i, \min}, \quad \bar{E}_{\text{query}} = \mathbb{E}[E_{i, \exp}], \quad \sigma_{E_{\text{query}}} = \sqrt{\text{Var}[E_{i, \exp}]}$$
+$$E_{i,\text{exp}} = w_{\text{max}} E_{i,\text{max}} + (1 - w_{\text{max}}) E_{i,\text{min}}, \quad \bar{E}_{\text{query}} = \mathbb{E}[E_{i,\text{exp}}], \quad \sigma_{E_{\text{query}}} = \sqrt{\text{Var}[E_{i,\text{exp}}]}$$
  (2)
 
 This stochastic formulation captures variability in runtime, hardware utilization, and data-center efficiency, enabling robust and reproducible estimation of per-query energy consumption across diverse inference conditions.
 
 #### 4.3 Hardware-Class Attribution
 
-We stratify LLMs into five hardware classes based on model size: **Nano** (<7B), **Micro** (7–20B), **Small** (20–40B), **Medium** (40–70B), and **Large** (>70B), assigning 1, 2, 4, or 8 GPUs accordingly. Models that do not disclose parameter counts, such as OpenAI and Anthropic flagship models (e.g., GPT-40, Claude-3.7 Sonnet), are classified as **Large**, OpenAI Mini variants (e.g., GPT-40 mini) as **Medium**, and models labeled "Nano" such as GPT-4.1 nano as **Small** based on reported model performance (e.g., TPS, latency, and reasoning capabilities) [51].
+We stratify LLMs into five hardware classes based on model size: **Nano** (<7B), **Micro** (7–20B), **Small** (20–40B), **Medium** (40–70B), and **Large** (>70B), assigning 1, 2, 4, or 8 GPUs accordingly. Models that do not disclose parameter counts, such as OpenAI and Anthropic flagship models (e.g., GPT-4o, Claude-3.7 Sonnet), are classified as **Large**, OpenAI Mini variants (e.g., GPT-4o mini) as **Medium**, and models labeled "Nano" such as GPT-4.1 nano as **Small** based on reported model performance (e.g., TPS, latency, and reasoning capabilities) [51].
 
 AI companies and cloud providers typically rely on dynamic batching to optimize GPU utilization while maintaining low latency [52]. Although actual batch sizes fluctuate depending on incoming demand, they are generally constrained to a narrow range below 16 to preserve responsiveness. Benchmarks [51] show that even for large prompts, most models maintain a first-token latency below one second. Moreover, prior studies [53, 54] show that these latency values are consistent with batch sizes in the range of 4 to 16. This suggests that real-world deployments prioritize small, latency-sensitive batches over maximal throughput. Accordingly, we adopt a batch size of 8 for all primary calculations, as it represents a practical midpoint between common deployment scenarios. A detailed sensitivity analysis exploring the impact of alternative batch sizes is provided in Appendix A. The number of GPUs and their allocated power draw utilization rates for H100 systems are estimated from Splitwise [54], the Latency Processing Unit study [55], and LLM-Inference-Bench [53]. For A100 systems, we adopt measurements from Patel et al. and Kakolyris et al.'s work [56, 57]. Per-request GPU and non-GPU utilization rates are calculated as:
 
 $$U_{\text{GPU total}} = \frac{G \times D_{\text{GPU}}}{N \times B}, \qquad U_{\text{non-GPU total}} = \frac{G \times D_{\text{non-GPU}}}{N \times B}$$
 (3)
 
-where G is the number of GPUs assigned per model, N=8 is the number of GPUs per node, and B=8 is the batch size.  $D_{\rm GPU}$  denotes the assigned GPUs' power draw, expressed as a fraction of their maximum power draw, while  $D_{\rm non-GPU}=0.5$  represents the conservatively assigned fixed utilization fraction for non-GPU components (e.g., CPU, memory, storage, cooling), relative to their peak power draw [32]. We exclude idle power consumption from unutilized GPUs in partially loaded nodes, as deployment-specific telemetry is unavailable to determine whether such capacity is reassigned, load-balanced, or remains idle. Table 2 summarizes GPU and non-GPU power utilization rates across model classes. Values are rounded to typical intervals observed during inference, accounting for input processing spikes, output length, decoding complexity, and a batch size of 8 parallel requests.
+where G is the number of GPUs assigned per model, N=8 is the number of GPUs per node, and B=8 is the batch size.  $D_{\rm GPU}$  denotes the assigned GPUs' power draw, expressed as a fraction of their maximum power draw, while  $D_{\rm non\text{-}GPU}=0.5$  represents the conservatively assigned fixed utilization fraction for non-GPU components (e.g., CPU, memory, storage, cooling), relative to their peak power draw [32]. We exclude idle power consumption from unutilized GPUs in partially loaded nodes, as deployment-specific telemetry is unavailable to determine whether such capacity is reassigned, load-balanced, or remains idle. Table 2 summarizes GPU and non-GPU power utilization rates across model classes. Values are rounded to typical intervals observed during inference, accounting for input processing spikes, output length, decoding complexity, and a batch size of 8 parallel requests.
 
 <span id="page-5-1"></span>Table 2: Estimated node-level GPU and non-GPU utilization by model class for H100 and A100.
 
@@ -150,44 +150,9 @@ where G is the number of GPUs assigned per model, N=8 is the number of GPUs per 
 
 <span id="page-5-2"></span>![](_page_5_Figure_2.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the energy consumption and performance of various AI models, including LLa
-**Figure Data (Q&A):**
-
-Q: What is the mean energy consumption of the LLa
-A: 0.5 kWh
-
-Q: What is the mean energy consumption of the LLa
-
-Q: What is the mean energy consumption of the L
-
-Q: What is the mean energy
-
-Q: What is the mean
-
-
-
-
-There is no table in the provided image.
-
-**Chart/PLOT Processing**
-
-The image contains two charts: "Mean Energy Consumption by Model, Provider, & GPU" and "Average Token Per Second (TPS) Distribution by Model".
-
-### Mean Energy Consumption by Model, Provider, & GPU
-
-| Model | Provider | Energy (W) |
-| --- | --- | --- |
-| OpenAI - GPT-4o | NVIDIA H100/H200 | 0.5 |
-| OpenAI - GPT-4o | NVIDIA H100/H200 | 0.5 |
-| OpenAI - GPT-4o | NVIDIA H100/H
-| OpenAI - GPT-4o | NVIDIA H100/H
-
-
 Figure 1: (Left) Mean energy consumption of GPT-4o and GPT-4o mini across providers and GPU types, measured by output size. (Right) Distribution of TPS (averaged across output sizes)
 
-#### <span id="page-5-0"></span>4.3.1 GPT-4, GPT-4 Turbo, and GPT-4o mini Hardware Estimation
+### <span id="page-5-0"></span>4.3.1 GPT-4, GPT-4 Turbo, and GPT-4o mini Hardware Estimation
 
 In our experiment, we observed a performance discrepancy: GPT-4o mini showed significantly lower throughput and higher latency on OpenAI's API compared to Microsoft Azure under identical prompt settings, as shown in Figure [1.](#page-5-2) Both variants also underperformed relative to OpenAI's GPT-4o, with 60% and 27% lower TPS, respectively. Given GPT-4o mini's smaller size and H200's architectural advantages, its performance would be expected to match or exceed GPT-4o if served on H200 infrastructure. The observed gap is inconsistent with H200 deployment and suggests that GPT-4o mini is running on A100 or H100 systems. Notably, Azure's version outperforms OpenAI's by 47% on average, further supporting the likelihood that Azure uses H100 and OpenAI retains A100. Therefore, to validate our hardware estimations, we tested this hypothesis using two-way ANOVA and Tukey HSD (Table [3\)](#page-5-3). At 300-token prompts, energy consumption was statistically similar across platforms, as expected given the small computational load. However, at larger output sizes, significant differences emerged: OpenAI's presumed A100 deployment differed from Azure's H100 deployment with p < 0.05, and Azure's H100 also outperformed OpenAI's assumed H100 with p < 0.05, reinforcing the likelihood that OpenAI's GPT-4o mini is not served on H100. We therefore consider GPT-4o mini to be running on A100. Additionally, with reports that GPT-4 was trained and deployed on A100 systems [\[58\]](#page-15-13), and given the architectural continuity between GPT-4 and GPT-4 Turbo and their low throughput, high latency, and impending deprecation [\[59\]](#page-15-14), we also consider they are running on A100 architecture since it is unlikely that they have migrated to newer hardware.
 
@@ -205,547 +170,94 @@ This study focuses exclusively on operational emissions and resource consumption
 Water consumption and carbon emissions per query are calculated as:
 
 <span id="page-6-0"></span>Water (L) = 
-$$\underbrace{\frac{E_{\text{query}}}{\text{PUE}} \cdot \text{WUE}_{\text{site}}}_{\text{On-site cooling}} + \underbrace{E_{\text{query}} \cdot \text{WUE}_{\text{source}}}_{\text{Off-site electricity}}$$
+$$\underbrace{\frac{E_{\text{query}}}_{\text{On-site cooling}} \cdot \text{WUE}_{\text{site}}}_{\text{On-site cooling}} + \underbrace{E_{\text{query}} \cdot \text{WUE}_{\text{source}}}_{\text{Off-site electricity}}$$
 (4)
 
 <span id="page-6-1"></span>
 $$Carbon (kgCO_2e) = E_{query} \cdot CIF$$
  (5)
 
-#### 4.5 Eco-Efficiency via Data Envelopment Analysis (DEA)
+### 4.5 Eco-Efficiency via Data Envelopment Analysis (DEA)
 
 We apply cross-efficiency DEA to evaluate the effectiveness of each model in converting environmental resources into functional intelligence. Inputs include per-query energy consumption, PUE, WUEsource, WUEsite, and CIF. The output is the Artificial Intelligence Index, a composite score weighted across multiple benchmark domains [\[51\]](#page-15-6). Specifically, reasoning and knowledge tasks (MMLU-Pro [\[61\]](#page-16-0), HLE [\[62\]](#page-16-1), GPQA [\[63\]](#page-16-2)) collectively contribute 50% of the index (1/6 each); mathematical proficiency (MATH-500 [\[64\]](#page-16-3), AIME [\[65\]](#page-16-4)) contributes 25% (1/8 each); and coding ability (SciCode [\[66\]](#page-16-5), LiveCodeBench [\[67\]](#page-16-6)) accounts for the remaining 25% (1/8 each).
 
 In contrast to standard Charnes-Cooper-Rhodes (CCR) or Banker-Charnes-Cooper (BCC) models, which enable each model to choose its optimal weightings, sometimes inflating performance, crossefficiency assesses each model based on its own and all peer weightings. This approach reduces self-evaluation bias and recognizes models that maintain strong performance from various efficiency viewpoints. The resulting scores offer a more robust and comparative measure of eco-efficiency. Full results and additional discussion are provided in Appendix [C.](#page-18-0)
 
-#### 4.6 Power BI Dashboard
+### 4.6 Power BI Dashboard
 
 To democratize access to these novel assessments, we built and deployed an automated Power BI dashboard that runs our entire framework in real time, a first-of-its-kind tool for continuously tracking AI inference sustainability. The data are scraped daily from the Artificial Analysis website, cleaned automatically, and then visualized on Power BI as seen in Figures [2a](#page-7-1) and [2b.](#page-7-1) The main dashboard displays the average and standard deviation of energy use, water consumption (site, source, and combined), and carbon emissions for the three query sizes. It also visualizes latency and TPS fluctuations, benchmark results, and the total environmental impact when scaling up to 1, 50, or 100 billion queries, compared with real-world equivalents such as household electricity use, annual drinking needs, and transportation emissions. Users can filter by company, model size, query size, or sustainability metric, and download the full dataset. Additionally, the dashboard tracks day-to-day changes in each model's footprint, visualizing time-series trends and the average in energy, water, and carbon metrics across data centers and hardware setups. It includes an extended list of models beyond those analyzed in this study and automatically incorporates new ones as they are released, allowing continuous monitoring of inference-phase sustainability and cross-model comparisons over time.
 
 <span id="page-7-1"></span>![](_page_7_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a dashboard for an AI model's performance, providing an overview of its carbon emissions, model sizes, and performance metrics.
-
-**Figure Data (Q&A):**
-
-Q: What is the average carbon emissions (CO2e) for GShard?
-A: 4.3 tCO2e
-
-Q: What is the size of the L-1 model?
-
-Q: What is the size of the L-2 model?
-
-Q: What is the size of the L-3 model?
-
-Q: What is the size of the L-4 model?
-
-Q: What is the size of the L-5 model?
-
-Q: What is the size of the L-6 model?
-
-Q: What is the size of the L-7 model?
-
-Q: What is the size of the L-8 model?
-
-Q: What is the size of the L-9 model?
-
-Q: What is the size of the L-10 model?
-
-Q: What is the size of the L-11 model?
-
-Q: What is the size of the L-12 model?
-
-Q: What is the size of the L-13 model?
-
-Q: What is the size of the L-14
-
-Q: What is the size of the L-15
-
-Q: What is the size of the L-16
-
-Q: What is the size of the L-17
-
-Q: What is the size of the L-18
-
-Q: What is the size of the L-19
-
-Q: What is the size of the L-20
-
-Q: What is the size of the L-21
-
-Q: What is the size of the L-22
-
-Q: What is the size of the L-23
-
-Q: What is the size of the L-24
-
-Q: What is the size of the L-25
-
-Q: What is the size of the L-26
-
-Q: What is the size of the L-27
-
-Q: What is the size of the L-28
-
-Q: What is the size of the L-29
-
-Q: What is the size of the L-30
-
-Q: What is the size of the L-31
-
-Q: What is the size of the L-32
-
-Q: What is the size of the L-33
-
-Q: What is the size of the L-4
-
-Q: What is the size of the L-5
-
-
-
-[描述已截斷以避免過長]
-
-
-
-
-Note: The table above is a simplified version of the actual data. The actual data is likely to be more complex and include multiple metrics and data points. The above table is just a sample and may not reflect the actual data.
-
-
-### Dashboard Overview
-
-| **Metric** | **Value** |
-| --- | --- |
-| **OpenAI** | 1.12 |
-| **GPT-3 (large)** | 1.12 |
-| **GPT-3 (small)** | 0.30 |
-| **GPT-3 (tiny)** | 0.30 |
-| **GPT-2 (large)** | 0.30 |
-| **GPT-2 (small)** | 0.30 |
-| **GPT-2 (tiny)** | 0.30 |
-| **GPT-2 (small) + GPT-2 (tiny)** | 0.30 |
-| **GPT-2 (small) + GPT-2 (tiny) + GPT-2 (small) + GPT-2 (tiny)** | 0.30 |
-| **GPT-2 (small) + GPT-2 (tiny) + GPT-2 (small) + GPT-2 (tiny) + GPT-2 (small) + GPT-2 (tiny)** | 0.30 |
-| **GPT-2 (small) + GPT-2 (tiny) + GPT-2 (small) + GPT-2 (tiny) + GPT-2 (small) + GPT-2 (tiny) + GPT-2 (small) + GPT-2 (tiny) + GPT-2 (small) + GPT-2 (tiny) + GPT-2 (small) + GPT-2 (tiny) + GPT-                               
-
-
-| Model | GPT-3 (Small) | GPT-3 (Medium) | GPT-3 (Large) | GPT-3 (X-Large) | GPT-3 (Mega) |
-| --- | --- | --- | --- | --- | --- |
-| **OpenAI** | 1.12 | 1.12 | 1.12 | 1.12 | 1.12 |
-| **GPT-3 (Small)** | 1.12 | 1.12 | 1.12 | 1.12 | 1.12 |
-| **GPT-3 (Medium)** | 1.12 | 1.12 | 1.12 | 1.12 | 1.12 |
-| **GPT-3 (Large)** | 1.12 | 1.12 | 1.12 | 1.12 | 1.12 |
-| **GPT-3 (X-Large)** | 1.12 | 1.12 | 1.12 | 1.12 | 1.12 |
-| **GPT-3 (Mega)** | 1.12 | 1.12 | 1.12 | 1.12 | 1.12 |
-
-**Table 2: Average Carbon E- 2W) Multiple Competitive Models (Multiple Sizes) - Short Prom
-| Model | GPT-3 (Small) | GPT-3 (Medium) | GPT-3 (Large) | G
-| **GPT-3 (Small)** | 1.12 | 1.12 | 1.12 | 1.12 |
-
-
 ![](_page_7_Figure_1.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a screenshot of a web page displaying various charts and tables related to the topic of "How Hungry is AI?" It appears to be a data visualization and analysis of the carbon
-  
-**Figure Data (Q&A):**
+(a) Overview of the main dashboard displaying the energy consumption per model, latency, TPS, benchmark scores, and equivalent environmental impacts for an example model (GPT-5 minimal).
 
-Q: What is the average energy consumption of the GSh
-Q: What is the size of the L
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-
-
-
-
-Note: The table above is a direct transcription of the data from the image. However, please note that the image is not clear enough to extract all the data. The values and labels are based on the available information. If you need more accurate data, please provide the original image or source.
-
-
-### Table of Contents
-
-*   [Average Energy Consumption (W/h) | Multiple Companies Models | Multiple Sizes | Medium Prompts](#average-energy-consumption-w-h-multiple-companies-models-multiple-sizes-medium-prompt)
-*   [Daily Average Energy Consumption (W/h) | B-1 | Medium Prompts](#daily-average-energy-consumption-w-h-b-1-medium-prompt)
-
-### Average Energy Consumption (W/h) | Multiple Companies Models | Multiple Sizes | Medium Prompts
-
-| **Company** | **Model Size** | **Average Energy Consumption (W/h)** |
-| **---** | **---** | **---** |
-| **B-1** | **B-1** | **17.41** |
-| **B-1** | **B-1** | **17.41** |
-| **B-1** | **B-1**
-
-### Daily Average Energy Consumption (W/h) | B-1 | Medium
-
-| **Time** | **Daily Average Energy Consumption (W/h)**
-| **—** | **—** |
-| **0.00** | **0.00** |
-| **0.01** | **0.01** |
-| **0.02** | **0.02** |
-| **0.03** | **0.03** |
-| **0.04** | **0.04** |
-| **0.05** | **0.05** |
-| **0.06** | **0.06** |
-| **0.07** | **0.07** |
-| **0.08** | **0.08** |
-| **0.09** | **0.09** |
-| **0.10** | **0.10** |
-| **0.11** | **0.11** |
-| **0.12** | **0.12** |
-| **0.13** | **0.13** |
-| **0.14** | **0.14** |
-| **0.15** | **0.15** |
-| **0.16** | **0.16** |
-| **0.17** | **0.17** |
-| **0.18** | **0.18** |
-| **0.19** | **0.19** |
-| **0.20** | **0.20** |
-| **0.21** | **0.21** |
-| **0.22** | **0.22** |
-| **0.23** | **0.23** |
-| **0.24** | **0.24** |
-| **0.25**                       
-
-
-There is no table in the provided image. The image appears to be a graph with a title "How Hungry is AI?" and a line chart.
-
-
-The chart is a line chart with a title "How Hungry is AI?" and a single line representing the "Daily Average Energy Consumption (W/h)".
-
-**Data Points**
-
-The chart has the following data points:
-
-* **Jan 14**: 0.00
-* **Jan 15**: 0.00
-* **Jan 16**: 0.00
-* **Jan 17**: 0.00
-* **Jan 18**: 0.00
-* **Jan 19**: 0.00
-* **Jan 20**: 0.00
-* **Jan 21**: 0.00
-* **Jan 22**: 0.00
-* **Jan 23**: 0.00
-* **Jan 24**: 0.00
-* **Jan 25**: 0.00
-* **Jan 26**: 0.00
-* **Jan 27**: 0.00
-* **Jan 28**: 0.00
-* **Jan 29**: 0.00
-* **Jan 30**: 0.00
-* **Jan 31**: 0.00
-* **Feb 1**: 0.00
-* **Feb 2**: 0.00
-* **Feb 3: 0.00
-* **Feb 4: 0.00
-* **Feb 5: 0.00
-* **Feb 6: 0.00
-* **Feb 7: 0.00
-* **Feb 8: 0.00
-* **Feb 9: 0.00
-* **Feb 10: 0.00
-* **Feb 11: 0.00
-* **Feb 12: 0.00
-* **Feb 13: 0.00
-* **Feb 14: 0.00
-* **Feb 15: 0.0
-* **Feb 16: 0.0
-* **Feb 17: 0.0
-* **Feb 18: 0.0
-* **Feb 19: 0.0
-* **Feb 20: 0.0
-* **Feb 21: 0.0
-* **Feb 22: 0.0
-* **Feb 23: 0.0
-* **Feb 24: 0.0
-* **Feb 25: 0.0
-* **Feb 26: 0.0
-* **Feb 27: 0.0
-* **Feb 28: 0.0
-* **Feb 29: 0.0
-* **Mar 1: 0.0
-* **Mar 2: 0.0
-* **Mar 3: 0.0
-* **Mar 4: 0.0
-* **Mar 5: 0.0
-* **Mar 6: 0.0
-* **Mar 7: 0.0
-* **Mar 8: 0.0
-* **Mar 9: 0.0
-* **Mar 10: 0.0
-* **Mar 11: 0.0
-* **Mar 12: 0.0
-* **Mar 13: 0.0
-* **Mar 14: 0.0
-* **Mar 15: 0.0
-* **Mar 16: 0.0
-* **Mar 17: 0.0
-* **Mar 18: 0
+(b) Overview of the timeseries dashboard displaying average energy consumption per model, and the daily fluctuations of the selected model (Grok 4).
 
 Figure 2: Visual overview of the AI sustainability dashboard.
 
-#### <span id="page-7-0"></span>5 Experimental Evaluation
+### <span id="page-7-0"></span>5 Experimental Evaluation
 
 We benchmark the environmental footprint of 30 LLMs across three modalities: Energy consumption, water usage, and carbon emissions, based on equations 2, 4, and 5, respectively. For the long-form query evaluation, GPT-4 and LLaMA-3 (8B and 70B) are excluded due to context window limitations.
 
-#### **5.1** Energy Consumption
+### 5.1 Energy Consumption
 
 <span id="page-7-2"></span>![](_page_7_Figure_8.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a collection of charts and tables comparing the energy consumption, model sizes, and performance of various models, including LLa
-**Figure Data (Q&A):**
+Figure 3: Energy consumption per model across three prompt sizes (Wh, log-scale).
 
-Q: What is the size of the LLa
-Q: How many
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
+Table 4: Energy consumption (mean  $\pm$  std dev) per model across three prompt sizes (Wh).
 
+|                      | Energy Consumption     | Energy Consumption   | Energy Consumption      |
+|----------------------|------------------------|----------------------|-------------------------|
+| Model                | (100 input-300 output) | (1k input-1k output) | (10k input-1.5k output) |
+|                      | (Wh)                   | (Wh)                 | (Wh)                    |
+| GPT-4.1              | $0.871 \pm 0.302$      | 3.161 ± 0515         | $4.833 \pm 0.650$       |
+| GPT-4.1 mini         | $0.450 \pm 0.081$      | $1.545 \pm 0.211$    | $2.122 \pm 0.348$       |
+| GPT-4.1 nano         | $0.207 \pm 0.047$      | $0.575 \pm 0.108$    | $0.827 \pm 0.094$       |
+| o4-mini (high)       | 3.649 ± 1.468          | $7.380 \pm 2.177$    | $7.237 \pm 1.674$       |
+| 03                   | 1.177 ± 0.224          | $5.153 \pm 2.107$    | 12.222 ± 1.082          |
+| o3-mini (high)       | $3.012 \pm 0.991$      | $6.865 \pm 1.33$     | $5.389 \pm 1.183$       |
+| o3-mini              | $0.674 \pm 0.015$      | $2.423 \pm 0.237$    | $3.525 \pm 0.168$       |
+| o1                   | $2.268 \pm 0.654$      | $4.047 \pm 0.497$    | $6.181 \pm 0.877$       |
+| o1-mini              | $0.535 \pm 0.182$      | $1.547 \pm 0.405$    | $2.317 \pm 0.530$       |
+| GPT-40 (Mar '25)     | $0.423 \pm 0.085$      | $1.215 \pm 0.241$    | $2.875 \pm 0.421$       |
+| GPT-40 mini          | $0.577 \pm 0.139$      | $1.897 \pm 0.570$    | $3.098 \pm 0.639$       |
+| GPT-4 Turbo          | $1.699 \pm 0.355$      | $5.940 \pm 1.441$    | 9.877 ± 1.304           |
+| GPT-4                | 1.797 ± 0.259          | $6.925 \pm 1.553$    | _                       |
+| DeepSeek-R1 (DS) *   | 19.251 ± 9.449         | $24.596 \pm 9.4$     | 29.078 ± 9.725          |
+| DeepSeek-V3 (DS) "   | $2.777 \pm 0.223$      | $8.864 \pm 0.724$    | 13.162 ± 1.126          |
+| DeepSeek-R1 (AZ) †   | 2.353 ± 1.129          | $4.331 \pm 1.695$    | $7.410 \pm 2.159$       |
+| DeepSeek-V3 (AZ) †   | $0.742 \pm 0.125$      | $2.165 \pm 0.578$    | $3.696 \pm 0.221$       |
+| Claude-3.7 Sonnet    | $0.950 \pm 0.040$      | $2.989 \pm 0.201$    | $5.671 \pm 0.302$       |
+| Claude-3.5 Sonnet    | $0.973 \pm 0.066$      | $3.638 \pm 0.256$    | $7.772 \pm 0.345$       |
+| Claude-3.5 Haiku     | $0.975 \pm 0.063$      | $4.464 \pm 0.283$    | $8.010 \pm 0.338$       |
+| LLaMA-3-8B           | $0.108 \pm 0.002$      | $0.370 \pm 0.005$    | _                       |
+| LLaMA-3-70B          | $0.861 \pm 0.022$      | $2.871 \pm 0.094$    | _                       |
+| LLaMA-3.1-8B         | $0.052 \pm 0.008$      | $0.172 \pm 0.015$    | $0.443 \pm 0.028$       |
+| LLaMA-3.1-70B        | $1.271 \pm 0.020$      | $4.525 \pm 0.053$    | 19.183 ± 0.560          |
+| LLaMA-3.1-405B       | $2.226 \pm 0.142$      | $9.042 \pm 0.385$    | $25.202 \pm 0.526$      |
+| LLaMA-3.2 1B         | $0.109 \pm 0.013$      | $0.342 \pm 0.025$    | $0.552 \pm 0.059$       |
+| LLaMA-3.2 3B         | $0.143 \pm 0.006$      | $0.479 \pm 0.017$    | $0.707 \pm 0.020$       |
+| LLaMA-3.2-vision 11B | $0.078 \pm 0.021$      | $0.242 \pm 0.071$    | $1.087 \pm 0.060$       |
+| LLaMA-3.2-vision 90B | $1.235 \pm 0.054$      | $4.534 \pm 0.448$    | $6.852 \pm 0.780$       |
+| LLaMA-3.3 70B        | $0.237 \pm 0.023$      | $0.760 \pm 0.079$    | $1.447 \pm 0.188$       |
 
+<sup>\*</sup> DeepSeek Host
 
+Figure 3 and Table 4 highlight how energy consumption scales with prompt length and model architecture, revealing wide disparities across systems. LLaMA-3.1-8B is the most efficient, requiring only 0.443 Wh for long prompts (approximately 7,000 words of input and 1,000 words of output), followed by LLaMA-3.2 1B and LLaMA-3.2 3B at 0.552 Wh and 0.707 Wh, respectively. GPT-4.1 nano remains among the most efficient proprietary models at 0.827 Wh, but still consumes nearly twice the energy of LLaMA-3.1-8B. In contrast, DeepSeek-R1 (DS) consumes 29.075 Wh, around sixty five times more than the most efficient model, underscoring the large overhead of reasoning models.
 
-Note: The table above is a sample and actual data may vary. The actual data will depend on the specific models and data sources used.
+<sup>†</sup> Microsoft Azure Host
 
+The LLaMA family shows clear scaling effects: energy use rises from 0.443 Wh at 8B parameters to 25.202 Wh at 405B, illustrating steep power demands at high parameter counts. Additionally, the DeepSeek models reveal striking infrastructure effects. DeepSeek-R1 and DeepSeek-V3 hosted on DeepSeek's own servers consume 29.078 Wh and 13.162 Wh, while the same models on Azure use just 7.410 Wh and 3.696 Wh, over 70% less energy. This gap highlights that hardware and data center efficiency, not model design alone, drives real-world energy use. For context, a single long query to DeepSeek-R1 (DS) consumes about as much electricity as running a 65-inch LED television (≈ 130W) for roughly 13 minutes. GPT-4o and GPT-4o mini also show that infrastructure can outweigh model size in determining energy efficiency. For instance GPT-4o consumes around 2.875 Wh while GPT-4o mini's consumption is slightly higher at 3.098 Wh due to deployment on A100 hardware instead of H100s.
 
-However, I can provide a general description of the image:
-
-**Chart/Plot Description:**
-
-The chart appears to be a complex, multi-plot chart with multiple sections. The chart has multiple sections, each with its own set of data points, labels, and descriptions. The chart appears to be a complex, multi-plot chart with multiple sections, each with its own set of data points, labels, and descriptions.
-
-**Table/Chart Description:**
-
-The table appears to be a complex, multi-plot chart with multiple sections, each with its own set of data points, labels, and descriptions. The table appears to be a complex, multi-plot chart with multiple sections, each with its own set of data points, labels, and descriptions.
-
-**Chart/Plot Data:**
-
-Unfortunately, I'm unable to extract specific data or descriptions from this image. The chart appears to be a complex, multi-plot chart with multiple sections, each with its own set of data points, labels, and descriptions.
-
-**Table/Chart Data:**
-
-Unfortunately, I'm unable to extract specific data or descriptions from this image. The table appears to be a complex, multi-plot chart with multiple sections, each with its own set of data points, labels, and descriptions.
-
-The table appears to be a complex, multi-plot chart with multiple sections, each with its own set of data points, labels, and descriptions.
-
-Unfortunately, I'm unable to extract specific data or descriptions from this image. The chart appears to be a complex, multi-plot chart with multiple sections, each with its own
-
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
-
-#### 5.2 Water and Carbon Emissions
+### 5.2 Water and Carbon Emissions
 
 <span id="page-8-0"></span>![](_page_8_Figure_2.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a collection of charts and tables comparing the performance and carbon emissions of various models, including LLa
-**Figure Data (Q&A):**
-
-Q: What is the size of the LLa
-Q: How many
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is the
-Q: What is
-
-
-
-
-If you could provide the actual image or a description of the image, I would be happy to assist you in extracting the information and providing a structured output in the format you specified.
-
-Please provide the image or a description of the image, and I will do my best to assist you.
+- (a) Water consumption per model across three prompt sizes (ml, log-scale).
+- (b) Carbon emissions per model across three prompt sizes (gCO2e, log-scale)
 
 Figure 4: Water consumption and carbon emissions per model.
 
@@ -753,25 +265,13 @@ Figure [4](#page-8-0) showcases the water consumption and carbon emissions of mo
 
 In contrast, large-scale and reasoning models such as o3, DeepSeek-R1 (DS), and DeepSeek-V3 (DS) exhibit substantially higher footprints. DeepSeek-R1 (DS) consumes over 200 mL of water and emits approximately 17 gCO2e per long query, while the same model on Azure consumes only 34 mL and emits 2.5 gCO2e, a reduction of nearly 85%. These figures suggest that environmental impacts are shaped not only by model architecture but also by deployment strategies and regional infrastructure conditions. In particular, the elevated emissions and water usage observed in DeepSeek models likely reflect inefficiencies in their data centers, including higher PUE, suboptimal cooling technologies, and less efficient hardware.
 
-While these per-query values may seem modest when isolated, their impact becomes considerable at scale.
+While these per-query values may seem modest when isolated, their impact becomes considerable at scale. A single model, such as GPT-4o, serving hundreds of millions of daily requests, can emit as much carbon as thousands of transatlantic flights and consume water equivalent to the annual drinking needs of millions of people. We revisit this scaling analysis in greater detail in Section [6.](#page-9-0)
 
-[描述已截斷以避免過長]
-
-|  | GPT-4o (Mar '25) | GPT-4o (Mar '25) | GPT-4o (Mar '25) | GPT-4o (Mar '25) | GPT-4o (Mar '25) |
-| --- | --- | --- | --- | --- | --- |
-| 1 Google Search | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 |
-| 1 Google Search | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 |
-| 1 Google Search | 0.01 | 0.01 | 5000 | 0.01 | 0.01 |
-| 1 Google Search | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 |
-| 1 Google Search | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 |
-| 1 Google Search | 0.01 | 1.01 | 0.01 | 0.01 | 0.01 |
-| 1 Google Search | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 |
-| 1 Google Search | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 |
-| 1 Google Search | 0.01 | 0.01
+<span id="page-9-1"></span>![](_page_9_Figure_0.jpeg)
 
 Figure 5: (Top Left) Per-query and daily energy consumption of GPT-4o. (Top Right) Estimated total annual energy usage of GPT-4o in 2025. (Bottom Left) The estimated 2025 annual water consumption of GPT-4o. (Bottom Right) The estimated 2025 annual carbon emissions of GPT-4o.
 
-#### 5.3 Validation Against Public Disclosures
+### 5.3 Validation Against Public Disclosures
 
 Public disclosures of inference-level energy and carbon data remain limited, but a few recent statements provide useful reference points for cross-validation. In June 2025, OpenAI CEO Sam Altman reported that the default ChatGPT model consumed approximately 0.34 Wh per query [\[68\]](#page-16-7). Knowing that GPT-4o was the default deployment at that time, this estimate likely corresponds to GPT-4o-level inference. Our framework estimates 0.42 Wh (±0.13 Wh) for a short GPT-4o prompt (0.37 Wh without datacenter overhead), within 19% of Altman's figure. Similarly, the results for Mistral Large 2 align closely with Mistral's published life-cycle assessment (LCA) report [\[69\]](#page-16-8), which cites approximately 1.14 gCO2e per 400-token query. Our corresponding estimate for 300 tokens (0.82 gCO2e, ±0.10 gCO2e) scales to roughly 1.09 gCO2e when normalized to 400 tokens, showcasing alignment within one standard deviation. Together, these alignments between independent disclosures and our modeled results suggest that the framework reproduces realistic operational conditions for modern LLM inference.
 
@@ -781,21 +281,21 @@ Public disclosures of inference-level energy and carbon data remain limited, but
 
 Based on Reuters [\[70\]](#page-16-9), the average ChatGPT user sends approximately eight queries per day as of April 2025. Based on this, we quantify the per-user energy impact of GPT-4o interactions against familiar digital activities as presented in Figure [5.](#page-9-1) A single short GPT-4o query consumes 0.42 Wh (±0.13 Wh), exceeding the footprint of a Google search (0.30 Wh) by approximately 40%. Scaling to a typical daily usage pattern, the cumulative energy reaches 3.73 Wh (±0.358 Wh). For medium-length queries, this increases to 9.71 Wh (±1.106 Wh). These results highlight that even limited daily engagement with GPT-4o can impose an energy cost comparable to charging two smartphones to full capacity (approximately 10 Wh), illustrating the tangible environmental footprint of conversational AI. While the individual per-query costs appear modest, their aggregation across millions of users introduces a rapidly compounding, largely invisible load on the environment.
 
-#### 6.2 Estimated 2025 Annual Energy Consumption of GPT-4o Inference
+### 6.2 Estimated 2025 Annual Energy Consumption of GPT-4o Inference
 
 To estimate the annual energy demand of GPT-4o in 2025, we consider a baseline of 1 billion queries per day across all ChatGPT deployments, a figure reported by OpenAI as of December 2024 [\[71\]](#page-16-10). Given GPT-4o's status as the default model, we conservatively attribute 700 million daily queries to
 
 GPT-4o. To simulate real-world usage dynamics, we apply a monthly prompt growth rate of 20% from January to May 2025, reflecting the documented increase in ChatGPT's weekly active user base from 300 million to 800 million between December 2024 and April 2025 [\[72\]](#page-16-11). This is followed by a decaying growth pattern from June to December, yielding a total of approximately 772 billion GPT-4o queries in 2025, which is around 15% of the annual number of Google searches in 2024 [\[73\]](#page-16-12). Within these queries, we conservatively assume an 80%/20% split between short and medium-length prompts based on typical usage patterns. Scaling the per-query energy estimates accordingly, we find that GPT-4o inference would require approximately 391,509 MWh annually at minimum and 463,269 MWh at maximum, as seen in Figure [5.](#page-9-1) These values exceed the total electricity consumption of 35,000 U.S. residential households (377,685 MWh), 50 inpatient hospitals (381,550 MWh), and even 325 universities (390,650 MWh) annually.
 
-#### 6.3 Estimated 2025 Annual Water Footprint of GPT-4o Inference
+### 6.3 Estimated 2025 Annual Water Footprint of GPT-4o Inference
 
 As showcased in Figure [5,](#page-9-1) we translate estimated cooling and infrastructure-related water usage into real-world benchmarks. Based on scaled inference volumes, GPT-4o's annual water consumption is projected to be between 1,334,991 kiloliters (kL) and 1,579,680 kL. These quantities are roughly equivalent to filling over 500 Olympic-sized pools or to supporting the annual drinking needs of 1.2 million people. Importantly, this consumption refers to evaporated freshwater permanently removed from local ecosystems rather than recycled. GPT-4o alone is responsible for evaporating an amount of freshwater equivalent to the annual drinking needs of almost 1.2 million people.
 
-#### 6.4 Estimated 2025 Annual Carbon Footprint of GPT-4o Inference
+### 6.4 Estimated 2025 Annual Carbon Footprint of GPT-4o Inference
 
 We further examine GPT-4o's environmental footprint through estimated carbon emissions from electricity usage, as seen in Figure [5.](#page-9-1) Our projections indicate annual emissions of approximately 138,125 tons of CO2e at minimum and 163,441 tons at maximum. These figures are comparable to the annual emissions of 30,000 gasoline-powered cars or the cumulative emissions from approximately 272 transatlantic flights between Boston and London. In sequestration terms, offsetting GPT-4o's annual emissions would require over 138,000 acres of average U.S. forest, an area roughly equivalent to the size of Chicago. These results showcase that the aggregation of hundreds of millions of requests per day can already impose a substantial environmental burden. This burden is only expected to grow as AI usage continues to scale.
 
-# <span id="page-10-0"></span>7 GPT-5 Adaptive Model Routing Case Study
+### <span id="page-10-0"></span>7 GPT-5 Adaptive Model Routing Case Study
 
 The launch of GPT-5 [\[74\]](#page-16-13) introduced adaptive model routing, a mechanism that allows the system to automatically determine whether to use a fast variant or a more computationally intensive "Thinking" model for complex reasoning tasks. This unification eliminates the need for manual model selection where the model dynamically scales its reasoning effort based on prompt complexity.
 
@@ -805,129 +305,15 @@ These results suggest that while adaptive routing optimizes computational resour
 
 <span id="page-11-1"></span>![](_page_11_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents an analysis of the energy consumption and carbon emissions of the GShard model, a large-scale AI model. The data is broken down into three categories: Short, Medium, and Long, each with its own set of energy consumption and carbon emissions. The analysis provides a comprehensive understanding of the GShad’s carbon emissions and energy consumption.
-
-**Figure Data (Q&A):**
-
-Q: What is the average energy consumption of the GShad model?
-A: 123 MWh
-
-Q: What is the carbon emissions of the GShad model?
-
-Q: What is the energy consumption of the GShad model?
-
-Q: What is the carbon
-
-Q: What is the energy
-
-Q: What is the
-
-
-
-
-Note: The table above is a direct transcription of the data from the chart. The values are exact and not rounded.
-
-
-### Energy Consumption by Query Length
-
-| Query Length | Reasoning Mode | Energy Consumption (W)
-| :----------- | :------------ | :----------------- |
-| Short        | Reasoning Mode | 0.67
-| Short        | Minimal       | 0.67
-| Short        | Low           | 0.67
-| Short        | Medium       | 0.67
-| Short        | High          | 0.67
-| Medium      | Reasoning Mode | 2.33
-| Medium      | Minimal       | 2.33
-| Medium      | Low           | 2.33
-| Medium      | Medium       | 2.33
-| Medium      | High          | 2.33
-| Long         | Reasoning Mode | 5.08
-| Long         | Minimal       | 5.08
-| Long         | Low           | 5.08
-| Long         | Medium       | 5.08
-| Long         | High          | 5.08
-
-### Energy Consumption by Reasoning Mode
-
-| Reasoning Mode | Short | Medium | Long
-| : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
-
-
-There is no table in the provided image.
-
-# Chart/Pilot Processing
-
-## Energy Consumption of GPT-5 by Query Length
-
-
-* **0.67**: Short
-* **2.4**: Short
-* **5.08**: Short
-* **9.93**: Short
-
-### Medium
-
-* **0.67**: Medium
-* **2.4**: Medium
-* **5.08**: Medium
-* **9.93**: Medium
-
-
-* **0.67**: Long
-* **2.4**: Long
-* **5.08**: Long
-* **9.93**: Long
-
-### Average Energy Consumption (Wh)
-
-* **0.67**: 0.67
-* **2.4**: 2.4
-* **5.08**: 5.08
-* **9.93**: 9.93
-
-## Average Energy Consumption (Wh)
-
-## Average Energy
-* **0.67**: 0.67
-* **2.4**: 2.4
-* **5.08**: 5.08
-* **9.93**: 9.93
-
-## Average
-* **0.67**: 0.67
-* **2.4**: 2.4
-* **5.08**: 5.08
-* **9.93**: 9.93
-
-## Average
-* **0.67**: 0
-* **2.4**: 2.4
-* **5.08**: 5.08
-* **9.93**: 9.93
-
-## Average
-* **0.67**: 0.67
-* **2.4**: 2.4
-* **5.8**: 5.8
-* **9.93**: 9.93
-
-## Average
-* **0.67**: 0.67
-* **2.4**: 2.4
-
-
 Figure 6: Energy consumption of GPT-5 across query lengths and reasoning modes
 
 # <span id="page-11-0"></span>8 Discussion and Policy Implications
 
-#### 8.1 The Critical Role of Infrastructure in AI Sustainability
+### 8.1 The Critical Role of Infrastructure in AI Sustainability
 
 Our findings indicate that infrastructure is a crucial determinant of AI inference sustainability. While model design enhances theoretical efficiency, real-world outcomes can substantially diverge based on deployment conditions and factors such as renewable energy usage and hardware efficiency. For instance, GPT-4o mini, despite its smaller architecture, consumes approximately 20% more energy than GPT-4o on long queries due to reliance on older A100 GPU nodes. Similarly, DeepSeek models highlight the profound impact of infrastructure: DeepSeek-R1 and DeepSeek-V3 deployed on DeepSeek's own servers exhibit water consumption and carbon emissions nearly six times higher than their Azure-hosted counterparts. The Azure deployments benefit from better hardware, more efficient cooling systems, lower carbon intensity, and tighter PUE control, demonstrating that sustainability gains can stem as much from datacenter design as from model optimization. These observations underscore that true AI sustainability will hinge on coordinated progress in hardware efficiency, renewable energy sources, and infrastructure-aware deployment strategies.
 
-### 8.2 Rebound Effects and the Jevons Paradox
+#### 8.2 Rebound Effects and the Jevons Paradox
 
 Although large language models consume significantly less energy, water, and carbon per task than human labor [\[75\]](#page-16-14), these efficiency gains do not inherently reduce overall environmental impact. As per-task efficiency improves, total AI usage expands far more rapidly, amplifying net resource consumption, a phenomenon aligned with the Jevons Paradox [\[76\]](#page-16-15), where increased efficiency drives systemic demand. The acceleration and affordability of AI remove traditional human and resource constraints, enabling unprecedented levels of usage. Consequently, the cumulative environmental burden threatens to overwhelm the sustainability baselines that AI efficiency improvements initially sought to mitigate. As such, sustainable AI deployment must focus on systemic frameworks that assess how well models balance capability with environmental cost. In response, we propose DEA as a principled method for benchmarking model-level eco-efficiency.
 
@@ -1043,98 +429,13 @@ To assess this effect, we present a sensitivity analysis using GPT-4o as a repre
 
 <span id="page-17-3"></span>![](_page_17_Figure_6.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents an analysis of the energy consumption and performance of the GPT-4 model, specifically the GPT-4 Large (GPT-4L) and GPT-4X-L (GPT-4X-L) models. The analysis includes energy consumption, model sizes, and performance data.
-
-**Figure Data (Q&A):**
-
-Q: What is the energy consumption of the GPT-4 model?
-A: 123 MWh
-
-Q: What is the size of the GPT-4L model?
-
-Q: What is the size of the GPT-4X-L model?
-
-Q: What is the energy consumption of the GPT-4X-L model?
-
-Q: What is the energy consumption of the GPT-4L model?
-
-Q: What is the energy consumption of the GPT-4L
-
-Q: What is the size of the GPT-4L
-
-Q: What is the size of the GPT-4X-L
-
-Q: What is the energy
-
-Q: What is the size of the G
-
-Q: What is the
-
-
-
-
-Note: The above table is a simplified version of the actual data. The actual data is not provided in the prompt, so I created a table based on the given information. The actual data may be different.
-
-
-### GPT-4o Energy Consumption Sensitivity Analysis to Batch Size
-
-| **Batch Size** | **GPT-4o Energy Consumption (Wh)** |
-| :               | :                                   |
-| 4               | 0.5                                   |
-| 8               | 1.0                                   |
-| 16               | 2.0                                   |
-
-| **Batch Size** | **GPT-4o Energy Consumption (Wh)** |
-| :               | :  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  
-
-
-Unfortunately, the provided image does not contain any tables. I will move on to the next section.
-
-**Box Plots:**
-
-The image contains multiple box plots. I will extract the information from each plot.
-
-**GPT-4o Energy Consumption Sensitivity Analysis to Batch Size:**
-
-*   **Output Token Size: 300**
-    *   **Batch Size: 4**
-        *   **Energy Consumption (Wh): 0.5**
-    *   **Batch Size: 8**
-        *   **Energy Consumption (Wh): 1.0**
-    *   **Batch Size: 16**
-        *   **Energy Consumption (Wh): 2.0**
-    *   **Batch Size: 32**
-        *   **Energy Consumption (Wh): 4.0**
-    *   **Batch Size: 64**
-        *   **Energy Consumption (Wh): 8.0**
-    *   **Batch Size: 128**
-        *   **Energy Consumption (Wh): 16.0**
-    *   **Batch Size: 256**
-        *   **Energy Consumption (Wh): 32.0**
-    *   **Batch Size: 512**
-        *   **Energy Consumption (Wh): 64.0**
-    *   **Batch Size: 1,000**
-        *   **Energy Consumption (Wh): 100.0**
-    *   **Batch Size: 2,000**
-        *   **Energy Consumption (Wh): 200.0**
-    *   **Batch Size: 4,000**
-        *   **Energy Consumption (Wh): 400.0**
-    *   **Batch Size: 8,000**
-        *   **Energy
-    *   **Batch Size: 16,000**
-        *   **Energy
-    *   **Batch Size: 32, 0
-    *   **Batch
-
-
 Figure 7: GPT-4o per-prompt energy consumption (Wh) across batch sizes and prompt lengths.
 
 Table [5](#page-17-2) summarizes the utilization rates applied to each batch size, following the same method used in our methodology section [4,](#page-2-1) which drives the corresponding per-prompt energy estimates shown in Figure [7.](#page-17-3)
 
+The results show substantial efficiency gains with higher batching: moving from batch size 4 to 8 reduces energy per prompt by approximately 45%, while increasing from 8 to 16 yields a further 43% reduction. If we had used a batch size of 4 throughout our study, energy estimates would have been significantly higher, overstating the environmental footprint of LLM inference. Conversely, using a batch size of 16 would have resulted in notably lower energy values, possibly underestimating the footprint in more latency-constrained or low-traffic scenarios.
 
-[描述已截斷以避免過長]
+These differences highlight the critical role that batching decisions play in shaping the environmental footprint of large-scale LLM deployments. As AI models utilize dynamic batching to address traffic and latency issues, adjusting the batch size can significantly impact the environmental footprint of each prompt. Large-scale providers like OpenAI have a significant advantage in this regard, as their high traffic volume allows them to rely on higher batch sizes without sacrificing latency to the same extent as smaller or less active deployments.
 
 # <span id="page-17-1"></span>B Scope 3 Considerations
 
@@ -1144,35 +445,15 @@ Scope 3 emissions are typically the most significant contributor to the lifecycl
 
 <span id="page-18-1"></span>![](_page_18_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a comparison of various AI models' performance on the Deberta-2 (Deberta) dataset, with a focus on their cross-entropy scores and other metrics. The data is presented in a series of bar charts and tables, with each model's performance on the Deberta-2 dataset.
-
-**Figure Data (Q&A):**
-
-Q: What is the cross-entropy score for the Deberta-2 model?
-
-Q: What is the cross-entropy score for the De-2 model?
-
-Q: What is the cross-entropy score for the De-2-1 model?
-
-Q: What is the cross-entropy score for the De-2-2-1 model?
-
-Q: What is the cross-entropy score for the De-2-2-2-1 model?
-
-Q: What is the cross-entropy score for the De-2-2-2-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1-1
-
-
-
-
 Figure 8: Cross efficiency DEA scores. Bar labels show the AI Index (top) and cross-efficiency score (bottom).
 
 manufacturing, emissions from global logistics, and hardware retirement. For instance, Microsoft's Scope 3 CO2e emissions in 2023 accounted for 66% of the total emissions [\[16\]](#page-13-4). Yet, these values are highly variable across vendors, manufacturing locations, and fabrication nodes, and they lack deployment-specific attribution when applied to real-time inference tasks.
 
+Moreover, given that many large-scale models are continually updated and deployed across evolving infrastructures, ascribing a fixed fraction of embodied emissions or water per query is both methodologically fragile and likely to result in overestimation. Applying complete hardware manufacturing footprints to ongoing inference, without amortizing them over the expected hardware lifespan or query volume, risks artificially inflating per-query environmental costs.
 
-[描述已截斷以避免過長]
+In light of this, we excluded Scope 3 from our prompt-level framework, as its inclusion would introduce non-trivial uncertainty and potentially distort comparative eco-efficiency across models. Nevertheless, the long-term sustainability of AI infrastructure will depend on extending lifecycle accountability beyond the inference phase; future work is encouraged to adopt comprehensive lifecycle analyses (LCA) that integrate Scope 3 considerations once transparent and standardized data become available.
 
-# <span id="page-18-0"></span>C Cross-effficiency DEA Results
+### <span id="page-18-0"></span>C Cross-effficiency DEA Results
 
 Before presenting the eco-efficiency results, it is worth noting that Claude 3.5 Sonnet, Claude 3.5 Haiku, GPT-4, and GPT-4 Turbo were excluded due to the lack of benchmark results on certain tests. Since cross-efficiency requires complete inputs and outputs, these models could not be fairly evaluated.
 

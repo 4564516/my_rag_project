@@ -4,11 +4,11 @@ Tyler Griggs<sup>∗</sup> UC Berkeley Xiaoxuan Liu<sup>∗</sup> UC Berkeley Ji
 
 Wei-Lin Chiang UC Berkeley Alvin Cheung UC Berkeley Ion Stoica UC Berkeley
 
-# Abstract
+### Abstract
 
 Large language models (LLMs) are increasingly integrated into many online services, yet they remain cost-prohibitive to deploy due to the requirement of expensive GPU instances. Prior work has addressed the high cost of LLM serving by improving the inference engine, but less attention has been given to selecting the most cost-efficient GPU type(s) for a specific LLM service. There is a large and growing landscape of GPU types and, within these options, higher cost does not always lead to increased performance. Instead, through a comprehensive investigation, we find that three key LLM service characteristics (request size, request rate, SLO) strongly influence GPU cost efficiency, and differing GPU types are most cost efficient for differing LLM service settings. As a result, the most cost-efficient allocation for a given service is typically a *mix* of heterogeneous GPU types. Based on this analysis, we introduce Mélange, a GPU allocation framework that navigates these diverse LLM service characteristics and heterogeneous GPU option space to automatically and efficiently derive the minimal-cost GPU allocation for a given LLM service. We formulate the GPU allocation task as a cost-aware bin packing problem where GPUs are bins and items are slices of the service workload. Our formulation's constraints account for a service's unique characteristics, allowing Mélange to be *flexible* to support diverse service settings and *heterogeneity-aware* to adapt the GPU allocation to a specific service. Compared to using only a single GPU type, Mélange reduces deployment costs by up to 77% in conversational settings, 33% in document-based settings, and 51% in a mixed setting.
 
-### 1 Introduction
+# 1 Introduction
 
 Large language models (LLMs) [\[35,](#page-12-0) [43,](#page-13-0) [44\]](#page-13-1) are increasingly integrated into many online services, including search engines [\[37,](#page-13-2) [24\]](#page-12-1), chatbots [\[34\]](#page-12-2), and virtual assistants [\[28,](#page-12-3) [47,](#page-13-3) [48\]](#page-13-4). These services are often hosted by deploying models on cloud resources. However, deploying LLMs is expensive. The substantial size and computational demands of LLMs require the use of costly hardware accelerators, typically GPUs[2](#page-0-0) For example, serving Llama2-70b at BF16 precision requires 2 NVIDIA A100-80GB GPUs, which costs over \$5, 200 per month in on-demand rental costs on major cloud platforms.
 
@@ -28,28 +28,26 @@ Consider a GPU allocation strategy that integrates each of the three observation
 
 <span id="page-1-1"></span>![](_page_1_Figure_5.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a flowchart illustrating the process of creating a Large-                               
+Figure 1: Mélange framework.
 
+We present *Mélange*[3](#page-1-0) [\(Fig. 1\)](#page-1-1), a GPU allocation framework that derives the minimal-cost GPU allocation for a given LLM service. In Mélange, each GPU type (1a) passes through a one-time offline profiling step ( 2 ) to measure GPU performance across request sizes and rates. Then, given the profiling results and an LLM service definition (1b), Mélange's objective is to choose a GPU allocation for the service workload that minimizes cost. This task is a natural application of the cost-aware bin packing problem, where bins are GPUs and items are slices of the workload. We formulate the problem as an integer linear program (ILP) and efficiently solve with an off-the-shelf solver ( 3 ). Upon solution, Mélange produces the GPU allocation that can serve the LLM service at minimal cost while adhering to the service SLO ( 4 ).
 
+Mélange's strength stems from two key properties. First, it is *heterogeneity-aware*. Our analysis shows that request size, request rate, and SLOs jointly impact cost efficiency, but their impacts differ for each GPU type. Mélange's profiling and ILP formulation account for each of these dimensions, enabling efficient navigation of heterogeneous GPU types given a service specification. Second, Mélange is *flexible*. The inputs (1a, 1b) can be flexibly modified to include new generations of GPUs or alternative definitions of SLO, ensuring Mélange is effective for diverse services. Further, to the best of our knowledge, Mélange is the first GPU allocation framework that utilizes multiple GPU types for LLM serving. In summary, this paper makes the following contributions:
 
+• We analyze three key LLM service characteristics and their influence on GPU cost efficiency: request size, request rate, and latency SLO (§ [4\)](#page-3-0).
 
-The image appears to be a flowchart or a diagram explaining the steps involved in a specific process. The steps are:
+<span id="page-1-0"></span><sup>3</sup>Mélange is French for "mixture"
 
-1. **LLM Service Definition:** This step involves defining the LLM (Levering LLM) service definition. This is the first step in the process.
-2. **Offline Profiling:** This step involves creating a profile for the LLM service. This is the second step in the process.
-3. **ILP Solver:** This is the third step in the process. The ILP (In-Lo-Per-System) is a software- and- system- based- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- and- system- an
-
-[描述已截斷以避免過長]
+- We introduce Mélange, an allocation framework that automatically derives the minimal-cost GPU allocation for a given LLM service while satisfying an SLO requirement (§ [5\)](#page-6-0).
+- We evaluate Mélange across four GPU types—NVIDIA L4, A10G, A100, and H100. Mélange reduces costs by 9-77% for short-context tasks (interactive chats), 2-33% for long-context tasks (document-based), and 4-51% in mixed-context workloads (§ [6\)](#page-8-0).
 
 # 2 Related Work
 
-#### 2.1 LLM Inference Optimization
+### 2.1 LLM Inference Optimization
 
 A significant body of research has focused on optimizing LLM inference efficiency. One stream concentrates on memory optimization, particularly through improved key-value cache reuse [\[56\]](#page-14-3) and management strategies [\[19\]](#page-12-7). Another avenue seeks to minimize latency, such as scheduling optimization [\[51,](#page-13-6) [1,](#page-11-3) [46\]](#page-13-7), speculative decoding [\[20,](#page-12-8) [18\]](#page-12-9), kernel optimization [\[8,](#page-11-0) [40\]](#page-13-8) and early exiting [\[41,](#page-13-9) [59\]](#page-14-4). Additional optimizations include quantization [\[10,](#page-11-4) [21,](#page-12-10) [49,](#page-13-10) [50\]](#page-13-11) and sparsification [\[9,](#page-11-5) [52\]](#page-13-12). Instead of altering inference logic, our work assumes a fixed inference engine configuration and concentrates on reducing LLM deployment costs by choosing cost-effective GPU instance types.
 
-#### 2.2 Machine Learning with Cloud Resources
+### 2.2 Machine Learning with Cloud Resources
 
 Recent studies have explored various strategies for reducing the cost of machine learning (ML) inference or training. Several focus on utilizing spot instances [\[42,](#page-13-13) [12,](#page-11-6) [53,](#page-14-5) [11\]](#page-11-7), which is complementary to our work. Other work targets deployment on heterogeneous resources [\[5,](#page-11-8) [6,](#page-11-9) [30,](#page-12-11) [26,](#page-12-12) [27\]](#page-12-13), but focuses primarily on model training rather than serving. Also, lveraging serverless instances for inference cost reduction has been examined in [\[2\]](#page-11-10). Nonetheless, these prior work predominantly concentrate on machine learning prior to the advent of LLMs, which we show to have unique characteristics that significantly impact cost efficiency. More recent studies, such as [\[25,](#page-12-14) [15\]](#page-11-11), focus on LLMs, but they propose strategies for reducing costs via optimal migration plans and parallelism with heterogeneous resources. They do not identify key LLM service characteristics that impact cost efficiency and consider them in GPU deployment, which our work highlights. Another line of work [\[58,](#page-14-6) [36\]](#page-13-14) explores splitting LLM inference into its two phases (prefill and decode) and performing the two phases on separate nodes, perhaps with different GPU types. Our work shows that, even within a phase, the best GPU type can change based on LLM service specifications.
 
@@ -59,129 +57,19 @@ Recent studies have explored various strategies for reducing the cost of machine
 
 ![](_page_2_Figure_9.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image compares the performance of two large language models, LLaMA-7B and LLaMA-70B, in terms of request latency and energy consumption. The left chart shows the request latency of LLaMA-7B, while the right chart shows the request latency of LLaMA-70B.
-
-**Figure Data (Q&A):**
-
-Q: What is the request latency of LLaMA-7B?
-
-Q: What is the request latency of LLaMA-70B?
-
-Q: What is the request latency of LLaMA-7B in terms of 110X?
-
-Q: What is the request latency of LLaMA-70B in terms of 85X?
-
-**Figure Data (Table):**
-| Model | Request Latency |
-| --- | --- |
-| LLaMA-7B | 110X |
-| LLaMA-70B | 85X |
-
-Note: The table only shows the request latency of LLaMA-7B and LLaMA-70B, but does not provide any other data. The request latency of LLaMA-7B is 110X, and the request latency of LLaMA-70B is 85X.
-
-
-
-
-Note: The data points are not provided in the original image, so I've created a table with the given values. If you need the actual data, please provide the original image or data source.
-
-
-### LLaMA-7B
-
-| Request Latency (s) | Value |
-| --- | --- |
-| 110X | 110 |
-| 85X | 85 |
-
-### LLaMA-70B
-
-| Request Latency (s) | Value |
-| --- | --- |
-| 110X | 110 |
-| 85X | 85 |
-
-
-| Request Latency (s) | Tokens |
-| --- | --- |
-| 110X | (25, 25) |
-| 85X | (2000, 2000) |
-
-**Graph (b) LLaMA-70B:**
-The graph on the right, labeled as (b) LLaMA-70B, shows a comparison of request latency in seconds for the LLaMA-70B model. The graph has two columns: "Request Latency (s)" on the left and "Tokens" on the right. The data points are:
-
-| Request Latency (s) | Tokens |
-| --- | --- |
-| 85X | (25, 25) |
-| 110X | (2000, 2000) |
-
-**Comparison:**
-The two graphs are similar, with the only difference being the request latency in seconds. The LLaMA-7B model has a request latency of 110X, while the LLaMA-70B model has a request latency of 85X. The tokens are the same for both models, with 25 and 2000, respectively.
-
-The provided image does not contain any mathematical formulas, tables, or diagrams. The data points are not in a table or chart format, but rather a comparison of two models' request latency in seconds. The data points are not in a specific format, but rather a comparison of the two models’ request latency in seconds.
-
 Figure 2: Request latency of different input/output lengths on A100-80G.
 
-Unlike traditional machine learning workloads, LLM tasks exhibit significant variance in *request sizes*, defined by input and output lengths. For example, ResNet [\[13\]](#page-11-12) requires a fixed-dimension input (image size) and generates a fixed-dimension output (classification size).
+Unlike traditional machine learning workloads, LLM tasks exhibit significant variance in *request sizes*, defined by input and output lengths. For example, ResNet [\[13\]](#page-11-12) requires a fixed-dimension input (image size) and generates a fixed-dimension output (classification size). Conversely, transformerbased language models are flexible to support variable-length prompts and produce variable-length generation sequences. For instance, Figure [10](#page-8-1) illustrates the request size distributions of Chatbot Arena, demonstrating the extensive diversity of request sizes in practical scenarios. As a result, high
 
-[描述已截斷以避免過長]
+<span id="page-3-2"></span>![](_page_3_Figure_0.jpeg)
 
-
-The provided image appears to be a table with various data points. Here is the extracted table in Markdown format:
-
-| **Input Length (tokens)** | **A100 T/S w.r.t. A10G** | **A100 T/S w.r.t. A10G** |
-| :----------------- | :----------------- | :----------------- |
-| 25 | 0.8 | 0.8 |
-| 50 | 0.9 | 0.9 |
-| 100 | 1.0 | 1.0 |
-| 250 | 1.1 | 1.1 |
-| 500 | 1.2 | 1.2 |
-| 1k | 1.3 | 1.3 |
-| 2k | 1.4 | 1.4 |
-
-**Chart/Pplot Processing**
-
-The provided image appears to be a chart with various data points. Here is the extracted data in the format "Label: Value":
-
-* **A100 T/S w.r.t. A10G**: 0.8
-* **A10G**: 0.8
-* **A100 T/S w.r.t. A10G**: 0.9
-* **A10G**: 0.9
-* **A100 T/S w.r.t. A10G**: 1.0
-* **A10G**: 1.0
-* **A100 T/S w.r.t. A10G**: 1.1
-* **A10G**: 1.1
-* **A100 T/S w.r. A10G**: 1.2
-* **A10G**: 1.2
-* **A100 T/S w.r. A10G**: 1.3
-* **A10G**: 1.3
-* **A100 T/S w.r. A10G**: 1.4
-* **A10G**: 1.4
-
-**A100 T/S w.r. A10G**: 0.8
-**A10G**: 0.8
-**A10G**: 0.9
-**A10G**: 1.0
-**A10G**: 1.1
-**A10G**: 1.2
-**A10G**: 1.3
-**A10G**: 1.4
-
-**A10G**: 0.8
-**A10G**: 0.9
-**A10G**: 1.0
-**A10G**: 1.1
-**A10G**: 1.2
-**A10G**: 1.3
-**A10G**: 1.4
-
-**A10G**: 0.
+- (a) Equivalent input and output lengths (b) Input and output lengths vary independently
 
 Figure 3: Figure (a) depicts A10G and A100's relative T/\$ across request sizes. Figure (b) expands (a) into separate input and output length dimensions. Tile colors indicate which GPU achieves higher T/\$, and values represent the percent increase of T/\$ relative to the less cost efficient GPU.
 
 variance in request sizes introduces significant variation in request latency. As illustrated in Figure [2,](#page-2-0) request latency can increase by 110× when the input/output length expands from 25 tokens to 2000 tokens for the Llama2-7B model served on an A100 GPU. Consequently, it is crucial to recognize that LLM requests, unlike non-autoregressive models, impose varied loads on GPU resources.
 
-# <span id="page-3-0"></span>4 GPU Cost Efficiency Analysis
+### <span id="page-3-0"></span>4 GPU Cost Efficiency Analysis
 
 In this section, we analyze GPU cost efficiency for LLM services by serving Llama2-7b on NVIDIA A100 [\[32\]](#page-12-15) and A10G [\[31\]](#page-12-16) as a representative example. We show that GPU cost efficiency is influenced by three key LLM service characteristics: request size (§ [4.2\)](#page-3-1), latency SLO (§ [4.3\)](#page-5-0), and request rate (§ [4.4\)](#page-6-1). For each characteristic, we demonstrate opportunities to exploit the heterogeneity of GPU types to increase cost efficiency and reduce deployment cost. Each plot is tagged with the request size, request rate, and SLO used to generate the plot. We use vLLM-0.2.7 as the serving engine [\[19\]](#page-12-7).
 
@@ -199,167 +87,49 @@ Experiment: We serve Llama2-7b on A10G and A100 GPUs, and derive each GPU's T/\$
 
 <span id="page-4-0"></span>![](_page_4_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the performance and resource usage of two AI models, LLa
-    [A brief 3-sentence summary of what this image is about, for broad search.]
-
-**Figure Data (Q&A):**
-
-Q: What is the batch size for the A100 model?
-
-Q: What is the batch size for the A100
-**Figure Data (Table):**
-
-| **Batch Size** | **A100** | **A100** |
-| **[25, 25]** | **[100, 100]** | **[250, 250]** |
-| **[50, 50]** | **[100, 100]** | **[500, 500]** |
-| **[100, 100]** | **[250, 250]** | **[1000, 1000]** |
-| **[200, 200]** | **[500, 500]** | **[2000, 2000]** |
-| **[400, 400]** | **[1000, 1000]** | **[4000, 4000]** |
-| **[800, 800]** | **[2000, 2000]** | **[8000, 8000]** |
-| **[1000, 1000]** | **[3000, 3000]** | **[10000, 10000]** |
-| **[2000, 2000]** | **[5000, 5000]** | **[20000, 20000]** |
-| **[4000, 4000]** | **[10000, 10000]** | **[40000, 40000]** |
-| **[8000, 
-
-
-
-
-Note: The data points are based on the left chart, and the values are exact numbers. The right chart is not included in the data table, as it is a chart- based data. The data points are based on the left chart, and the values are exact numbers.
-
-
 Figure 4: (a) depicts the absolute batch sizes of A10G and A100 serving Llama2-7b at maximum saturation, (b) reports the same batch sizes divided by GPU cost, plotting with respect to A10G.
 
 <span id="page-4-1"></span>![](_page_4_Figure_2.jpeg)
-
-**Figure Description:**
-**Figure Context:**
-This image presents a comprehensive analysis of the performance and carbon emissions of various AI models, including LLa
-**Figure Data (Q&A):**
-
-Q: What is the size of the LLa
-
-Q: How many parameters
-
-Q: What is the
-
-
-
 
 Figure 5: Comparison of L4, A10G, A100, and H100. Tile colors indicates the GPU with greatest T/\$. (a) tile values are the T/\$ %-increase of the best GPU compared to the second best for that tile. (b) compares the best GPU to the worst GPU. In black boxes, only A100 and H100 are compared.
 
 . A10G exhibits up to 2.6× greater T/\$ than A100. Conversely, for larger request sizes, A100 achieves up to 1.5× the cost efficiency of A10G.
 
-We extend this exploration to show the separate impacts of input and output lengths on T/\$ ( [Fig. 3b\)](#page-3-2). Each dimension influences cost efficiency similarly: smaller sizes are best served on A10G, and larger sizes are best served on A100.
+We extend this exploration to show the separate impacts of input and output lengths on T/\$ ( [Fig. 3b\)](#page-3-2). Each dimension influences cost efficiency similarly: smaller sizes are best served on A10G, and larger sizes are best served on A100. Note that the difference can be significant, as using a single GPU type to serve requests across the entire request size space misses opportunities to produce up to 72% more output tokens for the same cost. This reveals the opportunity to use a mix of GPU types to serve requests for which they are most cost effective.
 
-[描述已截斷以避免過長]
+Source of Cost Efficiency Gains: To isolate how request size influences relative cost efficiency, we examine request size's effects on batch size, which serves as a proxy for throughput. [Fig. 4](#page-4-0) depicts absolute batch sizes and batch sizes normalized by instance cost of each GPU at maximum saturation.
 
-### <span id="page-5-0"></span>4.3 SLO and Cost Efficiency
+A10G and A100 have similar cost-normalized batch sizes at 250 input/output tokens, but as the request size increases to 2K input/output tokens, A10G's absolute batch size decreases by 9× whereas A100's only decreases by 6× due to its superior memory size and bandwidth. As a result, A100's cost efficiency advantage over A10G increases with the increase in request size. In contrast, reducing the size from 250 to 25 input/output tokens expands A10G's batch size by 15.2×, whereas A100's growth is 5.89×.Because A100's batch sizes are larger, A100 is more significantly constrained by per-request latency overheads (e.g., due to interference of prefill and decode [\[14\]](#page-11-13)) As a result, A10G's cost-normalized batch size exceeds A100's at short request lengths, leading to greater overall T/\$.
+
+Other Hardware and Model Size We extend our analysis to more GPU types and a larger model variant (Llama2-70b). [Fig. 5](#page-4-1) depicts the relative cost efficiency across four GPU types. Once again, as request sizes increase, we observe a progression of the most cost efficient GPU from lower-end to higher-end GPUs, matching our observations above. Similar trends are observed in the larger Llama2-70B model when comparing H100 and A100 GPUs, as detailed in [Fig. 8.](#page-5-1)
+
+Key Takeaways: There is no universally most cost-efficient GPU for a given LLM. Instead, GPU cost efficiency is highly dependent on request sizes. Lower-end GPUs are more cost-effective for small
+
+request sizes whereas higher-end GPUs are best for large request sizes. These findings generalize to settings with more GPU types and larger model sizes.
+
+#### <span id="page-5-0"></span>4.3 SLO and Cost Efficiency
 
 <span id="page-5-2"></span>![](_page_5_Figure_2.jpeg)
-
-**Figure Description:**
-**Figure Context:**
-This image is a bar chart comparing the performance of different models, including LLa
-**Figure Data (Q&A):**
-
-Q: What is the size of the LLa
-
-Q: How many parameters
-
-Q: What is the size of the
-
-Q: What is the
-
-
-
-
-Note: The data points are not actual values, but rather labels for demonstration. The actual values would depend on the specific data being compared.
-
-
-No specific formula is provided in the input. However, the chart's title and labels are not directly extracted. The chart's content is represented in the above table.
-
-**Output:**
-
-The output is a table with the chart's content. The table is created based on the chart's content, but it's not directly extracted from the image. The table is as follows:
-
-| SLO: Time Per Output Token (ms) | A100 T/S w.r.t. A10G |
-| :- | :- |
-| 40 | 1.2 |
-| 60 | 0.8 |
-| 80 | 0.6 |
-| 100 | 0.4 |
-| 120 | 0.2 |
-| 140 | 0.1 |
-| 160 | 0.0 |
-
-Please note that this is a representation of the chart's content, but it’s not directly extracted from the image. The chart’s content is represented in the above table.
 
 Figure 6: T/\$ comparison between A10G and A100 across a range of TPOT SLO parameters.
 
 ![](_page_5_Figure_4.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a table comparing the performance of various AI models, including L-  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 
-
-
-
-
-No chart or plot is present in the provided image.
-
-**Diagram Extraction**
-
-No diagram is present in the provided image.
-
-**Mathematical Formulas**
-
-No mathematical formulas are present in the provided image.
-
-**Output**
-
-The table extracted from the image is presented above. There is no chart, plot, or diagram to extract. The image does not contain any mathematical formulas. The output is the extracted table.
-
 Figure 7: Relative increase in T/\$ when combining SLO and request size.
 
 In this section, we examine the impact of TPOT SLOs on GPU cost efficiency and highlight the joint effects of SLO and request size.
 
-**Experiment:** We serve Llama2-7b on A10G and A100 and measure T/\$ by maximally saturating each GPU while keeping TPOT below SLO, repeating this across several TPOT deadlines ( Fig. 6). Under tight SLO constraints (<60ms), A100 demonstrates significantly greater T/\$ than A10G (2×). A10G's higher processing latency restricts the throughput it can achieve within a tight TPOT deadline, while A100 maintains much higher throughput even at low latency. However, as the SLO gradually loosens (60-160ms), A10G's higher latency is less problematic, dramatically increasing its T/\$ and surpassing that of A100 (by > 40%). Importantly, this example uses a small request size (64 input/output tokens), which was shown in § 4.2 to be best served on A10G.
+**Experiment:** We serve Llama2-7b on A10G and A100 and measure T/\$ by maximally saturating each GPU while keeping TPOT below SLO, repeating this across several TPOT deadlines ( Fig. 6). Under tight SLO constraints (<60ms), A100 demonstrates significantly greater T/\$ than A10G (2 $\times$ ). A10G's higher processing latency restricts the throughput it can achieve within a tight TPOT deadline, while A100 maintains much higher throughput even at low latency. However, as the SLO gradually loosens (60-160ms), A10G's higher latency is less problematic, dramatically increasing its T/\$ and surpassing that of A100 (by > 40%). Importantly, this example uses a small request size (64 input/output tokens), which was shown in § 4.2 to be best served on A10G. However, a tight SLO degrades A10G's cost efficiency much more severely than A100's and pushes the advantage to A100, exemplifying the tight interplay between SLO and request size explored further below.
 
-[描述已截斷以避免過長]
+**SLO and Request Size Interplay:** Fig. 7 presents relative cost efficiency between A10G and A100 for a broad range of TPOT SLOs and request sizes. At tight SLOs (40-60ms), A100 always has higher T/\$ (up to  $2\times$ ). At 80ms, A10G begins showing modest benefit over A100 for small request sizes. Finally, at 100-160ms, A10G demonstrates much greater T/\$ advantage over A100 for the same request sizes (up to  $1.5\times$ ), yet A100 is always more cost efficient for larger requests. As demonstrated, a modification to TPOT SLO shifts the boundary within the request size space between which different GPU types are most cost effective and significantly influences the magnitude of cost efficiency differences between GPUs. As a result, both request size and SLO must be considered in tandem when determining cost efficiency.
 
-| **Output Length (tokens)** | **Input Length (tokens)** | **A100 T/S relative increase** | **H100 T/S relative increase** |
-| :----------------- | :----------------- | :----------------- | :----------------- |
-| 2k | 9% | 6% | 6% |
-| 1k | 16% | 8% | 5% |
-| 500 | 23% | 15% | 8% |
-| 250 | 35% | 26% | 16% |
-| 100 | 39% | 35% | 33% |
-| 50 | 43% | 40% | 32% |
-| 25 | 43% | 40% | 32% |
+**Key Takeaways:** To meet strict SLOs, expensive GPUs are necessary due to the higher latency of cheaper GPUs. However, as SLO is loosened, lower-end GPUs can be used to cut deployment costs.
 
-**Chart/Pplot Extraction**
+<span id="page-5-1"></span>![](_page_5_Figure_10.jpeg)
 
-No chart or plot is present in the provided image.
+Figure 8: T/\$ comparison between H100x2 and A100x2 serving Llama2-70b.
 
-**Diagrams/Flowcharts**
-
-No diagrams or flowcharts are present in the provided image.
-
-**Mathematical Formulas**
-
-No mathematical formulas are present in the provided image.
-
-**Output**
-
-The table extracted from the image is presented above. It contains information about output length (tokens) and input length (tokens) for various output and input lengths, along with A100 T/S and H100 T/S relative increases. The table has 7 rows and 3 columns. The first column is the output length (tokens), the second column is the input length (tokens), and the third column is the A100 T/S and H100 T/S relative increases. The table is presented in a table format with a header and 7 rows. The table is not a chart or plot, and there is no chart or plot to extract. The table is a table of data, and it is presented in a table format. The table has 7 rows and 3 columns. The first column is the output length (tokens), the second column is the input length (tokens), and the third column is the A100 T/S and H100 T/S relative increases. The table is presented in a table format with a header and 7 rows. The table is not a chart or plot, and there is no chart or plot to extract. The table is a table of data, and it is presented in a table format. The table has 7 rows and 2 columns. The first column is the output length (tokens), and the second column is the input length (tokens). The table is presented in a table format with a header and 7 rows.
-
-[描述已截斷以避免過長]
-
-
-[描述已截斷以避免過長]
-
+![](_page_5_Figure_12.jpeg)
 
 Figure 9: GPU on-demand cost for three GPU provisioning strategies.
 
@@ -379,7 +149,7 @@ Key Takeaways: During low activity periods, LLM services should right-size to ch
 
 Building on the observations in § [4](#page-3-0) that request size, request rate, and SLO all jointly determine GPU cost efficiency, we present Mélange, an allocation framework that considers each of these three dimensions in-tandem to derive the minimal-cost GPU allocation that meets an LLM service's request load while adhering to SLO constraints. [Fig. 1](#page-1-1) depicts the Mélange framework. Mélange flexibly supports any GPU type (1a) and LLM service definition (1b), uses a one-time offline profiling step to measure GPU performance ( 2 ), formulates the task of GPU allocation as a bin packing problem ( 3 ), then computes the minimal-cost GPU allocation ( 4 ).
 
-# 5.1 Problem Formulation
+### 5.1 Problem Formulation
 
 We begin by defining the key terms utilized in our problem formulation and solution. An LLM service workload is characterized by its overall request rate along with a distribution of input and output sizes. A distribution of request sizes is used rather than fixed values due to the inherent variability of LLM request sizes. Specifically, a workload is a histogram where each bucket corresponds to a range of request sizes and a bucket's value is the request rate of requests within the bucket's size range. The service cost is computed by summing the hourly on-demand cloud renatl rates for each of the selected GPUs. We define SLO based on average TPOT, however, Mélange can be extended to other definitions of SLO such as time to first token (TTFT).
 
@@ -399,9 +169,9 @@ The allocation algorithm's (3) objective is to map the workload to a minimal-cos
 
 #### <span id="page-7-0"></span>**5.4.1** Request Buckets and Slices
 
-A workload histogram has two dimensions, input length and output length, and each histogram bucket's value is the aggregate request rate for requests within the bucket's size range. We further break each bucket down into slices for finer-grained bin packing. A parameter, slice factor, indicates the number of slices that each bucket is divided into. In a setting with a slice factor of 8 and a bucket with a request rate of 4, the bucket would be segmented into 8 slices each corresponding to a request rate of 0.5 requests/s. The slice factor can be tuned to reach the desired balance between granularity and solution complexity, but we have not found overall performance to be sensitive to slice factor.
+A workload histogram has two dimensions, input length and output length, and each histogram bucket's value is the aggregate request rate for requests within the bucket's size range. We further break each bucket down into slices for finer-grained bin packing. A parameter, *slice factor*, indicates the number of slices that each bucket is divided into. In a setting with a slice factor of 8 and a bucket with a request rate of 4, the bucket would be segmented into 8 slices each corresponding to a request rate of 0.5 requests/s. The slice factor can be tuned to reach the desired balance between granularity and solution complexity, but we have not found overall performance to be sensitive to slice factor.
 
-### <span id="page-7-1"></span>5.4.2 Load
+#### <span id="page-7-1"></span>5.4.2 Load
 
 The solver requires an estimate of the load of each slice to ensure that a GPU's capacity is not exceeded and SLO is not violated. The load of a slice with request size s and rate r on GPU G is calculated as  $\frac{r}{MaxTput(G,s,SLO)}$ , where MaxTput(G,s,SLO) is the maximum request/s G can achieve for requests of size s while adhering to SLO. For instance, if  $MaxTput(G, s, SLO) = 10 \, reqs/s$  and r=1, the load is calculated as 1/10=0.1. Each GPU's maximum capacity is defined as 1. This approximation allows us to calculate the aggregate load of slices with differing sizes and rates. Based on offline profiling, we compute MaxTput(G, s, SLO) for each bucket in the workload histogram.
 
@@ -435,16 +205,17 @@ $$(3)$$
 
 $$(4)$$
 
-$$\forall j \in \{1, \dots, M\}, \quad \sum_{i=1}^{n} A_{i,j} \cdot L_{i,j} \leq B_j$$
+$$\forall j \in \{1, \dots, M\}, \quad \sum_{i=1}^{N} A_{i,j} \cdot L_{i,j} \le B_j$$
  (3)
 
-$$\forall i, \forall j, \quad A_{i,j} \in \{0, 1\} \tag{4}$$
+$$\forall i, \forall j, \quad A_{i,j}^{i=1} \in \{0, 1\}$$
+ (4)
 
-$$\forall j \in \{1, \dots, M\}, \quad B_i > 0 \tag{5}$$
+$$\forall j \in \{1, \dots, M\}, \quad B_j \ge 0 \tag{5}$$
 
 The solution is computed using an off-the-shelf solver [29]. Upon solution, the decision variable Bholds the minimal-cost GPU allocation (4) that meets the workload demand and adheres to SLO.
 
-### <span id="page-8-0"></span>6 Evaluation
+#### <span id="page-8-0"></span>6 Evaluation
 
 We assess Mélange's performance across diverse hardware, request sizes, rates, and SLOs. Mélange consistently achieves significant cost savings (up to 77%) compared to single-GPU-type strategies, and the selected allocations successfully attain TPOT SLO for over 99.5% of requests.
 
@@ -469,126 +240,11 @@ Table 1: Specifications of four NVIDIA GPUs: L4, A10G, A100, and H100.
 
 <span id="page-8-1"></span>![](_page_8_Figure_7.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of input and output data distributions for various models, including LLa
-**Figure Data (Q&A):**
-
-Q: What is the input length for the LLa
-A: 10000 tokens
-
-Q: What is the output length for the L
-
-Q: What is the input length for the L
-
-Q: What is the output
-
-Q: What is the input
-
-Q: What is the output
-Q: What is the input
-
-
-
-
-Note: The data in the table is not provided in the original text, so I've created a table with placeholder data. The actual data would depend on the specific data being presented in the plots.
-
-
-The first figure shows the input length distributions for the datasets. The figure has two subplots: (a) Input length distributions and (b) Output length distributions.
-
-**Figure 2: Output Length Distributions**
-
-The second figure shows the output length distributions for the datasets. The figure has two subplots: (a) Input length distributions and (b) Output length distributions.
-
-**Table 1: Input Length Distributions**
-
-| Dataset | Mean | Standard Deviation |
-| --- | --- | --- |
-| Mixed | 1278.04 | 129.45 |
-| Arena | 329.43 | 55.45 |
-| Pubmed | 4174.13 | 100.45 |
-
-**Table 2: Output Length Distributions**
-
-| Dataset | Mean | Standard Deviation |
-| --- | --- | --- |
-| Mixed | 219.87 | 45.67 |
-| Arena | 195.66 | 35.45 |
-| Pubmed | 314.1 | 50.45 |
-
-**Figure 3: Input Length Distributions**
-
-The figure shows the input length distributions for the datasets. The figure has two subplots: (a) Input length distributions and (b) Output
-
-**Figure 4: Output
-
-The figure shows the output
-
-**Figure 5: Input
-
-The figure shows the
-
-**Figure 6: Output
-
-**Figure 7: Input
-
-**Figure 8: Output
-
-**Figure 9: Input
-
-**Figure 10: Output
-
-**Figure 11: Input
-
-**Figure 12: Output
-
-**Figure 13: Input
-
-**Figure 14: Output
-
-**Figure 15: Input
-
-**Figure 16: Output
-
-**Figure 17: Input
-
-**Figure 18: Output
-
-**Figure 19: Input
-
-**Figure 20: Output
-
-**Figure 21: Input
-
-**Figure 22: Output
-
-**Figure 23: Input
-
-**Figure 24: Output
-
-**Figure 25: Input
-
-**Figure 26: Output
-
-**Figure 27: Input
-
-**Figure 28: Output
-
-**Figure 29: Input
-
-**Figure 30: Output
-
-**Figure 31: Input
-
-**Figure 32: Output
-
-**Figure 33: Input
-
 Figure 10: Dataset input and output length distributions.
 
-**Mélange Configuration.
+**Mélange Configuration.** Bucket size ranges correspond to Figure 5, comprising of 10 input length ranges and 6 output length ranges (60 total buckets). The slice factor is set to 8 for a total of  $60 \cdot 8 = 480$  slices.
 
-[描述已截斷以避免過長]
+**Baselines.** We compare Mélange to allocations that use a single GPU type. To derive baseline allocations, we use Mélange's ILP formulation (§ 5.4.3) but restrict the solver to a single GPU type.
 
 #### 6.2 Cost Savings Analysis
 
@@ -596,125 +252,13 @@ We compare the deployment costs of Mélange to the single-GPU-type baselines acr
 
 <span id="page-9-0"></span>![](_page_9_Figure_2.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a collection of charts and tables comparing the performance of various AI models, including LLa
-**Figure Data (Q&A):**
-
-Q: What is the size of the LLa
-
-Q: How many
-
-Q: What is the
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Note: The table above is a simplified version of the actual data. The actual data is not provided in the question, so I created a table based on the provided information. The actual data may be different.
-
-
-However, I can describe the content of the image:
-
-The image appears to be a collection of various scientific charts and tables, but it does not contain any tables or charts that can be extracted and described according to the provided instructions. The image seems to be a collection of various scientific charts and tables, but it does not contain any tables or charts that can be extracted and described according to the provided instructions.
-
-The image appears to be a collection of various scientific charts and tables, but it does not contain any tables or charts that can be extracted and described according to the provided instructions.
-
-The image appears to be a collection of various scientific charts and tables, but it does not contain any tables or charts that can  I was unable to extract any tables or charts from the provided image. The image appears to be a collection of various scientific charts and tables, but it does not contain any tables or charts that can be extracted and described according to the provided instructions.
-
-However, I can provide a general description of the image:
-
-The image appears to be a collection of various scientific charts and tables, but it does not contain any tables or charts that can be
-
-I was unable to extract any tables or charts from the provided image. The image appears to be a collection of various scientific charts and tables, but it does not contain any tables or charts that can be
-
-I was unable
-
 Figure 11: Deployment cost across different datasets and SLOs.
 
-- Short-context Dataset (Arena). In Figs.
+- Short-context Dataset (Arena). In Figs. 11a and 11d, Mélange achieves 15-77% cost reduction (120ms SLO) and 9-68% reduction (40ms SLO). For both SLOs, L4/A10G are more cost efficient than A100/H100 at low request rates because they achieve greater utilization. For example, at 1-2 req/s, H100 is significantly underutilized and incurs exorbitant costs. However, as the rate increases, L4/A10G's cost advantage reduces as A100/H100 are better utilized. Further, with a 120ms SLO, L4/A10G remain competitive with A100 even at higher request rates due to their T/\$ advantage for smaller request sizes (which the Arena dataset is skewed towards). Conversely, with a 40ms SLO, A10G/L4 show much higher relative costs due to their increased latency, requiring more instances to meet the tight deadline. Mélange adapts by allocating more L4/A10G at 120ms SLO and more A100 at 40ms SLO, consistently reducing overall cost.
+- Long-context Dataset (PubMed). In Figs. 11b and 11e, Mélange achieves 15-33% cost reduction (120ms SLO) and 2-22% reduction (40ms SLO). A100 generally achieves higher T/\$ for the request sizes in PubMed, evidenced by the 120ms setting where A100-only is consistently cheaper than H100-only. However, when SLO tightens to 40ms, H100 is the clear winner due to H100's lower inference latency. Again, Mélange adapts to these dynamics by allocating a greater share of A100s at a looser SLO, and more H100s as the SLO is tightened.
+- *Mixed-context Dataset*. In Figs. 11c and 11f, Mélange achieves 13-51% cost reduction (120ms SLO) and 4-51% reduction (40ms SLO). Compared to the PubMed workload, A100-only has much greater cost efficiency in the Mixed workload than H100 due to a greater portion of short-context requests, for which A100 achieves greater T/\$. Mélange capitalizes by using more A100 than H100, but it also uses L4/A10Gs for small requests, enabling even further cost reduction.
 
-[描述已截斷以避免過長]
+**Takeaways.** These results exemplify the core observations from § 4, which show that request size, SLO, and request rate all jointly determine cost efficiency. As any of these LLM service characteristics vary, Mélange flexibly adjusts its GPU allocation and mixes GPU types to exploit their heterogeneity. This consistently delivers the most cost efficient allocation across each evaluated dataset with both strict (40ms) and loose (120ms) SLOs, achieving up to a 77% cost reduction.
 
 ### <span id="page-10-1"></span>6.3 SLO Satisfaction
 
@@ -724,36 +268,15 @@ Load Balancer. A load balancer (LB) is required to balance requests across GPUs.
 
 <span id="page-10-0"></span>![](_page_10_Figure_3.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a line graph comparing the performance of various AI models, including LLa
- 
-**Figure Data (Q&A):**
-Q: What is the size of the LLa
-Q: How many
+Figure 12: Mélange TPOT CDFs.
 
+Weights are computed based on each GPU's performance for the request's estimated size.
 
+Results. [Fig. 12](#page-10-0) presents CDFs of the observed per-request average TPOTs across experiments. With an SLO of 120ms, over 99.95% of requests met SLO. When the SLO was tightened to 40ms, 99.5% of requests met SLO. These results validate Mélange's ability to choose GPU allocations that meet workload demand, however, we recognize that services may require even higher SLO adherence, so we investigated the source of SLO violations in our experiment.
 
+SLO Violation Investigation. 84% of our experiment's SLO violations were due to *a)* request rate bursts or *b)* co-location with large requests. We send requests by a Poisson process, which occasionally creates short-lived bursts that overload GPU capacity. Further, we randomly sample request sizes from the chosen dataset. Occasionally, a series of large requests are chosen in sequence and temporarily exceed service capacity. In an online production environment, resource over-provisioning is used to absorb such bursts and other load variations. In Mélange, a desired over-provisioning rate (e.g., 10%) can be achieved by increasing the request rate input to the solver by the same proportion.
 
-
-Note: The data points are not provided in the original image, so I've created a table with the model names and average TPOT values. Please note that this is a generated table and may not be accurate.
-
-
-Here is the extracted information:
-
-**Line Plot:**
-
-* The x-axis represents the average TPOT in milliseconds.
-* The y-axis represents the cumulative distribution of the average TPOT.
-* The plot shows the performance of different models (Arena, Mixed, and Pubmed) on the task of predicting the average TPOT.
-
-**Lines:**
-
-* **Arena (120ms)**: This line represents the performance of the Arena model with a 120ms time limit. The line shows a high level of performance in the early 20-40-50-60-80-100-120-140-150-160-200-250-300-400-500-600-700-800-900-1000-1200-1400-1500-1600-2000-2500-3000-4000-5000-6000-7000-8000-9000-10000-12000-14000-15000-16000-20000-25000-30000-40000-50000-60000-70000-80000-90000-100000-120000-140000-150000-160000-200000-250000-300000-400000-500000-600000-700000-800000-900000-1000000-1200000-1400000-1500000-1600000-2000000-2500000-3000000-4000000-5000000-600000-700000-800000-900000-1000000-1200000-1400000-1500000-1600000-2000000-2500000-300000-400000-500000-600000-700000-800000-900000-1000000-1200000-140000-1500000-1600000-2000000-2500000-3000000-4000000-5000000-600000-700000-800000-900000-1000000-1200000-1400000-150000-160000-200000-250000-300000-400000-500000-600000-700000-800000-900000-1000000-1200000-140000-150000-160000-200-300-400-500-600-700-800-1000-1200-140-150-200-300-400-500-600-700-800-1000-1200-150-200-300-400-500-600-700-800-1000-1200-150-200-300-400-500-600-700-800-1000-1200-150-200-300-400-500-600-700-800-1000-1200-150-200-300-400-500-600-700-800-1000-1200-150-200-300-400-500-600-700-800-1000-1200-150-200-300-400-500-600-700-800-100-120-150-200-300-400-500-600-700-800-1000-1200-150-200-300-400-500-600-700-800-1000-120-150-200
-
-[描述已截斷以避免過長]
-
-### 6.4 Solver Time
+#### 6.4 Solver Time
 
 We detail the solver execution time in [Tab. 2.](#page-15-1) Across all datasets and request rates, the solver's execution time remains under 1.2 seconds, which is negligible compared to service lifetime. We observe a modest increase in solver time with higher request volumes due to greater complexity in slice assignment. However, this increase is empirically sub-linear relative to the increase in request rate, and the solver's execution time remains practical.
 
@@ -829,9 +352,9 @@ Conclusion. We introduce Mélange, a framework for deriving the minimal-cost GPU
 - <span id="page-14-4"></span>[59] Wangchunshu Zhou, Canwen Xu, Tao Ge, Julian McAuley, Ke Xu, and Furu Wei. Bert loses patience: Fast and robust inference with early exit. *Advances in Neural Information Processing Systems*, 33:18330–18341, 2020.
 - <span id="page-14-2"></span>[60] Banghua Zhu, Ying Sheng, Lianmin Zheng, Clark Barrett, Michael Jordan, and Jiantao Jiao. Towards optimal caching and model selection for large model inference. *Advances in Neural Information Processing Systems*, 36, 2024.
 
-### A Experiment Setup
+# A Experiment Setup
 
-### A.1 Dataset
+#### A.1 Dataset
 
 We test Mélange's performance on three different datasets listed below:
 
@@ -839,7 +362,7 @@ We test Mélange's performance on three different datasets listed below:
 - Long context: This scenario represents tasks with extensive input, such as summarization. We utilize the PubMed dataset (ccdv/pubmed-summarization) [\[7\]](#page-11-14), comprising 133 thousand scientific papers from PubMed.com, a popular dataset for large-scale text summarization studies.
 - Mixed long/short context: This scenario captures settings with a combination of long and short context, such as an assistant that engages in succinct dialogue and responds to large document-based queries. To model this, we create a synthetic dataset by sampling 80% of requests from the Arena dataset and 20% of requests from the PubMed dataset.
 
-#### <span id="page-14-8"></span>A.2 Load Balancer
+### <span id="page-14-8"></span>A.2 Load Balancer
 
 The load balancer (LB) policy used in our evaluations in § [6.3](#page-10-1) is as follows. For each input length bucket range (§ [5.4.1\)](#page-7-0), the LB tracks the average of all previously-seen output lengths. Upon receiving a new request, the LB uses this average as an estimate for the new request's output length, allowing the LB to identify the specific request size bucket the request belongs in. The LB then makes a weighted random selection of a GPU backend to forward the request to. A GPU's weights are computed based on the proportion of the GPU's maximum throughput for request sizes of the new request's bucket to the aggregate throughput of all GPUs. This is a simple policy we use to demonstrate the efficacy of Mélange, and leave it as future work to develop load balancers for serving LLMs on heterogeneous GPUs.
 
@@ -860,43 +383,41 @@ We present the solver execution time from each experiment in Table [2.](#page-15
 
 Table 2: Solver execution time.
 
-### <span id="page-15-0"></span>C Instance Allocations
+# <span id="page-15-0"></span>C Instance Allocations
 
 We present the instance allocations for each experiment in the tables below.
 
-| Rate (req/s) | Solver    | L4 | A10G | A100 | H100 | Norm. Cost<br>(\$/hr) | Savings |
-|--------------|-----------|----|------|------|------|-----------------------|---------|
-| 1            | Mélange   | 1  | 1    |      |      | 1.71                  | N/A     |
-|              | H100-only |    |      |      | 1    | 7.516                 | 77.25%  |
-|              | A100-only |    |      | 1    |      | 3.67                  | 53.41%  |
-|              | A10G-only |    | 2    |      |      | 2.02                  | 15.35%  |
-|              | L4-only   | 3  |      |      |      | 2.1                   | 18.57%  |
-| 2            | Mélange   | 2  | 1    |      |      | 2.41                  | N/A     |
-|              | H100-only |    |      |      | 1    | 7.516                 | 67.94%  |
-|              | A100-only |    |      | 1    |      | 3.67                  | 34.33%  |
-|              | A10G-only |    | 3    |      |      | 3.03                  | 20.46%  |
-|              | L4-only   | 5  |      |      |      | 3.5                   | 31.14%  |
-| 4            | Mélange   | 1  |      | 1    |      | 4.37                  | N/A     |
-|              | H100-only |    |      |      | 1    | 7.516                 | 41.86%  |
-|              | A100-only |    |      | 2    |      | 7.34                  | 40.46%  |
-|              | A10G-only |    | 6    |      |      | 6.06                  | 27.89%  |
-|              | L4-only   | 9  |      |      |      | 6.3                   | 30.63%  |
-| 8            | Mélange   | 1  | 3    | 1    |      | 7.4                   | N/A     |
-|              | H100-only |    |      |      | 2    | 15.032                | 50.77%  |
-|              | A100-only |    |      | 3    |      | 11.01                 | 32.79%  |
-|              | A10G-only |    | 11   |      |      | 11.1                  | 33.39%  |
-|              | L4-only   | 17 |      |      |      | 11.9                  | 37.82%  |
-| 16           | Mélange   | 2  | 2    | 3    |      | 14.43                 | N/A     |
-|              | H100-only |    |      |      | 4    | 30.064                | 52.00%  |
-|              | A100-only |    |      | 6    |      | 22.02                 | 34.47%  |
-|              | A10G-only |    | 20   |      |      | 20.2                  | 28.56%  |
-|              | L4-only   | 33 |      |      |      | 23.1                  | 37.53%  |
-| 32           | Mélange   | 2  | 6    | 5    |      | 25.81                 | N/A     |
-|              | H100-only |    |      |      | 8    | 60.128                | 57.07%  |
-|              | A100-only |    |      | 9    |      | 33.03                 | 21.86%  |
-|              | A10G-only |    | 39   |      |      | 39.39                 | 34.48%  |
-|              | L4-only   | 65 |      |      |      | 45.5                  | 43.27%  |
-|              |           |    |      |      |      |                       |         |
+| Rate (req/s) | Solver               | L4 | A10G | A100 | H100 | Norm. Cost<br>(\$/hr) | Savings       |
+|--------------|----------------------|----|------|------|------|-----------------------|---------------|
+| 1            | Mélange<br>H100-only | 1  | 1    |      | 1    | 1.71<br>7.516         | N/A<br>77.25% |
+|              | A100-only            |    |      | 1    |      | 3.67                  | 53.41%        |
+|              | A10G-only            |    | 2    |      |      | 2.02                  | 15.35%        |
+|              | L4-only              | 3  |      |      |      | 2.1                   | 18.57%        |
+| 2            | Mélange              | 2  | 1    |      |      | 2.41                  | N/A           |
+|              | H100-only            |    |      |      | 1    | 7.516                 | 67.94%        |
+|              | A100-only            |    |      | 1    |      | 3.67                  | 34.33%        |
+|              | A10G-only            |    | 3    |      |      | 3.03                  | 20.46%        |
+|              | L4-only              | 5  |      |      |      | 3.5                   | 31.14%        |
+| 4            | Mélange              | 1  |      | 1    |      | 4.37                  | N/A           |
+|              | H100-only            |    |      |      | 1    | 7.516                 | 41.86%        |
+|              | A100-only            |    |      | 2    |      | 7.34                  | 40.46%        |
+|              | A10G-only            |    | 6    |      |      | 6.06                  | 27.89%        |
+|              | L4-only              | 9  |      |      |      | 6.3                   | 30.63%        |
+| 8            | Mélange              | 1  | 3    | 1    |      | 7.4                   | N/A           |
+|              | H100-only            |    |      |      | 2    | 15.032                | 50.77%        |
+|              | A100-only            |    |      | 3    |      | 11.01                 | 32.79%        |
+|              | A10G-only            |    | 11   |      |      | 11.1                  | 33.39%        |
+|              | L4-only              | 17 |      |      |      | 11.9                  | 37.82%        |
+| 16           | Mélange              | 2  | 2    | 3    |      | 14.43                 | N/A           |
+|              | H100-only            |    |      |      | 4    | 30.064                | 52.00%        |
+|              | A100-only            |    |      | 6    |      | 22.02                 | 34.47%        |
+|              | A10G-only            |    | 20   |      |      | 20.2                  | 28.56%        |
+|              | L4-only              | 33 |      |      |      | 23.1                  | 37.53%        |
+| 32           | Mélange              | 2  | 6    | 5    |      | 25.81                 | N/A           |
+|              | H100-only            |    |      |      | 8    | 60.128                | 57.07%        |
+|              | A100-only            |    |      | 9    |      | 33.03                 | 21.86%        |
+|              | A10G-only            |    | 39   |      |      | 39.39                 | 34.48%        |
+|              | L4-only              | 65 |      |      |      | 45.5                  | 43.27%        |
 
 Table 3: Instance allocations for the short-context Arena dataset, SLO=120ms.
 
@@ -946,31 +467,38 @@ Table 4: Instance allocations for the long-context PubMed dataset, SLO=120ms.
 
 Table 5: Instance allocations for the mixed context dataset, SLO=120ms.
 
-| 1<br>Mélange<br>2<br>1<br>2.41<br>H100-only<br>1<br>7.516<br>A100-only<br>1<br>3.67<br>A10G-only<br>3<br>3.03<br>L4-only<br>5<br>3.5<br>2<br>Mélange<br>1<br>3.67<br>H100-only<br>1<br>7.516<br>A100-only<br>1<br>3.67<br>A10G-only<br>5<br>5.05<br>L4-only<br>9<br>6.3<br>4<br>Mélange<br>1<br>1<br>1<br>5.38<br>H100-only<br>1<br>7.516<br>A100-only<br>2<br>7.34<br>A10G-only<br>10<br>10.1<br>L4-only<br>17<br>11.9<br>8<br>Mélange<br>1<br>1<br>2<br>9.05<br>H100-only<br>3<br>15.032<br>A100-only<br>3<br>11.01<br>A10G-only<br>16<br>16.16<br>L4-only<br>34<br>23.8<br>16<br>Mélange<br>6<br>3<br>17.07 | N/A<br>67.94%<br>34.33%<br>20.46%<br>31.14%<br>N/A<br>51.17%<br>0.00%<br>27.33%<br>41.75%<br>N/A |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                                                  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 28.42%                                                                                           |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 26.70%                                                                                           |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 46.73%                                                                                           |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 54.79%                                                                                           |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | N/A                                                                                              |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 39.80%                                                                                           |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 17.80%                                                                                           |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 44.00%                                                                                           |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 61.97%                                                                                           |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | N/A                                                                                              |
-| H100-only<br>4<br>30.064                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 43.22%                                                                                           |
-| A100-only<br>6<br>22.02                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 22.48%                                                                                           |
-| A10G-only<br>40<br>40.4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 57.75%                                                                                           |
-| L4-only<br>68<br>47.6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | 64.14%                                                                                           |
-| 32<br>Mélange<br>8<br>6<br>30.1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | N/A                                                                                              |
-| H100-only<br>7<br>52.612                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 42.79%                                                                                           |
-| A100-only<br>9<br>33.03                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |                                                                                                  |
-| A10G-only<br>80<br>80.8                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |                                                                                                  |
-| L4-only<br>135<br>94.5<br>68.15%                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | 8.87%<br>62.75%                                                                                  |
+| Rate | Solver    | L4  | A10G | A100 | H100 | Norm. Cost<br>(\$/hr) | Savings |
+|------|-----------|-----|------|------|------|-----------------------|---------|
+| 1    | Mélange   | 2   | 1    |      |      | 2.41                  | N/A     |
+|      | H100-only |     |      |      | 1    | 7.516                 | 67.94%  |
+|      | A100-only |     |      | 1    |      | 3.67                  | 34.33%  |
+|      | A10G-only |     | 3    |      |      | 3.03                  | 20.46%  |
+|      | L4-only   | 5   |      |      |      | 3.5                   | 31.14%  |
+| 2    | Mélange   |     |      | 1    |      | 3.67                  | N/A     |
+|      | H100-only |     |      |      | 1    | 7.516                 | 51.17%  |
+|      | A100-only |     |      | 1    |      | 3.67                  | 0.00%   |
+|      | A10G-only |     | 5    |      |      | 5.05                  | 27.33%  |
+|      | L4-only   | 9   |      |      |      | 6.3                   | 41.75%  |
+| 4    | Mélange   | 1   | 1    | 1    |      | 5.38                  | N/A     |
+|      | H100-only |     |      |      | 1    | 7.516                 | 28.42%  |
+|      | A100-only |     |      | 2    |      | 7.34                  | 26.70%  |
+|      | A10G-only |     | 10   |      |      | 10.1                  | 46.73%  |
+|      | L4-only   | 17  |      |      |      | 11.9                  | 54.79%  |
+| 8    | Mélange   | 1   | 1    | 2    |      | 9.05                  | N/A     |
+|      | H100-only |     |      |      | 3    | 15.032                | 39.80%  |
+|      | A100-only |     |      | 3    |      | 11.01                 | 17.80%  |
+|      | A10G-only |     | 16   |      |      | 16.16                 | 44.00%  |
+|      | L4-only   | 34  |      |      |      | 23.8                  | 61.97%  |
+| 16   | Mélange   |     | 6    | 3    |      | 17.07                 | N/A     |
+|      | H100-only |     |      |      | 4    | 30.064                | 43.22%  |
+|      | A100-only |     |      | 6    |      | 22.02                 | 22.48%  |
+|      | A10G-only |     | 40   |      |      | 40.4                  | 57.75%  |
+|      | L4-only   | 68  |      |      |      | 47.6                  | 64.14%  |
+| 32   | Mélange   |     | 8    | 6    |      | 30.1                  | N/A     |
+|      | H100-only |     |      |      | 7    | 52.612                | 42.79%  |
+|      | A100-only |     |      | 9    |      | 33.03                 | 8.87%   |
+|      | A10G-only |     | 80   |      |      | 80.8                  | 62.75%  |
+|      | L4-only   | 135 |      |      |      | 94.5                  | 68.15%  |
 
 Table 6: Instance allocations for the short-context Arena dataset, SLO=40ms.
 

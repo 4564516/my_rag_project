@@ -29,17 +29,18 @@ class Config:
     collection_name: str = "wattbot_index"
     
     # 模型配置
-    embedding_model: str = "all-mpnet-base-v2"  # 升级到更好的 embedding 模型（768 维，更准确）
+    embedding_model: str = "BAAI/bge-m3"  # 升級到最強的開源 Embedding (支持 8192 context, 多語言, 稀疏檢索)
     # LLM 模型選項：
-    # - 本地模型（推薦，免費無限制）: "ollama/llama3.2:3b" 或 "ollama/mistral:7b"
+    # - 本地模型（推薦，免費無限制）: "ollama/qwen2.5:14b" (5070 12GB VRAM 推薦)
     # - OpenRouter 免費: "mistralai/mistral-7b-instruct:free" (每天 50 次)
     # - Groq 免費: "llama-3.1-8b-instant" (每分鐘 30 次)
-    llm_model: str = "ollama/mistral:7b"  # 默認使用 Ollama 本地模型（更大的模型，更準確）
+    llm_model: str = "ollama/qwen2.5:14b"  # 升級到 14B，邏輯推理更強
     
     # RAG 配置
-    top_k: int = 50  # 檢索的片段數量（用於檢索階段）
-    llm_top_k: int = 10  # 提交給 LLM 的片段數量（用於生成階段，經過 Rerank 後）
+    top_k: int = 150  # 大幅增加檢索數量 (從 50 -> 150)，讓 Reranker 有更多選擇
+    llm_top_k: int = 15  # 增加最終上下文數量 (從 10 -> 15)
     limit_pdfs: int = 0  # 0 = 處理所有 PDF，>0 = 只處理前 N 個
+    rerank_model: str = "BAAI/bge-reranker-v2-m3"  # 換成 SOTA 的 Reranker 模型，大幅提升排序準確度
     
     # Prompt 配置
     system_prompt: str = """You are an expert research assistant specialized in extracting precise information from academic documents. 

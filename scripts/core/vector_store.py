@@ -169,12 +169,37 @@ class VectorStore:
             # print(f"DEBUG: Query Special Tokens: {special_tokens}")
             # print(f"DEBUG: Table Refs: {table_refs}, Figure Refs: {figure_refs}")
 
+            # 4. 年份感知 (Year-Aware Boosting) - 這就是我們的秘密武器
+            # 提取 query 中的年份
+            query_years = re.findall(r'\b(199\d|20[0-2]\d|2030)\b', query)
+            query_years = list(set(query_years)) # 去重
+            
             for chunk_id, text, meta, dist in zip(ids, docs, metas, dists):
                 base_score = 1.0 - dist
                 
                 # 關鍵字加權
                 boost = 0.0
                 text_lower = text.lower()
+                
+                # --- 年份匹配邏輯 ---
+                if query_years:
+                    # 檢查 metadata 裡的年份
+                    meta_year_str = str(meta.get("year_str", ""))
+                    meta_years = meta_year_str.split(",") if meta_year_str else []
+                    
+                    year_match = False
+                    for q_year in query_years:
+                        if q_year in meta_years:
+                            year_match = True
+                            break
+                    
+                    if year_match:
+                        boost += 0.5  # 年份對上，給予巨大獎勵！
+                    else:
+                        # 如果問題有年份，但這個 chunk 沒這年份，甚至有點懲罰 (視情況)
+                        # 但考慮到有時候年份寫在上一段，我們暫不懲罰，只獎勵
+                        pass
+                # -------------------
                 
                 # 1. 表格/圖表引用匹配（高優先級）
                 for table_ref in table_refs:

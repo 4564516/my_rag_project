@@ -20,90 +20,27 @@ In recent years, the field of artificial intelligence has progressed at an unpre
 
 increasing numbers of stakeholders become involved in the development and use of AI systems, it is imperative to carefully characterize the true cost of building and deploying state-of-the-art models, to inform effective strategies for mitigating potential harms and planning for future demand.
 
-In this paper, we estimate the energy use and environmental impacts caused by training the OLMo series of transformer language models (Groeneveld et al., 2024; OLMo et al., 2025), ranging in size from 20 million to 13 billion active parameters, trained on 1.7 to 5.6 trillion tokens. To do this, we calculate Scope 2 CO<sub>2</sub> emissions in accordance with the Greenhouse Gas Protocol's definitions, and Scope 1 and 2 water consumption following Li et al. (2023); in addition, we calculate "upstream" embodied carbon and water consumption, and provide "downstream" estimates from use of our models (which are part, but not all, of Scope 3).
+In this paper, we estimate the energy use and environmental impacts caused by training the OLMo series of transformer language models (Groeneveld et al., 2024; OLMo et al., 2025), ranging in size from 20 million to 13 billion active parameters, trained on 1.7 to 5.6 trillion tokens. To do this, we calculate Scope 2 CO<sub>2</sub> emissions in accordance with the Greenhouse Gas Protocol's definitions,<sup>3</sup> and Scope 1 and 2 water consumption following Li et al. (2023); in addition, we calculate "upstream" embodied carbon and water consumption, and provide "downstream" estimates from use of our models (which are part, but not all, of Scope 3).
 
 Importantly, we calculate (i) electricity consumption, (ii) carbon emissions, and (iii) water consumption at three points in the machine learning pipeline: early model development (e.g., hyperparameter tuning and experiments before the final training run), training of the main model, and inference. To the best of our knowledge, we are the first to report this information for model development of large language models, and we find the environmental impact of developing even our relatively small
 
 ![](_page_1_Figure_4.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a scatter plot comparing the carbon emissions and water consumption of various AI models. The x-axis represents carbon emissions (tCO2e) and the y-axis represents water consumption (kL). The plot shows the carbon emissions and water consumption of various AI models, including GShard, LCA-1, LCA-2, LCA-3, LCA-4, LCA-5, LCA-6, LCA-7, LCA-8, LCA-9, LCA-10, LCA-11, LCA-12, LCA-13, LCA-14, LCA-15, LCA-16, LCA-17, LCA-18, LCA-19, LCA-20, LCA-21, LCA-22, LCA-23, LCA-24, LCA-25, LCA-26, LCA-27, LCA-28, LCA-29, LCA-30, LCA-31, LCO-1, LCO-2, LCO-3, LCO-4, LCO-5, LCO-6, LCO-7, LCO-8, LCO-9, LCO-10, LCO-11, LCO-12, LCO-13, LCO-14, LCO-15, LCO-16, LCO-17, LCO-18, LCO-19, LCO-20, LCO-21, LCO-22, LCO-23, LCO-24, LCO-25, LCO-26, LCO-27, LCO-28, LCO-29, LCO-30, LCO-31, LCO-32, LCO-33, LCO-34, LCO-35, LCO-36, LCO-37, LCO-38, LCO-39, LCO-40, LCO-41, LCO-42, LCO-43, LCO-44, LCO-45, LCO-46, LCO-47, LCO-48, LCO-49, LCO-50, LCO-51, LCO-52, LCO-53, LCO-54, LCO-55, LCO-56, LCO-57, LCO-58, LCO-59, LCO-60, LCO-61, LCO-62, LCO-63, LCO-64, LCO-65, LCO-66, LCO-67, LCO-8, LCO-9, LCO-10, LCO-11, LCO-12, LCO-13, LCO-14, LCO-15, LCO-16, LCO-17, LCO-18, LCO-19, LCO-20, LCO-21, LCO-22, LCO-23, LCO-24, LCO-25, LCO-26, LCO-27, LCO-28, LCO-29, LCO-30, LCO-31, LCO-32, LCO-33, LCO-4, LCO-5, LCO-6, LCO-7, LCO-8, LCO-9, LCO-10, LCO-11, LCO-12, LCO-13, LCO-14, LCO-15, LCO-16, LCO-17, LCO-18, LCO-19, LCO-20, LCO-21, LCO-22, LCO-23, LCO-24, LCO-25, LCO-26
-
-
-
-
-Here is the extracted information:
-
-**Data Points:**
-
-* OLMo 2 13B: 0.01 tCO2eq, 0.01 kL
-* OLMo 2 7B: 0.01 tCO2eq, 0.01 kL
-* OLMo 1B: 0.01 tCO2eq, 0.01 kL
-* OLMo 700M: 0.01 tCO2eq, 0.01 kL
-* OLMo 150M: 0.01 tCO2eq, 0.01 kL
-* OLMo 20M: 0.01 tCO2eq, 0.01 kL
-
-**Color-Code:**
-
-* Green: OLMo 2 13B
-* Yellow: OLMo 2 7B
-* Blue: OLMo 1B
-* Gray: OLMo 700M
-* Purple: OLMo 150M
-* Purple: OLMo 20M
-
-**X-Axis:**
-
-* Carbon Emissions (tCO2
-
-**Y-Axis:**
-
-* Water Consumption (kL)
-
-
-* The data points are not
-* The data
-
-
-There is no table in the provided image. The image appears to be a scatter plot or chart.
-
-**Chart/PLOT Extraction:**
-
-Here are the visible data points:
-
-* OLMo 2 13B: 100kL
-* OLMo 2 7B: 50kL
-* OLMo 1B: 20kL
-* OLMo 700M: 10kL
-* OLMo 150M: 5kL
-* OLMo 20M: 1kL
-
-**X and Y Axis Units:**
-
-* X-axis: Water Consumption (kL)
-* Y-axis: Carbon Emissions (tCO2eq)
-
-**Note:** The image does not have a legend, so I will not describe any colors or symbols.
-
-**Diagrams:**
-
-There is no diagram in the provided image. The image appears to be a chart or plot.
-
-
 Figure 1: Environmental impact for a selection of the final training runs described in Section 4.1, where we rank each model by both its total water consumption and its CO<sub>2</sub> emissions. Our small models (<1B parameters) were trained on 1.7 trillion tokens, OLMo 1B was trained on 3 trillion, OLMo 2 7B was trained on 4 trillion, OLMoE was trained on 5 trillion, and OLMo 2 13B was trained on 5.6 trillion. We see that the total environmental impact for larger training runs is quite high, and increases quickly with model and dataset size.
 
-models (only up to 13B parameters) is equivalent to burning 2.
+models (only up to 13B parameters) is equivalent to burning 2.1 gasoline tanker trucks of fuel, or the amount of water consumed by one average person in the United States in about 7.5 years. We encourage the reader to consider larger models released by other organizations to have equivalently larger environmental impacts.
 
-[描述已截斷以避免過長]
+Our methodology draws upon best practices from recent publications, aiming to provide the most thorough reporting yet of the environmental impact of LLMs. For example, unlike previous works that assume GPUs operate at 100% of their theoretical maximum power draw (Dubey et al., 2024) and report only the cost to train a small set of released models, we measure power consumption at sub-second intervals throughout training. We focus our efforts on a wide range of model sizes, optimized for widespread deployment (Dubey et al., 2024; Mehta et al., 2024; Gemma Team et al., 2024), and estimate what the environmental impact would be if our models were deployed in a variety of different scenarios. We find that in some scenarios, our models would need to run inference on a few billion instances to match the electricity consumed, carbon emitted, and water consumed of the *entire* training process, a figure that can be reached by production systems in weeks to months based on current usage trends.<sup>4</sup>
 
-# 2 RELATED WORK
+We conclude that more transparency is needed across the industry in reporting the environmental impact of AI systems. Systems orders of magnitude larger than those in this paper are being built, and deployed at a global scale, leading to emissions 10s or 100s of times larger than what we report. This work is a step in the right direction, but responsibility of reporting and reducing the environmental impact must fall on those training the largest models, as they have the largest impact.
+
+#### 2 RELATED WORK
 
 While most publicly available models do not report any climate impact, including CO<sub>2</sub> emissions, water usage, or embodied carbon, a few reports recently have included some estimates. For example,
 
 <span id="page-1-1"></span><span id="page-1-0"></span>https://ghgprotocol.org/sites/default/files/standards/ghg-protocol-revised.pdf
 
- $<sup>^4</sup>$ https://www.cnbc.com/2025/02/20/openai-tops-400-million-users-despite-deepseeks-emergence.html
+https://www.cnbc.com/2025/02/20/openai-tops-400-million-users-despite-deepseeks-emergence.
 
 [Luccioni et al.](#page-12-3) [\(2023\)](#page-12-3) reported estimates for emissions from the manufacturing process (embodied emissions), from electricity consumption during training, and from electricity consumption of the cluster while it was idle (see their Table 2). [Dodge et al.](#page-10-2) [\(2022\)](#page-10-2) measured electricity consumption and carbon emissions for training language models and computer vision models with granular timesteps with region-specific carbon intensity, but did not measure development costs, water consumption, or inference. Similarly, developers of the Llama models [\(Touvron et al., 2023a](#page-13-4)[;b;](#page-13-5) [Dubey](#page-10-0) [et al., 2024\)](#page-10-0) reported electricity consumption and carbon emissions estimates of training their final models; they did not estimate development cost or water consumption, and their approach to carbon intensity varied.[5](#page-2-0) Gemma developers [\(Gemma Team et al., 2024\)](#page-10-1) only report a single number: the total emissions from pretraining their models, not broken down by model or by different stages of training, or by electricity consumption and carbon intensity. The OLMo report [\(Groeneveld et al.,](#page-11-1) [2024\)](#page-11-1) documents electricity consumption per model, and uses region-specific carbon intensity to estimate emissions for two regions, but does not estimate other environmental impacts. The OLMo 2 report [\(OLMo et al., 2025\)](#page-12-1) again documents electricity consumption per model and uses regionand datacenter-specific intensity factors to estimate emissions and also water consumption, but does not measure development costs or potential inference costs. Energy use and environmental impacts are not typically documented for proprietary models.
 
@@ -115,7 +52,7 @@ Our goal in this work is to characterize the holistic environmental impacts of l
 
 Following the more comprehensive analysis provided for the BLOOM model [\(Luccioni et al., 2023\)](#page-12-3), we expand our measurement to include both *operational* GHG emissions arising from the energy required for the development, training, and inference phases of the ML model lifecycle, as well as *embodied* emissions attributed to manufacturing of the hardware supporting those operations. We also go beyond previous work to report non-GHG externalities such as water use, and finer-grained data such as variance in energy use throughout training. We describe our methodology for measuring and estimating these impacts in more detail below.
 
-#### <span id="page-2-1"></span>3.1 OPERATIONAL IMPACTS
+## <span id="page-2-1"></span>3.1 OPERATIONAL IMPACTS
 
 Operational environmental impacts of LLMs are those that arise directly from the development and use of models, and include the GHG emissions arising from energy sources used to power model training and deployment, including servers and data center cooling. We base our analysis of operational emissions around the following equation introduced by [Schwartz et al.](#page-13-0) [\(2020\)](#page-13-0) to describe the amount of computation required to produce a machine learning artifact, such as an LLM:
 
@@ -126,7 +63,7 @@ $$Cost(R) \propto E \cdot D \cdot H$$
 
 where the cost of a scientific result R (e.g. a claim that a particular training setup reaches X accuracy on benchmark Y) is proportional to the product of the cost of processing a single example E, the size of the training dataset D, and the number of hyperparameter experiments H. In previous work,  $E \cdot D$ , the cost of training on the training dataset, is what is most commonly reported, and H, the total number of experiments, is most often excluded.
 
-In our analysis, we calculate the total power consumption during model training, development, and inference, and use this to estimate the total carbon emissions and water consumption during each stage. We follow previous work (Luccioni et al., 2023; Dubey et al., 2024; Gemma Team et al., 2024) to calculate CO<sub>2</sub> emissions (CO<sub>2</sub>e) from power consumption:
+In our analysis, we calculate the total power consumption during model training, development, and inference, and use this to estimate the total carbon emissions and water consumption during each stage. We follow previous work (Luccioni et al., 2023; Dubey et al., 2024; Gemma Team et al., 2024) to calculate  $CO_2$  emissions ( $CO_2$ e) from power consumption:
 
 $$CO_2e = P \cdot PUE \cdot CI \tag{2}$$
 
@@ -136,12 +73,13 @@ Our data center providers informed us that Jupiter's *PUE* is between 1.1 and 1.
 
 We follow Li et al. (2023) to calculate water consumed onsite and through power generation:
 
-$$Consumption = P \cdot PUE \cdot (WUE_{onsite} + WUE_{offsite})$$
+Consumption = 
+$$P \cdot PUE \cdot (WUE_{\text{onsite}} + WUE_{\text{offsite}})$$
  (3)
 
 where  $WUE_{\text{onsite}}$  is the water usage effectiveness of the data center, dictated by the cooling hardware used, and  $WUE_{\text{offsite}}$  is the water usage effectiveness of the local power provider, dictated by the precise mixture of sources of power generation, as thermo- and hydro-electric power plants lead to evaporated water that is lost and will not re-enter circulation in the local environment.
 
-As our data center uses an efficient closed-loop cooling system with no evaporative cooling, we assume a WUE<sub>onsite</sub> of 0 liters per kWh. Following Reig et al. (2020), we assume a WUE<sub>offsite</sub> of 1.29 L per kWh for our Jupiter cluster and 3.10 L per kWh for our Augusta cluster.
+As our data center uses an efficient closed-loop cooling system with no evaporative cooling, we assume a  $WUE_{\text{onsite}}$  of 0 liters per kWh. Following Reig et al. (2020), we assume a  $WUE_{\text{offsite}}$  of 1.29 L per kWh for our Jupiter cluster and 3.10 L per kWh for our Augusta cluster.
 
 Both calculations rely on total power usage. To calculate power usage during development and training, we analyze detailed time series data for a single node throughout each run, logging power data at sub-second intervals, and extrapolate to the total number of nodes. As we only measure GPU power consumption, our estimates should be viewed as a lower bound on the true amount of power consumed during development and training.
 
@@ -149,19 +87,19 @@ Both calculations rely on total power usage. To calculate power usage during dev
 
 Embodied impacts are those arising from the production of physical elements required to support LLM development and use, such as hardware manufacturing and data center construction. To calculate embodied emissions, we follow Luccioni et al. (2023) by amortizing the carbon emissions from manufacturing over the lifetime of the hardware to get an estimate of the per hour cost, and multiplying by the number of GPU hours used throughout model development and training. We extend this to include water consumption as well, by amortizing estimates of water consumption during manufacturing over the lifetime of the hardware.
 
-<span id="page-3-1"></span><span id="page-3-0"></span><sup>6</sup>https://www.techtarget.com/searchdatacenter/definition/power-usage-effectiveness-PUE
+<span id="page-3-1"></span><span id="page-3-0"></span><sup>6</sup> https://www.techtarget.com/searchdatacenter/definition/power-usage-effectiveness-PUE 7
 
 austinenergy.com/-/media/project/websites/austinenergy/commercial/carbonemissionscalculator.pdf
 
 <span id="page-3-2"></span> $<sup>^8</sup>$ www.eia.gov/electricity/state/iowa
 
-### 3.3 MODELS, DATA, AND HARDWARE
+# 3.3 MODELS, DATA, AND HARDWARE
 
 Most of the models we evaluate are standard dense transformers, with an architecture similar to Llama [\(Touvron et al., 2023a;](#page-13-4)[b;](#page-13-5) [Dubey et al., 2024\)](#page-10-0), OLMo [\(Groeneveld et al., 2024\)](#page-11-1), and other recent popular models, ranging in size from 20 million to 13 billion active parameters. Each of the sub-billion parameter models was trained on 1.7 trillion tokens, the 1 billion parameter model was trained to 3 trillion tokens, the 7 billion parameter models were trained to 2, 3 and 4 trillion tokens, and the 13 billion parameter model to 5.6 trillion tokens. We additionally evaluate a mixture-ofexperts (MoE) model with 1 billion active and 7 billion total parameters, trained to 5 trillion tokens.
 
 Each model was trained on standard HGX servers with 8 NVIDIA H100 GPUs per server, with high speed interconnect between each node, and between 2 and 128 nodes concurrently per training run. All models except the 13B were trained in the same data center. See [OLMo et al.](#page-12-1) [\(2025\)](#page-12-1) for more information on our technical infrastructure.
 
-### 3.4 SIMULATING INFERENCE
+# 3.4 SIMULATING INFERENCE
 
 Because we do not deploy our models, we do not collect or report data about real usage of our models. We instead report estimated costs associated with deployment of a subset of our models, along with comparison models, with varying inference configurations. In reality, causal language models can have a variety of use cases and be deployed on a variety of hardware infrastructure. As a representative deployment setting, we assume a setting in which users interact with the models via chat; we collect measurements assuming models are served on a single H100 GPU via SGLang [\(Zheng et al., 2024\)](#page-13-7). All three inference configurations used can be mapped to a previously proposed realistic online inference scenario [\(Reddi et al., 2020;](#page-12-5) [Peng et al., 2023\)](#page-12-6). Specifically, other than the "batching" scenario where all requests are sent instantaneously, the requests follow a Poisson distribution, albeit at different rates that influence different batch sizes. The requests themselves come from the ShareGPT dataset,[9](#page-4-1) and each inference scenario involves the same sample of 2400 prompts (same random seed). Input and output lengths, therefore, are the same in theory for a given model, but due to differences in tokenization and model context length, there are slight variations in mean input/output lengths across models, 225-250 and 190-230 tokens respectively.
 
@@ -217,35 +155,33 @@ Final training runs Finally, we fully trained our series of models, ranging from
 
 † denotes unreleased models that were trained for various internal experiments.
 
-|                   | Power | Carbon    | Equiv. to      | Water       | Equiv. to       |
-|-------------------|-------|-----------|----------------|-------------|-----------------|
-|                   | Usage | Emissions | (energy usage, | Consumption | (water usage,   |
-|                   | (MWh) | (tCO2eq)  | 1 home, U.S.)  | (kL)        | 1 person, U.S.) |
-| Gemma 2B & 9B     | -     | 131       | 25 yrs, 11 mo  | -           | -               |
-| Llama 2 7B        | 81    | 31        | 6 yrs, 1 mo    | -           | -               |
-| Llama 2 13B       | 162   | 62        | 12 yrs, 2 mo   | -           | -               |
-| Llama 3.1 8B      | -     | 420       | 83 years       | -           | -               |
-| Llama 3.2 1B      | -     | 107       | 14 years       | -           | -               |
-| OLMo 20M†         | 0.8   | 0.3       | 3 weeks        | 1           | 3 days          |
-| OLMo 60M†         | 1.2   | 0.4       | 1 month        | 1.6         | 5 days          |
-| OLMo 150M†        | 2.4   | 1         | 2 mo, 1 wk     | 3.6         | 12 days         |
-| OLMo 300M†        | 5     | 2         | 5 months       | 5.9         | 19 days         |
-| OLMo 700M†        | 8     | 3         | 7 months       | 10          | 33 days         |
-| OLMo 7B†          | 67    | 22        | 4 yrs, 4 mo    | 87          | 9 months        |
-| OLMo 1B (3T)      | 30    | 10        | 2 years        | 39          | 4 months        |
-| OLMo 7B           | 149   | 0*        | -              | 0*          | -               |
-| OLMo 7B (Twin)    | 114   | 70        | 13 yrs, 10 mo  | 487         | 4 yrs, 4 mo     |
-| OLMo (04 07)24 7B | 95    | 32        | 6 yrs, 4 mo    | 122         | 1 yr, 1 mo      |
-| OLMo 2 7B         | 157   | 52        | 10 yrs, 4 mo   | 202         | 1 yr, 9 mo      |
-| OLMo 2 13B        | 230   | 101       | 21 years       | 892         | 7 yrs, 10 mo    |
-| OLMoE 0924        | 54    | 18        | 3 yrs, 7 mo    | 70          | 7 months        |
-| Total (Ours)      | 913   | 312       | 65 years       | 1,921       | 17 yrs, 1 mo    |
+|                   | Power<br>Usage<br>(MWh) | Carbon<br>Emissions<br>(tCO2eq) | Equiv. to<br>(energy usage,<br>1 home, U.S.) | Water<br>Consumption<br>(kL) | Equiv. to<br>(water usage,<br>1 person, U.S.) |
+|-------------------|-------------------------|---------------------------------|----------------------------------------------|------------------------------|-----------------------------------------------|
+| Gemma 2B & 9B     | -                       | 131                             | 25 yrs, 11 mo                                | -                            | -                                             |
+| Llama 2 7B        | 81                      | 31                              | 6 yrs, 1 mo                                  | -                            | -                                             |
+| Llama 2 13B       | 162                     | 62                              | 12 yrs, 2 mo                                 | -                            | -                                             |
+| Llama 3.1 8B      | -                       | 420                             | 83 years                                     | -                            | -                                             |
+| Llama 3.2 1B      | -                       | 107                             | 14 years                                     | -                            | -                                             |
+| OLMo 20M†         | 0.8                     | 0.3                             | 3 weeks                                      | 1                            | 3 days                                        |
+| OLMo 60M†         | 1.2                     | 0.4                             | 1 month                                      | 1.6                          | 5 days                                        |
+| OLMo 150M†        | 2.4                     | 1                               | 2 mo, 1 wk                                   | 3.6                          | 12 days                                       |
+| OLMo 300M†        | 5                       | 2                               | 5 months                                     | 5.9                          | 19 days                                       |
+| OLMo 700M†        | 8                       | 3                               | 7 months                                     | 10                           | 33 days                                       |
+| OLMo 7B†          | 67                      | 22                              | 4 yrs, 4 mo                                  | 87                           | 9 months                                      |
+| OLMo 1B (3T)      | 30                      | 10                              | 2 years                                      | 39                           | 4 months                                      |
+| OLMo 7B           | 149                     | 0*                              | -                                            | 0*                           | -                                             |
+| OLMo 7B (Twin)    | 114                     | 70                              | 13 yrs, 10 mo                                | 487                          | 4 yrs, 4 mo                                   |
+| OLMo (04 07)24 7B | 95                      | 32                              | 6 yrs, 4 mo                                  | 122                          | 1 yr, 1 mo                                    |
+| OLMo 2 7B         | 157                     | 52                              | 10 yrs, 4 mo                                 | 202                          | 1 yr, 9 mo                                    |
+| OLMo 2 13B        | 230                     | 101                             | 21 years                                     | 892                          | 7 yrs, 10 mo                                  |
+| OLMoE 0924        | 54                      | 18                              | 3 yrs, 7 mo                                  | 70                           | 7 months                                      |
+| Total (Ours)      | 913                     | 312                             | 65 years                                     | 1,921                        | 17 yrs, 1 mo                                  |
 
 Putting it in perspective In total, our series of models led to at least 493 tCO2eq emitted. Using the U.S. Environmental Protection Agency's Greenhouse Gas Equivalencies Calculator[15](#page-6-1), this is equivalent to 6.5 tanker trucks' worth of gasoline burned, emissions from the average yearly energy use for 98.2 homes in the U.S., or the amount of carbon sequestered by 472 acres of U.S. forests in one year. We additionally estimate we consumed at least 2,769 kL of water, which is equivalent to about 24 and a half years of water consumption by the average person in the U.S.[16](#page-6-2)
 
 Other Costs In this work, we strive to provide a thorough accounting of the total cost of developing our models. However, there remain a number of sources of emissions and water consumption that are difficult, if not impossible to comprehensively measure without access to proprietary information across a range of industries, such as transportation and end of life hardware disposal. While the costs we report above represent a large portion of the total development process, more transparency is needed to understand the full impact of model training.
 
-# <span id="page-6-3"></span>4.2 SIMULATING DEPLOYMENT & INFERENCE
+### <span id="page-6-3"></span>4.2 SIMULATING DEPLOYMENT & INFERENCE
 
 We report *simulated* inference costs; that is, we explore the question of what our models' impact might be if they were put into production. In contrast to [§4.1,](#page-4-0) where we reported the actual impact from our actions, this section reports partial estimates of Scope 3 carbon emissions and water consumption: the impact from the downstream actions of others using our models. We include comparisons with recent instruction-tuned models as well.
 
@@ -288,7 +224,7 @@ inferences in each scenario required for inference costs to be equal or greater 
 
 We find that for most models tested, the number of inferences required to outweigh training costs is in the hundreds of millions to tens of billions, except for the most over-trained models. As many of these models were created to be efficient in deployment-focused scenarios – such as on edge devices, or in popular online products – it is important to consider inference costs in addition to training costs. The largest model providers are producing up to hundreds of billions of tokens per day,[17](#page-7-1) highlighting that deployed models can quickly reach this tipping point.
 
-# 4.3 POWER FLUCTUATIONS DURING TRAINING
+## 4.3 POWER FLUCTUATIONS DURING TRAINING
 
 One problem caused by training AI models at large scales is that the power demand starts and stops suddenly [\(Dubey et al., 2024\)](#page-10-0), which power grids can struggle to handle. When demand sharply rises, generation sources that can be quickly started and stopped – generally powered by fossil fuels, such as coal and natural gas – must be brought online quickly, increasing the marginal carbon intensity of the grid and potentially negatively impacting other consumers in cases where demand rises more quickly than generation can handle. When demand sharply drops, excess power is discarded– by grounding the power or venting steam–until generation sources can spin down. Power grids can generally manage some large variations (for example, when communities experience a sudden
 
@@ -296,17 +232,17 @@ One problem caused by training AI models at large scales is that the power deman
 
 power outage), but as we add more variability to the system, it becomes more difficult to maintain this delicate balance, and infrastructure is not set up to handle frequent, large fluctuations.
 
-In Figure 2, we show a snapshot of our model's GPU power consumption during pre-training. We find that power consumption is not consistent – instead, power is consistent while the model is training, but drops quickly while saving checkpoints. Though our models are relatively small, and we have since improved checkpointing performance, other model developers have experienced similar issues caused by checkpointing and synchronization between nodes (Dubey et al., 2024).
+In Figure 2, we show a snapshot of our model's GPU power consumption during pre-training. We find that power consumption is not consistent – instead, power is consistent *while the model is training*, but drops quickly while saving checkpoints. Though our models are relatively small, and we have since improved checkpointing performance, other model developers have experienced similar issues caused by checkpointing and synchronization between nodes (Dubey et al., 2024).
 
 #### 5 DISCUSSION
 
-#### 5.1 MORE TRANSPARENCY IS (STILL) NEEDED
+### 5.1 MORE TRANSPARENCY IS (STILL) NEEDED
 
-While many model developers-including some of the largest for-profit entities operating in this space-make best efforts to report at least part of the cost of building their AI systems (Dubey et al., 2024; Gemma Team et al., 2024), more transparency is still needed throughout the development pipeline. The EU AI Act, <sup>18</sup> and some proposed legislation, such as the Artificial Intelligence Environmental Impacts Act<sup>19</sup> in the United States, would start the process for defining voluntary environmental impact reporting standards for model developers, but until such standards are widespread in the community, improved transparency can only come through voluntary efforts by companies and research organizations. Policy action is needed to ensure there is public visibility into environmental impacts across the entire supply chain, from hardware manufacturing, data center construction, and energy production, all the way through to model deployment and inference.
+While many model developers–including some of the largest for-profit entities operating in this space–make best efforts to report at least part of the cost of building their AI systems (Dubey et al., 2024; Gemma Team et al., 2024), more transparency is still needed throughout the development pipeline. The EU AI Act, <sup>18</sup> and some proposed legislation, such as the Artificial Intelligence Environmental Impacts Act<sup>19</sup> in the United States, would start the process for defining voluntary environmental impact reporting standards for model developers, but until such standards are widespread in the community, improved transparency can only come through voluntary efforts by companies and research organizations. Policy action is needed to ensure there is public visibility into environmental impacts across the entire supply chain, from hardware manufacturing, data center construction, and energy production, all the way through to model deployment and inference.
 
-Embodied emissions are still an enigma Though a vital piece of all model development pipelines, the environmental impact of manufacturing the GPUs used is essentially unknown. In previous work, Wu et al. (2022) and Luccioni et al. (2023) highlighted the fact that researchers focused on Al's environmental impact are forced to use unreliable estimates of the cost of manufacturing state-of-the-art computational hardware, and the situation is no better now, nearly two years later. Many companies that manufacture other pieces of data center hardware disclose estimates of the lifetime environmental impact, 20 and until GPU manufacturers release similar information—on a voluntary or compulsory basis-this will not improve.
+**Embodied emissions are still an enigma** Though a vital piece of all model development pipelines, the environmental impact of manufacturing the GPUs used is essentially unknown. In previous work, Wu et al. (2022) and Luccioni et al. (2023) highlighted the fact that researchers focused on AI's environmental impact are forced to use unreliable estimates of the cost of manufacturing state-of-the-art computational hardware, and the situation is no better now, nearly two years later. Many companies that manufacture other pieces of data center hardware disclose estimates of the lifetime environmental impact, <sup>20</sup> and until GPU manufacturers release similar information—on a voluntary or compulsory basis—this will not improve.
 
-**Development costs are substantial, and unreported** As reported in Section 4.1, we present detailed information on the cost of developing our training pipeline, in contrast with previous work. We found that development costs—associated with failed runs, hyperparameter searches, testing architecture changes, and more-are responsible for a substantial portion of the total environmental impact of creating our systems, highlighting a need for more transparency from developers. This is especially important in light of AutoML tools, where many models may be automatically trained while searching for a solution, and scaling law experiments, where smaller models are trained to predict the performance of larger models, and then discarded (Li et al., 2024; Bhagia et al., 2024).
+**Development costs are substantial, and unreported** As reported in Section 4.1, we present detailed information on the cost of developing our training pipeline, in contrast with previous work. We found that development costs—associated with failed runs, hyperparameter searches, testing architecture changes, and more—are responsible for a substantial portion of the total environmental impact of creating our systems, highlighting a need for more transparency from developers. This is especially important in light of AutoML tools, where many models may be automatically trained while searching for a solution, and scaling law experiments, where smaller models are trained to predict the performance of larger models, and then discarded (Li et al., 2024; Bhagia et al., 2024).
 
 Water costs are real, and under-explored While under-explored in previous work, AI's growing water consumption is beginning to receive more and more attention<sup>21</sup> (Li et al., 2023), though not as much as it may deserve. As shown in Section 4.1, even training a series of comparatively small models uses a large amount of water, the amount of which is also drastically impacted by both the cooling systems used in data centers as well as the power generation methods used. Without more transparency from developers on when, where, and how they are training their models, it will continue to be difficult to quantify the scale of the issue, stymieing efforts to address it.
 
@@ -316,152 +252,17 @@ While many issues relating to transparency require action from corporations and 
 
 <span id="page-8-1"></span><span id="page-8-0"></span><sup>18</sup>https://artificialintelligenceact.eu/article/95/
 
- $<sup>^{19} {\</sup>rm https://www.markey.senate.gov/imo/media/doc/artificial\_intelligence\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environmental\_impacts\_environme$ act\_of\_2024\_-\_020124pdf.pdf
+https://www.markey.senate.gov/imo/media/doc/artificial\_intelligence\_environmental\_impacts\_
 
-<span id="page-8-2"></span>
+act\_of\_2024\_-\_020124pdf.pdf
 
-<span id="page-8-3"></span> $<sup>^{21} \</sup>texttt{https://www.washingtonpost.com/technology/2024/09/18/energy-ai-use-electricity-water-data-centers/allowersetations.}$ 
+<span id="page-8-3"></span><span id="page-8-2"></span> $<sup>^{21} \</sup>text{https://www.washingtonpost.com/technology/2024/09/18/energy-ai-use-electricity-water-data-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-centers/ata-ce$ 
 
 Smaller models are cheaper to train and use, but at what cost? Until recently, to achieve high model performance, a large model was needed. Compute-optimal scaling laws for neural network training (Hoffmann et al., 2022; Kaplan et al., 2020) imply that it is more efficient to put more data into a larger model, because of diminishing returns from "overtraining" a small model. This meant that models were expensive to both train and deploy, limiting how widespread they could become, and how financially feasible they were to be used in a variety of scenarios.
 
 Recently, however, continuing to train models on more and more tokens beyond the "compute-optimal" limit<sup>22</sup> has been extremely successful in making "deployment-optimized" models that can be substantially cheaper to perform inference with. This has led to an explosion in both training cost for small models, and total inference compute cost, as API-based models be-
 
 ![](_page_9_Figure_3.jpeg)
-
-**Figure Description:**
-**Figure Context:**
-This image is a line graph showing the average GPU power consumption of a system over time, with the x-axis representing the logging step and the y-axis representing the average GPU power.
-
-**Figure Data (Q&A):**
-
-Q: What is the average GPU power at the 50th logging step?
-
-Q: What is the average GPU power at the 100th logging step?
-
-Q: What is the average GPU power at the 150th logging step?
-
-Q: What is the average GPU power at the 200th logging step?
-
-Q: What is the average GPU power at the 250th logging step?
-
-Q: What is the average GPU power at the 300th logging step?
-
-**Figure Data (Table):**
-| Logging Step | Average GPU Power |
-| 50 | 600 |
-| 100 | 650 |
-| 150 | 600 |
-| 200 | 650 |
-| 250 | 600 |
-| 300 | 650 |
-
-Note: The table and Q&A pairs are generated based on the data points in the graph. The actual values may vary depending on the specific data points.
-
-
-
-
-Note: The data points are generated based on the trend of the graph, and actual data may vary. The values are provided as an example, and actual data may be different.
-
-
-There is no table in the provided image.
-
-
-The graph has the following data points:
-
-- **Average GPU Power**: The graph shows the average GPU power consumption over a certain number of steps. The exact values are not provided, but the graph shows a steady increase in average GPU power.
-
-### Diagram Processing
-
-There is no diagram in the provided image.
-
-### Mathematical Formulas
-
-There are no mathematical formulas in the provided image.
-
-### Output
-
-The output is a line graph with a title and axis labels. The graph shows the average GPU power consumption over a certain number of steps.
-
-### Line Graph
-
-The line graph shows the average GPU power consumption over a certain number of steps. The exact values are not provided, but the graph shows a steady increase in average GPU power.
-
-### Axis Labels
-
-The x-axis represents the number of steps, and the y-axis represents the average GPU power. The exact values are not provided, but the graph shows a steady increase in average
-```markdown
-| Label | Value |
-| --- | --- |
-| Average GPU Power | 600 |
-| ... | ... |
-
-### Data Points
-
-The data points are not provided in the image. The graph shows a steady increase in average
-```markdown
-| Label | Value |
-| --- | --- |
-| 0 | 600 |
-| 50 | 600 |
-| 100 | 600 |
-| 150 | 600 |
-| 200 | 600 |
-| 250 | 600 |
-| 300 | 600 |
-| ... | ... |
-
-### X-Axis
-
-The x-axis represents the number of steps.
-
-### Y-Axis
-
-The y-axis represents the average
-```markdown
-| Label | Value |
-| ... | ... |
-| 600 | ... |
-| ... | ... |
-
-### Legend
-
-There is no legend in the provided image.
-
-The data points are not provided in the image. The graph shows a
-```markdown
-| Label | Value |
-| ... | ... |
-| 600 | ... |
-| ... | ... |
-
-### X-Aaxis
-
-
-[描述已截斷以避免過長]
-
-
-There is no table in the provided image. The image appears to be a line graph.
-
-**Listing visible data points:**
-
-Since the image is a line graph, I will list the visible data points as follows:
-
-* The X-axis represents the "Logarithm of the number of steps" and ranges from 0 to 300.
-* The Y-axis represents the "Average GPU Power" and ranges from 0 to 800.
-
-**Summarizing the X and Y axis units:**
-
-* X-axis: Logarithm of the number of steps
-* Y-axis: Average GPU Power
-
-**Describing the flow and labels:**
-
-The graph appears to be a line graph showing the average GPU power over a range of log-  of-  the-  number-  of-  steps. The graph does not have a legend, so I will not describe any labels.
-
-**Additional information:**
-
-The graph appears to be a line graph showing the average GPU power over a range of log-  of-  the-  number-  of-  steps. The graph does not have a legend, so I will not describe any labels.
-
 
 <span id="page-9-0"></span>Figure 2: Average GPU power for a single node for the first 300 logging steps during OLMo 2 7B training. The first spike is the beginning of training, and each drop happens when a model checkpoint is saved. When actively training, the average GPU power is over 600W, over 85% of an H100's maximum power draw of 700W, and during checkpointing, power usage drops to just over 100W, or about 15% maximum.
 
@@ -471,11 +272,11 @@ This is especially clear in context of our results in Section 4.2, showing that 
 
 Power fluctuations reveal inefficiencies at best, challenges to power grid control at worst While it is known that the dramatic spike in power consumption at the beginning of training and the subsequent drop at the end are problematic for power grid operators at large scales, little has been discussed publicly about how power consumption changes throughout training. We found that our models, using an optimized code base and publicly available tooling, sees rapid power fluctuations throughout training caused by the commonplace practice of frequently saving model checkpoints. This means that without careful engineering, one training run can cause thousands of rapid power fluctuations, which poses an immediate challenge for large-scale LLM training in data centers, which typically source energy directly from power providers. Generated power needs to go somewhere, and rapid, large drops in consumption during training breaks common assumptions about data center supply and demand, leading to significant control challenges in power systems. While some frameworks have begun to implement workarounds to manage this issue, 25 more awareness is needed on the part of researchers and engineers as training runs scale to tens of thousands of GPUs<sup>26</sup> or more, as even some of the largest model developers encounter difficulties from regularly shifting power demand throughout training due to checkpointing, awaiting collective communications, and other unforeseen and potentially catastrophic failures (Dubey et al., 2024). We emphasize that addressing this will require more comprehensive solutions such as parallelized checkpointing, improved demand response in data centers running large AI workloads, and new, heterogeneous methods for distributed training spanning software, hardware, and scheduling.
 
-<span id="page-9-1"></span><sup>&</sup>lt;sup>22</sup>e.g. scaling from 1 to 2 to 15T tokens for Llama 1, 2, and 3 (Touvron et al., 2023a;b; Dubey et al., 2024)
+<span id="page-9-1"></span> $<sup>^{22}</sup>e.g.\ scaling\ from\ 1\ to\ 2\ to\ 15T\ tokens\ for\ Llama\ 1,\ 2,\ and\ 3\ (Touvron\ et\ al.,\ 2023a;b;\ Dubey\ et\ al.,\ 2024)$ 
 
-<span id="page-9-2"></span> $<sup>^{23} \</sup>texttt{https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/started}$ 
+<span id="page-9-2"></span> $<sup>^{23} \</sup>texttt{https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/started} \\$ 
 
-<span id="page-9-3"></span> $<sup>^{24} \</sup>texttt{https://developers.googleblog.com/en/gemini-15-flash-updates-google-ai-studio-gemini-api/stable properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of the properties of$ 
+<span id="page-9-3"></span> $<sup>^{24} \</sup>verb|https://developers.googleblog.com/en/gemini-15-flash-updates-google-ai-studio-gemini-api/api/api/api/api/api/api/api/api/api/$ 
 
 <span id="page-9-4"></span><sup>&</sup>lt;sup>25</sup>E.g. the new PYTORCH\_NO\_POWERPLANT\_BLOWUP environment variable in PyTorch.
 
@@ -529,7 +330,7 @@ Power fluctuations reveal inefficiencies at best, challenges to power grid contr
 
 # A APPENDIX
 
-#### <span id="page-14-0"></span>A.1 ADDITIONAL INFERENCE SIMULATION DETAILS
+## <span id="page-14-0"></span>A.1 ADDITIONAL INFERENCE SIMULATION DETAILS
 
 We benchmark models using the ShareGPT dataset, assuming an online inference chat setting. In practice, with much longer inference examples, OLMo models may have an "unfair" advantage in that they were generally trained with context lengths shorter than the other models we benchmark. However, we do not believe that to be a significant factor in our results. In fact, we observe that Llama 3.1 8B is actually measured to be faster and less energy intensive than OLMo 7b models, likely due to the use of grouped-query attention (GQA; [Ainslie et al.](#page-10-7) [\(2023\)](#page-10-7)) in Llama 8b, vs not in OLMo models.
 
@@ -562,7 +363,6 @@ We observe linear trends in training costs relative to parameter count across fo
 | Llama 2 13B   | ∞                             | 0.034                          | 11.3                             | 0.051                    | 6.53                    | 13.3 bil.                               |
 |               | 8                             | 0.06                           | 19.9                             | 0.089                    | 13.09                   | 7.52 bil.                               |
 |               | 1                             | 0.401                          | 133.1                            | 0.597                    | 100.73                  | 1.13 bil.                               |
-|               |                               |                                |                                  |                          |                         |                                         |
 | Qwen 2.5 1.5B | ∞                             | 0.003                          | 1.0                              | 0.004                    | 0.86                    | –                                       |
 |               | 8                             | 0.033                          | 11.0                             | 0.049                    | 12.65                   | –                                       |
 |               | 1                             | 0.163                          | 54.1                             | 0.243                    | 100.57                  | –                                       |
@@ -581,8 +381,7 @@ We observe linear trends in training costs relative to parameter count across fo
 | OLMo 0724 7B  | ∞                             | 0.017                          | 5.6                              | 0.025                    | 3.33                    | 29.8 bil.                               |
 |               | 8                             | 0.052                          | 17.3                             | 0.077                    | 12.77                   | 9.73 bil.                               |
 |               | 1                             | 0.339                          | 112.5                            | 0.505                    | 100.59                  | 1.49 bil.                               |
-|               | ∞                             |                                |                                  |                          |                         |                                         |
-| OLMo 2 7B     |                               | 0.018                          | 6.0                              | 0.027                    | 3.68                    | 20.9 bil.                               |
+| OLMo 2 7B     | ∞                             | 0.018                          | 6.0                              | 0.027                    | 3.68                    | 20.9 bil.                               |
 |               | 8                             | 0.049                          | 16.3                             | 0.073                    | 12.88                   | 7.68 bil.                               |
 |               | 1                             | 0.358                          | 118.9                            | 0.533                    | 100.54                  | 1.05 bil.                               |
 | OLMo 2 13B    | ∞                             | 0.033                          | 11.0                             | 0.049                    | 6.6                     | 22.1 bil.                               |

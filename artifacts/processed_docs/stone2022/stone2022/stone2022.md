@@ -2,148 +2,52 @@
 
 ONE HUNDRED YEAR STUDY ON ARTIFICIAL INTELLIGENCE | REPORT OF THE 2015 STUDY PANEL | SEPTEMBER 2016
 
-## PREFACE
+# PREFACE
 
 The One Hundred Year Study on Artificial Intelligence, launched in the fall of 2014, is a longterm investigation of the field of Artificial Intelligence (AI) and its influences on people, their communities, and society. It considers the science, engineering, and deployment of AI-enabled computing systems. As its core activity, the Standing Committee that oversees the One Hundred Year Study forms a Study Panel every five years to assess the current state of AI. The Study
 
 ![](_page_0_Picture_4.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a visual representation of various data points related to AI models, including LLa
-    [A brief 3-sentence summary of what this image is about, for broad search.]
+Panel reviews AI's progress in the years following the immediately prior report, envisions the potential advances that lie ahead, and describes the technical and societal challenges and opportunities these advances raise, including in such arenas as ethics, economics, and the design of systems compatible with human cognition. The overarching purpose of the One Hundred Year Study's periodic expert review is to provide a collected and connected set of reflections about AI and its influences as the field advances. The studies are expected to develop syntheses and assessments that provide expert-informed guidance for directions in
 
-**Figure Data (Q&A):**
-Q: What is the size of the LLa
-    Q: How many
-   
+AI research, development, and systems design, as well as programs and policies to help ensure that these systems broadly benefit individuals and society.1
 
+The One Hundred Year Study is modeled on an earlier effort informally known as the "AAAI Asilomar Study." During 2008-2009, the then president of the Association for the Advancement of Artificial Intelligence (AAAI), Eric Horvitz, assembled a group of AI experts from multiple institutions and areas of the field, along with scholars of cognitive science, philosophy, and law. Working in distributed subgroups, the participants addressed near-term AI developments, long-term possibilities, and legal and ethical concerns, and then came together in a three-day meeting at Asilomar to share and discuss their findings. A short written report on the intensive meeting discussions, amplified by the participants' subsequent discussions with other colleagues, generated widespread interest and debate in the field and beyond.
 
+The impact of the Asilomar meeting, and important advances in AI that included AI algorithms and technologies starting to enter daily life around the globe, spurred the idea of a long-term recurring study of AI and its influence on people and society.
 
+The One Hundred Year Study was subsequently endowed at a university to enable
 
-### Population
+The overarching purpose of the One Hundred Year Study's periodic expert review is to provide a collected and connected set of reflections about AI and its influences as the field advances.
 
-* Population: 1.5 million
-* Population density: 1,500 per
-* Population growth: 1.5% per
-* Population
+<sup>1</sup> "One Hundred Year Study on Artificial Intelligence (AI100)," Stanford University, accessed August 1, 2016, https://ai100.stanford.edu.
 
+extended deep thought and cross-disciplinary scholarly investigations that could inspire innovation and provide intelligent advice to government agencies and industry.
 
-The provided image is a complex visual representation of various scientific concepts, including tables, charts, and diagrams. The image is composed of multiple layers, each containing different types of data.
+This report is the first in the planned series of studies that will continue for at least a hundred years. The Standing Committee defined a Study Panel charge for the inaugural Study Panel in the summer of 2015 and recruited Professor Peter Stone, at the University of Texas at Austin, to chair the panel. The seventeen-member Study Panel, comprised of experts in AI from academia, corporate laboratories and industry, and AI-savvy scholars in law, political science, policy, and economics, was launched in mid-fall 2015. The participants represent diverse specialties and geographic regions, genders, and career stages.
 
-**Table 1:**
+The Standing Committee extensively discussed ways to frame the Study Panel charge to consider both recent advances in AI and potential societal impacts on jobs, the environment, transportation, public safety, healthcare, community engagement, and government. The committee considered various ways to focus the study, including surveying subfields and their status, examining a particular technology such as machine learning or natural language processing, and studying particular application areas such as healthcare or transportation. The committee ultimately chose a thematic focus on "AI and Life in 2030" to recognize that AI's various uses and impacts will not occur independently of one another, or of a multitude of other societal and technological developments. Acknowledging the central role cities have played throughout most of human experience, the focus was narrowed to the large urban areas where most people live. The Standing Committee further narrowed the focus to a typical North American city in recognition of the great variability of urban settings and cultures around the world, and limits on the first Study Panel's efforts. The Standing Committee expects that the projections, assessments, and proactive guidance stemming from the study will have broader global relevance and is making plans for future studies to expand the scope of the project internationally.
 
-| **Header 1** | **Header 2** | **Header 3** |
-| **Header 1** | **Header 2** | **Header 3** |
+# TABLE OF CONTENTS
 
-**Table 2:**
-
-| **Header 1** | **Header 1** | **Header 1** |
-
-**Table 3:**
-
-| **Header 1** | **Header  2** | **Header 3** |
-| **Header 1** | **Header 2** | **Header 3** |
-| **Header 1** | **Header 2** | **Header 3** |
-
-**Table 4:**
-
-| **Header 1** | **Header 2** | **Header 3** |
-| **Header 1** | **Header 2** | **
-**Table 5:**
-
-| **Header 1** | **Header 2** | **Header 3** |
-| **Header 1** | **Header 2** | **
-**Table 6:**
-
-| **Header 1** | **Header 2** | **
-**Table 7:**
-
-| **Header 1** | **
-**Table 8:**
-
-**Table 9:**
-
-**Table 10:**
-
-**Table 11:**
-
-**Table 12:**
-
-**Table 13:**
-
-**Table 14:**
-
-**Table 15:**
-
-**Table 16:**
-
-**Table 17:**
-
-**Table 18:**
-
-**Table 19:**
-
-**Table 20:**
-
-**Table 21:**
-
-**Table 22:**
-
-**Table 23:**
-
-**Table 24:**
-
-**Table 25:**
-
-**Table 26:**
-
-**Table 27:**
-
-**Table 28:**
-
-**Table 29:**
-
-**Table 30:**
-
-**Table 31:**
-
-**Table 32:**
-
-
-However, I can describe the image:
-
-The image appears to be a cityscape with a superimposed data visualization. The cityscape is a photo of a city with buildings and a skyline. The superimposed data visualization is a white, line-based, and text-based representation of data. The data visualization appears to be a mix of charts, graphs, and data points. The data points are not labeled, and the data is not clearly
-**X and Y Axis Units:**
-The X and Y axis units are not visible in the image.
-
-**Data Points:**
-The data points are not visible in the image. The image appears to be a cityscape with a superimposed data visualization, but the data points are not visible.
-
-**Legend:**
-There is no legend in the image. The image appears to be a city
-**Flow and Labels:**
-
-
-[描述已截斷以避免過長]
-
-#### TABLE OF CONTENTS
-
-| 4  |
-|----|
-| 6  |
-| 12 |
-| 14 |
-| 18 |
-| 24 |
-| 25 |
-| 31 |
-| 35 |
-| 36 |
-| 38 |
-| 40 |
-| 42 |
-|    |
+| PREFACE                                                         |    |
+|-----------------------------------------------------------------|----|
+| EXECUTIVE SUMMARY                                               | 4  |
+| OVERVIEW                                                        | 6  |
+| SECTION I: WHAT IS ARTIFICIAL INTELLIGENCE?                     | 12 |
+| Defining AI                                                     | 12 |
+| AI Research Trends                                              | 14 |
+| SECTION II: AI BY DOMAIN                                        | 18 |
+| Transportation                                                  | 18 |
+| Home/Service Robots                                             | 24 |
+| Healthcare                                                      | 25 |
+| Education                                                       | 31 |
+| Low-resource Communities                                        | 35 |
+| Public Safety and Security                                      | 36 |
+| Employment and Workplace                                        | 38 |
+| Entertainment                                                   | 40 |
+| SECTION III: PROSPECTS AND RECOMMENDATIONS FOR AI PUBLIC POLICY | 42 |
+| AI Policy, Now and in the Future                                | 42 |
 
 APPENDIX I: A SHORT HISTORY OF AI 50
 
@@ -155,13 +59,13 @@ Given the unique nature of the One Hundred Year Study on AI, we expect that futu
 
 The Standing Committee is grateful to the members of the Study Panel for investing their expertise, perspectives, and significant time to the creation of this inaugural report. We especially thank Professor Peter Stone for agreeing to serve as chair of the study and for his wise, skillful, and dedicated leadership of the panel, its discussions, and creation of the report.
 
-#### Standing Committee of the One Hundred Year Study of Artificial Intelligence
+# Standing Committee of the One Hundred Year Study of Artificial Intelligence
 
 Barbara J. Grosz, *Chair* Russ Altman Eric Horvitz
 
 Alan Mackworth Tom Mitchell Deirdre Mulligan Yoav Shoham
 
-#### STUDY PANEL
+# STUDY PANEL
 
 Peter Stone, University of Texas at Austin, Chair
 
@@ -201,72 +105,11 @@ Acknowledgments: The members of the Study Panel gratefully acknowledge the suppo
 
 ![](_page_2_Picture_26.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image is a table comparing the carbon emissions, model sizes, and energy
- 
-**Figure Data (Q&A):**
-Q: What is the size of the LLa
+© 2016 by Stanford University. Artificial Intelligence and Life in 2030 is made available under a Creative Commons Attribution-NoDerivatives 4.0 License (International): https://creativecommons. org/licenses/by-nd/4.0/
 
+Substantial increases in the future uses of AI applications, including more self-driving cars, healthcare diagnostics and targeted treatment, and physical assistance for elder care can be expected.
 
-
-
-## Table 1: Table Structure
-
-| **Table** | **Table** | **Table** |
-| **Table** | **Table** | **Table** |
-
-## Table 2: Table Structure
-
-## Table 3: Table Structure
-
-## Table 4: Table Structure
-
-## Table 5: Table Structure
-
-## Table 6: Table Structure
-
-## Table 7: Table Structure
-
-## Table 8: Table Structure
-
-## Table 9: Table Structure
-
-## Table 10: Table Structure
-
-## Table 11: Table Structure
-
-## Table 12: Table Structure
-
-## Table 13: Table Structure
-
-## Table 14: Table Structure
-
-## Table 15: Table Structure
-
-## Table 16: Table Structure
-
-## Table 17: Table Structure
-
-| **Table** | **Table** | **Table** |
-| **Table** | **Table** | **Table** |
-| **Table** | **Table** |
-
-
-| **CC** | **BY** | **ND** |
-| :---: | :---: | :---: |
-| CC | BY | ND |
-
-I was unable to find any data points to list as "Label: Value". The X and Y axis units are not specified in the image.
-
-I was unable to find any data points to list as "Label: Value". The X and Y axis units are not specified in the image.
-
-I was unable to find any data points to list as "Label: Value". The X and Y axis units are not specified in the image.
-
-There is no chart, plot, or diagram in the image. The image appears to be a table.
-
-
-## EXECUTIVE SUMMARY
+# EXECUTIVE SUMMARY
 
 Artificial Intelligence (AI) is a science and a set of computational technologies that are inspired by—but typically operate quite differently from—the ways people use their nervous systems and bodies to sense, learn, reason, and take action. While the rate of progress in AI has been patchy and unpredictable, there have been significant advances since the field's inception sixty years ago. Once a mostly academic area of study, twenty-first century AI enables a constellation of mainstream technologies that are having a substantial impact on everyday lives. Computer vision and AI planning, for example, drive the video games that are now a bigger entertainment industry than Hollywood. Deep learning, a form of machine learning based on layered representations of variables referred to as neural networks, has made speech-understanding practical on our phones and in our kitchens, and its algorithms can be applied widely to an array of applications that rely on pattern recognition. Natural Language Processing (NLP) and knowledge representation and reasoning have enabled a machine to beat the Jeopardy champion and are bringing new power to Web searches.
 
@@ -280,13 +123,13 @@ how human labor is augmented or replaced by AI, creating new challenges for the 
 
 Study Panel: Peter Stone, *Chair*, University of Texas at Austin, Rodney Brooks, Rethink Robotics, Erik Brynjolfsson, Massachussets Institute of Technology, Ryan Calo, University of Washington, Oren Etzioni, Allen Institute for AI, Greg Hager, Johns Hopkins University, Julia Hirschberg, Columbia University, Shivaram Kalyanakrishnan, Indian Institute of Technology Bombay, Ece Kamar, Microsoft Research, Sarit Kraus, Bar Ilan University. Kevin Leyton-Brown, University of British Columbia, David Parkes, Harvard University, William Press, University of Texas at Austin, AnnaLee (Anno) Saxenian, University of California, Berkeley, Julie Shah, Massachussets Institute of Technology, Milind Tambe, University of Southern California, Astro Teller, X
 
-Standing Committee of the One Hundred Year Study of Artificial Intelligence: Barbara J. Grosz, *Chair*, Russ Altman, Eric Horvitz, Alan Mackworth, Tom Mitchell, Deidre Mulligan, Yoav Shoham
+# Standing Committee of the One Hundred Year Study of Artificial Intelligence: Barbara J. Grosz, *Chair*, Russ Altman, Eric Horvitz, Alan Mackworth, Tom Mitchell, Deidre Mulligan, Yoav Shoham
 
 While drawing on common research and technologies, AI systems are specialized to accomplish particular tasks. Each application requires years of focused research and a careful, unique construction.
 
 Many have already grown accustomed to touching and talking to their smart phones. People's future relationships with machines will become ever more nuanced, fluid, and personalized.
 
-## OVERVIEW
+# OVERVIEW
 
 The frightening, futurist portrayals of Artificial Intelligence that dominate films and novels, and shape the popular imagination, are fictional. In reality, AI is already changing our daily lives, almost entirely in ways that improve human health, safety, and productivity. Unlike in the movies, there is no race of superhuman robots on the horizon or probably even possible. And while the potential to abuse AI technologies must be acknowledged and addressed, their greater potential is, among other things, to make driving safer, help children learn, and extend and enhance people's lives. In fact, beneficial AI applications in schools, homes, and hospitals are already growing at an accelerated pace. Major research universities devote departments to AI studies, and technology companies such as Apple, Facebook, Google, IBM, and Microsoft spend heavily to explore AI applications they regard as critical to their futures. Even Hollywood uses AI technologies to bring its dystopian AI fantasies to the screen.
 
@@ -318,7 +161,7 @@ Social and political decisions are likewise at play in AI's influences on **Empl
 
 **Entertainment** has been transformed by social networks and other platforms for sharing and browsing blogs, videos, and photos, which rely on techniques actively developed in NLP, information retrieval, image processing, crowdsourcing, and machine learning. Some traditional sources of entertainment have also embraced AI to compose music, create stage performances, and even to generate 3D scenes from natural language text. The enthusiasm with which people have already responded to AI-driven entertainment has been surprising. As with many aspects of AI, there is ongoing debate about the extent to which the technology replaces or enhances sociability. AI will increasingly enable entertainment that is more interactive, personalized, and engaging. Research should be directed toward understanding how to leverage these attributes for individuals' and society's benefit.
 
-#### What's next for AI research?
+# What's next for AI research?
 
 The research that fuels the AI revolution has also seen rapid changes. Foremost among them is the maturation of machine learning, stimulated in part by the rise of the digital economy, which both provides and leverages large amounts of data. Other factors include the rise of cloud computing resources and consumer demand for widespread access to services such as speech recognition and navigation support.
 
@@ -352,7 +195,7 @@ The field of AI is shifting toward building intelligent systems that can collabo
 
 Misunderstandings about what AI is and is not could fuel opposition to technologies with the potential to benefit everyone. Poorly informed regulation that stifles innovation would be a tragic mistake.
 
-#### AI policy, now and in the future
+### AI policy, now and in the future
 
 The measure of success for AI applications is the value they create for human lives. In that light, they should be designed to enable people to understand AI systems successfully, participate in their use, and build their trust. Public policies should help ease society's adaptation to AI applications, extend their benefits, and mitigate their inevitable errors and failures. Debate about how AI is deployed, including concerns about how privacy is protected and AI's benefits fairly shared, should be encouraged. Given the speed with which AI technologies are being realized, and concomitant concerns about their implications, the Study Panel recommends that all layers of government acquire technical expertise in AI. Further, research on the fairness, security, privacy, and societal implications of AI systems should be encouraged by removing impediments and increasing private and public spending to support it.
 
@@ -372,9 +215,7 @@ the abilities and efficiency of people who have access to them. Policies should 
 
 As this report documents, significant AI-related advances have already had an impact on North American cities over the past fifteen years, and even more substantial developments will occur over the next fifteen. Recent advances are largely due to the growth and analysis of large data sets enabled by the internet, advances in sensory technologies and, more recently, applications of "deep learning." In the coming years, as the public encounters new AI applications in domains such as transportation and healthcare, they must be introduced in ways that build trust and understanding, and respect human and civil rights. While encouraging innovation, policies and processes should address ethical, privacy, and security implications, and should work to ensure that the benefits of AI technologies will be spread broadly and fairly. Doing so will be critical if Artificial Intelligence research and its applications are to exert a positive influence on North American urban life in 2030 and beyond.
 
-# An accurate and sophisticated picture of AI—one that competes with its popular portrayal—is hampered by the difficulty
-
-of pinning down a precise
+# An accurate and sophisticated picture of AI—one that competes with its popular portrayal—is hampered by the difficulty of pinning down a precise
 
 definition of artificial
 
@@ -384,7 +225,7 @@ intelligence.
 
 *This section describes how researchers and practitioners define "Artificial Intelligence," and the areas of AI research and application that are currently thriving. It proffers definitions of what AI is and is not, and describes some of the currently "hot" areas of AI Research. This section lays the groundwork for Section II, which elaborates on AI's impacts and future in eight domains and Section III, which describes issues related to AI design and public policy and makes recommendations for encouraging AI innovation while protecting democratic values.*
 
-#### DEFINING AI
+# DEFINING AI
 
 Curiously, the lack of a precise, universally accepted definition of AI probably has helped the field to grow, blossom, and advance at an ever-accelerating pace. Practitioners, researchers, and developers of AI are instead guided by a rough sense of direction and an imperative to "get on with it." Still, a definition remains important and Nils J. Nilsson has provided a useful one:
 
@@ -402,7 +243,7 @@ In fact, the field of AI is a continual endeavor to push forward the frontier of
 
 <sup>5</sup> Pamela McCorduck, *Machines Who Think: A Personal Inquiry into the History and Prospects of Artificial Intelligence*, 2nd ed. (Natick, MA: A. K. Peters, Ltd., 2004; San Francisco: W. H. Freeman, 1979), Citations are to the Peters edition.
 
-#### The human measure
+# The human measure
 
 Notably, the characterization of intelligence as a spectrum grants no special status to the human brain. But to date human intelligence has no match in the biological and artificial worlds for sheer versatility, with the abilities "to reason, achieve goals, understand and generate language, perceive and respond to sensory inputs, prove mathematical theorems, play challenging games, synthesize and summarize information, create art and music, and even write histories."6
 
@@ -412,13 +253,11 @@ AI's long quest—and eventual success—to beat human players at the game of ch
 
 But it was only after a long line of improvements in the sixties and seventies contributed by groups at Carnegie Mellon, Stanford, MIT, The Institute for Theoretical and Experimental Physics at Moscow, and Northwestern University that chess-playing programs started gaining proficiency. The final push came through a long-running project at IBM, which culminated with the Deep Blue program beating Garry Kasparov, then the world chess champion, by a score of 3.5-2.5 in 1997. Curiously, no sooner had AI caught up with its elusive target than Deep Blue was portrayed as a collection of "brute force methods" that wasn't "real intelligence."8 In fact, IBM's subsequent publication about Deep Blue, which gives extensive details about its search and evaluation procedures, doesn't mention the word "intelligent" even once!9 Was Deep Blue intelligent or not? Once again, the frontier had moved.
 
-#### An operational definition
+# An operational definition
 
 AI can also be defined by what AI researchers do. This report views AI primarily as a branch of computer science that studies the properties of intelligence by synthesizing intelligence.10 Though the advent of AI has depended on the rapid progress of hardware computing resources, the focus here on software reflects a trend in the AI community. More recently, though, progress in building hardware tailored for neural-network-based computing11 has created a
 
-multi-dimensional spectrum. According to this view, the difference between an arithmetic calculator and a human brain is not one of kind, but of scale, speed, degree of autonomy, and generality.
-
-Intelligence lies on a
+Intelligence lies on a multi-dimensional spectrum. According to this view, the difference between an arithmetic calculator and a human brain is not one of kind, but of scale, speed, degree of autonomy, and generality.
 
 <sup>6</sup> Nilsson, *The Quest for Artificial Intelligence*.
 
@@ -438,7 +277,7 @@ tighter coupling between hardware and software in advancing AI.
 
 Human intelligence has no match in the biological and artificial worlds for sheer versatility, with the abilities "to reason, achieve goals, understand and generate language... create art and music, and even write histories."
 
-#### AI RESEARCH TRENDS
+# AI RESEARCH TRENDS
 
 Until the turn of the millennium, AI's appeal lay largely in its promise to deliver, but in the last fifteen years, much of that promise has been redeemed.15 AI technologies already pervade our lives. As they becomes a central force in society, the field is shifting from simply building systems that are intelligent to building intelligent systems that are human-aware and trustworthy.
 
@@ -482,9 +321,9 @@ Computer vision is currently the most prominent form of machine perception. It h
 
 Often coupled with automatic speech recognition, Natural Language Processing is another very active area of machine perception. It is quickly becoming a commodity for mainstream languages with large data sets. Google announced that 20% of current mobile queries are done by voice,18 and recent demonstrations have proven the possibility of real-time translation. Research is now shifting towards developing refined and capable systems that are able to interact with people through dialog, not just react to stylized requests.
 
-AI technologies already pervade our lives. As they become a central force in society, the field is shifting from simply building systems that are intelligent to building intelligent systems that are human-aware and trustworthy.
+17 ImageNet, Stanford Vision Lab, Stanford University, Princeton University, 2016, accessed August 1, 2016, www.image-net.org/.
 
-<sup>17</sup> ImageNet, Stanford Vision Lab, Stanford University, Princeton University, 2016, accessed August 1, 2016, www.image-net.org/.
+AI technologies already pervade our lives. As they become a central force in society, the field is shifting from simply building systems that are intelligent to building intelligent systems that are human-aware and trustworthy.
 
 <sup>18</sup> Greg Sterling, "Google says 20% of mobile queries are voice searches," *Search Engine Land*, May 18, 2016, accessed August 1, 2016, http://searchengineland.com/google-reveals-20-percentqueries-voice-queries-249917.
 
@@ -512,7 +351,7 @@ Traditional computers implement the von Neumann model of computing, which separa
 
 actively pursuing alternative models of computing—especially those that are inspired by what is known about biological neural networks—with the aim of improving the hardware efficiency and robustness of computing systems. At the moment, such "neuromorphic" computers have not yet clearly demonstrated big wins, and are just beginning to become commercially viable. But it is possible that they will become commonplace (even if only as additions to their von Neumann cousins) in the near future. Deep neural networks have already created a splash in the application landscape. A larger wave may hit when these networks can be trained and executed on dedicated neuromorphic hardware, as opposed to simulated on standard von Neumann architectures, as they are today.
 
-#### Overall trends and the future of AI research
+# Overall trends and the future of AI research
 
 The resounding success of the data-driven paradigm has displaced the traditional paradigms of AI. Procedures such as theorem proving and logic-based knowledge representation and reasoning are receiving reduced attention, in part because of the ongoing challenge of connecting with real-world groundings. Planning, which was a mainstay of AI research in the seventies and eighties, has also received less attention of late due in part to its strong reliance on modeling assumptions that are hard to satisfy in realistic applications. Model-based approaches—such as physics-based approaches to vision and traditional control and mapping in robotics—have by and large given way to data-driven approaches that close the loop with sensing the results of actions in the task at hand. Bayesian reasoning and graphical models, which were very popular even quite recently, also appear to be going out of favor, having been drowned by the deluge of data and the remarkable success of deep learning.
 
@@ -528,7 +367,7 @@ A growing body of research is devoted to the idea that a wide array of devices c
 
 Autonomous transportation will soon be commonplace and, as most people's first experience with physically embodied AI systems, will strongly influence the public's perception of AI.
 
-#### TRANSPORTATION
+# TRANSPORTATION
 
 Transportation is likely to be one of the first domains in which the general public will be asked to trust the reliability and safety of an AI system for a critical task. Autonomous transportation will soon be commonplace and, as most people's first experience with physically embodied AI systems, will strongly influence the public's perception of AI. Once the physical hardware is made sufficiently safe and robust, its introduction to daily life may happen so suddenly as to surprise the public, which will require time to adjust. As cars will become better drivers than people, city-dwellers will own fewer cars, live further from work, and spend time differently, leading to an entirely new urban organization. Further, in the typical North American city in 2030, changes won't be limited to cars and trucks, but are likely to include flying vehicles and personal robots, and will raise social, ethical and policy issues.
 
@@ -593,11 +432,13 @@ It is not yet clear how much better self-driving cars need to become to encourag
 
 <sup>30 &</sup>quot;Navlab," *Wikipedia*, last updated June 4, 2016, accessed August 1, 2016, https://en.wikipedia. org/wiki/Navlab.
 
-<sup>31 &</sup>quot;Navlab: The Carnegie Mellon University Navigation Laboratory," Carnegie Mellon University, accessed August 1, 2016, http://www.cs.cmu.edu/afs/cs/project/alv/www/. 32 "Eureka Prometheus Project," *Wikipedia*, last modified February 12, 2016, accessed August 1,
+<sup>31 &</sup>quot;Navlab: The Carnegie Mellon University Navigation Laboratory," Carnegie Mellon University, accessed August 1, 2016, http://www.cs.cmu.edu/afs/cs/project/alv/www/.
 
-<sup>2016,</sup> https://en.wikipedia.org/wiki/Eureka\_Prometheus\_Project. 33 "Google Self-Driving Car Project," Google, accessed August 1, 2016, https://www.google. com/selfdrivingcar/. 33 Molly McHugh, "Tesla's Cars Now Drive Themselves, Kinda," *Wired*, October 14, 2015, accessed August 1, 2016, http://www.wired.com/2015/10/tesla-self-driving-over-
+<sup>32 &</sup>quot;Eureka Prometheus Project," *Wikipedia*, last modified February 12, 2016, accessed August 1, 2016, https://en.wikipedia.org/wiki/Eureka\_Prometheus\_Project.
 
-air-update-live/. 34 Molly McHugh, "Tesla's Cars Now Drive Themselves, Kinda," *Wired*, October 14, 2015, accessed August 1, 2016, http://www.wired.com/2015/10/tesla-self-driving-over-air-update-live/.
+<sup>33 &</sup>quot;Google Self-Driving Car Project," Google, accessed August 1, 2016, https://www.google. com/selfdrivingcar/. 33 Molly McHugh, "Tesla's Cars Now Drive Themselves, Kinda," *Wired*, October 14, 2015, accessed August 1, 2016, http://www.wired.com/2015/10/tesla-self-driving-overair-update-live/.
+
+<sup>34</sup> Molly McHugh, "Tesla's Cars Now Drive Themselves, Kinda," *Wired*, October 14, 2015, accessed August 1, 2016, http://www.wired.com/2015/10/tesla-self-driving-over-air-update-live/.
 
 <sup>35</sup> Anjali Singhvi and Karl Russell, "Inside the Self-Driving Tesla Fatal Accident," *The New York Times*, Last updated July 12, 2016, accessed August 1, 2016, http://www.nytimes.com/ interactive/2016/07/01/business/inside-tesla-accident.html.
 
@@ -609,7 +450,7 @@ Self-driving cars and peer-to-peer transportation services may eliminate the nee
 
 As autonomous vehicles become more widespread, questions will arise over their security, including how to ensure that technologies are safe and properly tested under different road conditions prior to their release. Autonomous vehicles and the connected transportation infrastructure will create a new venue for hackers to exploit vulnerabilities to attack. Ethical questions are also involved in programming cars to act in situations in which human injury or death is inevitable, especially when there are split-second choices to be made about whom to put at risk. The legal systems in most states in the US do not have rules covering self-driving cars. As of 2016, four states in the US (Nevada, Florida, California, and Michigan), Ontario in Canada, the United Kingdom, France, and Switzerland have passed rules for the testing of self-driving cars on public roads. Even these laws do not address issues about responsibility and assignment of blame for an accident for self-driving and semi-selfdriving cars.40
 
-#### Transportation planning
+# Transportation planning
 
 By 2005, cities had started investing in the transportation infrastructure to develop sensing capabilities for vehicle and pedestrian traffic.41The sensors currently used include inductive loops, video cameras, remote traffic microwave sensors, radars, and GPS.42 For example, in 2013 New York started using a combination of microwave sensors, a network of cameras, and pass readers to detect vehicle traffic in the city.43
 
@@ -691,13 +532,13 @@ Our Study Panel doesn't expect drones that can fly, swim, and drive, or flying q
 
 Over the next fifteen years, coincident advances in mechanical and AI technologies promise to increase the safe and reliable use and utility of home robots in a typical North American city.
 
-#### Interacting with people
+# Interacting with people
 
 For decades, people have imagined wildly different, futuristic-looking transportation vehicles. Although future cars will be smarter and drones will be available widely, it is unlikely that by 2030 we will have widely adopted transportation vehicles that look and function differently than the ones we have today. Our Study Panel doesn't expect drones that can fly, swim, and drive, or flying quadcoptors to become a common means of transportation in this time horizon (although prototypes exist today).
 
 We do expect humans to become partners to self-driving cars and drones in their training, execution, and evaluation. This partnering will happen both when humans are co-located with machines and also virtually. We predict advances in algorithms to facilitate machine learning from human input. We also expect models and algorithms for modeling of human attention, and to support communication and coordination between humans and machine. This is an integral part of the development of future vehicles.
 
-#### HOME/SERVICE ROBOTS
+# HOME/SERVICE ROBOTS
 
 Robots have entered people's homes in the past fifteen years. Disappointingly slow growth in the diversity of applications has occurred simultaneously with increasingly sophisticated AI deployed on existing applications. AI advances are often inspired by mechanical innovations, which in turn prompt new AI techniques to be introduced.
 
@@ -713,7 +554,7 @@ Early expectations that many new applications would be found for home robots hav
 
 for functions such as image labeling, and 3D object recognition, while common at AI conferences, are still only a few years into development as products.
 
-#### Home robots 2030
+# Home robots 2030
 
 Despite the slow growth to date of robots in the home, there are signs that this will change in the next fifteen years. Corporations such as Amazon Robotics and Uber are developing large economies of scale using various aggregation technologies. Also:
 
@@ -739,7 +580,7 @@ AI-based applications could improve health outcomes and quality of life for mill
 
 promise in healthcare.61The reduction or removal of these obstacles, combined with innovations still on the horizon, have the potential to significantly improve health outcomes and quality of life for millions of people in the coming years.
 
-#### The clinical setting
+# The clinical setting
 
 For decades, the vision of an AI-powered clinician's assistant has been a near cliché. Although there have been successful pilots of AI-related technology in healthcare,62 the current healthcare delivery system unfortunately remains structurally ill-suited to absorb and deploy rapid advances. Incentives provided by the Affordable Care Act have accelerated the penetration of electronic health records (EHRs) into clinical practice, but implementation has been poor, eroding clinicians' confidence in their usefulness. A small group of companies control the EHR market, and user interfaces are widely considered substandard, including annoying pop-ups that physicians routinely dismiss. The promise of new analytics using data from EHRs, including AI, remains largely unrealized due to these and other regulatory and structural barriers.
 
@@ -747,7 +588,7 @@ Looking ahead to the next fifteen years, AI advances, if coupled with sufficient
 
 To achieve future advances, clinicians must be involved and engaged at the outset to ensure that systems are well-engineered and trusted. Already, a new generation of more tech savvy physicians routinely utilize specialized apps on mobile devices. At the same time, workloads on primary care clinicians have increased to the point that they are grateful for help from any quarter. Thus, the opportunity to exploit new learning methods, to create structured patterns of inference by mining the scientific literature automatically, and to create true cognitive assistants by supporting free-form dialogue, has never been greater. Provided these advances are not stymied by regulatory, legal, and social barriers, immense improvements to the value of healthcare are within our grasp.
 
-#### Healthcare analytics
+# Healthcare analytics
 
 At the population level, AI's ability to mine outcomes from millions of patient clinical records promises to enable finer-grained, more personalized diagnosis and treatment. Automated discovery of genotype-phenotype connections will also become possible as full, once-in-a-lifetime genome sequencing becomes routine for each patient.
 
@@ -775,7 +616,7 @@ A small group of companies control the EHR market, and user interfaces are widel
 
 The problem in medicine is not to recognize what is in the image—is this a liver or a kidney?—but rather to make a fine-grained judgement about it. Strict regulations govern these high-stakes judgements.
 
-#### Healthcare robotics
+# Healthcare robotics
 
 Fifteen years ago, healthcare robotics was largely science fiction. One company called Robodoc,65 a spin-out from IBM, developed robotic systems for orthopedic surgeries, such as hip and knee replacements. The technology worked, but the company struggled commercially, and was ultimately shut down and acquired for its technology.66 More recently, though, the research and practical use of surgical robotics has exploded.
 
@@ -805,7 +646,7 @@ be relatively simple once a patient is standing in a walker (though will certain
 
 The growth of automation will enable new insights into healthcare processes. Historically, robotics has not been a strongly data-driven or data-oriented science. This is changing as (semi)automation infiltrates healthcare. As the new surgical, delivery, and patient care platforms come online, the beginnings of quantification and predictive analytics are being built on top of data coming from these platforms.73 This data will be used to assess quality of performance, identify deficiencies, errors, or potential optimizations, and will be used as feedback to improve performance. In short, these platforms will facilitate making the connection between what is done, and the outcome achieved, making true "closed-loop" medicine a real possibility.
 
-#### Mobile health
+# Mobile health
 
 To date, evidence-driven analytics on healthcare have relied on traditional healthcare data—mainly the electronic medical records discussed above. In the clinical setting, there are hopeful trends towards bringing new data to bear. For example, Tele-Language enables a human clinician to conduct language therapy sessions with multiple patients simultaneously with the aid of an AI agent trained by the clinician. And Lifegraph, which extracts behavioral patterns and creates alerts from data passively collected from a patient's smartphone, has been adopted by psychiatrists in Israel to detect early signs of distressful behavior in patients.
 
@@ -821,7 +662,7 @@ Specialized motion tracking devices... and the emerging (inter) connectedness be
 
 Better hearing aids and visual assistive devices will mitigate the effects of hearing and vision loss, improving safety and social connection. Personalized rehabilitation and in-home therapy will reduce the need for hospital stays.
 
-#### Elder care
+# Elder care
 
 Over the next fifteen years the number of elderly in the United States will grow by over 50%.74 The National Bureau of Labor Statistics projects that home health aides will grow 38% over the next ten years. Despite the broad opportunities in this domain—basic social support, interaction and communication devices, home health monitoring, a variety of simple in-home physical aids such as walkers, and light meal preparation—little has happened over the past fifteen years. But the coming generational shift will accompany a change in technology acceptance among the elderly. Currently, someone who is seventy was born in 1946 and may have first experienced some form of personalized IT in middle age or later, while a fifty-year-old today is far more technology-friendly and savvy. As a result, there will be a growing interest and market for already available and maturing technologies to support physical, emotional, social, and mental health. Here are a few likely examples by category:
 
@@ -849,7 +690,7 @@ These innovations will also introduce questions regarding privacy within various
 
 <sup>74</sup> Jennifer M. Ortman, Victoria A. Velkoff, and Howard Hogan, "An Aging Nation: The Older Population in the United States: Population Estimates and Projections," *Current Population Reports*, U.S Census Bureau (May 2014), accessed August 1, 2016, https://www.census.gov/ prod/2014pubs/p25-1140.pdf.
 
-#### EDUCATION
+# EDUCATION
 
 The past fifteen years have seen considerable AI advances in education. Applications are in wide use by educators and learners today, with some variation between K-12 and university settings. Though quality education will always require active engagement by human teachers, AI promises to enhance education at all levels, especially by providing personalization at scale. Similar to healthcare, resolving how to best integrate human interaction and face-to-face learning with promising AI technologies remains a key challenge.
 
@@ -861,7 +702,7 @@ Teaching robots
 
 Today, more sophisticated and versatile kits for use in K-12 schools are available from a number of companies that create robots with new sensing technologies programmable in a variety of languages. Ozobot is a robot that teaches children to code and reason deductively while configuring it to dance or play based on color-coded patterns.75 Cubelets help teach children logical thinking through assembling robot blocks to think, act, or sense, depending upon the function of the different blocks.76 Wonder Workshop's Dash and Dot span a range of programming capabilities. Children eight years old and older can create simple actions using a visual programming language, Blockly, or build iOS and Android applications using C or Java.77 PLEO rb is a robot pet that helps children learn biology by teaching the robot to react to different aspects of the environment.78 However, while fun and engaging for some, in order for such kits to become widespread, there will need to be compelling evidence that they improve students' academic performance.
 
-#### Intelligent Tutoring Systems (ITS) and online learning
+# Intelligent Tutoring Systems (ITS) and online learning
 
 ITS have been developed from research laboratory projects such as Why-2 Atlas, which supported human-machine dialogue to solve physics problems early in the era.79 The rapid migration of ITS from laboratory experimental stages to real use is Though quality education will always require active engagement by human teachers, AI promises to enhance education at all levels, especially by providing personalization at scale.
 
@@ -899,7 +740,7 @@ Physics Essay Writing," *Intelligent Tutoring Systems: Proceedings of the 6th In
 
 also possible, such as those designed to assess vocabulary,86 wh (who/what/when/ where/why) questions,87 and multiple choice questions,88 using electronic resources such as WordNet, Wikipedia, and online ontologies. With the explosion of online courses, these techniques are sure to be eagerly adopted for use in online education. Although the long term impact of these systems will have on the educational system remains unclear, the AI community has learned a great deal in a very short time.
 
-#### Learning analytics
+# Learning analytics
 
 Data sets being collected from massive scale online learning systems, ranging from MOOCs to Khan Academy, as well as smaller scale online programs, have fueled the rapid growth of the field of learning analytics. Online courses are not only good for widespread delivery, but are natural vehicles for data collection and experimental instrumentation that will contribute to scientific findings and improving the quality of learning at scale. Organizations such as the Society for Learning Analytics Research (SOLAR), and the rise of conferences including the Learning Analytics and Knowledge Conference89 and the Learning at Scale Conference (L@S)90 reflect this trend. This community applies deep learning, natural language processing, and other AI techniques to analysis of student engagement, behavior, and outcomes.
 
@@ -933,19 +774,19 @@ The current transition from hard copy books to digital and audio media and texts
 
 Online learning systems will also expand the opportunity for adults and working professionals to enhance their knowledge and skills (or to retool and learn a new field) in a world where these fields are evolving rapidly. This will include the expansion of fully online professional degrees as well as professional certifications based on online coursework.
 
-#### Broader societal consequences
+### Broader societal consequences
+
+archaeology-to-life/.
 
 In countries where education is difficult for the broad population to obtain, online resources may have a positive effect if the population has the tools to access them. The development of online educational resources should make it easier for foundations that support international educational programs to provide quality
 
 <sup>92</sup> Stanford University: Galileo Correspondence Project, accessed August 1, 2016, http://galileo. stanford.edu.
 
-<sup>93</sup> The Making and Knowing Project: Reconstructing the 16th Century Workshop of BNF MS. FR. 640 at Columbia University, accessed August 1, 2016, http://www.makingandknowing.org.
-
-<sup>94</sup> Paul James, "3D Mapped HTC Vive Demo Brings Archaeology to Life," *Road to VR*, August 31, 2015, accessed August 1, 2016, http://www.roadtovr.com/3d-mapped-htc-vive-demo-bringsarchaeology-to-life/.
+<sup>93</sup> The Making and Knowing Project: Reconstructing the 16th Century Workshop of BNF MS. FR. 640 at Columbia University, accessed August 1, 2016, http://www.makingandknowing.org. 94 Paul James, "3D Mapped HTC Vive Demo Brings Archaeology to Life," *Road to VR*, August 31, 2015, accessed August 1, 2016, http://www.roadtovr.com/3d-mapped-htc-vive-demo-brings-
 
 education by providing tools and relatively simple amounts of training in their use. For example, large numbers of educational apps, many of them free, are being developed for the iPad. On the negative side, there is already a major trend among students to restrict their social contacts to electronic ones and to spend large amounts of time without social contact, interacting with online programs. If education also occurs more and more online, what effect will the lack of regular, face-to-face contact with peers have on students' social development? Certain technologies have even been shown to create neurological side effects.95 On the other hand, autistic children have benefited from interactions with AI systems already.96
 
-#### LOW-RESOURCE COMMUNITIES
+# LOW-RESOURCE COMMUNITIES
 
 Many opportunities exist for AI to improve conditions for people in low-resource communities in a typical North American city—and, indeed, in some cases it already has. Understanding these direct AI contributions may also inform potential contributions in the poorest parts of the developing world. There has not been a significant focus on these populations in AI gatherings, and, traditionally, AI funders have underinvested in research lacking commercial application. With targeted incentives and funding priorities, AI technologies could help address the needs of low-resource communities. Budding efforts are promising. Counteracting fears that AI may contribute to joblessness and other societal problems, AI may provide mitigations and solutions, particularly if implemented in ways that build trust in them by the affected communities.
 
@@ -975,7 +816,7 @@ One of the more successful uses of AI analytics is in detecting white collar cri
 
 Social networks can be harnessed to create earlier, less-costly interventions involving large populations. For example, AI might be able to assist in spreading healthrelated information. In Los Angeles, there are more than 5,000 homeless youth (ages thirteen-twenty-four). Individual interventions are difficult and expensive, and the youths' mistrust of authority dictates that key messages are best spread through peer leaders. AI programs might be able to leverage homeless youth social networks to strategically select peer leaders to spread health-related information, such as how to avoid spread of HIV. The dynamic, uncertain nature of these networks does pose challenges for AI research.100 Care must also be taken to prevent AI systems from reproducing discriminatory behavior, such as machine learning that identifies people through illegal racial indicators, or through highly-correlated surrogate factors, such as zip codes. But if deployed with great care, greater reliance on AI may well result in a reduction in discrimination overall, since AI programs are inherently more easily audited than humans.
 
-#### PUBLIC SAFETY AND SECURITY
+# PUBLIC SAFETY AND SECURITY
 
 Cities already have begun to deploy AI technologies for public safety and security. By 2030, the typical North American city will rely heavily upon them. These include cameras for surveillance that can detect anomalies pointing to a possible crime, drones, and predictive policing applications. As with most issues, there are benefits and risks. Gaining public trust is crucial. While there are legitimate concerns that policing that incorporates AI may become overbearing or pervasive in some contexts, the opposite is also possible. AI may enable policing to become more targeted and used only when needed. And assuming careful deployment, AI may also help remove some of the bias inherent in human decision-making**.**
 
@@ -1017,7 +858,7 @@ As dramatized in the movie *Minority Report*, predictive policing tools raise th
 
 AI will likely replace tasks rather than jobs in the near term, and will also create new kinds of jobs. But the new jobs that will emerge are harder to imagine in advance than the existing jobs that will likely be lost.
 
-#### EMPLOYMENT AND WORKPLACE
+# EMPLOYMENT AND WORKPLACE
 
 While AI technologies are likely to have a profound future impact on employment and workplace trends in a typical North American city, it is difficult to accurately assess current impacts, positive or negative. In the past fifteen years, employment has shifted due to a major recession and increasing globalization, particularly with China's introduction to the world economy, as well as enormous changes in non-AI digital technology. Since the 1990s, the US has experienced continued growth in productivity and GDP, but median income has stagnated and the employment to population ratio has fallen.
 
@@ -1053,7 +894,7 @@ As labor becomes a less important factor in production as compared to owning int
 
 AI will increasingly enable entertainment that is more interactive, personalized, and engaging. Research should be directed toward understanding how to leverage these attributes for individuals' and society's benefit.
 
-#### ENTERTAINMENT
+# ENTERTAINMENT
 
 With the explosive growth of the internet over the past fifteen years, few can imagine their daily lives without it. Powered by AI, the internet has established user-generated content as a viable source of information and entertainment. Social networks such as Facebook are now pervasive, and they function as personalized channels of social interaction and entertainment—sometimes to the detriment of interpersonal interaction. Apps such as WhatsApp and Snapchat enable smart-phone users to remain constantly "in touch" with peers and share sources of entertainment and information. In on-line communities such as Second Life and role-playing games such as World of Warcraft, people imagine an alternative existence in a virtual world.115 Specialized devices, such as Amazon's Kindle have also redefined the essentials of long-cherished pastimes. Books can now be browsed and procured with a few swipes of the finger, stored by the thousands in a pocket-sized device, and read in much the same way as a handheld paperback.
 
@@ -1079,7 +920,7 @@ The enthusiasm with which humans have responded to AI-driven entertainment has b
 
 <sup>122 &</sup>quot;Stylometry," *Wikipedia*, last modified August 4, 2016, accessed August 1, 2016, https:// en.wikipedia.org/wiki/Stylometry; http://arxiv.org/pdf/1408.3218v1.pdf.
 
-#### Imagining the Future
+# Imagining the Future
 
 The success of any form of entertainment is ultimately determined by the individuals and social groups that are its subjects. The modes of entertainment that people find appealing are diverse and change over time. It is therefore hard to predict the forms entertainment will take in the next fifteen years precisely. Nevertheless, current trends suggest at least a few features that the future entertainment landscape is likely to contain.
 
@@ -1103,7 +944,7 @@ The measure of success for AI applications is the value they create for human li
 
 *The goal of AI applications must be to create value for society. Our policy recommendations flow from this goal, and, while this report is focused on a typical North American city in 2030, the recommendations are broadly applicable to other places over time. Strategies that enhance our ability to interpret AI systems and participate in their use may help build trust and prevent drastic failures. Care must be taken to augment and enhance human capabilities and interaction, and to avoid discrimination against segments of society. Research to encourage this direction and inform public policy debates should be emphasized. Given the current sector-specific regulation of US industries, new or retooled laws and policies will be needed to address the widespread impacts AI is likely to bring. Rather than "more" or "stricter" regulation, policies should be designed to encourage helpful innovation, generate and transfer expertise, and foster broad corporate and civic responsibility for addressing critical societal issues raised by these technologies. In the long term, AI will enable new wealth creation that will require social debate on how the economic fruits of AI technologies should be shared.*
 
-#### AI POLICY, NOW AND IN THE FUTURE
+# AI POLICY, NOW AND IN THE FUTURE
 
 Throughout history, humans have both shaped and adapted to new technologies. This report anticipates that advances in AI technologies will be developed and fielded gradually—not in sudden, unexpected jumps in the techniques themselves—and will build on what exists today, making this adaptation easier. On the other hand, small improvements to techniques, computing power, or availability of data can occasionally lead to novel, game-changing applications. The measure of success for AI applications is the value they create for human lives. Going forward, the ease with which people use and adapt to AI applications will likewise largely determine their success.
 
@@ -1125,11 +966,11 @@ To help address these concerns about the individual and societal implications of
 
 Absent sufficient technical expertise to assess safety or other metrics, national or local officials may refuse to permit a potentially promising application. Or insufficiently trained officials may simply take the word of industry technologists and green light a sensitive application that has not been adequately vetted. Without an understanding of how AI systems interact with human behavior and societal values, officials will be poorly positioned to evaluate the impact of AI on programmatic objectives.
 
-#### **2. Remove the perceived and actual impediments to research on the fairness, security, privacy, and social impacts of AI systems.**
+# **2. Remove the perceived and actual impediments to research on the fairness, security, privacy, and social impacts of AI systems.**
 
 Some interpretations of federal laws such as the Computer Fraud and Abuse Act and the anti-circumvention provision of the Digital Millennium Copyright Act are ambiguous regarding whether and how proprietary AI systems may be reverse engineered and evaluated by academics, journalists, and other researchers. Such research is critical if AI systems with physical and other material consequences are to be properly vetted and held accountable.
 
-#### **3. Increase public and private funding for interdisciplinary studies of the societal impacts of AI.**
+# **3. Increase public and private funding for interdisciplinary studies of the societal impacts of AI.**
 
 As a society, we are underinvesting resources in research on the societal implications of AI technologies. Private and public dollars should be directed toward interdisciplinary AI could widen existing inequalities of opportunity if access to AI technologies—along with the high-powered computation and largescale data that fuel many of them—is unfairly distributed across society. As a society, we are underinvesting resources in research on the societal implications of AI technologies. Private and public dollars should be directed toward interdisciplinary teams capable of analyzing AI from multiple angles.
 
@@ -1151,21 +992,17 @@ companies such as Google, Facebook, and Amazon have actively lobbied to avoid be
 
 Some existing regulatory regimes for software safety (for example, the FDA's regulation of high consequence medical software) require specific software engineering practices at the developer level. However, modern software systems are often assembled from library components which may be supplied by multiple vendors, and are relatively application-independent. It doesn't seem feasible or desirable to subject all such developers to the standards required for the most critical, rare applications. Nor does it seem advisable to allow unregulated use of such components in safety critical applications. Tradeoffs between promoting innovation and regulating for safety are difficult ones, both conceptually and in practice. At a minimum, regulatory entities will require greater expertise going forward in order to understand the implications of standards and measures put in place by researchers, government, and industry.131
 
-#### Policy and legal considerations
+# Policy and legal considerations
 
 While a comprehensive examination of the ways artificial intelligence (AI) interacts with the law is beyond the scope of this inaugural report, this much seems clear: as a transformative technology, AI has the potential to challenge any number of legal assumptions in the short, medium, and long term. Precisely how law and policy will adapt to advances in AI—and how AI will adapt to values reflected in law and policy—depends on a variety of social, cultural, economic, and other factors, and is likely to vary by jurisdiction.
 
 American law represents a mixture of common law, federal, state, and local statutes and ordinances, and—perhaps of greatest relevance to AI—regulations. Depending on its instantiation, AI could implicate each of these sources of law. For example, Nevada passed a law broadly permitting autonomous vehicles and instructed the Nevada Department of Motor Vehicles to craft requirements. Meanwhile, the National Highway Transportation Safety Administration has determined that a selfdriving car system, rather than the vehicle occupants, can be considered the "driver" of a vehicle. Some car designs sidestep this issue by staying in autonomous mode only when hands are on the wheel (at least every so often), so that the human driver has ultimate control and responsibility. Still, Tesla's adoption of this strategy did not prevent the first traffic fatality involving an autonomous car, which occurred in June of 2016. Such incidents are sure to influence public attitudes towards autonomous driving. And as most people's first experience with embodied agents, autonomous transportation will strongly influence the public's perception of AI.
 
-Driverless cars are, of course, but one example of the many instantiations of AI in services, products, and other contexts. The legal effect of introducing AI into the provision of tax advice, automated trading on the stock market, or generating medical diagnoses will also vary in accordance to the regulators that govern these contexts and the rules that apply within them. Many other examples of AI
-
-applications fall within current non-technology-specific policy, including predictive 130 Eric Engleman, "Google Exception in Obama's Cyber Order Questioned as Unwise Gap," *Bloomberg Technology*, March 4, 2013, accessed August 1, 2016, http://www.bloomberg.com/news/ articles/2013-03-05/google-exception-in-obama-s-cyber-order-questioned-as-unwise-gap.
-
-131 Ryan Calo, "The Case for a Federal Robotics Commission," *Brookings Report*, September 15, 2014, accessed August 1, 2016, http://www.brookings.edu/research/reports2/2014/09/case-for-
-
-federal-robotics-commission.
+Driverless cars are, of course, but one example of the many instantiations of AI in services, products, and other contexts. The legal effect of introducing AI into the provision of tax advice, automated trading on the stock market, or generating medical diagnoses will also vary in accordance to the regulators that govern these contexts and the rules that apply within them. Many other examples of AI applications fall within current non-technology-specific policy, including predictive
 
 Absent sufficient technical expertise to assess safety or other metrics, national or local officials may refuse to permit a potentially promising application—or green light a sensitive application that has not been adequately vetted.
+
+<sup>130</sup> Eric Engleman, "Google Exception in Obama's Cyber Order Questioned as Unwise Gap," *Bloomberg Technology*, March 4, 2013, accessed August 1, 2016, http://www.bloomberg.com/news/ articles/2013-03-05/google-exception-in-obama-s-cyber-order-questioned-as-unwise-gap. 131 Ryan Calo, "The Case for a Federal Robotics Commission," *Brookings Report*, September 15, 2014, accessed August 1, 2016, http://www.brookings.edu/research/reports2/2014/09/case-forfederal-robotics-commission.
 
 As AI applications engage in behavior that, were it done by a human, would constitute a crime, courts and other legal actors will have to puzzle through whom to hold accountable and on what theory.
 
@@ -1173,7 +1010,7 @@ policing, non-discriminatory loans, healthcare applications such as eldercare an
 
 Given the present structure of American administrative law, it seems unlikely that AI will be treated comprehensively in the near term. Nevertheless, it is possible to enumerate broad categories of legal and policy issues that AI tends to raise in various contexts.
 
-#### **Privacy**
+## **Privacy**
 
 Private information about an individual can be revealed through decisions and predictions made by AI. While some of the ways that AI implicates privacy mirror those of technologies such as computers and the internet, other issues may be unique to AI. For example, the potential of AI to predict future behavior based on previous patterns raises challenging questions. Companies already use machine learning to predict credit risk. And states run prisoner details through complex algorithms to predict the likelihood of recidivism when considering parole. In these cases, it is a technical challenge to ensure that factors such as race and sexual orientation are not being used to inform AI-based decisions. Even when such features are not directly provided to the algorithms, they may still correlate strongly with seemingly innocuous features such as zip code. Nonetheless, with careful design, testing, and deployment, AI algorithms may be able to make less biased decisions than a typical person.
 
@@ -1203,7 +1040,7 @@ If tort law expects harms to be foreseeable, criminal law goes further to expect
 
 The above issues raise the question of whether and under what circumstances an AI system could operate as the agent of a person or corporation. Already regulatory bodies in the United States, Canada, and elsewhere are setting the conditions under which software can enter into a binding contract.135 The more AI conducts legally salient activities, the greater the challenge to principles of agency under the law.
 
-#### **Certification**
+# **Certification**
 
 The very notion of "artificial intelligence" suggests a substitution for human skill and ingenuity. And in many contexts, ranging from driving to performing surgery or practicing law, a human must attain some certification or license before performing a given task. Accordingly, law and policy will have to—and already does—grapple with how to determine competency in an AI system. For example, imagine a robotics company creates a surgical platform capable of autonomously removing an appendix. Or imagine a law firm writes an application capable of rendering legal advice. Today, it is unclear from a legal perspective *who* in this picture would have to pass the medical boards or legal bar, let alone *where* they would be required to do so.136
 
@@ -1227,13 +1064,13 @@ Like other technologies, AI has the potential to be used for good or nefarious p
 
 "habits" than people, resulting in still fewer revenue sources. The many municipalities relying on income from speeding or parking tickets will have to find alternatives if autonomous cars can drop people off and find distance parking, or if they are programmed not to violate the law. As a result, government bodies trying to balance their budgets in light of advances in AI may pass legislation to slow down or alter the course of the technology.
 
-#### **Politics**
+# **Politics**
 
 AI technologies are already being used by political actors in gerrymandering and targeted "robocalls" designed to suppress votes, and on social media platforms in the form of "bots."138 They can enable coordinated protest as well as the ability to predict protests, and promote greater transparency in politics by more accurately pinpointing who said what, when. Thus, administrative and regulatory laws regarding AI can be designed to promote greater democratic participation or, if ill-conceived, to reduce it.
 
 This list is not exhaustive and focuses largely on domestic policy in the United States, leaving out many areas of law that AI is likely to touch. One lesson that might be drawn concerns the growing disconnect between the context-specific way in which AI is governed today and a wider consideration of themes shared by AI technologies across industries or sectors of society. It could be tempting to create new institutional configurations capable of amassing expertise and setting AI standards across multiple contexts. The Study Panel's consensus is that attempts to regulate "AI" in general would be misguided, since there is no clear definition of AI (it isn't any one thing), and the risks and considerations are very different in different domains. Instead, policymakers should recognize that to varying degrees and over time, various industries will need distinct, appropriate, regulations that touch on software built using AI or incorporating AI in some way. The government will need the expertise to scrutinize standards and technology developed by the private and public sector, and to craft regulations where necessary.
 
-#### Guidelines for the future
+## Guidelines for the future
 
 Faced with the profound changes that AI technologies can produce, pressure for "more" and "tougher" regulation is inevitable. Misunderstanding about what AI is and is not, especially against a background of scare-mongering, could fuel opposition to technologies that could benefit everyone. This would be a tragic mistake. Regulation that stifles innovation, or relocates it to other jurisdictions, would be similarly counterproductive.
 
@@ -1253,7 +1090,7 @@ As this report documents, significant AI-related advances have already had an im
 
 The field of Artificial Intelligence (AI) was officially born and christened at a 1956 workshop. The goal was to investigate ways in which machines could be made to simulate aspects of intelligence—the essential idea that has continued to drive the field forward.
 
-#### APPENDIX I: A SHORT HISTORY OF AI
+# APPENDIX I: A SHORT HISTORY OF AI
 
 This Appendix is based primarily on Nilsson's book140 and written from the prevalent current perspective, which focuses on data intensive methods and big data. However important, this focus has not yet shown itself to be the solution to all problems. A complete and fully balanced history of the field is beyond the scope of this document.
 

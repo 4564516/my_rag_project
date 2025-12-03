@@ -22,7 +22,7 @@ A particularly popular machine learning task is text categorization, a task that
 
 Given a practical use case that is occurring in public administration, our study empirically analyzes trade-offs between model accuracy and energy consumption across various language models and hardware configurations. We find that the best performing model is energy efficient while LLMs show higher energy usage with lower accuracy. Generally, we see significant variability in inference energy consumption, influenced by model type, model size, and hardware specifications. Additionally, the energy consumption during inference is shown to highly correlate with the model's runtime. This makes the duration of computations a valuable proxy measure for energy consumption in settings where the latter cannot be traced. Our findings have implications for researchers, industry practitioners, and policymakers advocating for sustainable AI development [\(Kaack et al.;](#page-21-9) [Luccioni et al.,](#page-21-10) [2025\)](#page-21-10). By systematically evaluating inference efficiency and runtime across architectures and hardware settings, we contribute to the ongoing discourse on AI's environmental impact and provide actionable guidelines for optimizing NLP applications for both performance and sustainability.
 
-# 2 Previous research
+### 2 Previous research
 
 Research on the environmental impact of machine learning (ML) has primarily focused on the energy consumption and carbon emissions produced during the training phase of large-scale models. Most famously, [Strubell et al.](#page-21-0) [\(2019\)](#page-21-0) quantify the carbon footprint of NLP models, revealing that the training of a single large-scale transformer model can emit as much carbon as five cars over their entire lifetimes (their measurements include thousands of hyperparameter tuning jobs, which makes it difficult to disentangle model-inherent efficiency from experimental setup). This seminal work spurred further investigations into the environmental costs of training neural networks, including large language models [\(Patterson et al.,](#page-21-1) [2021;](#page-21-1) [Luccioni and Hernandez-Garcia,](#page-21-2) [2023;](#page-21-2) [Patterson et al.,](#page-21-11) [2022\)](#page-21-11).
 
@@ -44,7 +44,7 @@ We scraped the dataset from the website and restricted it to entries for which t
 
 An experiment run consists of a training phase and a testing phase. Since large language models have been argued to be applicable to text categorization without training (zero-shot), we omit the training phase for these models and apply LLMs without fine-tuning. We report the energy consumption and accuracy only for the test phase as averages over all runs.
 
-### 3.1 Traditional models
+#### 3.1 Traditional models
 
 Besides LLMs, we initially run the experiments with lightweight NLP models that we call traditional because they have been used for categorization tasks long before LLMs existed. Specifically, we use a linear model (logistic regression) and a gradient boosting algorithm (xgboost). Logistic regression is a simple, interpretable model that estimates the probability of a class based on a linear combination of input features. XGBoost (Extreme Gradient Boosting) is an efficient, scalable machine-learning algorithm that combines predictions from multiple decision trees to improve accuracy.
 
@@ -82,16 +82,17 @@ We used different computing systems for a comparative analysis of energy efficie
 
 To run our experiments, we were granted access to the high-performance computing (HPC) systems of TUD Dresden University of Technology [\(https://doc.zih.tu-dresden.](https://doc.zih.tu-dresden.de/) [de/\)](https://doc.zih.tu-dresden.de/) and Leipzig University [\(https://www.sc.uni-leipzig.de/\)](https://www.sc.uni-leipzig.de/). For GPU-accelerated computing, three different systems are available named Capella, Paula, and Clara (see Table [2\)](#page-5-0). The main difference for our study is the GPU: while a node on the Capella cluster is equipped with 4 x H100, there are 8 x A30 on each node on Paula and 4 x V100 on Clara. This means that a large model such as Llama 3.1 70B or Qwen 2.5 72B fits on a single node of Capella (requiring 2 GPUs) or Paula (requiring all 8 GPUs) but takes up two nodes of the Clara cluster (assuming a 16-bit floating point representation of the parameters).
 
-| Cluster                             | Capella                                 | Paula              | Clara              |  |
-|-------------------------------------|-----------------------------------------|--------------------|--------------------|--|
-| HPC center                          | TUD Dresden<br>University of Technology | Leipzig University | Leipzig University |  |
-| number of nodes                     | 144                                     | 12                 | 6                  |  |
-| CPU per node                        | 2 x AMD (32 cores)                      | 2 x AMD (64 cores) | 1 x AMD (32 cores) |  |
-|                                     | 2.7GHz                                  | 2.0GHz             | 2.0GHz             |  |
-| RAM per node                        | 768 GB                                  | 1 TB               | 512 GB             |  |
-| GPU per node                        | 4 x NVIDIA H100                         | 8 x NVIDIA A30     | 4 x NVIDIA V100    |  |
-|                                     | (94GB)                                  | (24 GB)            | (32GB)             |  |
-| single GPU max<br>power consumption | 700W                                    | 165W               | 250W               |  |
+| Cluster           | Capella                                 | Paula              | Clara              |  |
+|-------------------|-----------------------------------------|--------------------|--------------------|--|
+| HPC center        | TUD Dresden<br>University of Technology | Leipzig University | Leipzig University |  |
+| number of nodes   | 144                                     | 12                 | 6                  |  |
+| CPU per node      | 2 x AMD (32 cores)                      | 2 x AMD (64 cores) | 1 x AMD (32 cores) |  |
+|                   | 2.7GHz                                  | 2.0GHz             | 2.0GHz             |  |
+| RAM per node      | 768 GB                                  | 1 TB               | 512 GB             |  |
+|                   | 4 x NVIDIA H100                         | 8 x NVIDIA A30     | 4 x NVIDIA V100    |  |
+| GPU per node      | (94GB)                                  | (24 GB)            | (32GB)             |  |
+| single GPU max    | 700W                                    | 165W               | 250W               |  |
+| power consumption |                                         |                    |                    |  |
 
 <span id="page-5-0"></span>Table 2 HPC Resources
 
@@ -115,202 +116,17 @@ This section analyzes the impact of different hardware configurations (see Tab. 
 
 As shown in Figure [2,](#page-8-0) GPU consumption accounts for the largest share of total energy usage in all experiments. The only exceptions are traditional models without embeddings, which do not use the GPU during inference.
 
-#### 4.1.1 Varying the Number of GPUs
+### 4.1.1 Varying the Number of GPUs
 
 We examined the effect of varying the number of GPUs on energy consumption and inference duration. Most LLMs were tested on 1, 2, or 4 GPUs on a single Capella system node. Larger models (Qwen 72B, Phi MoE, Llama 70B, Jamba Mini, and DS Llama 70B) required either 2 or 4 GPUs. Increasing the number of GPUs consistently
 
 ![](_page_7_Figure_0.jpeg)
 
-**Figure Description:**
-The image presents a scatter plot illustrating the relationship between energy consumption and accuracy for various deep learning models. The x-axis represents accuracy, ranging from 0.2 to 1.0, while the y-axis represents energy consumption in megawatt-hours (MWh). The plot features a range of models, including DeepSpeed, LLaMA, and others, each represented by a distinct color.
-
-**Key Observations:**
-
-*   The plot reveals a positive correlation between energy consumption and accuracy, indicating that more energy-intensive models tend to achieve higher accuracy.
-*   The DeepSpeed models exhibit the highest energy consumption, with values ranging from 100 to 200 MWh.
-*   The LLaMA models demonstrate a moderate energy consumption, with values between 50 and 100 MWh.
-*   The other models, including XGBoost and Linear Embedding, show relatively low energy consumption, with values below 50 MWh.
-
-**Trends and Insights:**
-
-*   The plot suggests that increasing energy consumption is associated with improved accuracy, but at a cost.
-*   The DeepSpeed models, despite their high energy consumption, achieve the highest accuracy, indicating their potential for applications requiring high performance.
-*   The LLaMA models, while less energy-intensive, still demonstrate good accuracy, making them suitable for applications with moderate energy constraints.
-
-
-[描述已截斷以避免過長]
-
-
-
-
-The image presents a scatter plot illustrating the relationship between energy consumption (in Wh) and accuracy for various deep learning models. The x-axis represents accuracy, ranging from 0.2 to 0.6, while the y-axis represents energy consumption, ranging from 0 to 1000 Wh. The plot features a range of models, including Deepseek, Other LLM, and Traditional, each represented by a distinct color. The data points are scattered across the plot, with some models exhibiting high accuracy at low energy consumption, while others demonstrate lower accuracy at higher energy consumption.
-
-
-[描述已截斷以避免過長]
-
-
-Here is a detailed description of the data points:
-
-*   **Deepseek**: This model is represented by a dark gray color and has an accuracy of approximately 0.9 and an energy consumption of around 10 Wh.
-*   **Other LLMs**: This category includes several models, each represented by a light gray color. The models in this category have varying levels of accuracy, ranging from around 0.8 to 0.95, and energy consumption, ranging from around 5 Wh to 20 Wh.
-*   **Traditional**: This category includes several models, each represented by a white color. The models in this category have varying levels of accuracy, ranging from around 0.7 to 0.9, and energy consumption, ranging from around 1 Wh to 10 Wh.
-
-Some notable data points include:
-
-*   **XGBoost BoW**: This model has an accuracy of around 0.85 and an energy consumption of around 5 Wh.
-*   **Linear Tfidf**: This model has an accuracy of around 0.8 and an energy consumption of around 3 Wh.
-*   **XGBoost Tfidf**: This model has an accuracy of around 0.85 and an energy consumption of around 5 Wh.
-
-Overall, the scatter plot suggests that there is a trade-off between accuracy and energy consumption, with models that have higher accuracy often having higher energy consumption. However, there are some models that have both high accuracy and low energy consumption, such as XGBoost BoW and Linear Tfidf.
-
-In addition to the data points, the image also includes several labels and annotations. These include:
-
-*   **X-axis label**: "Accuracy"
-*   **Y-axis label**: "Energy (Wh)"
-*   **Color legend**: The image includes a color legend that explains the meaning of each color. The colors are:
-    *   **Deepseek**: Dark gray
-    *   **Other LLMs**: Light gray
-    *   **Traditional**: White
-
-
-[描述已截斷以避免過長]
-
-
-# Deep Learning Model Comparison
-
-## Table of Models
-
-| Model | Energy (Wh) | Accuracy |
-| :--- | :---: | :---: |
-| Deepseek | 1000k | 90.5% |
-| Other LLMs | 500k | 85.5% |
-| Traditional | 100k | 80.5% |
-
-## Model Comparison
-
-### Deepseek
-
-* **Energy**: 1000k
-* **Accuracy**: 90.5%
-
-### Other LLMs
-
-* **Energy**: 500k
-* **Accuracy**: 85.5%
-
-### Traditional
-
-* **Energy**: 100k
-* **Accuracy**: 80.5%
-
-## Model Comparison Chart
-
-### Energy vs. Accuracy
-
-| Energy | Deepseek | Other LLMs | Traditional |
-| :—: | :—: | :—: | :—: |
-| 1000k | 90.5% | 85.5% | 80.5% |
-| 500k | 85.5% | 80.5% | 75.5 |
-| 100k | 80.5% | 75.5 | 70.5 |
-
-## Model Comparison Chart
-
-### Energy vs. Accuracy
-
-| Energy | Deepseek | Other LLMs | Traditional |
-| :—: | :—: | :—: | :—: |
-| 1000k | 90.5% | 85.5% | 80.5% |
-| 500k | 85.5% | 80.5% | 75.5 |
-| 100k | 80.  | 75.5 | 70.5 |
-
-## Model Comparison Chart
-
-### Energy vs. Accuracy
-
-| Energy | Deepseek | Other LLMs | Traditional |
-| :—: | :—: | :—: | :—: |
-| 1000k | 90.5% | 85.  | 80.5 |
-| 500k | 85.5 | 80.5 | 75.5 |
-| 100k | 80.5 | 75.5 | 70.5 |
-
-## Model Comparison Chart
-
-### Energy vs. Accuracy
-
-| Energy | Deepseek | Other LLMs | Traditional |
-| :—: | :—: | :—: | :—: |
-| 1000k | 90.5 | 85.5 | 80.5 |
-| 500k | 85.5 | 80.5 | 75.5 |
-| 100k | 80.5 | 75.5 | 70.5 |
-
-## Model Comparison Chart
-
-### Energy vs.  
-
-| Energy | Deepse  | Other L  |                               
-
-
-Here is a detailed description of the data points:
-
-*   **Deepseek**: This model is represented by a dark gray color and has an accuracy value of approximately 0.8. It is located in the middle range of the x-axis.
-*   **Other LLMs**: This category includes several models, each represented by a light gray color. They have accuracy values ranging from 0.5 to 0.9 and are scattered across the middle range of the x-axis.
-*   **Traditional**: This category includes several models, each represented by a white color. They have accuracy values ranging from 0.2 to 0.8 and are scattered across the lower range of the x-axis.
-
-Some notable data points include:
-
-*   **XGBoost BoW**: This model has an accuracy value of approximately 0.7 and is located in the middle range of the x-axis.
-*   **Linear Tfidf**: This model has an accuracy value of approximately 0.6 and is located in the lower range of the x-axis.
-*   **DS Llama 70B**: This model has an accuracy value of approximately 0.9 and is located in the upper range of the x-axis.
-
-Overall, the scatter plot suggests that there is a trade-off between accuracy and energy consumption, with models that perform well on both axes being relatively rare. However, there are some models that perform well on one axis while being less accurate on the other.
-
-In terms of specific numbers, the plot shows that:
-
-*   The Deepseek model has an energy consumption of approximately 1000 Wh.
-*   The XGBoost BoW model has an energy consumption of approximately 500 Wh.
-*   The Linear Tfidf model has an energy consumption of approximately 200 Wh.
-
-These values are based on the y-axis values and may not be directly comparable to the x-axis values. However, they do provide a rough estimate of the energy consumption of each model.
-
-In terms of relationships between models, the plot suggests that:
-
-*   Models with higher accuracy values tend to have higher energy consumption values.
-*   Models with lower accuracy values tend to have lower energy consumption values.
-*   There is some overlap between models with similar accuracy values, suggesting that there may be multiple models that perform similarly on both axes.
-
-Overall, the scatter plot provides a useful visual representation of the trade-off between accuracy and energy consumption for various models. It suggests that there is no single model that performs well on both axes, but rather a trade-off between the two. By examining the plot, we can gain a better understanding of the trade-offs involved and make more informed decisions about which models to use in different situations.
-
-
-Here is the list of data points extracted from the image:
-
-*   **Jamba Mini 1.5**: Energy (Wh) = 10,000
-*   **Phi 3.5 Mini**: Energy (Wh) = 10,000
-*   **DS Llama 8B**: Energy (Wh) = 10,000
-*   **DS Qwen 14B**: Energy (Wh) = 10,000
-*   **DS Qwen 32B**: Energy (Wh) = 10,000
-*   **DS Llama 70B**: Energy (Wh) = 10,000
-*   **Llama 3.1 70B**: Energy (Wh) = 10,000
-*   **Qwen 2.5 72B**: Energy (Wh) = 10,000
-*   **Qwen 2.5 7B**: Energy (Wh) = 10,000
-*   **Llama 3.1 8B**: Energy (Wh) = 10,000
-*   **Phi 3.5 MoE**: Energy (Wh) = 10,000
-*   **XGBoost BoW**: Energy (Wh) = 0.001
-*   **Linear Tfidf**: Energy (Wh) = 0.001
-*   **XGBoost Tfidf**: Energy (Wh) = 0.001
-*   **Linear BoW**: Energy (Wh) = 0.001
-*   **XGBoost Embedding**: Energy (Wh) = 0.001
-*   **Linear Embedding**: Energy (Wh) = 0.001
-
-The x-axis represents the accuracy of each model, ranging from 0.2 to 0.6. The y-axis represents the energy consumption in Wh, ranging from 0.001 to 10,000. The data points are scattered across the plot, with some models clustering together and others forming distinct groups.
-
-The image does not provide a legend or any additional information about the data points. Therefore, it is not possible to determine the specific colors or symbols used to represent each model. However, based on the data points extracted, it appears that the models can be broadly categorized into two groups: those with high energy consumption (10,000 Wh) and those with low energy consumption (0.001 Wh). The high-energy models appear to be more accurate, while the low-energy models appear to be less accurate. However, this is only a rough estimate based on the limited data available. Further analysis would be required to draw more specific conclusions.
-
-
 <span id="page-7-0"></span>Fig. 1 Accuracy-energy-trade-off of all models for the inference task on the Capella system (single node). The energy consumption for the same task spans over six orders of magnitude with traditional models being the most energy-efficient models and reasoning models are most energy-consuming. The best model for this specific task is a traditional model (Linear Embedding) with moderate energy consumption.
 
 reduced inference duration but did not reduce energy consumption. In some cases, energy consumption increased due to the additional GPUs in operation (see Figure [3\)](#page-8-1).
 
-## 4.1.2 Varying the Number of Nodes
+#### 4.1.2 Varying the Number of Nodes
 
 While large models can often be executed on a single computing node, certain hardware limitations or shared high-performance computing (HPC) environments may necessitate using multiple nodes. In shared systems, it is often easier to access two nodes with half the number of available GPUs than a single node with all its GPUs, due to scheduling constraints and resource allocation policies. However, deploying models across multiple nodes increases network communication overhead and significantly raises energy consumption.
 
@@ -320,185 +136,13 @@ As shown in Figure [4,](#page-9-0) using two nodes increased energy consumption 
 
 ![](_page_8_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of the energy consumption and carbon emissions of various large language models (LLMs) and other deep learning models. The data is organized into three sections: "Deepseek", "Other LLMs", and "Traditional", each with its own set of charts and tables. The models are listed on the x-axis, and the energy consumption and carbon emissions are represented on the y-axis.
+Fig. 2 Energy consumption of all models for the inference task on the Capella system (single node)
 
-**Figure Data (Q&A):**
+<span id="page-8-0"></span>![](_page_8_Figure_2.jpeg)
 
-Q: What is the energy consumption of Deepseek?
-A: 123 MWh
+<span id="page-8-1"></span>Fig. 3 Effects of the number of GPUs on the runtime and consumed energy (Capella, single node). Deepseek models are not shown.
 
-Q: What is the carbon emissions of Deepseek?
-A: 4.3 tCO2e
-
-Q: What is the energy consumption of Other LLMs?
-A: 20-30 MWh
-
-Q: What is the carbon emissions of Other LLMs?
-A: 1-2 tCO2e
-
-Q: What is the energy consumption of Traditional models?
-A: 10-20 MWh
-
-Q: What is the carbon emissions of Traditional models?
-A: 0.5-1 tCO2e
-
-Q: What is the energy consumption of LLaMA 65B?
-
-Q: What is the carbon emissions of LLaMA 65B?
-A: 1 tCO2e
-
-Q: What is the energy consumption of LLaMA 33B?
-
-Q: What is the carbon emissions of LLaMA 33B?
-A: 0.5 tCO2e
-
-Q: What is the energy consumption of LLaMA 17B?
-
-Q: What is the carbon emissions of LLaMA 17B?
-A: 0.25 tCO2e
-
-Q: What is the energy consumption of LLaMA 7B?
-
-Q: What is the carbon emissions of LLaMA 7B?
-A: 0.1 tCO2e
-
-Q: What is the energy consumption of LLaMA 3B?
-
-Q: What is the carbon emissions of LLaMA 3B?
-A: 0.05 tCO2e
-
-Q: What is the energy consumption of LLaMA 1B?
-A: 0.5 MWh
-
-Q: What is the carbon emissions of LLaMA 1B?
-A: 0.01 tCO2e
-
-
-
-[描述已截斷以避免過長]
-
-
-
-
-The image presents a bar chart comparing the energy consumption of various Deep Learning (DL) models, including Deep-seek, Other LLMs, and Traditional models. The chart is divided into two sections: "Deep-seek" and "Other LLMs," with each section containing multiple bars representing different models. The x-axis labels the models, while the y-axis measures energy consumption in Wh (Watt-hours). The chart shows that Deep-seek models generally consume more energy than traditional models, with some models like DS Llama 8B and DS Owen 14B having the highest energy consumption.
-
-
-Note: The data in the table is not exact, as it is based on the chart's bars and may not be directly transcribed. The values are also not necessarily in Wh (Watt-hours), as the chart's y-axis is not explicitly labeled. However, based on the chart's scale and the models' energy consumption, the values are estimated to be in Wh.
-
-
-### Deep Learning Frameworks
-
-| Framework | Energy Consumption (Wh) |
-| --- | --- |
-| DS Llama 8B | 200 |
-| DS Owen 14B | 300 |
-| DS Owen 32B | 400 |
-| DS Llama 70B | 600 |
-
-### Other Deep Learning Frameworks
-
-| Framework | Energy Consumption (Wh) |
-| --- | --- |
-| Qwen 2.5 7B | 100 |
-| Phi 3.5 Mini | 200 |
-| Llama 3.1 8B | 300 |
-| Phi 3.5 MoE | 400 |
-
-### Traditional Deep Learning Frameworks
-
-| Framework | Energy Consumption (Wh) |
-| --- | --- |
-| Jamba Mini 1.5 | 50 |
-| Llama 3.1 70B | 100 |
-| Qwen 2.5 72B | 200 |
-| Linear Ti-Idf | 300 |
-| XGBoost BoW | 400 |
-| Linear BoW | 500 |
-| Linear Embedding | 600 |
-| XGBoost Embedding | 700 |
-
-### Traditional Deep Learning Frameworks (continued)
-
-| Framework | Energy Consumption (Wh) |
-| --- | --- |
-| Linear Ti-Idf | 800 |
-| XGBoost BoW | 900 |
-| Linear BoW | 1000 |
-| Linear Embedding | 1100 |
-| XGBoost Embedding | 1200 |
-
-| Framework | Energy Consumption (Wh) |
-| --- | --- |
-| Linear Ti-Idf | 1300 |
-| XGBoost BoW | 1400 |
-| Linear BoW | 1500 |
-| Linear Embedding | 1600 |
-| XGBoost Embedding | 1700 |
-
-| Framework | Energy Consumption (Wh) |
-| --- | --- |
-| Linear Ti-Idf | 1800 |
-| XGBoost BoW | 1900 |
-| Linear BoW | 2000 |
-| Linear Embedding | 2100 |
-| XGBoost Embedding | 2200 |
-
-| Framework | Energy Consumption (Wh) |
-| --- | --- |
-| Linear Ti-Idf | 2300 |
-| XGBoost BoW | 2400 |
-| Linear BoW | 2500 |
-| Linear Embedding | 2600 |
-| XGBoost Embedding | 2700 |
-
-
-[描述已截斷以避免過長]
-
-
-The image shows that Deep-seek models have higher energy consumption than other LLMs and traditional models. The most energy-efficient model is Qwen 2.5 7B, while the most energy-intensive model is XGBoost Embedding. The image provides a visual representation of the energy consumption of various deep learning models, allowing for easy comparison and selection of the most energy-efficient model for specific applications.
-
-
-| Model | Energy (Wh) |
-| --- | --- |
-| DS Llama 8B | 0.5 |
-| DS Owen 14B | 1.2 |
-| DS Owen 32B | 3.5 |
-| DS Llama 70B | 10.5 |
-| DS Llama 70B | 10.5 |
-
-
-The image provides a visual comparison of energy consumption between various Deep Learning models. The results show that Deep-seek models have the highest energy consumption, followed by Other LLMs, and then Traditional models. This information can be useful for researchers and developers who want to understand the energy consumption of different models and make informed decisions about their use.
-
-
-The X-axis represents the different models, while the Y-axis represents the energy consumption in Wh (Watt-hours).
-
-[描述已截斷以避免過長]
-
-
-The two graphs provide information on the duration and energy consumption of various devices. The first graph shows the duration of each device, while the second graph shows the energy consumption. The legend explains the colors used in the bars, with red, green, and blue representing different values. The graphs provide a visual representation of the data, making it easier to compare and understand the performance of each device.
-
-
-| **Model** | **Duration (s)** |
-| :--- | :--- |
-| Llama 3.1 8B | 50 |
-| Llama 3.1 70B | 100 |
-| Qwen 2.5 7B | 50 |
-| Qwen 2.5 72B | 100 |
-| Phi 3.5 Mini | 50 |
-| Jamba Mini 1.5 | 50 |
-| Llama 3.1 8B | 50 |
-| Llama 3.1 70B | 100 |
-
-**Table 2:**
-
-| **Model** | **Energy (Wh)** |
-| :--- | :--- |
-| Llama 3.1 8B | 50 |
-| Llama 3.
-
-[描述已截斷以避免過長]
+of coordinating across nodes. Inference duration also increased by the same factor due to the sequential execution of model components and the required inter-node communication.
 
 #### 4.1.3 Comparing GPU Architectures
 
@@ -506,681 +150,56 @@ Finally, we compared the energy efficiency of different GPU architectures (see F
 
 ![](_page_9_Figure_0.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a comparison of various AI models' carbon emissions, model sizes, energy consumption, datasets, hardware, and performance/accuracy. The data is visualized through bar charts and tables, providing insights into the environmental and computational aspects of these models.
-
-**Figure Data (Q&A):**
-
-Q: What is the carbon emissions of LLaMA 65B?
-A: 4.3 tCO2e
-
-Q: How many parameters does LLaMA 65B have?
-
-Q: What is the file size of LLaMA-33B?
-A: 64.7 GB
-
-Q: What is the energy consumption of LLaMA 65B?
-A: 123 MWh
-
-Q: What is the accuracy of LLaMA 65B on ImageNet?
-
-Q: What is the model size of LLaMA 65B?
-
-Q: What is the carbon emissions of LLaMA 33B?
-A: 2.1 tCO2e
-
-Q: How many parameters does LLaMA 33B have?
-
-Q: What is the file size of LLaMA-65B?
-A: 130.5 GB
-
-Q: What is the energy consumption of LLaMA 33B?
-A: 60.5 MWh
-
-Q: What is the accuracy of LLaMA 33B on ImageNet?
-
-Q: What is the model size of LLa-MH
-
-Q: What is the carbon emissions of LLa-MH
-A: 4.3 tCO2e
-
-Q: How many parameters does LLa-MH
-
-Q: What is the file size of LLa-MH
-
-Q: What is the energy consumption of LLa-MH
-A: 123 MWh
-
-Q: What is the accuracy of LLa-MH on ImageNet
-
-Q: What is the energy consumption of LLa-MH
-
-Q: What is the accuracy of LLa-MH on Image
-
-Q: What is the carbon emissions of LLa-MH
-
-Q: What is the model size of LLa
-
-
-
-
-Note: The data in the table is based on the chart, but it's not possible to extract exact values for each device's energy consumption. The values provided are based on the chart's labels and are not exact.
-
-
-### Bar Chart
-
-**Duration (s)**
-
-* Llama 3.1 70B: 150
-* Owen 2.5 72B: 100
-* Jamba Mini 1.5: 50
-
-**Energy Consumption (Wh)**
-
-* Llama 3.1 70B: 25
-* Owen 2.5 72B: 20
-* Jamba Mini 1.5: 10
-
-
-No table is present in the image.
-
-
-The image contains two charts: "Duration (s)" and "Energy consumption (Wh)".
-
-#### Duration (s) Chart
-
-*   **Llama 3.1 70B**
-    *   Single: 150
-    *   Double: 300
-*   **Owen 2.5 72B**
-    *   Single: 100
-    *   Double: 200
-*   **Jamba Mini 1.5**
-    *   Single: 50
-    *   Double: 100
-
-#### Energy consumption (Wh) Chart
-
-*   **Llama 3.1 70B**
-    *   Single: 25
-    *   Double: 50
-*   **Owen 2.5 72B**
-    *   Single: 10
-    *   Double: 20
-*   **Jamba Mini 1.5**
-    *   Single: 5
-    *   Double: 10
-
-*   **Llama 3.1 70B**
-    *   Single: 25
-    *   Double: 50
-    *   Single:
-
-
-There is no table in the provided image.
-
-
-The image contains two charts: a bar chart and a bar chart with a legend.
-
-#### Bar Chart 1
-
-| **Duration (s)** | **Llama 3.1 70B** | **Owen 2.5 72B** | **Jamba Mini 1.5** |
-| :--------------- | :--------------- | :--------------- | :--------------- |
-| **100**          | 150               | 120               | 50                |
-| **200**          | 200               | 180               | 100               |
-| **300**          | 250               | 220               | 150               |
-
-#### Bar Chart 2
-
-| **Energy consumption (Wh)** | **Llama 3.1 70B** | **Owen 2.5 72B** | **Jamba Mini 1.5** |
-| :                           | :               | :               | :               |
-| **100**                      | 150               | 120               | 50                |
-| **200**                      | 200               | 180               | 100               |
-| **300**                      | 250               | 220               | 150               |
-
-### Chart with Legend
-
-| **Duration (s)** | **Llama 3.1 70B** | **Owen 2.5 72B** | **Jamba Mini 1.5** |
-| :                | :                | :                | :                |
-| **100**          | 150               | 120               | 50                |
-| **200**          | 200               | 180               | 100               |
-| **300**          | 250               | 220               | 150               |
-
-### Chart with Legend
-
-| **Energy consumption (Wh)**
-| :                           | :               | :               | :               |
-| **100**                      | 150               | 120               | 50                |
-| **200**                      | 200               | 180               | 100               |
-| **300**                      | 250               | 220               | 150               |
-
-### Chart with Legend
-
-| **Energy consumption (Wh)**
-| :                | :                | :                | :                |
-| **100**          | 150               | 120               | 50                |
-| **200**          | 200               | 180               | 100               |
-| **300**         …
-| **100**          | 150               | 120               | 50                |
-| **200**          | 200               | 180               | 100               |
-| **300**          | 250               | 220               | 150               |
-
-### Chart with Legend
-
-| **Energy
-| **100**…
-
-### Chart with Legend
-
-
-### Chart with Legend
-
-
-### Chart with Legend
-
-
-### Chart with Legend
-
-
-### Chart with Legend
-
-
-### Chart with Legend
-
-
-### Chart with Legend
-
-
-### Chart with Legend
-
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-### Chart with…
-
-
-There is no table in the provided image.
-
-**Chart/PLOT Processing**
-
-The image contains two bar charts.
-
-**Chart 1: Duration (s)**
-
-*   The chart has two bars for each device: Llama 3.1 70B and Owen 2.5 72B.
-*   The X-axis labels are: Llama 3.1 70B and Owen 2.5 72B.
-*   The Y-axis label is: Duration (s).
-*   The Y-axis units are: s.
-*   The chart shows the duration of each device in seconds.
-
-**Chart 2: Energy consumption**
-
-*   The chart has two bars for each device: Llama 3.1 70B and Owen 2.5 72B.
-*   The X-axis labels are: Llama 3.1 70B and Owen 2.5 72B.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 3: Consumed (Wh)**
-
-*   The chart has two bars for each device: Llama 3.1 70B and Owen 2.5 72B.
-*   The X-axis labels are: Llama 3.1 70B and Owen 2.5 72B.
-*   The Y-axis label is: Consumed (Wh).
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 4: Energy consumption**
-
-*   The chart has two bars for each device: Llama 3.1 70B and Owen 2.5 72B.
-*   The X-axis labels are: Llama 3.1 70B and Owen 2.5 72B.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 5: Energy consumption**
-
-*   The chart has two bars for each device: Llama 3.1 70B and Owen 2.5 72B.
-*   The X-axis labels are: Llama 3.1 70B and Owen 2.5 72B.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 6: Energy consumption**
-
-*   The chart has two bars for each device: Llama 3.1 70B and Owen 2.5 72B.
-*   The X-axis labels are: Llama 3.1 70B and Owen 2.5 72B.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 7: Energy consumption**
-
-*   The chart has two bars for each device: Llama 3.1 70B and Owen 2.5 72B.
-*   The X-axis labels are: Llama 3.1 70B and Owen 2.5 72B.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 8: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jamba 1.5.
-*   The X-axis labels are: Llama 1.5 and Jamba 1.5.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 9: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jaba 1.5.
-*   The X-axis labels are: Llama 1.5 and Jaba 1.5.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 10: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jaba 1.5.
-*   The X-axis labels are: Llama 1.5 and Jaba 1.5.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 11: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jaba 1.5.
-*   The X-axis labels are: Llama 1.5 and Jaba 1.5.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 12: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jaba 1.5.
-*   The X-axis labels are: Llama 1.5 and Jaba 1.5.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 13: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jaba 1.5.
-*   The X-axis labels are: Llama 1.5 and Jaba 1.5.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 14: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jaba 1.5.
-*   The X-axis labels are: Llama 1.5 and Jaba 1.5.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 15: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jaba 1.5.
-*   The X-axis labels are: Llama 1.5 and Jaba 1.5.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 16: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jaba 1.5.
-*   The X-axis labels are: Llama 1.5 and Jaba 1.5.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 17: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jaba 1.5.
-*   The X-axis labels are: Llama 1.5 and Jaba 1.5.
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 18: Energy consumption**
-
-*   The chart has two bars for each device: Llama 1.5 and Jaba 1.5.
-*   The X-axis labels are: L
-*   The Y-axis label is: Energy consumption.
-*   The Y-axis units are: Wh.
-*   The chart shows the energy consumption of each device in Wh.
-
-**Chart 19: Energy consumption**
-
-*   The chart has two bars for each device: L
-*   The X-axis labels are: L
-*   The Y-axis label is: Energy
-*   The Y-axis units are: Wh.
-*   The chart shows the energy
-*   The chart shows the energy
-*   The chart shows the energy
-*   The chart shows the
-*   The chart shows the
-*   The chart shows the
-
-
-| **Llama 3.1 70B** | **Owen 2.5 72B** | **Jamba Mini 1.5** |
-| :---------------: | :---------------: | :---------------: |
-| **100**           | **150**           | **75**            |
-
-**Chart Data Points**
-
-- Llama 3.1 70B: 100
-- Owen 2.5 72B: 150
-- Jamba Mini 1.5: 75
-
-**X and Y Axis Units**
-
-- X axis: Not specified
-- Y axis: Not specified
-
-**Diagrams**
-
-There are no diagrams in the provided image. The image appears to be a table and a chart.
-
-
 <span id="page-9-0"></span>Fig. 4 Comparison single node vs. double node deployment (Capella).
 
 text is generated. For models generating a single token per inference, a V100 or even a A30 GPU is more efficient in inference.
 
 ![](_page_9_Figure_3.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This image presents a collection of bar charts and tables providing various metrics for different AI models, including LLaMA, GShard, and others. The charts cover topics such as model sizes, energy consumption, and carbon emissions. The data is organized into multiple charts and tables, each focusing on specific aspects of these models.
+<span id="page-9-1"></span>Fig. 5 Comparison of different GPU cards: four exemplary LLMs. Single node deployment.
 
-**Figure Data (Q&A):**
-
-Q: What is the size of the LLaMA 65B model?
-
-Q: How many parameters does LLaMA have?
-
-Q: What is the net CO2e emissions for GShard?
-A: 4.3 tCO2e.
-
-Q: What is the file size of LLaMA-33B?
-A: 64.7 GB.
-
-Q: What was the total energy consumption?
-A: 123 MWh.
-
-Q: What dataset was used?
-A: Common C
-
-Q: How many A100s were used?
-
-Q: What is the accuracy on ImageNet?
-
-Q: What is the size of the GShard 30B model?
-A: 60.5 GB.
-
-Q: How many parameters does GShard 30B have?
-
-Q: What is the net CO2e emissions for LLaMA?
-A: 3.1 tCO2e.
-
-Q: What is the file size of GShard 30B?
-A: 60.5 GB.
-
-Q: What was the total energy consumption for LLaMA?
-A: 123 MWh.
-
-Q: What dataset was used for LLaMA?
-A: Common C
-
-Q: How many A100s were used for LLa
-
-Q: What is the accuracy on Image
-
-Q: What is the size of the GSh
-
-Q: How many
-
-Q: What is the net
-
-Q: What is the
-
-
-
-
-Note: The table above is a simplified representation of the data, as the actual table in the image may have more columns or rows. The values in the table are based on the labels and axes labels in the image, but may not be exact due to potential rounding or other factors.
-
-
-[描述已截斷以避免過長]
-
-### 4.2 Linear relationship between duration and energy
+#### 4.2 Linear relationship between duration and energy
 
 In most of the tables in appendix [B,](#page-18-0) we report both the duration of each inference run and its corresponding energy consumption. Since energy is the integral of power over time, these two measures exhibit a strong correlation. If the power is constant over time, this correlation should be linear. Figure [6](#page-10-0) illustrates this relationship for all experiments conducted on a single node of the Capella cluster. When controlling for the number of GPUs used for model deployment, the relation between duration and energy is approximately linear. Therefore, the duration appears to serve as a good proxy for the energy consumed.
 
 ![](_page_10_Figure_1.jpeg)
 
-**Figure Description:**
-**Figure Context:**
-This line graph compares the energy consumption of various AI models, including LLaMA, GShard, and others, over their training duration. The x-axis represents the duration in seconds, while the y-axis represents the energy consumption in megawatt-hours (MWh). The graph shows that LLa
-**Figure Data (Q&A):**
+Fig. 6 Plotting the relationship between duration and energy consumption (single node on Capella). The lines are added by running a linear regression model.
 
-Q: What is the energy consumption of LLa
-Q: What is the energy consumption of GSh
-Q: What is the energy consumption of LLa
-Q: What is the energy consumption of GSh
-Q: What is the energy consumption of LLa
-Q: What is the energy
-Q: What is the energy
-Q: What is the
-Q: What is the
+To further quantify the relationship between duration and energy consumption, we performed a linear regression analysis for each hardware configuration (see Table [3\)](#page-11-0). This analysis includes all experiments, regardless of the number of nodes used for model deployment. The consistently high R<sup>2</sup> values across all configurations indicate that, for a given hardware setup, duration and energy consumption are nearly interchangeable as measures of computational effort.
 
+Moreover, when the regression coefficients are known for a specific computing system, energy consumption can be reliably estimated from the duration and the number of GPUs. Only the coefficients of duration (a) and of the interaction term duration:GPUs (c) are statistically significant. The other coefficients (b and d) are omitted from the approximation:
 
+<span id="page-10-0"></span>Energy 
+$$\approx (a + c \cdot \text{GPUs}) \cdot \text{Duration}.$$
+ (1)
 
+For instance, on the Capella system, the following approximation holds for any computation:
 
-Note: The data points are based on the graph's trend and may not be exact values. The actual data points may vary depending on the specific data used to create the graph.
+$$\frac{\text{Energy}}{1 \,\text{Wh}} \approx (0.1 + 0.09 \cdot \text{GPUs}) \cdot \frac{\text{Duration}}{1 \,\text{s}}.$$
+ (2)
 
+This relationship suggests that, under fixed hardware conditions, monitoring the duration of computations provides an efficient means of estimating energy usage with minimal additional measurement overhead.
 
-### Energy (Wh) vs. Duration (s) Data
+|                   | Dependent variable: Energy |          |          |  |  |
+|-------------------|----------------------------|----------|----------|--|--|
+|                   | Capella                    | Clara    | Paula    |  |  |
+|                   | (1)                        | (2)      | (3)      |  |  |
+| Duration (a)      | 0.097∗∗∗                   | 0.061∗∗∗ | 0.079∗∗∗ |  |  |
+|                   | (0.008)                    | (0.002)  | (0.026)  |  |  |
+| GPUs (b)          | −0.500                     | 0.048    | −2.195   |  |  |
+|                   | (2.297)                    | (0.339)  | (3.472)  |  |  |
+| Duration:GPUs (c) | 0.090∗∗∗                   | 0.036∗∗∗ | 0.054∗∗∗ |  |  |
+|                   | (0.004)                    | (0.0002) | (0.004)  |  |  |
+| Constant (d)      | −6.205                     | −0.826   | 3.328    |  |  |
+|                   | (5.725)                    | (1.368)  | (17.220) |  |  |
+| Observations      | 44                         | 19       | 23       |  |  |
+| R2                | 0.998                      | 1.000    | 0.989    |  |  |
+| Adjusted R2       | 0.998                      | 1.000    | 0.987    |  |  |
 
-| Energy (Wh) | Duration (s) |
-| :--------- | :----------- |
-| 0          | 0            |
-| 100        | 100          |
-| 200        | 200          |
-| 300        | 300          |
-| 400        | 400          |
-| 500        | 500          |
-| 600        | 600          |
-| 700        | 700          |
-| 800        | 800          |
+Note: <sup>∗</sup>p<0.1; ∗∗p<0.05; ∗∗∗p<0.01
 
-
-| GPUs | Energy (Wh) | Duration (s) |
-| :--- | :--------- | :----------- |
-| 1    | 100        | 100          |
-| 2    | 200        | 200          |
-| 4    | 400        | 400          |
-
-### Energy (Wh) vs. Duration (s) Line Graph
-
-*   Energy (Wh): 0-800
-*   Duration (s): 0-2000
-*   Line 1: Energy (Wh) = 100 \* Duration (s)
-*   Line 2: Energy (Wh) = 200 \* Duration (s)
-*   Line 3: Energy (Wh) = 400 \* Duration (s)
-
-### Energy (Wh) vs. Duration (s) Line Graph (GPUs)
-
-*   Energy (Wh): 0-800
-*   Duration (s): 0-2000
-*   Line 1: Energy (Wh) = 100 \* Duration (s)
-*   Line 2: Energy (Wh) = 200 \* Duration (s)
-*   Line 3: Energy (Wh) = 400 \* Duration (s)
-*   Line 4: Energy (Wh) = 800 \* Duration (s)
-
-
-There is no table in this image.
-
-**Chart/Plot Processing**
-
-The image is a line graph with four lines representing different types of GPUs (1, 2, 4) and their energy consumption in Wh (Wh) over time in seconds (s).
-
-*   **GPUs 1, 2, 4:**
-    *   The lines are labeled as "GPUs 1", "GPUs 2", and "GPUs 4" respectively.
-    *   The lines are colored red, green, and blue respectively.
-    *   The x-axis is labeled as "Duration (s)" and ranges from 0 to 2000.
-    *   The y-axis is labeled as "Energy (Wh)" and ranges from 0 to 800.
-    *   The lines start at around 0 Wh and increase linearly with duration.
-    *   The lines for GPUs 1 and 2 are almost identical, while the line for GPUs 4 is slightly higher.
-
-**Data Points**
-
-*   **GPUs 1:**
-    *   At 1000 s: 400 Wh
-    *   At 2000 s: 800 Wh
-*   **GPUs 2:**
-    *   At 1000 s: 400 Wh
-    *   At 2000 s: 800 Wh
-*   **GPUs 4:**
-    *   At 1000 s: 500 Wh
-    *   At 2000 s: 800 Wh
-
-**Mathematical Formulas**
-
-There are no mathematical formulas in this image.
-
-**Diagrams**
-
-There is no diagram in this image.
-
-**Output Format**
-
-The output format is a line graph with four lines representing different types of GPUs (1, 2, 4) and their energy consumption in Wh (Wh) over time in seconds (s). The lines are labeled as "GPUs 1", "G
-
-The graph shows the energy consumption of 1, 2, and 4
-GPUs over time. The red line represents 1
-, the green
-
-The image is a line graph with multiple lines representing different types of GPUs (1, 2, 4) and their energy consumption in Wh (Wh) over time in seconds (s).
-
-*   **GPUs 1, 2, 4:**
-    *   The lines for each type of GPU are represented by different colors:
-        *   Red: GPUs 1
-        *   Green: GPUs 2
-        *   Blue: GPUs 4
-    *   The lines show a linear increase in energy consumption over time, with the red line (GPs 1) having the lowest energy consumption and the blue line (GPs 4) having the highest.
-    *   The energy consumption ranges from 0 to 800 Wh.
-
-
-[描述已截斷以避免過長]
+<span id="page-11-0"></span>Table 3 Linear regression of energy consumption on duration (table format by [Hlavac,](#page-22-9) [2022\)](#page-22-9). The numbers (coefficients) give the estimated effects of each predictor on the dependent variable. A positive coefficient means the variable increases the outcome, while a negative coefficient means it decreases the outcome. The standard error (in parenthesis) estimates the variability of the coefficient estimate. The p-value (given by the asterisks) indicates whether the predictor is statistically significant (different from zero).
 
 # 5 Discussion
 
@@ -1192,7 +211,7 @@ Third, energy consumption was measured using CodeCarbon, a tool recognized for p
 
 In the following, we assess further limitations of the present study in more detail. More specifically, we address our focus on a single dataset in section [5.1](#page-12-0) and the limitation to the text categorisation task in section [5.2.](#page-14-0) Subsequently, we contextualise our work in the broader context of planet-centered LLMs (section [5.3\)](#page-15-0).
 
-## <span id="page-12-0"></span>5.1 Analysis on other datasets
+### <span id="page-12-0"></span>5.1 Analysis on other datasets
 
 Our analysis was conducted on a highly specialized dataset. To assess the generalizability of our findings, we replicated the experiments using four additional, widely used datasets (see table [4\)](#page-13-0). These datasets were selected from the HuggingFace platform based on popularity and had to meet two criteria: suitability for text classification and inclusion of two columns - text and label. To maintain comparability with our initial analysis, we randomly sampled 200 training examples and 200 test examples from each dataset. Using a slightly larger training set might have provided an advantage to traditional models, as the LLMs were applied in a zero-shot setting without fine-tuning. Each model experiment was repeated 10 times with different samples, ensuring that each model was tested on the same 10 sets.
 
@@ -1216,324 +235,6 @@ In the case of sentiment analysis on the Yelp dataset, traditional models perfor
 Finally, for emotion classification, the linear model with sentence embeddings is among the top-performing models. In this case, a traditional model provides the most efficient solution. Hence, accuracy-energy trade-offs must be assessed on a case-bycase basis. In some scenarios, traditional models are sufficient, while in others, LLMs offer justifiable benefits despite higher energy consumption. However, a reason for the
 
 ![](_page_14_Figure_0.jpeg)
-
-**Figure Description:**
-**Figure Context:**
-This image is a scatter plot comparing the energy consumption and accuracy of various AI models. The x-axis represents energy consumption in MWh, and the y-axis represents accuracy. The models are represented by different colors and symbols, with some models having multiple data points.
-
-**Figure Data (Q&A):**
-
-Q: What is the energy consumption of LLaMA 3.1?
-
-Q: What is the accuracy of LLaMA 3.1?
-
-Q: What is the energy consumption of LLa
-
-Q: What is the accuracy of LLa
-
-Q: What is the energy
-
-Q: What is the accuracy
-
-Q: What is the
-
-
-
-
-Note: The table above is generated based on the provided image and may not reflect the actual data or accuracy of the models.
-
-[描述已截斷以避免過長]
-
-
-### Table 1: Model Performance
-
-| Model | News | Yelp | Tomatoes | Emotions |
-| :--- | :--- | :--- | :--- | :--- |
-| DS Llama 70B | 3.1 | 3.1 | 2.5 | 3.1 |
-| DS Llama 70B | 3.1 | 3.1 | 2.5 | 3.1 |
-
-### Table 2: Model Performance
-
-| Model | News | Yelp | Tomatoes | Emotions |
-| :--- | :--- | :--- | :--- | :--- |
-| DS Llama 70B | 3.1 | 3.1 | 2.5 | 3.1 |
-| DS Llama 70B | 3.1 | 3.1 | 2.5 | 3.1 |
-| DS L… | 3.1 | 3.1 | 2.5 | 3.1 |
-
-### Table 3: Model Performance
-
-| Model | News | Yelp | Tom… | Em… |
-| :… | :… | :… | :… | :… |
-| DS L… | 3.1 | 3.1 | 2.5 | 3.1 |
-| DS L… | 3.1 | 3.1 | 2.5 | 3.1 |
-| DS L… | 3.1 | 3.1 | 2.… | 3.1 |
-
-### Table 4: Model Performance
-
-| Model | News | Y… | T… | E… |
-| :… | :… | :… | :… | :… |
-| DS L… | 3.1 | 3.1 | 2.5 | 3.1 |
-| DS L… | 3.1 | 3.1 | 2.5 | 3.1 |
-
-### Table 5: Model Performance
-
-| Model | News | Y… | T… | E… |
-| :… | :… | :… | :… | :… |
-| DS L… | 3.1 | 3.1
-
-
-There is no table in this image.
-
-
-## Deep Learning Models
-
-*   **News**: DS Llama 70B, DS Qwen 32B, DS Qwen 14B
-*   **Yelp**: DS Llama 70B, DS Qwen 32B, DS Qwen 14B
-*   **Tomatoes**: DS Llama 70B, DS Qwen 32B, DS Qwen 14B
-*   **Emotions**: DS Llama 70B, DS Qwen 32B, DS Qwen 14B
-
-## Energy (Wh)
-
-*   **News**: 1000
-*   **Yelp**: 1000
-*   **Tomatoes**: 1000
-*   **Emotions**: 1000
-
-## Accuracy
-
-*   **News**: 0.9
-*   **Yelp**: 0.9
-*   **Tomatoes**: 0.9
-*   **Emotions**: 0.9
-
-## Other LLMs
-
-*   **News**: Llama 3.1 70B
-*   **Yelp**: Llama 3.1 70B
-*   **Tomatoes**: Llama 3.1 70B
-*   **Emotions**: Llama 3.1 70B
-
-## Traditional
-
-*   **News**: Linear
-*   **Yelp**: Linear
-*   **Tomatoes**: Linear
-*   **Emotions**: Linear
-
-
-*   **News**: Deep
-*   **Yelp**: Deep
-*   **Tomatoes**: Deep
-*   **Emotions**: Deep
-
-
-*   **News**: Other
-*   **Yelp**: Other
-*   **Tomatoes**: Other
-*   **Emotions**: Other
-
-
-*   **News**: Other
-*   **Yelp**: Other
-*   **News**: Other
-
-
-*   **News**: Other
-
-
-There is no table in this image.
-
-
-## Deep Learning Models
-
-| Model | Energy (Wh) | Accuracy |
-| :--- | :---: | :---: |
-| DS Llama 70B | 3.1 | 70B |
-| DS Llama 70B | 2.5 | 70B |
-| DS Llama 70B | 3.1 | 70B |
-| DS Llama 70B | 2.5 | 70B |
-| DS Llama 70B | 3.1 | 70B |
-| DS Llama 70B | 2.5 | 70B |
-| DS Llama 70B | 3.1 | 70B |
-| DS Llama 70B | 2.5 | 70B |
-| DS Llama 70B | 3.1 | 70B |
-| DS Llama 70B | 2.5 | 70B |
-
-## Other LLMs
-
-| Model | Energy (Wh) | Accuracy |
-| :--- | :…: | :…: |
-| DS Llama 70B | 3.1 | 70B |
-| DS Llama 70B | 2.5 | 70B |
-| DS Llama 70B | 3.1 | 70B |
-| DS L… | 2.5 | 70B |
-
-## Traditional
-
-| Model | Energy (Wh) | Accuracy |
-| :…: | :…: | :…: |
-| DS L… | 3.1 | 70B |
-| DS L… | 2.5 | 70B |
-
-
-| Model | Energy (Wh) | Accuracy |
-| :…: | :…: | :…: |
-| DS L… | 3.… | 70B |
-
-
-| Model | Energy (Wh) | Accuracy |
-| :…: | :…: | :…: |
-| DS L… | 3.1 | 70B |
-
-
-| Model | Energy (Wh) | Accuracy |
-| :…: | :…: | :…: |
-| DS L… | 2.5 | 70B |
-
-
-| Model | Energy (Wh) | Accuracy |
-| :…: | :…: | :…: |
-| DS L… | 3.1 | 70B |
-
-
-| Model | Energy (Wh) | Accuracy |
-| :…: | :…: | :…: |
-| DS L… | 2.5 |  …
-
-
-| Model | Energy (Wh) | Accuracy |
-| :…: | :…: | :…: |
-
-
-| Model | Energy (Wh) | Accuracy |
-| :…: | :…: | :…: |
-
-
-| Model | Energy (Wh) | Accuracy |
-| :…: | :…: | :…: |
-
-
-| Model | Energy (Wh) | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (… | …
-
-
-| Model | Energy (Wh) | Accuracy |
-| --- | --- | --- |
-| DS Llama 70B | 3.1 | 70B |
-| DS Llama 70B | 2.5 | 70B |
-| DS Llama 8B | 3.1 | 8B |
-| DS Llama 14B | 3.1 | 14B |
-| DS Llama 32B | 3.1 | 32B |
-| DS Llama 70B | 2.5 | 70B |
-| DS Llama 8B | 3.1 | 8B |
-| DS Llama 14B | 3.1 | 14B |
-| DS Llama 32B | 3.1 | 32B |
-| DS Llama 70B | 2.5 | 70B |
-| DS Llama 8B | 3.1 | 8B |
-| DS Llama 14B | 3.1 | 14B |
-| DS Llama 32B | 3.1 | 32B |
-
-
-There are no diagrams in this image.
-
 
 <span id="page-14-1"></span>Fig. 7 Accuracy-energy-trade-off of the best models for the inference task on different datasets (the Linear Embedding model was added for comparison), Capella system, single node. See Tables [B4](#page-13-0) and [B5](#page-19-0) for results of all models.
 
@@ -1614,7 +315,7 @@ Since we deployed the dspy framework [\(https://dspy.ai/\)](https://dspy.ai/) to
        ma r ke r f o r ' [ [ ## c om pl e t e d ## ] ] ' .
 ```
 
-# <span id="page-18-0"></span>Appendix B Tables
+## <span id="page-18-0"></span>Appendix B Tables
 
 | Model             | GPUs | Energy (Wh) | Accuracy | Duration (s) | Average Power (W) |
 |-------------------|------|-------------|----------|--------------|-------------------|
@@ -1638,26 +339,26 @@ Since we deployed the dspy framework [\(https://dspy.ai/\)](https://dspy.ai/) to
 
 Table B1 Measurements of all models for the inference task on the FKTG dataset, Capella system, single node, shown are averages over 10 runs
 
-| Model          | Duration (s) |         |       | Energy consumed (Wh) |         |       |
-|----------------|--------------|---------|-------|----------------------|---------|-------|
-|                | single       | double  | ratio | single               | double  | ratio |
-| Llama 3.1 70B  | 161.59       | 304.77  | 1.89  | 48.60                | 94.88   | 1.95  |
-| Qwen 2.5 72B   | 164.44       | 308.16  | 1.87  | 48.66                | 95.70   | 1.97  |
-| Jamba Mini 1.5 | 78.61        | 113.88  | 1.45  | 17.42                | 29.81   | 1.71  |
-| DS Llama 70B   | 2543.47      | 6792.54 | 2.67  | 702.06               | 1899.86 | 2.71  |
+| Model          | Duration (s) |         |       |        | Energy consumed (Wh) |       |
+|----------------|--------------|---------|-------|--------|----------------------|-------|
+|                | single       | double  | ratio | single | double               | ratio |
+| Llama 3.1 70B  | 161.59       | 304.77  | 1.89  | 48.60  | 94.88                | 1.95  |
+| Qwen 2.5 72B   | 164.44       | 308.16  | 1.87  | 48.66  | 95.70                | 1.97  |
+| Jamba Mini 1.5 | 78.61        | 113.88  | 1.45  | 17.42  | 29.81                | 1.71  |
+| DS Llama 70B   | 2543.47      | 6792.54 | 2.67  | 702.06 | 1899.86              | 2.71  |
 
 Table B2 Comparison single vs. double node deployment, Capella system
 
-| Model        |         | Duration (s) |        | Energy consumed (Wh) |        |        |
-|--------------|---------|--------------|--------|----------------------|--------|--------|
-|              | A30     | V100         | H100   | A30                  | V100   | H100   |
-| Llama 3.1 8B | 20.78   | 27.52        | 36.88  | 2.91                 | 2.88   | 5.86   |
-| Qwen 2.5 7B  | 19.58   | 24.64        | 36.28  | 2.87                 | 2.63   | 5.58   |
-| Phi 3.5 Mini | 19.18   | 25.02        | 41.45  | 2.65                 | 2.50   | 5.74   |
-| Phi 3.5 MoE  | 77.60   | 32.53        | 45.93  | 17.77                | 6.04   | 15.04  |
-| DS Llama 8B  | 1210.90 | 1439.58      | 517.83 | 175.83               | 137.90 | 79.64  |
-| DS Qwen 14B  | 1348.09 | 1736.21      | 624.38 | 254.01               | 230.72 | 157.58 |
-| DS Qwen 32B  | 1688.23 | 2192.53      | 806.68 | 444.67               | 457.60 | 378.58 |
+| Model        | Duration (s) |         |        | Energy consumed (Wh) |        |        |
+|--------------|--------------|---------|--------|----------------------|--------|--------|
+|              | A30          | V100    | H100   | A30                  | V100   | H100   |
+| Llama 3.1 8B | 20.78        | 27.52   | 36.88  | 2.91                 | 2.88   | 5.86   |
+| Qwen 2.5 7B  | 19.58        | 24.64   | 36.28  | 2.87                 | 2.63   | 5.58   |
+| Phi 3.5 Mini | 19.18        | 25.02   | 41.45  | 2.65                 | 2.50   | 5.74   |
+| Phi 3.5 MoE  | 77.60        | 32.53   | 45.93  | 17.77                | 6.04   | 15.04  |
+| DS Llama 8B  | 1210.90      | 1439.58 | 517.83 | 175.83               | 137.90 | 79.64  |
+| DS Qwen 14B  | 1348.09      | 1736.21 | 624.38 | 254.01               | 230.72 | 157.58 |
+| DS Qwen 32B  | 1688.23      | 2192.53 | 806.68 | 444.67               | 457.60 | 378.58 |
 
 Table B3 Comparison of different GPU cards, single node deployment.
 
@@ -1684,26 +385,26 @@ Table B3 Comparison of different GPU cards, single node deployment.
 
 Table B4 Measurements of all models for the inference task on the news and yelp datasets, Capella system, single node, shown are averages over 10 runs
 
-| Dataset           | tomatoes    |          | emotion     |          |
-|-------------------|-------------|----------|-------------|----------|
-| Model             | Energy (Wh) | Accuracy | Energy (Wh) | Accuracy |
-| Linear BoW        | <0.01       | 0.59     | <0.01       | 0.36     |
-| Linear Tf-idf     | <0.01       | 0.59     | <0.01       | 0.40     |
-| Linear Embedding  | 0.01        | 0.79     | <0.01       | 0.59     |
-| XGBoost BoW       | <0.01       | 0.54     | <0.01       | 0.30     |
-| XGBoost Tf-idf    | <0.01       | 0.55     | <0.01       | 0.33     |
-| XGBoost Embedding | <0.01       | 0.76     | <0.01       | 0.53     |
-| Llama 3.1 8B      | 4.12        | 0.87     | 4.46        | 0.56     |
-| Llama 3.1 70B     | 32.07       | 0.91     | 34.12       | 0.58     |
-| Qwen 2.5 7B       | 4.04        | 0.73     | 4.17        | 0.37     |
-| Qwen 2.5 72B      | 33.25       | 0.91     | 34.81       | 0.58     |
-| Phi 3.5 Mini      | 7.20        | 0.87     | 5.13        | 0.53     |
-| Phi 3.5 MoE       | 7.72        | 0.89     | 8.82        | 0.60     |
-| Jamba Mini 1.5    | 8.37        | 0.91     | 10.22       | 0.56     |
-| DS Llama 8B       | 72.15       | 0.83     | 81.82       | 0.60     |
-| DS Llama 70B      | 510.86      | 0.90     | 670.40      | 0.61     |
-| DS Qwen 14B       | 134.02      | 0.89     | 148.20      | 0.60     |
-| DS Qwen 32B       | 246.48      | 0.89     | 323.48      | 0.60     |
+| Dataset           | tomatoes    |          | emotion     |          |  |
+|-------------------|-------------|----------|-------------|----------|--|
+| Model             | Energy (Wh) | Accuracy | Energy (Wh) | Accuracy |  |
+| Linear BoW        | <0.01       | 0.59     | <0.01       | 0.36     |  |
+| Linear Tf-idf     | <0.01       | 0.59     | <0.01       | 0.40     |  |
+| Linear Embedding  | 0.01        | 0.79     | <0.01       | 0.59     |  |
+| XGBoost BoW       | <0.01       | 0.54     | <0.01       | 0.30     |  |
+| XGBoost Tf-idf    | <0.01       | 0.55     | <0.01       | 0.33     |  |
+| XGBoost Embedding | <0.01       | 0.76     | <0.01       | 0.53     |  |
+| Llama 3.1 8B      | 4.12        | 0.87     | 4.46        | 0.56     |  |
+| Llama 3.1 70B     | 32.07       | 0.91     | 34.12       | 0.58     |  |
+| Qwen 2.5 7B       | 4.04        | 0.73     | 4.17        | 0.37     |  |
+| Qwen 2.5 72B      | 33.25       | 0.91     | 34.81       | 0.58     |  |
+| Phi 3.5 Mini      | 7.20        | 0.87     | 5.13        | 0.53     |  |
+| Phi 3.5 MoE       | 7.72        | 0.89     | 8.82        | 0.60     |  |
+| Jamba Mini 1.5    | 8.37        | 0.91     | 10.22       | 0.56     |  |
+| DS Llama 8B       | 72.15       | 0.83     | 81.82       | 0.60     |  |
+| DS Llama 70B      | 510.86      | 0.90     | 670.40      | 0.61     |  |
+| DS Qwen 14B       | 134.02      | 0.89     | 148.20      | 0.60     |  |
+| DS Qwen 32B       | 246.48      | 0.89     | 323.48      | 0.60     |  |
 
 <span id="page-19-0"></span>Table B5 Measurements of all models for the inference task on the tomatoes and emotion datasets, Capella system, single node, shown are averages over 10 runs
 

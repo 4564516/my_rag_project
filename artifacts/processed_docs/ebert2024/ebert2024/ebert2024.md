@@ -1,22 +1,14 @@
 # AI, Climate, and Regulation: From Data Centers to the AI Act
 
-[Kai Ebert](https://orcid.org/0009-0002-5250-0587)<sup>∗</sup>
+[Kai Ebert](https://orcid.org/0009-0002-5250-0587)<sup>∗</sup> kebert@europa-uni.de European University Viadrina Frankfurt (Oder), Germany
 
-kebert@europa-uni.de European University Viadrina Frankfurt (Oder), Germany
-
-Ralf Herbrich
-
-Hasso Plattner Institute Potsdam, Germany ralf.herbrich@hpi.de
-
-1 Introduction The environmental consequences of artificial intelligence (AI) are becoming ever more apparent as large models are increasingly trained and deployed across society. This inherently intertwines the digital transformation with questions of climate change, particularly concerning the energy and water consumption of AI models. These features are attracting attention from both the public and academia (see below, 2.). Concerns are growing that the supply of renewable energy may not keep up with their increasing demand triggered by the AI scaling race [\[4\]](#page-10-0) in which the EU is poised to join the U.S. and China under the EU Commission's new AI Continent Action Plan [\[25\]](#page-10-1). Scholars and activists, in turn, are increasingly critiquing and situating digital technology within the framework of environmental justice [\[28,](#page-10-2) [40,](#page-10-3) [67,](#page-11-0) [72,](#page-11-1) [81\]](#page-11-2). Work in political economy has shed a light on the extractive nature of AI-based socio-technical systems, extracting and, at times, exploiting, both natural and human resources [\[18,](#page-10-4) [24,](#page-10-5) [39,](#page-10-6) [42,](#page-10-7) [58\]](#page-11-3), often particularly from marginalized communities [\[61,](#page-11-4) [65\]](#page-11-5) and regions [\[50,](#page-10-8) [80\]](#page-11-6). Both the quest for performance and the funding logic behind AI force providers to scale them to a point where this trajectory may push against planetary limits [\[8–](#page-10-9)[10,](#page-10-10) [18\]](#page-10-4).
+Ralf Herbrich Hasso Plattner Institute Potsdam, Germany ralf.herbrich@hpi.de
 
 Nicolas Alder<sup>∗</sup> Hasso Plattner Institute Potsdam, Germany nicolas.alder@hpi.de
 
 Philipp Hacker European University Viadrina Frankfurt (Oder), Germany hacker@europa-uni.de
 
-Regulatory frameworks are beginning to address these challenges, too. While the new U.S. administration scraps environmental rules and generally deregulates, the EU Artificial Intelligence Act (AI Act) becomes applicable as the world's most comprehensive attempt at direct AI regulation. It features environmental protection as one of its core goals and contains dedicated sustainability rules, which also apply to US and other non-EU providers offering models in the EU. Similarly, the Digital Services Act (DSA) compels Very Large Online Platforms and Very Large Online Search Engines to thoroughly assess and mitigate systemic risks, which is of particular relevance for hybrid platforms increasingly integrating AI. As scholars have pointed out, this includes climate and sustainability risks [\[11\]](#page-10-11), and intersects partially with obligations under the AI Act [\[32,](#page-10-12) [36\]](#page-10-13). In parallel, the Energy Efficiency Directive (EU) 2023/1791 introduces transparency obligations for data centers, a critical infrastructure supporting AI. However, these regulatory instruments were developed independently, leading to fragmentation and gaps. The AI Act originally pursued climate-related objectives especially in the European Parliament's position of June 2023, but over successive drafts and the trilogue negotiations, its environmental provisions were diluted, particularly with regard to energy consumption from AI inference and risk assessments. Meanwhile,
-
-### Abstract
+#### Abstract
 
 We live in a world that is experiencing an unprecedented boom of AI applications that increasingly penetrate all sectors of private and public life, from education, media, medicine, and mobility to the industrial and professional workspace. As this world is simultaneously grappling with climate change, the climate effects and environmental implications of the development and use of AI have become an important subject of public and academic debate. In this paper, we aim to provide guidance on the climate-related regulation for data centers and AI specifically, and discuss how to operationalize these requirements. We also highlight challenges and room for improvement, and make a number of policy proposals to this end. In particular, we propose a specific interpretation of the AI Act to bring reporting on the previously unaddressed energy consumption from AI inferences back into the scope. We also find that the AI Act fails to address indirect greenhouse gas emissions from AI applications. Furthermore, for the purpose of energy consumption reporting, we compare levels of measurement within data centers and recommend measurement at the cumulative server level. We also argue for an interpretation of the AI Act that includes environmental concerns in the mandatory risk assessments (sustainability risk assessment, SIA), and provide guidance on its operationalization. The EU data center regulation proves to be a good first step but requires further development by including binding renewable energy and efficiency targets for data centers. Overall, we make twelve concrete policy proposals, in four main areas: Energy and Environmental Reporting Obligations; Legal and Regulatory Clarifications; Transparency and Accountability Mechanisms; and Future Far-Reaching Measures beyond Transparency.
 
@@ -32,7 +24,11 @@ Conference'17, Washington, DC, USA
 
 © 2025 Copyright held by the owner/author(s). Publication rights licensed to ACM. ACM ISBN 978-x-xxxx-xxxx-x/YYYY/MM <https://doi.org/10.1145/nnnnnnn.nnnnnnn>
 
-the EU's data center regulation remains incomplete, lacking binding efficiency and renewable energy targets. These shortcomings threaten to undermine the most promising legislative avenues for tackling AI's climate effects. The EU's recent push for massive investments in computing infrastructure under the AI Continent Action Plan, including the establishment of AI Gigafactories [\[25\]](#page-10-1), is a late but necessary impetus for technological and strategic autonomy but must not endanger the Union's climate goals under the Green New Deal.
+#### 1 Introduction
+
+The environmental consequences of artificial intelligence (AI) are becoming ever more apparent as large models are increasingly trained and deployed across society. This inherently intertwines the digital transformation with questions of climate change, particularly concerning the energy and water consumption of AI models. These features are attracting attention from both the public and academia (see below, 2.). Concerns are growing that the supply of renewable energy may not keep up with their increasing demand triggered by the AI scaling race [\[4\]](#page-10-0) in which the EU is poised to join the U.S. and China under the EU Commission's new AI Continent Action Plan [\[25\]](#page-10-1). Scholars and activists, in turn, are increasingly critiquing and situating digital technology within the framework of environmental justice [\[28,](#page-10-2) [40,](#page-10-3) [67,](#page-11-0) [72,](#page-11-1) [81\]](#page-11-2). Work in political economy has shed a light on the extractive nature of AI-based socio-technical systems, extracting and, at times, exploiting, both natural and human resources [\[18,](#page-10-4) [24,](#page-10-5) [39,](#page-10-6) [42,](#page-10-7) [58\]](#page-11-3), often particularly from marginalized communities [\[61,](#page-11-4) [65\]](#page-11-5) and regions [\[50,](#page-10-8) [80\]](#page-11-6). Both the quest for performance and the funding logic behind AI force providers to scale them to a point where this trajectory may push against planetary limits [\[8–](#page-10-9)[10,](#page-10-10) [18\]](#page-10-4).
+
+Regulatory frameworks are beginning to address these challenges, too. While the new U.S. administration scraps environmental rules and generally deregulates, the EU Artificial Intelligence Act (AI Act) becomes applicable as the world's most comprehensive attempt at direct AI regulation. It features environmental protection as one of its core goals and contains dedicated sustainability rules, which also apply to US and other non-EU providers offering models in the EU. Similarly, the Digital Services Act (DSA) compels Very Large Online Platforms and Very Large Online Search Engines to thoroughly assess and mitigate systemic risks, which is of particular relevance for hybrid platforms increasingly integrating AI. As scholars have pointed out, this includes climate and sustainability risks [\[11\]](#page-10-11), and intersects partially with obligations under the AI Act [\[32,](#page-10-12) [36\]](#page-10-13). In parallel, the Energy Efficiency Directive (EU) 2023/1791 introduces transparency obligations for data centers, a critical infrastructure supporting AI. However, these regulatory instruments were developed independently, leading to fragmentation and gaps. The AI Act originally pursued climate-related objectives especially in the European Parliament's position of June 2023, but over successive drafts and the trilogue negotiations, its environmental provisions were diluted, particularly with regard to energy consumption from AI inference and risk assessments. Meanwhile, the EU's data center regulation remains incomplete, lacking binding efficiency and renewable energy targets. These shortcomings threaten to undermine the most promising legislative avenues for tackling AI's climate effects. The EU's recent push for massive investments in computing infrastructure under the AI Continent Action Plan, including the establishment of AI Gigafactories [\[25\]](#page-10-1), is a late but necessary impetus for technological and strategic autonomy but must not endanger the Union's climate goals under the Green New Deal.
 
 Against this background, this paper makes three key contributions. First, we offer the first thorough analysis of the AI Act's final version from an environmental perspective. Unlike prior scholarship, which has examined these areas separately, we also scrutinize the interplay between data center regulation and direct AI regulation. AI sustainability is not governed by a single legal instrument but rather emerges from the interaction of multiple frameworks and actors. This fragmented approach creates legal uncertainty and regulatory loopholes — notably the omission of AI inference from reporting obligations and the failure to mandate Sustainability Impact Assessments (SIA). We then propose a novel interpretation of the AI Act to include AI inferences in the reporting obligations of general-purpose AI providers, and to incorporate sustainability considerations into the mandatory risk assessment framework to effectuate the goal of environmental protection enshrined in Art. 1 and Recitals 1, 2 and 8.
 
@@ -40,13 +36,13 @@ Second, we examine the practical challenges of implementing AI-related environme
 
 Third, we identify areas where the AI Act and related regulatory frameworks require future amendments. In light of upcoming evaluation rounds, we advocate for closing loopholes and reinstating environmental obligations that were weakened during the legislative process. While the current political momentum seems to favor deregulation, the climate emergency persists. Therefore, it is crucial to improve the best legal tools still available, and to advocate for a nuanced legal framework to bring the twin transitions of AI and climate together. Our twelve policy proposals address four key areas: Energy and Environmental Reporting Obligations; Legal and Regulatory Clarifications; Transparency and Accountability Mechanisms; and Future Far-Reaching Measures beyond Transparency.
 
-#### 2 Related Work
+# 2 Related Work
 
 Due to the interdisciplinary nature of sustainable AI, related works originate from three main fields—computer science; humanities and policy; and legal research. In recent years, the computer science and AI community has become increasingly aware of the environmental effects of AI, which led to both policy-oriented [\[8,](#page-10-9) [14,](#page-10-14) [29,](#page-10-15) [37,](#page-10-16) [44,](#page-10-17) [45,](#page-10-18) [52,](#page-10-19) [54,](#page-10-20) [56,](#page-11-7) [70,](#page-11-8) [76\]](#page-11-9) and technical contributions, particularly on the environmental effects of data centers operations and AI-related computing [\[2,](#page-10-21) [30,](#page-10-22) [62\]](#page-11-10), studies for tracking [\[1,](#page-9-0) [19,](#page-10-23) [23,](#page-10-24) [51,](#page-10-25) [53,](#page-10-26) [55,](#page-10-27) [64,](#page-11-11) [79,](#page-11-12) [82\]](#page-11-13) and techniques for reducing the emissions of data centers and AI models [\[7,](#page-10-28) [31,](#page-10-29) [43,](#page-10-30) [46,](#page-10-31) [57\]](#page-11-14). The water consumption of AI training has also been a concern [\[49,](#page-10-32) [83\]](#page-11-15). Broader scholarship and policy work includes ethical [\[15,](#page-10-33) [27\]](#page-10-34), informational [\[20,](#page-10-35) [54,](#page-10-20) [63,](#page-11-16) [75\]](#page-11-17), and social
 
 perspectives [\[6\]](#page-10-36). Numerous contributions also analyze and evaluate the various means in which AI may be used to mitigate, and adapt to, climate change [\[13,](#page-10-37) [17,](#page-10-38) [34,](#page-10-39) [41,](#page-10-40) [47,](#page-10-41) [68,](#page-11-18) [69,](#page-11-19) [75\]](#page-11-17), as also acknowledged in the AI Act (Recitals 4 and 142). However, from a legal perspective, the problem of sustainable AI remains underexplored. Existing contributions date from before the AI Act's final version [\[63\]](#page-11-16), which differs significantly from previous proposals (see below, 5.2.) or do not engage with its provisions in detail [\[33\]](#page-10-42). Other, complimentary work focuses uniquely on the DSA [\[11\]](#page-10-11) or data center regulation [\[16\]](#page-10-43).
 
-### 3 Technical Background
+# 3 Technical Background
 
 From a technical perspective, it is important to distinguish between (pre-)training, fine-tuning, and inference. Training refers to the process of initially adjusting a model's parameters or weights to fit the data. This process is highly compute-intensive and typically requires a significant amount of energy [\[37,](#page-10-16) [53,](#page-10-26) [55,](#page-10-27) [79\]](#page-11-12). LLM performance strongly depends on the model scale (number of parameters), which in turn requires more training data [\[38,](#page-10-44) [66\]](#page-11-20), and hence more resources. Such scaling can even be expected with algorithmically advanced models, such as DeepSeek R1 [\[3\]](#page-10-45).
 
@@ -54,29 +50,29 @@ Fine-tuning aims at adjusting a pretrained model to fit more specific data in or
 
 Most of these training, fine-tuning and inference computations are conducted in data centers. The power usage effectiveness (PUE) metric reflects the energy efficiency of a data center. It indicates the ratio of the total energy needed by a data center, including components such as cooling, to the energy used solely by computational devices. A PUE of 1.0 would imply ideal efficiency, meaning that the data center uses only the energy necessary to power the computational devices. The average data center PUE in 2023 was 1.58 globally[\[74\]](#page-11-21) and 1.6 in the EU [\[26\]](#page-10-46).
 
-#### 4 Regulation of Data Centers
+# 4 Regulation of Data Centers
 
 Data centers run all kinds of operations, such as cloud computing, crypto currencies and the Internet at large. Recently, AI training and inference have experienced massive growth. Broad data center regulation, therefore, indirectly governs the environmental effects of AI and constitutes the backdrop against which specific AI regulation must be viewed. Taking a look at the requirements for data centers can help to find a coherent and effective interpretation of the requirements in the AI Act as it builds on already available data and established methodology.
 
-# 4.1 EU Data Collection and Reporting **Obligations for Data Centers**
+# 4.1 EU Data Collection and Reporting Obligations for Data Centers
 
-In the EU, data collection and reporting obligations for data centers were established by two recent legal acts, Art. 12 of the recast Energy Efficiency Directive EU/2023/1791 of September 13, 2023 ("EED"), and the Commission Delegated Regulation EU/2024/1364 of March 14, 2024 ("Delegated Regulation"). The new rules apply to all data centers in the EU with a power demand of the installed information technology (IT) of at least 500kW, which includes smallsized data centers. Data center operators are required to collect, make publicly available and report to a EU database information that is deemed relevant for the sustainability assessment of the data centers and the industry as a whole. The reporting is mandated on an annual basis.
+In the EU, data collection and reporting obligations for data centers were established by two recent legal acts, Art. 12 of the recast Energy Efficiency Directive EU/2023/1791 of September 13, 2023 ("EED"), and the Commission Delegated Regulation EU/2024/1364 of March 14, 2024 ("Delegated Regulation"). The new rules apply to all data centers in the EU with a power demand of the installed information technology (IT) of at least 500kW, which includes small-sized data centers. Data center operators are required to collect, make publicly available and report to a EU database information that is deemed relevant for the sustainability assessment of the data centers and the industry as a whole. The reporting is mandated on an annual basis.
 
 The required data includes energy consumption, power utilization, temperature set points, waste heat utilisation, water usage and use of renewable energy (EED, Annex VII(c)). Notably, while the EED focuses on energy and power, the reporting of water usage is a significant step forward as both energy and water consumption have raised concerns in AI settings [49, 55]. In addition, the Water Framework Directive can be harnessed to limit the overall amount water a data center may consume, and also control for any potential loss of water quality [33].
 
-The Delegated Regulation provides specific key performance indicators and methodology. Most notable is the requirement to measure and report the energy consumption of the installed information technology. Following the standard-methodology for the calculation of PUE, 1 the energy consumption must be measured at the uninterruptible power system (UPS) or, if not existent, at the power distribution unit (PDU) or at another point specified by the data center (see Delegated Regulation, Annex II(1)(e); see also the appendix, Figure 1 as Categories 1-3.
+The Delegated Regulation provides specific key performance indicators and methodology. Most notable is the requirement to measure and report the energy consumption of the installed information technology. Following the standard-methodology for the calculation of PUE, the energy consumption must be measured at the uninterruptible power system (UPS) or, if not existent, at the power distribution unit (PDU) or at another point specified by the data center (see Delegated Regulation, Annex II(1)(e); see also the appendix, Figure 1 as Categories 1-3.
 
-The data centers must report to the EU database directly or via a national reporting scheme, if such a scheme is implemented by the Member State. From the reported data the Commission calculates the data center sustainability indicators which are made publicly available on an aggregate level. They include the power usage effectiveness (PUE), the water usage effectiveness (WUE)<sup>2</sup>, the energy reuse factor (ERF)<sup>3</sup>, and the renewable energy factor  $(REF)^4$ .
+The data centers must report to the EU database directly or via a national reporting scheme, if such a scheme is implemented by the Member State. From the reported data the Commission calculates the data center sustainability indicators which are made publicly available on an aggregate level. They include the power usage effectiveness (PUE), the water usage effectiveness (WUE)<sup>2</sup>, the energy reuse factor (ERF)<sup>3</sup>, and the renewable energy factor (REF)<sup>4</sup>.
 
-### **Energy Management Systems and Energy** 4.2
+# 4.2 Energy Management Systems and Energy Audits
 
 The EED also requires that Member States mandate companies with an average annual energy consumption of more than 10 TJ to conduct an energy audit at least every four years and those with a consumption of more than 85 TJ to implement an energy management system including regular energy audits (Art. 11 EED). This would also apply to operators of data centers. The Directive sets
 
 up certain minimum criteria for energy audits (Annex VI EED) and refers to the relevant international or European standards (Recital 80 EED). The legal minimum criteria, however, do not dictate how energy consumption should be measured.
 
-### German 2023 Energy Efficiency Act
+#### 4.3 German 2023 Energy Efficiency Act
 
-In Germany, the Energy Efficiency Act of 8 Nov 2023 implements the EED and establishes a national reporting scheme and additional requirements, including specific efficiency and renewable energy targets for data centers. The Act broadens the scope of the reporting obligation to include even smaller data centers, upwards of 300 kW (Sec. 13). It also expands the duty to set up an energy management system to data centers and operators of ICT-i.e., customers of colocation data centers-of more than 50 kW (Sec. 12). Most importantly, it sets targets on energy efficiency and renewable energy use, requiring data centers to reach a PUE factor between 1.5 and 1.2 and an ERF of 10% to 20 % depending on their age (Sec. 11), and to run on 50 % renewable energy, increasing that factor to 100% by 1 Jan 2027 (Sec. 11). Lastly, it requires data center operators to inform their customers on an annual basis on the energy consumption directly attributable to them (Sec. 15).
+In Germany, the Energy Efficiency Act of 8 Nov 2023 implements the EED and establishes a national reporting scheme and additional requirements, including specific efficiency and renewable energy targets for data centers. The Act broadens the scope of the reporting obligation to include even smaller data centers, upwards of 300 kW (Sec. 13). It also expands the duty to set up an energy management system to data centers and operators of ICT—i.e., customers of colocation data centers—of more than 50 kW (Sec. 12). Most importantly, it sets targets on energy efficiency and renewable energy use, requiring data centers to reach a PUE factor between 1.5 and 1.2 and an ERF of 10% to 20 % depending on their age (Sec. 11), and to run on 50 % renewable energy, increasing that factor to 100% by 1 Jan 2027 (Sec. 11). Lastly, it requires data center operators to inform their customers on an annual basis on the energy consumption directly attributable to them (Sec. 15).
 
 #### 4.4 Regulation Outside the EU
 
@@ -86,13 +82,13 @@ Under the 2024 Green Data Center Roadmap, Singapore aims to reach a PUE of 1.3 o
 
 In the U.S., in the absence of federal efficiency requirements, the only direct regulation for data center efficiency is the California Green Building Action Plan 2015 implementing Executive Order B-18-12. Data centers that exceed a PUE of 1.5 are required to reduce their PUE by a minimum of 10 percent per year until they achieve a 1.5 or lower PUE. However, similar to the Australian action, this plan is only limited to state data centers [22, 73].
 
-<span id="page-2-0"></span><sup>&</sup>lt;sup>1</sup>The Delegated Regulation refers to the European standard CEN/CENELEC EN 50600-
+<span id="page-2-0"></span> $<sup>^{1}</sup>$ The Delegated Regulation refers to the European standard CEN/CENELEC EN 50600-4-2.
 
-<span id="page-2-1"></span><sup>&</sup>lt;sup>2</sup>WUE measures the amount of water used in the data center's cooling and other operations relative to the energy consumed by the IT stack.  $^3\mathrm{ERF}$  represents the percentage of energy that is reused from a data center's waste
+<span id="page-2-1"></span><sup>&</sup>lt;sup>2</sup>WUE measures the amount of water used in the data center's cooling and other operations relative to the energy consumed by the IT stack.
 
-<span id="page-2-2"></span>energy, showing the efficiency of energy recovery.
+<span id="page-2-2"></span>operations relative to the energy consumed by the IT stack.  $^3$ ERF represents the percentage of energy that is reused from a data center's waste energy, showing the efficiency of energy recovery.
 
-<span id="page-2-3"></span><sup>&</sup>lt;sup>4</sup>REF indicates the proportion of a data center's energy that comes from renewable
+<span id="page-2-3"></span><sup>&</sup>lt;sup>4</sup>REF indicates the proportion of a data center's energy that comes from renewable sources.
 
 Another noteworthy strain of regulation is the climate reporting set forth in the SEC climate disclosure rules, and, on a state level, the California Climate Corporate Data Accountability Act, also known as SB 253. While the California Act goes further in including private companies and scope 3 indirect emissions, it is limited to companies with USD 1 B in annual revenue. For the SEC rules as well as SB 253 the focus is on the companies' total emissions, therefore direct attribution to AI or computing energy consumption will be difficult.
 
@@ -110,7 +106,7 @@ States, potentially leading to a fragmented regulatory environment across the EU
 
 In contrast, the situation outside the EU shows a very diverse landscape, ranging from government procurement to industry wide political commitments and concrete legal requirements with varying implementation success.
 
-### 5 AI Act: Gaps and Interpretation Challenges
+#### 5 AI Act: Gaps and Interpretation Challenges
 
 The AI Act applies further down in the value chain, targeting entities that develop and deploy AI systems. After introducing the key terminology used by the Act, we discuss the major climate-related obligations contained in it, with a particular focus on transparency, risk assessment and mitigation. As our analysis shows, the Act makes steps in the right direction, but falls short of a comprehensive regime for tackling climate-related risks of AI models.
 
@@ -168,13 +164,13 @@ Thus, it should not be dispositive that the explicit SIA contained in the EP pos
 
 As a caveat, it should be noted that, while the AI Act requires climate risk assessment and mitigation, no detailed reporting is mandated. For HRAI systems the documentation must comprise a detailed description of the risk management system, but not the risk assessment or its results (Annex IV(5)). Providers of GPAI models with systemic risk may rely on codes of practice or European harmonized standards, both of which are not yet available, or alternative means of compliance for assessment by the Commission (Art. 55(2)). If these will entail a detailed reporting of the risk assessment, and to whom, is yet to be determined.
 
-# 5.5 Discussion and Interim Conclusion on the AI Act
+### 5.5 Discussion and Interim Conclusion on the AI Act
 
 Overall, while the AI Act introduces valuable steps toward addressing climate-related concerns in AI development and deployment, it falls short of establishing a comprehensive framework for mitigating the environmental risks posed by AI systems. Key provisions on transparency and risk management for high-risk AI and general-purpose AI systems make some progress in requiring documentation of computational resources and energy consumption, but significant gaps remain. For example, the Act does not mandate the disclosure of energy consumption during the inference phase, a crucial omission given the long-term environmental impact of AI applications. Moreover, transparency measures are restricted to authorities, limiting broader accountability and public scrutiny.
 
 Additionally, while the Act imposes risk assessment and mitigation obligations on providers of HRAI systems and GPAI models with systemic risk, these provisions lack sufficient emphasis on environmental factors. Although environmental protection is included in the Act's objectives, its practical integration into risk management remains unclear and no detailed reporting on mitigation efforts concerning environmental risks is currently required. Without stronger enforcement and clearer guidance, particularly on the inclusion of energy consumption and other environmental impacts in risk assessments, the Act's potential to address the growing climate-related risks of AI systems will remain limited.
 
-### 6 Operationalizing the Requirements
+#### 6 Operationalizing the Requirements
 
 # 6.1 Model Providers and their Access to Infrastructure
 
@@ -218,7 +214,7 @@ Cloud platforms still lack client-oriented power consumption reporting as part o
 
 energy consumption data to their clients. Complementing Art. 25(2) AI Act, the obligation established in Sec. 15 of the German Energy Efficiency Act, requiring data centers to inform customers on their attributable annual energy consumption, could serve as a blueprint. Notably, such a law could also apply to cloud service providers based outside the EU, with the caveat, however, that such an extraterritorial application oftentimes lacks enforcement capabilities.
 
-#### 6.4 Sustainability Impact Assessments
+### 6.4 Sustainability Impact Assessments
 
 The operationalization of sustainability impact assessments (SIAs) within the risk assessments required under the AI Act involves integrating environmental considerations into the existing risk management frameworks that high-risk AI model providers and GPAI providers must follow. Much like data protection or algorithmic impact assessments, SIAs would serve as a practical tool for embedding climate considerations into the development and deployment of AI systems. Importantly, these assessments should not be limited to high-risk AI models but should also apply to all AI systems, regardless of the associated risk to health or safety. This is because the carbon footprint of AI models is often unrelated to their classification as high or low risk under the Act. Therefore, an SIA could ensure that environmental impacts are considered across the entire AI landscape.
 
@@ -226,11 +222,11 @@ The SIA should involve evaluating various models and design choices during the d
 
 Taking one step back, the concept of "data protection by design" should be expanded to include "sustainability by design," under which developers should actively seek to reduce the contribution of ICT, including AI, to climate change [\[33\]](#page-10-42). At both the technical and organizational levels, this would involve adopting all feasible measures to limit environmental impact, a shift that has already been applied in other industries through consumption practices and product design. These approaches are also gaining traction in supply chain management and other sectors in pursuit of corporate Environmental, Social, and Governance (ESG) objectives. By drawing on these existing practices, sustainability by design could become a core principle guiding the regulation of the ICT and AI sectors.
 
-#### 7 Policy Proposals
+# 7 Policy Proposals
 
 Although the AI Act attempts to address climate concerns through various reporting obligations, these measures largely lack consistency and clarity. We identify twelve policy recommendations that should be integrated into the evaluation report due in August 2028 (Article 111(6)), as well as any interpretive guidelines from the AI Office and other agencies, and in reviews and potential textual revisions prior to that date (see also [\[4\]](#page-10-0)). These measures can be grouped in four categories: Energy and Environmental Reporting Obligations; Legal and Regulatory Clarifications; Transparency and Accountability Mechanisms; and Future Far-Reaching Measures beyond Transparency.
 
-# 7.1 Energy and Environmental Reporting Obligations
+## 7.1 Energy and Environmental Reporting Obligations
 
 The current AI Act overlooks key environmental factors related to AI systems [\[56\]](#page-11-7). The following proposals aim to ensure comprehensive energy and environmental accountability for AI systems, both for development and inference phases.
 
@@ -272,11 +268,11 @@ mechanisms for energy efficiency - offer flexible compliance pathways that may b
 
 Third, the AI industry, particularly large-scale AI providers and data center operators, may resist additional regulatory obligations, citing economic and technological constraints. There is also concern that lack of enforcement mechanisms could render some obligations ineffective. Hence, our proposals emphasize practical enforcement strategies, including gradual implementation, industry incentives, and transparency-driven accountability. For example: public access to climate-related disclosures can create reputational incentives for compliance, even in the absence of strict enforcement; energy efficiency targets for data centers can be phased in over time for a realistic transition without abrupt regulatory shocks; clarifications on provider status and reporting obligations offer legal certainty to companies. Fourth, some of our more ambitious proposals - such as tradable energy budgets for AI or restrictions on AI training during peak hours - may be viewed as far-reaching or difficult to implement in the near term. While we recognize that not all proposals will be immediately adopted, it is crucial to articulate ambitious policy options at this juncture. The AI regulatory landscape is evolving, and incremental steps toward long-term measures can be integrated into future evaluation rounds of the AI Act, the EED, and related frameworks. As with the EU Emissions Trading System (ETS), initial skepticism toward market-based environmental regulations can give way to gradual acceptance as regulatory mechanisms mature. Given the current political momentum and upcoming AI Act evaluation rounds, there is a narrow but critical window to influence environmental AI governance. While not all recommendations will be immediately adopted, presenting a structured, well-argued policy package ensures that sustainability concerns remain central to AI regulation in the EU and beyond - rather than being sidelined in the face of deregulation.
 
-# 9 Conclusion
+#### 9 Conclusion
 
 AI systems, many of them containing energy-intensive generative AI components, are increasingly integrated into economic and societal processes. Importantly, as AI intersects with robotics, writing code and steering devices, it is poised to merge decisively into industrial processes, proliferating its deployment, but also its climate effects. Currently, this intersection between the AI and the green transition sits at a regulatory blind spot, inadequately addressed in current regulation. In this paper, we take a closer look at sustainability-related data center regulation and the sustainability provisions in the AI Act. While they present a good first step, they too often lack ambition, clarity and consistency, or present significant challenges in implementation. To counter these shortcomings, we provide interpretations of the AI Act in line with its purpose of environmental protection, provide guidance on operationalizing the requirements, and make twelve concrete proposals, grouped into four areas: Energy and Environmental Reporting Obligations; Legal and Regulatory Clarifications; Transparency and Accountability; and Future Far-Reaching Measures beyond Transparency.
 
-# References
+#### References
 
 <span id="page-9-0"></span>[1] Nicolas Alder and Ralf Herbrich. 2024. Energy-efficient Gaussian processes using low-precision arithmetic. In Forty-first International Conference on Machine
 
@@ -324,8 +320,8 @@ AI systems, many of them containing energy-intensive generative AI components, a
 - <span id="page-10-40"></span>[41] Benjamin Kelly. 2022. Ethical AI and the Environment. The iJournal: Student Journal of the Faculty of Information 7, 2 (2022), 5–11.
 - <span id="page-10-7"></span>[42] Tugrul Keskin and Ryan David Kiggins (Eds.). 2021. Towards an International Political Economy of Artificial Intelligence. Palgrave Macmillan.
 - <span id="page-10-30"></span>[43] Tamara Kneese and Meg Young. 2024. Carbon emissions in the tailpipe of Generative AI. Harvard Data Science Review 5 (2024).
-- <span id="page-10-18"></span><span id="page-10-17"></span>[44] Bran Knowles. 2021. ACM TechBrief: Computing and climate change.
-- [45] Bran Knowles, Kelly Widdicks, Gordon Blair, Mike Berners-Lee, and Adrian Friday. 2022. Our house is on fire: The climate emergency and computing's responsibility. Commun. ACM 65, 6 (2022), 38–40.
+- <span id="page-10-17"></span>[44] Bran Knowles. 2021. ACM TechBrief: Computing and climate change.
+- <span id="page-10-18"></span>[45] Bran Knowles, Kelly Widdicks, Gordon Blair, Mike Berners-Lee, and Adrian Friday. 2022. Our house is on fire: The climate emergency and computing's responsibility. Commun. ACM 65, 6 (2022), 38–40.
 - <span id="page-10-31"></span>[46] Jonathan Koomey and Eric Masanet. 2021. Does not compute: Avoiding pitfalls assessing the Internet's energy and carbon impacts. Joule 5, 7 (2021), 1625–1628.
 - <span id="page-10-41"></span>[47] Neeta Kumari and Soumya Pandey. 2023. Application of artificial intelligence in environmental sustainability and climate change. In Visualization techniques for climate change with machine learning and artificial intelligence. Elsevier, 293–316.
 - <span id="page-10-48"></span>[48] Guozhu Li, Zixuan Sun, Qingqin Wang, Shuai Wang, Kailiang Huang, Naini Zhao, Yanqiang Di, Xudong Zhao, and Zishang Zhu. 2023. China's green data center development:Policies and carbon reduction technology path. Environmental Research 231 (2023), 116248. [doi:10.1016/j.envres.2023.116248](https://doi.org/10.1016/j.envres.2023.116248)
@@ -368,20 +364,9 @@ AI systems, many of them containing energy-intensive generative AI components, a
 - <span id="page-11-13"></span>[82] Xiyou Zhou, Zhiyu Chen, Xiaoyong Jin, and William Yang Wang. 2020. HULK: An energy efficiency benchmark platform for responsible natural language processing. arXiv preprint arXiv:2002.05829 (2020).
 - <span id="page-11-15"></span>[83] Guido Zuccon, Harrisen Scells, and Shengyao Zhuang. 2023. Beyond CO2 emissions: The overlooked impact of water consumption of information retrieval models. In Proceedings of the 2023 ACM SIGIR International Conference on Theory of Information Retrieval. 283–289.
 
-# A Measuring Points for IT Equipment in Data Centers
+#### A Measuring Points for IT Equipment in Data Centers
 
 <span id="page-12-0"></span>![](_page_12_Figure_3.jpeg)
-
-**Figure Description:**
-**Figure Context:**
-This image is a flowchart illustrating the energy consumption and carbon
-                              
-
-
-
-
-[描述已截斷以避免過長]
-
 
 Figure 1: Measuring points for IT equipment energy consumption, from Annex II of the Delegated Regulation EU/2024/1364 of March 14, 2024
 

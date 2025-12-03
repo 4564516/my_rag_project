@@ -57,7 +57,12 @@ class RAGPipeline:
         if HAS_CROSS_ENCODER:
             try:
                 print(f"Loading Reranker model: {rerank_model}...")
-                self.reranker = CrossEncoder(rerank_model)
+                # 強制使用 CUDA，並傳遞 trust_remote_code
+                self.reranker = CrossEncoder(
+                    rerank_model, 
+                    device='cuda', 
+                    automodel_args={"trust_remote_code": True}
+                )
                 print("Reranker loaded successfully.")
             except Exception as e:
                 print(f"Failed to load Reranker: {e}")

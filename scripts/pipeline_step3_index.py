@@ -27,6 +27,32 @@ from scripts.core.embedder import Embedder
 from scripts.core.vector_store import VectorStore
 from scripts.core.config import Config
 
+class MetadataExtractor:
+    """從文本中提取元數據 (年份、數字、實體)"""
+    
+    def extract_years(self, text: str) -> List[int]:
+        """提取 1990-2030 之間的年份"""
+        # 匹配 4 位數字
+        matches = re.findall(r'\b(199\d|20[0-2]\d|2030)\b', text)
+        years = [int(m) for m in matches]
+        return list(set(years)) # 去重
+
+    def extract_metadata(self, text: str) -> Dict:
+        meta = {}
+        
+        # 1. 提取年份
+        years = self.extract_years(text)
+        if years:
+            # ChromaDB 不支援 List 作為 metadata value
+            # 我們只存 year_str，方便後續處理
+            meta["year_str"] = ",".join(map(str, years))
+            
+        # 2. 檢測是否有表格
+        if "|" in text and "---" in text:
+            meta["has_table"] = True
+            
+        return meta
+
 class MarkdownSplitter:
     """簡單的 Markdown 切分器"""
     
@@ -164,6 +190,7 @@ def index_processed_docs():
     vector_store.initialize(config.collection_name, embedder, recreate=True)
     
     splitter = MarkdownSplitter()
+    metadata_extractor = MetadataExtractor()
     
     # 獲取所有 Markdown 檔案
     # 修正：使用 rglob 以支援嵌套目錄結構
@@ -190,13 +217,21 @@ def index_processed_docs():
             # print(f"  {doc_id}: {len(chunks)} chunks")
             
             for i, chunk in enumerate(chunks):
+                # 提取元數據
+                extracted_meta = metadata_extractor.extract_metadata(chunk)
+                
                 current_batch_texts.append(chunk)
-                current_batch_metadatas.append({
+                
+                meta = {
                     "doc_id": doc_id,
                     "chunk_id": i,
                     "source": "marker_markdown",
                     "file_path": str(md_file.relative_to(project_root))
-                })
+                }
+                # 合併提取的元數據
+                meta.update(extracted_meta)
+                
+                current_batch_metadatas.append(meta)
 
                 # 當批次滿了，就寫入
                 if len(current_batch_texts) >= BATCH_SIZE:

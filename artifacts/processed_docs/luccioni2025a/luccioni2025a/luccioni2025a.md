@@ -10,7 +10,7 @@ Kate Crawford Microsoft Research; University of Southern California New York, US
 
 As the climate crisis deepens, artificial intelligence (AI) has emerged as a contested force: some champion its potential to advance renewable energy, materials discovery, and large-scale emissions monitoring, while others underscore its growing carbon footprint, water consumption, and material resource demands. Much of this debate has concentrated on direct impacts—energy and water usage in data centers, e-waste from frequent hardware upgrades—without addressing the significant indirect effects. This paper examines how the problem of Jevons' Paradox applies to AI, whereby efficiency gains may paradoxically spur increased consumption. We argue that understanding these second-order impacts requires an interdisciplinary approach, combining lifecycle assessments with socioeconomic analyses. Rebound effects undermine the assumption that improved technical efficiency alone will ensure net reductions in environmental harm. Instead, the trajectory of AI's impact also hinges on business incentives and market logics, governance and policymaking, and broader social and cultural norms. We contend that a narrow focus on direct emissions misrepresents AI's true climate footprint, limiting the scope for meaningful interventions. We conclude with recommendations that address rebound effects and challenge the market-driven imperatives fueling uncontrolled AI growth. By broadening the analysis to include both direct and indirect consequences, we aim to inform a more comprehensive, evidence-based dialogue on AI's role in the climate crisis.
 
-### Keywords
+## Keywords
 
 Artificial intelligence, Environmental Impacts, Lifecycle Assessment, Rebound Effects, Sustainability
 
@@ -18,91 +18,29 @@ Artificial intelligence, Environmental Impacts, Lifecycle Assessment, Rebound Ef
 
 Alexandra Sasha Luccioni, Emma Strubell, and Kate Crawford. 2025. From Efficiency Gains to Rebound Effects: The Problem of Jevons' Paradox in AI's Polarized Environmental Debate. In The 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT '25), June 23–26, 2025, Athens, Greece. ACM, New York, NY, USA, [13](#page-12-0) pages.<https://doi.org/10.1145/3715275.3732007>
 
-## 1 Introduction
+#### 1 Introduction
 
 As the climate crisis intensifies, the environmental impacts of artificial intelligence (AI) have become the subject of many a polarized debate. The question of whether the potential positive impacts of AI outweigh the negative ones, and how to foster technological
 
-![](_page_0_Picture_13.jpeg)
+Please use nonacm option or ACM Engage class to enable CC licenses [This work is licensed under a Creative Commons Attribution-NonCommercial-](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)[ShareAlike 4.0 International License.](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
 
-**Figure Description:**
-**Figure Context:**
-This image is a table comparing the performance of various models, including L
-**Figure Data (Q&A):**
-Q: What is the size of the L
+FAccT '25, June 23–26, 2025, Athens, Greece © 2025 Copyright held by the owner/author(s). ACM ISBN 979-8-4007-1482-5/2025/06 <https://doi.org/10.1145/3715275.3732007>
 
+advances in AI while minimizing its environmental harms, has divided AI researchers and practitioners alike. Some maintain that its potential to accelerate sustainable breakthroughs will exceed its environmental costs by increasing renewable energy production and transmission or aiding in the design of more sustainable materials [\[76,](#page-11-0) [99\]](#page-12-1). Others point to the soaring resource demands of largescale AI models and their negative environmental impacts from non-renewable energy use, water consumption, and extraction of minerals [\[24,](#page-10-0) [28,](#page-10-1) [45,](#page-11-1) [57\]](#page-11-2). These opposing positions tend to center on the technology's direct impacts, measured in energy consumption and greenhouse gas (GHG) emissions from data centers, or in the e-waste that accumulates as hardware becomes obsolete.
 
+Yet a critical dimension of AI's climate footprint lies outside these direct resource and emissions calculations. Recent work on indirect impacts [\[63\]](#page-11-3) warns of potential "rebound effects", whereby gains in efficiency spur higher overall consumption. These second-order effects challenge the presumption that purely technical optimizations alone will deliver sufficient climate benefits. Cost savings achieved by more efficient AI hardware, for example, can spur increased demand for new AI functionalities, which in turn drive further hardware upgrades and increase costs. Economists refer to such transformations as Jevons' Paradox, which was proposed in the 19th century by economist William Stanley Jevons, who observed that as coal use became more efficient, it was also paradoxically leading to an increase, and not a decrease, in the consumption of coal across different industries [\[60\]](#page-11-4). The addition of increasingly efficient AI to systems from commerce to transportation can have far-reaching effects on our societies, our behaviors, and the future paths available to us in the race against climate change.
 
+This system-level complexity underscores the inadequacy of the question, "Is AI net positive or net negative for the climate?" Instead, we adopt an analytic approach that includes the intersecting social, political, and economic contexts in which AI systems are developed and deployed. Although efficiency has been a defining ethos in recent AI research, reflected in "scaling laws" that promise ever-more-powerful models [\[64\]](#page-11-5), effective climate action requires grappling with how these systems reshape markets, cultural norms, and policy priorities. Thus, understanding rebound effects requires drawing on both qualitative and quantitative methods, drawn from computer science, economics and the social sciences, as they hinge not on algorithmic design but human adaptation and use patterns. Adopting an interdisciplinary approach allows for both a rigorous lifecycle accounting of direct effects as well as understanding the social behaviors that AI can induce or displace.
 
-## Table 1: Table Structure
+This paper aims to bridge the gap in the existing literature by, first, providing a brief overview of the debate about AI's direct positive and negative impacts on the environment ([§2\)](#page-1-0). We follow this
 
-| **Table** | **Table** | **Table** |
-| **Table** | **Table** | **Table** |
+with an in-depth exploration of AI's indirect impacts, including systemic rebound effects, and propose actionable strategies to mitigate them ([§3\)](#page-3-0). We conclude by proposing promising directions for future exploration and research toward improving our understanding of the full spectrum of AI's impacts on the environment. In short, we argue that meaningfully contending with AI's climate impacts requires grappling with both direct and indirect effects. Otherwise, the industry risks pinning its hopes on technical efficiency gains alone without recognizing the social, cultural, and economic contexts that materially shape technology uses. Our aim is to support the field in moving away from polarized extremes and toward a nuanced position that acknowledges the state of climate change and the pressing need to manage all of AI's climate impacts. By expanding this dialogue and grounding it in evidence across multiple disciplines, we can develop strategies that genuinely address AI's role in environmental sustainability.
 
-## Table 2: Table Structure
-
-## Table 3: Table Structure
-
-## Table 4: Table Structure
-
-## Table 5: Table Structure
-
-## Table 6: Table Structure
-
-## Table 7: Table Structure
-
-## Table 8: Table Structure
-
-## Table 9: Table Structure
-
-## Table 10: Table Structure
-
-## Table 11: Table Structure
-
-## Table 12: Table Structure
-
-## Table 13: Table Structure
-
-## Table 14: Table Structure
-
-## Table 15: Table Structure
-
-## Table 16: Table Structure
-
-## Table 17: Table Structure
-
-| **Table** | **Table** | **Table** |
-| **Table** | **Table** | **Table** |
-| **Table** | **Table** |
-
-
-| **CC** | **CC** | **CC** |
-| :--- | :--- | :--- |
-| 0.5 | 0.5 | 0.5 |
-
-**Note:** The table appears to be a table of values, but it's not clear what it represents. If it's a table of values, I'll describe it as such.
-
-**No chart/plot found:** There is no chart or plot in the provided image.
-
-**No diagram found:** There is no diagram in the provided image.
-
-**No critical section found:** There is no critical section in the provided image.
-
-However, I will provide a response based on the provided image.
-
-**Table Transcription:**
-
-| **CC** | **CC** | **CC** |
-| :--- | :--- | :--- |
-| 0.5 | 0.5 | 0.5 |
-
-Please note that the table appears to be a table of values, but it's not clear what it represents. If you need to extract specific data, I can help you with that.
-
-
-#### <span id="page-1-0"></span>2 AI and the environment
+## <span id="page-1-0"></span>2 AI and the environment
 
 The environmental impacts of AI were largely overlooked until recent years. Now these issues figure prominently in both scientific debates and public media. Central to this discourse is the question of whether AI's capacity to help mitigate climate change, e.g. by optimizing energy use or discovering sustainable materials, truly exceeds its environmental costs in terms of energy consumption, water usage, and mineral extraction. Some contend that AI's potential benefits justify widespread deployment across various climatefocused applications, whereas others caution that unrestrained expansion may ultimately be more harmful than beneficial. In this section, we review these competing perspectives on AI's positive and negative environmental impacts as presented in academic and industry discussions.
 
-#### 2.1 Arguments that AI is a net climate negative
+### 2.1 Arguments that AI is a net climate negative
 
 Research into AI's total usage of natural resources is still nascent, but initial studies have highlighted significant concerns across multiple domains of direct impact. Papers have addressed carbon emissions from training large models [\[67,](#page-11-6) [69,](#page-11-7) [70,](#page-11-8) [120\]](#page-12-2), water consumption for cooling servers [\[52,](#page-11-9) [80\]](#page-11-10), and the mining of minerals for technical infrastructure [\[24\]](#page-10-0). In the present section, we present the different directions of study pursued in terms of AI's negative environmental impacts and discuss the observations that have been put forward.
 
@@ -120,7 +58,7 @@ AI makes oil and gas extraction processes even more harmful to the environment. 
 
 AI contributes to the ballooning issue of electronic waste. AI's expanding operational footprint also contributes to electronic waste (e-waste), which is now the fastest-growing segment of solid waste worldwide, reaching 62 million tonnes in 2022. Ongoing reports have pointed to the urgent need to find ways to reduce the amount of waste and to reuse these materials more effectively given the status of e-waste as both an environmental and health hazard [\[98\]](#page-12-11). The UN's Global E-Waste Monitor 2024 showed that about 22% of e-waste has been shown to be formally collected and recycled, with global generation of electronic waste rising five times faster than e-waste recycling [\[10\]](#page-10-6). The remainder ends up dumped in landfills, often in developing countries, where researchers assess both how hazardous substances like mercury, arsenic, and lead leach into local ecosystems and how they impact public health. High turnover in AI hardware is accelerating e-waste output: although GPUs can theoretically last about five years, the push for higher performance is prompting more frequent upgrades – one recent study estimates that AI will generate an additional 1.2–5 million metric tons of e-waste by 2030 [\[134\]](#page-12-12).
 
-### <span id="page-2-0"></span>2.2 Arguments that AI is a net climate positive
+#### <span id="page-2-0"></span>2.2 Arguments that AI is a net climate positive
 
 The argument that AI will ultimately be more beneficial than harmful to the environment is primarily based on the narrative that AI can be sustainably developed and used for applications that directly benefit the environment, or that could accelerate the technological advances needed to address climate change. However, claims around AI's sustainability and significance in enabling new scientific advances remain largely hypothetical, with little explicit evidence or quantitative analysis of how the overall impact of AI applications, which may cause equal or greater harm to the environment or even accelerate climate change, will be ultimately beneficial. We discuss the main assertions supporting AI's positive role with respect to climate change in more detail below.
 
@@ -148,7 +86,7 @@ mitigate them to ensure that given interventions do not exacerbate the very thin
 
 We further describe each type of effect below, organizing AI's rebound effects into three themes: material objects and physical spaces ([§3.1\)](#page-4-0), micro- and macro-economic processes ([§3.2\)](#page-5-1), and society and human behavior ([§3.3\)](#page-6-0). We provide examples of each, describing the complex ways in which AI-enabled tools and services change existing structures, with unintended ripple effects on the environment.
 
-#### <span id="page-4-0"></span>3.1 Material Rebound Effects
+# <span id="page-4-0"></span>3.1 Material Rebound Effects
 
 AI is impacting the distribution of objects and physical space by changing the way products are made and distributed, and the functionalities that they need to have in order to allow us to interact with AI tools and systems. This has material rebound effects across complex global supply chains, which inexorably changes the way natural resources are exploited, transported, and combined.
 
@@ -175,7 +113,7 @@ These kinds of shifts in the way objects and processes operate can, in turn, com
 
 Table 1: Examples of AI's indirect impacts and rebound effects, expanding on Börjesson Rivera et al [\[97\]](#page-12-20).
 
-#### <span id="page-5-1"></span>3.2 Economic Rebound Effects
+# <span id="page-5-1"></span>3.2 Economic Rebound Effects
 
 As seen in Section [2,](#page-1-0) AI is increasingly integrated into economic systems of profit and production, making existing tools more powerful and creating new ones. But these integrations can engender macroeconomic ripple effects across the technology sector as well as adjacent ones, changing structures and processes, as well as transforming whole industries.
 
@@ -189,7 +127,7 @@ On a more macro level still, economy-wide rebound effects occur when an innovati
 
 foundation models are general purpose technologies with corresponding potential for broad impacts to the economy and labor markets [\[35\]](#page-10-25). Analyzing the impact of these changes in the future will be necessary to validate this claim (we discuss approaches to tracking AI's indirect impacts in Section [3.4\)](#page-7-0).
 
-## <span id="page-6-0"></span>3.3 Societal and Behavioral Rebound Effects
+# <span id="page-6-0"></span>3.3 Societal and Behavioral Rebound Effects
 
 As users of technology and citizens of society, our behaviors are shaped and affected by the technologies we use. This has increasingly become the case for AI as it becomes more intertwined in daily activities such as shopping, travel, household chores, and the workplace. In this section, we describe ways in which AI can impact human behaviors and how those changes, can have broader environmental impacts in turn.
 
@@ -207,7 +145,7 @@ billion USD investment in AI infrastructure known as Project Stargate, which aim
 
 This decoupling of AI infrastructure from environmental responsibility illustrates a critical rebound mechanism: technical efficiency improvements, such as high-efficiency datacenter designs or AI model efficiency optimizations, are insufficient when broader regulatory and policy conditions incentivize unchecked growth. By facilitating rapid deployment without ecological constraint, these conditions create an emissions burden with resource demands that scale with model proliferation. In such contexts, even the best-case efficiency improvements under Koomey's Law may be dwarfed by the sheer increase in volume of compute infrastructure. Then the indirect effects of these policies on the environment are no longer marginal, they become structural. The recent DeepSeek model is actually an interesting addition to the debate around efficiency and energy because, on the one hand, it was trained using relatively less energy and compute compared to previous generations of language models (due mostly to the export limitations on GPUs to China, which limited the amount of chips that was available for training it), but on the other hand, this was only possible by leveraging synthetic data generated by these models. Also, the model itself is very large –almost 700B parameters for the R1 model – meaning that deploying it requires access to multiple GPUs with several hundreds of GB of memory, which is significantly more than smaller models of a smaller size, which can contribute to more energy use overall as organizations deploy the model in user-facing applications. Finally, as detailed in the DeepSeek-R1-Zero report [\[29\]](#page-10-32), the model requires much more inference-time computation and energy than previous approaches due to its reasoning abilities. This results in the generation of much longer answers to queries detailing the steps that the model is going through to provide the final response, which leads to more inference-time compute and energy demands.
 
-## <span id="page-7-0"></span>3.4 Tracking and Mitigating AI's Rebound Effects
+# <span id="page-7-0"></span>3.4 Tracking and Mitigating AI's Rebound Effects
 
 The main challenges in measuring and mitigating indirect impacts and rebound effects are their uncertainty and heterogeneity. While tracking direct impacts can largely be achieved by monitoring a finite set of relatively well-defined metrics, such as liters of water consumed or tons of CO2 emitted, rebound effects by definition encompass social, economic, and behavioral impacts across different areas of society [\[114\]](#page-12-41). Realizing effective progress in characterizing AI's rebound effects necessitates moving beyond the binary narrative towards more holistic assessment that incorporates a variety of complementary approaches. We discuss some of these approaches below.
 
@@ -223,7 +161,7 @@ so far to operationalize such a proposal. Regulations could also serve an import
 
 Efficient devices and distributed compute. Resource-efficient computing devices that require less natural resources (energy, water, raw materials) to build and use can be seen as an obvious gain in terms of environmental impacts, and different hardware platforms are being developed towards this end as an alternative to GPUs and CPUs, which represent the current status quo of AI computing hardware [\[61,](#page-11-46) [62\]](#page-11-47). It is worth noting that there is typically a trade-off between resource efficiency and generality in terms of the computational capabilities of the hardware: substantial efficiency gains typically require the hardware to be correspondingly specialized to certain types of computation, such as a specific family of AI models, which can accelerate indirect effects via lock-in, increasing dependence on a narrow set of vendors or products. New approaches to distributed and decentralized computation, in which AI model workloads can be distributed across machines over wide distances rather than running within a single computing cluster or datacenter, can also help distribute environmental burden geographically in terms of resource demand and local impacts. Examples include fully decentralized training [\[59\]](#page-11-48) or redirecting training processes depending on which cloud region has the lowest carbon intensity at a given time of day [\[30\]](#page-10-37). Above and beyond sustainability considerations, adopting more flexible AI hardware and algorithms can help lower the barrier to entry into the field of AI and push back against industry monopolization of computational resources, and corresponding power imbalance that this creates [\[1,](#page-10-38) [2\]](#page-10-39).
 
-## 4 Discussion
+#### 4 Discussion
 
 In the context of climate change, artificial intelligence has emerged as a highly polarizing technology. On the one hand, it is championed as a driver of efficiency that could potentially invent new solutions to the climate crisis or reinvent old ones [\[5,](#page-10-40) [21,](#page-10-7) [99\]](#page-12-1); on the other hand, it is criticized for its steeply increasing resource demands and carbon footprint [\[68,](#page-11-13) [120,](#page-12-2) [134\]](#page-12-12). This debate overlooks a significant reality: we still do not have a comprehensive picture of AI's current environmental impacts on everything from economic systems to individual behaviors. Consequently, the AI field risks simplifying the nuances that must be understood if AI is to be responsibly integrated into environmental policy and practice without exacerbating harms. A more accurate assessment of AI's environmental outcomes would include a wider range of factors spanning data center operations, supply chains, hardware lifecycles, social behaviors, business incentives, policy commitments, and institutional practices.
 
@@ -241,13 +179,13 @@ This reality highlights a structural barrier: if AI solutions to climate change 
 
 Yet, as mentioned in Section [3.4,](#page-7-0) for any of these steps toward meaningful change to materialize, the industry must adopt a far more transparent stance on all the environmental impacts of AI systems and take accountability for the far-reaching impacts of the technologies that it develops and deploys. At present, the scant public information on the carbon footprint of large-scale AI models is frequently derived from academic estimates or limited corporate disclosures rather than comprehensive, standardized reporting. If AI companies truly want to position their technologies as part of the climate solution, they must be forthcoming with granular data on their energy sources, resource consumption, hardware lifecycles, and the end-of-life management of electronic components. In other words, the foundation of any net-positive AI contribution to the environment is a baseline of reliable, detailed data, which has yet to be made widely available. Without this level of transparency, policymaking bodies, researchers, and the public at large are left with partial insights at best, which undermines the capacity to assess AI's environmental impacts effectively, to design incentives that reward lower-impact AI development, and for individuals to make informed choices with respect to their use of these technologies. Ultimately, the AI field is responsible for knowing the impacts of its own products, and it cannot do so without better data. This information is crucial for performing accurate lifecycle assessments that capture both direct and indirect consequences. Absent such data, the conversation around AI's climate benefits risks devolving into corporate branding exercises rather than a genuine reckoning with environmental and social responsibilities.
 
-### 5 Conclusion
+#### 5 Conclusion
 
 This paper argues that the AI field needs to adopt a more detailed and nuanced approach to framing, articulating, and addressing AI's environmental impacts in order to avoid unhelpful polarization. This requires including AI's direct impacts—mineral supply chain studies, carbon emissions of training large-scale models, energy and water consumption, and e-waste from hardware—as well as mapping the ways AI innovations reshape economic structures and societal practices that, in turn, drive increased resource usage. Such a comprehensive perspective will empower researchers, policymakers, and industry stakeholders to devise strategies that prevent "tech-solutionism" from overshadowing the urgent need for systemic change. Greater transparency in reporting energy usage, more robust lifecycle assessment tools, and meaningful industry-wide enforceable standards are examples that would foster much-needed progress.
 
 Ultimately, what is at stake is clear: There is a scientific consensus that the dangers of climate change are extreme, and the effects are already unfolding globally. The need to limit global warming to below 1.5°C underscores the need for transformative change across sectors, and the technology sector is no exception. If AI is deployed without adequate consideration of its direct and indirect effects, it has the potential to deepen inequalities, accelerate resource depletion, and exacerbate the very climate problems it hopes to address. Conversely, if approached with rigorous assessment, transparent reporting, and supportive policy frameworks, AI could serve as a helpful tool in climate adaptation, environmental monitoring, and sustainable planning. Yet we cannot simply hope for the best outcome. The onus is on the AI industry to ensure technology does not contribute to the problem before producing any future solutions. This requires reckoning with AI's actual impacts, both direct and indirect, measured comprehensively and contextualized socially, economically, and environmentally.
 
-### References
+## References
 
 - <span id="page-10-38"></span>[1] Mohamed Abdalla and Moustafa Abdalla. 2021. The Grey Hoodie Project: Big tobacco, big tech, and the threat on academic integrity. In Proceedings of the 2021 AAAI/ACM Conference on AI, Ethics, and Society. 287–297.
 - <span id="page-10-39"></span>[2] Mohamed Abdalla, Jan Philip Wahle, Terry Ruas, Aurélie Névéol, Fanny Ducel, Saif M Mohammad, and Karën Fort. 2023. The elephant in the room: Analyzing the presence of big tech in natural language processing research. arXiv preprint arXiv:2305.02797 (2023).
